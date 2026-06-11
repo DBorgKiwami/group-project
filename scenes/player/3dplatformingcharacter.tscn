@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d3fxwao6ly8ho"]
+
+[ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="1_s3ukl"]
+[ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="2_6ofdj"]
+[ext_resource type="Script" uid="uid://dhh3x6djf2fvc" path="res://scripts/playermovement/player3d.gd" id="4_g608u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
+height = 1.2797852
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g608u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s3ukl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ofdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019]
+script = ExtResource("4_g608u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
+shape = SubResource("CapsuleShape3D_s3ukl")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=858905964]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_g608u")

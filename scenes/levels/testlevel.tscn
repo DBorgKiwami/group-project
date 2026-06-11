@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dx15ixrrkailj"]
 
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_b81ow"]
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
@@ -9,3 +11,9 @@
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=932370660]
 shape = SubResource("WorldBoundaryShape3D_x14dw")
 debug_color = Color(1, 1, 1, 1)
+
+[node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1691048, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1063314922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5996883, 4.3492885)
