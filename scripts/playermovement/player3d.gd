@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var sprite : AnimatedSprite3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	#If the jump timer has run out, you cannot jump
 	if jump_timer < 0:
 		can_jump = false;
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept"):
 		jump_buffer = jump_buffer_len
 	# Handle jump.
 	if jump_buffer > 0 and can_jump:
@@ -44,6 +45,11 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if direction.x < 0:
+			
+			sprite.flip_h = true;
+		else:
+			sprite.flip_h = false;
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:

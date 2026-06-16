@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+@export var hitboxFront : Area3D
+@export var hitboxUp : Area3D
+@export var hitboxDown : Area3D
+
+@export var sprite : AnimatedSprite3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -10,6 +15,7 @@ var jump_timer = jump_timer_max
 var jump_buffer = 0
 
 func _physics_process(delta: float) -> void:
+	#Reduce the jump buffer if its still running
 	if jump_buffer > 0:
 		jump_buffer -= delta
 	
@@ -29,9 +35,10 @@ func _physics_process(delta: float) -> void:
 		can_jump = false;
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept"):
+		#Reset the jump buffer
 		jump_buffer = jump_buffer_len
-	# Handle jump.
+	#If the jump buffer is higher than 0, the player is trying to jump
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
@@ -46,8 +53,20 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	if direction:
+		#Flip character depending on their direction
+		if direction < 0:
+			hitboxFront.rotation_degrees = Vector3(0, 180, 0)
+			sprite.flip_h = true;
+		else:
+			hitboxFront.rotation_degrees = Vector3(0, 0, 0)
+			sprite.flip_h = false;
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
+	print("Entered")
+	pass # Replace with function body.
