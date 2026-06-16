@@ -31,3 +31,28 @@ shape = SubResource("CapsuleShape3D_k8hk2")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_1haum")
+
+[node name="Down Attack Hitbox" type="Area3D" parent="." unique_id=788031771]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Down Attack Hitbox" unique_id=193153371]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.55174303, 1.0470098, -0.38088554, 1.637892, -0.16731349, 2.0935118, 0.23847279, 2.0863926, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
+
+[node name="Up Attack Hitbox" type="Area3D" parent="." unique_id=46783837]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Up Attack Hitbox" unique_id=1884746816]
+polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.39307356, 1.2155163, -0.26653796, 1.6309919, 0.051420122, 1.8435464, 0.26844496, 1.9411922, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
+
+[node name="Right Attack Hitbox" type="Area3D" parent="." unique_id=2012989158]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Right Attack Hitbox" unique_id=1128966999]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.55174303, 1.0470098, -0.38088554, 1.637892, -0.16731349, 2.0935118, 0.23847279, 2.0863926, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
+
+[node name="Left Attack Hitbox" type="Area3D" parent="." unique_id=1560940334]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Left Attack Hitbox" unique_id=502237289]
+transform = Transform3D(1.1924881e-08, -1, 0, -1, -1.1924881e-08, 8.742278e-08, -8.742278e-08, -1.0425061e-15, -1, 0, 0, 0)
+polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.55174303, 1.0470098, -0.38088554, 1.637892, -0.16731349, 2.0935118, 0.23847279, 2.0863926, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2014802447]
