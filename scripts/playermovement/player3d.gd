@@ -3,13 +3,16 @@ extends CharacterBody3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
+@export var jump_timer_max = 0.2
+@export var jump_buffer_len = 0.12
 var can_jump = false
-var jump_timer = 0.2
-var jump_buffer = 0.08
+var jump_timer = jump_timer_max
+var jump_buffer = 0
 
 
 func _physics_process(delta: float) -> void:
-	jump_buffer -= delta
+	if jump_buffer > 0:
+		jump_buffer -= delta
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -19,15 +22,16 @@ func _physics_process(delta: float) -> void:
 	#If you're on the floor, you can jump
 	if is_on_floor():
 		can_jump = true;
-		jump_timer = 0.2
+		jump_timer = jump_timer_max
 	
 	#If the jump timer has run out, you cannot jump
 	if jump_timer < 0:
 		can_jump = false;
 	if Input.is_action_just_pressed("ui_accept"):
-		jump_buffer = 0.08
+		jump_buffer = jump_buffer_len
 	# Handle jump.
 	if jump_buffer > 0 and can_jump:
+		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
