@@ -5,11 +5,8 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 var can_jump = false
 var jump_timer = 0.2
-var jump_buffer = 0.08
-
 
 func _physics_process(delta: float) -> void:
-	jump_buffer -= delta
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -24,10 +21,9 @@ func _physics_process(delta: float) -> void:
 	#If the jump timer has run out, you cannot jump
 	if jump_timer < 0:
 		can_jump = false;
-	if Input.is_action_just_pressed("ui_accept"):
-		jump_buffer = 0.08
+	
 	# Handle jump.
-	if jump_buffer > 0 and can_jump:
+	if Input.is_action_just_pressed("ui_accept") and can_jump:
 		velocity.y = JUMP_VELOCITY
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
@@ -38,12 +34,11 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
