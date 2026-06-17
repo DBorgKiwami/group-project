@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var hitboxFront : Area3D
 @export var hitboxUp : Area3D
 @export var hitboxDown : Area3D
+@export var animationController : AnimationPlayer
 
 @export var sprite : AnimatedSprite3D
 
@@ -13,6 +14,12 @@ extends CharacterBody3D
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		print("Attacking")
+		animationController.play("attack")
+	pass
 
 func _physics_process(delta: float) -> void:
 	#Reduce the jump buffer if its still running

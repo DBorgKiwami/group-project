@@ -21,11 +21,72 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "sprite")]
+[sub_resource type="Animation" id="Animation_vj0l2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front Attack Hitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a1x7n"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front Attack Hitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.61711806, 0.617118, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
+_data = {
+&"RESET": SubResource("Animation_vj0l2"),
+&"attack": SubResource("Animation_a1x7n")
+}
+
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "sprite")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hitbox")
 hitboxUp = NodePath("Up Attack Hitbox")
 hitboxDown = NodePath("Down Attack Hitbox")
+animationController = NodePath("AnimationPlayer")
 sprite = NodePath("AnimatedSprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
@@ -56,11 +117,13 @@ polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.
 [node name="Front Attack Hitbox" type="Area3D" parent="." unique_id=2012989158]
 collision_layer = 0
 collision_mask = 6
+monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Front Attack Hitbox" unique_id=1128966999]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.55174303, 1.0470098, -0.38088554, 1.637892, -0.16731349, 2.0935118, 0.23847279, 2.0863926, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2014802447]
+libraries/ = SubResource("AnimationLibrary_8yach")
 
 [connection signal="area_entered" from="Front Attack Hitbox" to="." method="_on_front_attack_hitbox_area_entered"]
