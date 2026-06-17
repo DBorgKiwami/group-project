@@ -18,6 +18,7 @@ var jump_buffer = 0
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		print("Attacking")
+		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		animationController.play("attack")
 	pass
 
