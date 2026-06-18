@@ -1,15 +1,43 @@
 extends CharacterBody3D
 
 @export var sprite : AnimatedSprite3D
+@export var grappleArea : Area3D
+@export var animationControler : AnimationPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
+@export var grapple_time = 0.3
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+var grappleTween : Tween
+var grappling = false
 
+#Written as a function because of Godot's "Call Method" track in animation player. This means instead of having to time everything using code alone, we can do it in the animation player!
+#Except right now its just done in code anyways because im lazy
+#This is just a proof of concept for the mechanic and is in need of polish
+func grapple():
+	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
+	if areaPosition < position:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+	#Tweens are for when animations are too static. They're good for stuff like this, where the grapple point at the end is never guaranteed
+	grappling = true;
+	grappleTween = get_tree().create_tween()
+	grappleTween.tween_property(self, "position", areaPosition, grapple_time).set_trans(Tween.TRANS_SINE)
+	grappleTween.tween_callback(endGrapple)
+
+func endGrapple():
+	grappling = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("grapple"):
+		#print(grappleArea.get_overlapping_areas())
+		if grappleArea.has_overlapping_areas() and !grappling:
+			grapple()
 
 func _physics_process(delta: float) -> void:
 	if jump_buffer > 0:
@@ -45,15 +73,16 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		if direction.x < 0:
-			
-			sprite.flip_h = true;
-		else:
-			sprite.flip_h = false;
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		#Deceleration towards a velocity of 0x and 0z
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if !grappling:
+		if velocity.x < 0:
+			sprite.flip_h = true;
+		elif velocity.x > 0:
+			sprite.flip_h = false;
 
 	move_and_slide()

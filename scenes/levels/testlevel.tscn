@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dx15ixrrkailj"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_b81ow"]
+[ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b81ow"]
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
+
+[node name="Grapplepoint3d" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9964194, 3.340908, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=104634332]
 

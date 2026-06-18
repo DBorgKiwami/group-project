@@ -21,17 +21,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ofdj"]
+radius = 3.256
+
+[sub_resource type="Animation" id="Animation_g608u"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_loatv"]
+resource_name = "grapple"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(1, 1, 0, 0, 0)
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grapple"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_6ofdj"]
 resource_name = "jump"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g608u"]
 _data = {
+&"RESET": SubResource("Animation_g608u"),
+&"grapple": SubResource("Animation_loatv"),
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite")]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler")]
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
+grappleArea = NodePath("Area3D")
+animationControler = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
@@ -41,6 +82,13 @@ shape = SubResource("CapsuleShape3D_s3ukl")
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_g608u")
 autoplay = "default"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=190598689]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=577473613]
+shape = SubResource("SphereShape3D_6ofdj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")

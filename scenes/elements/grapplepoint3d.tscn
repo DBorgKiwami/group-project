@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ym375o801vpr"]
+
+[ext_resource type="Script" uid="uid://cdoxo836tixc0" path="res://scripts/elements/grapplepoint_3d.gd" id="1_b5084"]
+[ext_resource type="Texture2D" uid="uid://b8iajbei6vlhs" path="res://icon.svg" id="2_xjyrf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b5084"]
+
+[node name="Grapplepoint3d" type="Area3D" unique_id=1832192751]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_b5084")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1884714127]
+billboard = 1
+texture = ExtResource("2_xjyrf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1805620442]
+shape = SubResource("SphereShape3D_b5084")
