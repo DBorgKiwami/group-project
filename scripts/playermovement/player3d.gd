@@ -86,3 +86,15 @@ func _physics_process(delta: float) -> void:
 			sprite.flip_h = false;
 
 	move_and_slide()
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area is GrapplePoint3D:
+		area.highlight()
+	pass # Replace with function body.
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area is GrapplePoint3D:
+		area.unhighlight()
+	pass # Replace with function body.
