@@ -20,6 +20,8 @@ func _input(event: InputEvent) -> void:
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		animationController.play("attack")
+	if event.is_action_pressed("debug_swap_level"):
+		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
 	pass
 
 func _physics_process(delta: float) -> void:

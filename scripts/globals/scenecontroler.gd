@@ -10,12 +10,32 @@ var loaded_resource: PackedScene
 var scene_path: String
 var progress: Array = []
 var use_sub_threads: bool = true
+var start_position_check = false
+var start_position_value = Vector3(0,0,0)
+
+
+func _check_start_position() -> bool:
+	return start_position_check;
 
 func _ready() -> void:
 	set_process(false);
 
 func load_scene(_scene_path: String) -> void:
 	scene_path = _scene_path
+	
+	var new_load_screen = loading_screen.instantiate()
+	add_child(new_load_screen)
+	progress_changed.connect(new_load_screen._on_progress_changed)
+	load_finished.connect(new_load_screen._on_load_finished)
+	
+	await new_load_screen.loading_screen_ready
+	
+	start_load()
+
+func load_scene_with_position(_scene_path: String, player_position: Vector3) -> void:
+	scene_path = _scene_path
+	start_position_check = true
+	start_position_value = player_position
 	
 	var new_load_screen = loading_screen.instantiate()
 	add_child(new_load_screen)

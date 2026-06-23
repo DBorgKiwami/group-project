@@ -15,6 +15,10 @@ var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 
+func _ready():
+	if Scenecontroler._check_start_position():
+		global_position = Scenecontroler.start_position_value
+
 #Written as a function because of Godot's "Call Method" track in animation player. This means instead of having to time everything using code alone, we can do it in the animation player!
 #Except right now its just done in code anyways because im lazy
 #This is just a proof of concept for the mechanic and is in need of polish
@@ -38,6 +42,8 @@ func _input(event: InputEvent) -> void:
 		#print(grappleArea.get_overlapping_areas())
 		if grappleArea.has_overlapping_areas() and !grappling:
 			grapple()
+	if event.is_action_pressed("debug_swap_level"):
+		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
 
 func _physics_process(delta: float) -> void:
 	if jump_buffer > 0:
@@ -57,7 +63,6 @@ func _physics_process(delta: float) -> void:
 	if jump_timer < 0:
 		can_jump = false;
 	if Input.is_action_pressed("ui_accept"):
-		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
 		jump_buffer = jump_buffer_len
 	# Handle jump.
 	if jump_buffer > 0 and can_jump:
