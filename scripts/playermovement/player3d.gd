@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	if jump_timer < 0:
 		can_jump = false;
 	if Input.is_action_pressed("ui_accept"):
+		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
 		jump_buffer = jump_buffer_len
 	# Handle jump.
 	if jump_buffer > 0 and can_jump:
