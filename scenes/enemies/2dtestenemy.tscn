@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://tmxhihw7wxd"]
+
+[ext_resource type="Texture2D" uid="uid://bkueij1l1aaw0" path="res://sprites/enemies/testenemy/crab_walk_0.png" id="1_qequp"]
+[ext_resource type="Texture2D" uid="uid://biypjidhgb8rk" path="res://sprites/enemies/testenemy/crab_walk_1.png" id="2_1fdds"]
+[ext_resource type="Texture2D" uid="uid://bmww8cg3hgk0p" path="res://sprites/enemies/testenemy/crab_walk_2.png" id="3_v0lon"]
+[ext_resource type="Texture2D" uid="uid://7uhwbokejenw" path="res://sprites/enemies/testenemy/crab_walk_3.png" id="4_q6280"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61bjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qequp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1fdds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v0lon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q6280")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351]
+
+[node name="Node3D" type="CollisionShape3D" parent="." unique_id=259154116]
+shape = SubResource("SphereShape3D_ofbrs")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=351497963]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_61bjk")
+autoplay = "default"
+
+[node name="State Machine" type="Node" parent="." unique_id=22494397]
