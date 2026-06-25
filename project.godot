@@ -39,7 +39,7 @@ debug_swap_level={
 
 [layer_names]
 
-3d_physics/layer_1="Player Collision"
+3d_physics/layer_1="Collision"
 3d_physics/layer_2="Hitbox"
 3d_physics/layer_3="Enemy Hit Area"
 3d_physics/layer_4="Grapple Points"

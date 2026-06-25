@@ -21,11 +21,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if current_state:
-		current_state.update()
+		current_state.update(delta)
 
 func _physics_process(delta: float) -> void:
 	if current_state:
-		current_state.physicsUpdate()
+		current_state.physicsUpdate(delta)
 
 func on_child_transition(state, new_state_name):
 	if state != current_state:

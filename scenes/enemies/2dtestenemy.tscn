@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://tmxhihw7wxd"]
 
 [ext_resource type="Texture2D" uid="uid://bkueij1l1aaw0" path="res://sprites/enemies/testenemy/crab_walk_0.png" id="1_qequp"]
+[ext_resource type="Script" uid="uid://chlpx1va6blf1" path="res://scripts/enemies/2dtestenemy.gd" id="1_v0lon"]
 [ext_resource type="Texture2D" uid="uid://biypjidhgb8rk" path="res://sprites/enemies/testenemy/crab_walk_1.png" id="2_1fdds"]
 [ext_resource type="Texture2D" uid="uid://bmww8cg3hgk0p" path="res://sprites/enemies/testenemy/crab_walk_2.png" id="3_v0lon"]
 [ext_resource type="Texture2D" uid="uid://7uhwbokejenw" path="res://sprites/enemies/testenemy/crab_walk_3.png" id="4_q6280"]
+[ext_resource type="Script" uid="uid://dj8bls2ayt4u4" path="res://scripts/enemies/walkeractive.gd" id="5_1fdds"]
+[ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/statemachine.gd" id="6_q6280"]
+[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scenes/enemies/dead.gd" id="8_61bjk"]
+[ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
 
@@ -27,7 +32,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351]
+[sub_resource type="SphereShape3D" id="SphereShape3D_61bjk"]
+radius = 0.88380617
+
+[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_v0lon")
+state_machine = NodePath("State Machine")
 
 [node name="Node3D" type="CollisionShape3D" parent="." unique_id=259154116]
 shape = SubResource("SphereShape3D_ofbrs")
@@ -37,4 +47,25 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_61bjk")
 autoplay = "default"
 
-[node name="State Machine" type="Node" parent="." unique_id=22494397]
+[node name="State Machine" type="Node" parent="." unique_id=22494397 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_q6280")
+initial_state = NodePath("enemyWalk")
+
+[node name="enemyWalk" type="Node" parent="State Machine" unique_id=1277491572 node_paths=PackedStringArray("enemy_body", "enemy_sprite")]
+script = ExtResource("5_1fdds")
+enemy_body = NodePath("../..")
+enemy_sprite = NodePath("../../AnimatedSprite3D")
+
+[node name="Dead" type="Node" parent="State Machine" unique_id=141229044]
+script = ExtResource("8_61bjk")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=754525739]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_ofbrs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=905162357]
+shape = SubResource("SphereShape3D_61bjk")
+debug_color = Color(0.9780964, 0.14949349, 0, 0.41960785)
+
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

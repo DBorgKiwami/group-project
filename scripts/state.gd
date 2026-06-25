@@ -1,10 +1,12 @@
 extends Node
 class_name State
 
-func update():
+signal Transitioned
+
+func update(_delta: float):
 	pass
 
-func physicsUpdate():
+func physicsUpdate(_delta: float):
 	pass
 
 func enter():

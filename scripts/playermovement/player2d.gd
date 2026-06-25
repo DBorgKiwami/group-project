@@ -79,4 +79,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered")
+	if area is EnemyHitbox:
+		print("Enemy")
+		area.emit_signal("on_hit",[10])
 	pass # Replace with function body.
