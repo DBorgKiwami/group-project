@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="2_a1x7n"]
 [ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="3_8yach"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k8hk2"]
-height = 1.2797852
+[sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
+size = Vector3(1.1184082, 1.1855469, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
@@ -90,8 +90,8 @@ animationController = NodePath("AnimationPlayer")
 sprite = NodePath("AnimatedSprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
-shape = SubResource("CapsuleShape3D_k8hk2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344, 0)
+shape = SubResource("BoxShape3D_vj0l2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 billboard = 1

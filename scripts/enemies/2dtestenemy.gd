@@ -2,6 +2,12 @@ extends CharacterBody3D
 
 @export var state_machine : State_Machine
 @export var hitbox : EnemyHitbox
+@export var animationControler : AnimationPlayer
+
+func die():
+	animationControler.play("die")
+	await animationControler.animation_finished
+	call_deferred("queue_free")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
