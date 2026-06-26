@@ -4,6 +4,9 @@ extends CharacterBody3D
 @export var hitbox : EnemyHitbox
 @export var animationControler : AnimationPlayer
 
+func _ready():
+	hitbox.connect("on_hit", hitbox_hit)
+
 func die():
 	animationControler.play("die")
 	await animationControler.animation_finished
@@ -17,6 +20,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_hitbox_on_hit(damage: Variant) -> void:
+func hitbox_hit(damage: Variant) -> void:
 	state_machine.on_child_transition(state_machine.current_state, "Dead")
 	pass # Replace with function body.

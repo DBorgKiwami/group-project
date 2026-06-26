@@ -142,5 +142,3 @@ debug_color = Color(0.9780964, 0.14949349, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=700514418]
 libraries/ = SubResource("AnimationLibrary_dh00q")
-
-[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]
