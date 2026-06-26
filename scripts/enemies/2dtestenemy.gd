@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 @export var state_machine : State_Machine
 @export var hitbox : EnemyHitbox
+@export var hurtbox : Area3D
 @export var animationControler : AnimationPlayer
+@export var damage : int = 1
 
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
@@ -19,7 +21,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
 func hitbox_hit(damage: Variant) -> void:
 	state_machine.on_child_transition(state_machine.current_state, "Dead")
+	pass # Replace with function body.
+
+
+func _on_enemy_hurtbox_area_entered(area: Area3D) -> void:
+	print("Gottem")
+	if area is PlayerHitbox:
+		area.emit_signal("on_hit", damage)
 	pass # Replace with function body.

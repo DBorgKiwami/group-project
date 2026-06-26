@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
+radius = 0.620357
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_61bjk"]
 animations = [{
@@ -104,10 +105,15 @@ _data = {
 &"die": SubResource("Animation_eexk2")
 }
 
-[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "animationControler")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_eexk2"]
+radius = 0.79655933
+
+[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler")]
+collision_layer = 16
 script = ExtResource("1_v0lon")
 state_machine = NodePath("State Machine")
 hitbox = NodePath("Hitbox")
+hurtbox = NodePath("EnemyHurtbox")
 animationControler = NodePath("AnimationPlayer")
 
 [node name="Node3D" type="CollisionShape3D" parent="." unique_id=259154116]
@@ -142,3 +148,12 @@ debug_color = Color(0.9780964, 0.14949349, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=700514418]
 libraries/ = SubResource("AnimationLibrary_dh00q")
+
+[node name="EnemyHurtbox" type="Area3D" parent="." unique_id=777189720]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHurtbox" unique_id=384773153]
+shape = SubResource("SphereShape3D_eexk2")
+
+[connection signal="area_entered" from="EnemyHurtbox" to="." method="_on_enemy_hurtbox_area_entered"]

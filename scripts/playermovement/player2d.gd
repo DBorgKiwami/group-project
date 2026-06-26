@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var hitboxUp : Area3D
 @export var hitboxDown : Area3D
 @export var animationController : AnimationPlayer
+@export var player_hitbox : Area3D
 
 @export var sprite : AnimatedSprite3D
 
@@ -14,6 +15,13 @@ extends CharacterBody3D
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+
+func _ready() -> void:
+	if player_hitbox:
+		player_hitbox.connect("on_hit", _on_player_hit)
+
+func _on_player_hit(damage) -> void:
+	print("I've been hit for " + str(damage) + "!")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -81,5 +89,5 @@ func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered")
 	if area is EnemyHitbox:
 		print("Enemy")
-		area.emit_signal("on_hit",[10])
+		area.emit_signal("on_hit",10)
 	pass # Replace with function body.

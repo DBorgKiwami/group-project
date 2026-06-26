@@ -43,6 +43,7 @@ debug_swap_level={
 3d_physics/layer_2="Hitbox"
 3d_physics/layer_3="Enemy Hit Area"
 3d_physics/layer_4="Grapple Points"
+3d_physics/layer_5="Enemy Damage Layer"
 
 [physics]
 
