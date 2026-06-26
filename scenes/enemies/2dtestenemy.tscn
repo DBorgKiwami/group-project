@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dj8bls2ayt4u4" path="res://scripts/enemies/walkeractive.gd" id="5_1fdds"]
 [ext_resource type="Texture2D" uid="uid://rkv3ftu2cbxr" path="res://sprites/enemies/testenemy/crab_defeated.png" id="6_eexk2"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/statemachine.gd" id="6_q6280"]
-[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scenes/enemies/dead.gd" id="8_61bjk"]
+[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/dead.gd" id="8_61bjk"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
@@ -106,7 +106,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eexk2"]
-radius = 0.79655933
+radius = 0.42576775
 
 [node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler")]
 collision_layer = 16
