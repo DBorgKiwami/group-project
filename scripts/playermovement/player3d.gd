@@ -14,10 +14,20 @@ var jump_timer = jump_timer_max
 var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
+var inDialogue = false
 
 func _ready():
+	SignalBus.display_dialogue.connect(_on_dialogue_display)
+	SignalBus.dialogue_done.connect(_on_dialogue_done)
 	if Scenecontroler._check_start_position():
 		global_position = Scenecontroler.start_position_value
+
+func _on_dialogue_display(_dialogue):
+	inDialogue = true
+
+func _on_dialogue_done():
+	inDialogue = false
+
 
 #Written as a function because of Godot's "Call Method" track in animation player. This means instead of having to time everything using code alone, we can do it in the animation player!
 #Except right now its just done in code anyways because im lazy
@@ -38,7 +48,7 @@ func endGrapple():
 	grappling = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("grapple"):
+	if event.is_action_pressed("grapple") and !inDialogue:
 		#print(grappleArea.get_overlapping_areas())
 		if grappleArea.has_overlapping_areas() and !grappling:
 			grapple()
@@ -62,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	#If the jump timer has run out, you cannot jump
 	if jump_timer < 0:
 		can_jump = false;
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept") and !inDialogue:
 		jump_buffer = jump_buffer_len
 	# Handle jump.
 	if jump_buffer > 0 and can_jump:
@@ -78,7 +88,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and !inDialogue:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:

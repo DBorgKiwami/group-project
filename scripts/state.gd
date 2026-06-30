@@ -14,3 +14,6 @@ func enter():
 
 func exit():
 	pass
+
+func input(_input: InputEvent):
+	pass
