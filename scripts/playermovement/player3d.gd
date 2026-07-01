@@ -3,24 +3,30 @@ extends CharacterBody3D
 @export var sprite : AnimatedSprite3D
 @export var grappleArea : Area3D
 @export var animationControler : AnimationPlayer
+@export var camera_rig : Node3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var grapple_time = 0.3
+@export var bob_speed = 10.0
+@export var bob_amount = 0.05
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 var inDialogue = false
+var bob_time = 0.0
+var sprite_base_y = 0.0
 
 func _ready():
 	SignalBus.display_dialogue.connect(_on_dialogue_display)
 	SignalBus.dialogue_done.connect(_on_dialogue_done)
 	if Scenecontroler._check_start_position():
 		global_position = Scenecontroler.start_position_value
+	sprite_base_y = sprite.position.y
 
 func _on_dialogue_display(_dialogue):
 	inDialogue = true
@@ -85,9 +91,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y = minf(0, velocity.y)
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Movement is calculated relative to the camera's current facing direction.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := Vector3.ZERO
+	if camera_rig:
+		var cam_basis = camera_rig.global_transform.basis
+		var cam_forward = cam_basis.z
+		var cam_right = cam_basis.x
+		cam_forward.y = 0
+		cam_right.y = 0
+		cam_forward = cam_forward.normalized()
+		cam_right = cam_right.normalized()
+		direction = (cam_right * input_dir.x + cam_forward * input_dir.y).normalized()
+	else:
+		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction and !inDialogue:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -100,6 +117,15 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
+	
+	#Sprite bob effect while walking on the ground
+	var is_moving = Vector2(velocity.x, velocity.z).length() > 0.1
+	if is_moving and is_on_floor():
+		bob_time += delta * bob_speed
+		sprite.position.y = sprite_base_y + sin(bob_time) * bob_amount
+	else:
+		bob_time = 0.0
+		sprite.position.y = sprite_base_y
 
 	move_and_slide()#
 

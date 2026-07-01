@@ -4,34 +4,91 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
+[ext_resource type="Script" uid="uid://c5ao3410apy0e" path="res://scenes/levels/3d/camera_rig.gd" id="5_oeqc7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b81ow"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybvn3"]
+
+[sub_resource type="Sky" id="Sky_oeqc7"]
+
+[sub_resource type="Environment" id="Environment_oeqc7"]
+background_color = Color(0.50070053, 0.6735272, 0.86307657, 1)
+sky = SubResource("Sky_oeqc7")
+ambient_light_source = 2
+ambient_light_color = Color(0.33676627, 0.30920184, 0.54160255, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oeqc7"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oeqc7"]
+size = Vector3(20.260284, 1, 20.05371)
+
 [node name="Testlevel" type="Node3D" unique_id=674870779]
 
 [node name="Grapplepoint3d" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9964194, 3.340908, 0)
+collision_layer = 2
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=104634332]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=932370660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97359836, 0)
 shape = SubResource("WorldBoundaryShape3D_x14dw")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
+[node name="3Dplatformingcharacter" parent="." unique_id=1535395532 node_paths=PackedStringArray("grappleArea", "camera_rig") instance=ExtResource("1_b81ow")]
+collision_layer = 2
+collision_mask = 2
+grappleArea = NodePath("../Grapplepoint3d")
+camera_rig = NodePath("../CameraRig")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1063314922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5996883, 4.3492885)
+[node name="Box" type="StaticBody3D" parent="." unique_id=1327833710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4181248, -0.4701705, 0)
+collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1021424080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4181248, 0.4010216, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box" unique_id=1021424080]
+layers = 2
 mesh = SubResource("BoxMesh_b81ow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box" unique_id=766129375]
+shape = SubResource("BoxShape3D_ybvn3")
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_55jh8")]
 
 [node name="Dialogue Area" parent="." unique_id=1771981628 instance=ExtResource("4_iy7w8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3124695, 0, 0)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1402317699 node_paths=PackedStringArray("target")]
+script = ExtResource("5_oeqc7")
+target = NodePath("../3Dplatformingcharacter")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig" unique_id=1747623567]
+spring_length = 6.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D" unique_id=1063314922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5996883, 4.3492885)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1045263482]
+transform = Transform3D(-0.14682014, 0.7641623, -0.62809235, -0.83094096, 0.2492036, 0.49742818, 0.53663874, 0.59494007, 0.5983856, -8.411295, 8.337144, 12.530869)
+light_energy = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2038193309]
+environment = SubResource("Environment_oeqc7")
+
+[node name="Platform" type="StaticBody3D" parent="." unique_id=451054342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.98770744, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform" unique_id=117857280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04178953, 0.0069847107, 0)
+mesh = SubResource("PlaneMesh_oeqc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=2051168317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11607361, -0.4946565, -0.04321289)
+shape = SubResource("BoxShape3D_oeqc7")
 
 [editable path="Dialogue Area"]
