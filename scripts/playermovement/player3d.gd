@@ -34,10 +34,10 @@ func _on_dialogue_done():
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
 	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
-	if areaPosition < position:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	#if areaPosition < position:
+		#sprite.flip_h = true
+	#else:
+		#sprite.flip_h = false
 	#Tweens are for when animations are too static. They're good for stuff like this, where the grapple point at the end is never guaranteed
 	grappling = true;
 	grappleTween = get_tree().create_tween()
@@ -95,13 +95,13 @@ func _physics_process(delta: float) -> void:
 		#Deceleration towards a velocity of 0x and 0z
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	if !grappling:
-		if velocity.x < 0:
-			sprite.flip_h = true;
-		elif velocity.x > 0:
-			sprite.flip_h = false;
+	#if !grappling:
+		#if velocity.x < 0:
+			#sprite.flip_h = true;
+		#elif velocity.x > 0:
+			#sprite.flip_h = false;
 
-	move_and_slide()
+	move_and_slide()#
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
