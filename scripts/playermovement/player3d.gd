@@ -56,7 +56,11 @@ func endGrapple():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("grapple") and !inDialogue:
 		#print(grappleArea.get_overlapping_areas())
+		print(grappleArea)
+		print(grappleArea.get_overlapping_areas())
+		print(grappleArea.has_overlapping_areas())
 		if grappleArea.has_overlapping_areas() and !grappling:
+			print("Go")
 			grapple()
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
@@ -131,6 +135,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
+	print("hello")
 	if area is GrapplePoint3D:
 		area.highlight()
 	pass # Replace with function body.
