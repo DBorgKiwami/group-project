@@ -3,9 +3,12 @@ extends CharacterBody3D
 @export var sprite : AnimatedSprite3D
 @export var grappleArea : Area3D
 @export var animationControler : AnimationPlayer
+@export var player_camera : Camera3D
+@export var camera_pivot : Node3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
+@export var CAMERA_SPEED = 0.05
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var grapple_time = 0.3
@@ -15,6 +18,7 @@ var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 var inDialogue = false
+var lastDirection = Vector2.ZERO
 
 func _ready():
 	SignalBus.display_dialogue.connect(_on_dialogue_display)
@@ -87,8 +91,15 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
+	camera_dir = Input.get_last_mouse_velocity()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if camera_dir and !inDialogue:
+		rotation_degrees.y += camera_dir.x * CAMERA_SPEED
+		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x + (camera_dir.y  * CAMERA_SPEED), -90, 90)
+		pass
 	if direction and !inDialogue:
+		lastDirection = direction
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
