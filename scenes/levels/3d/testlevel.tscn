@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
+[ext_resource type="PackedScene" uid="uid://ugshxye3ubpa" path="res://scenes/player/3dplayercamera.tscn" id="4_oeqc7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
@@ -30,6 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4181248, 0.4010216, 0)
 mesh = SubResource("BoxMesh_b81ow")
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_55jh8")]
+
+[node name="Camera Pivot" parent="." unique_id=1516232434 instance=ExtResource("4_oeqc7")]
 
 [node name="Dialogue Area" parent="." unique_id=1771981628 instance=ExtResource("4_iy7w8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3124695, 0, 0)

@@ -64,7 +64,7 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot")]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
 grappleArea = NodePath("Area3D")
