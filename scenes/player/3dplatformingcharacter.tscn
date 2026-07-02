@@ -70,8 +70,8 @@ script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
 grappleArea = NodePath("Area3D")
 animationControler = NodePath("AnimationPlayer")
-player_camera = NodePath("Camera Pivot/Camera3D")
-camera_pivot = NodePath("Camera Pivot")
+player_camera = NodePath("Node3D/Camera3D")
+camera_pivot = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
@@ -94,11 +94,11 @@ shape = SubResource("SphereShape3D_6ofdj")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")
 
-[node name="Camera Pivot" type="Node3D" parent="." unique_id=67981451]
+[node name="Node3D" type="Node3D" parent="." unique_id=1373763106]
+top_level = true
 
-[node name="Camera3D" type="Camera3D" parent="Camera Pivot" unique_id=557992012]
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1344329634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-fov = 80.0
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

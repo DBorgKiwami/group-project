@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SPEED = 0.005
+@export var CAMERA_PAN_SPEED = 5.0
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var grapple_time = 0.3
@@ -96,10 +97,19 @@ func _physics_process(delta: float) -> void:
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	camera_pivot.global_position = camera_pivot.global_position.lerp(position, delta * CAMERA_PAN_SPEED)
+	
 	if camera_dir and !inDialogue:
-		rotation.y -= deg_to_rad(camera_dir.x * CAMERA_SPEED)
+		
+		var yRotation = deg_to_rad(camera_dir.x * CAMERA_SPEED)
+		
+		print(yRotation)
+		
+		rotation.y -= yRotation
+		camera_pivot.rotation.y -= yRotation
 		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
-		pass
+		#pass
 	if direction and !inDialogue:
 		lastDirection = direction
 		velocity.x = direction.x * SPEED
