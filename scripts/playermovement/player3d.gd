@@ -55,6 +55,16 @@ func endGrapple():
 	grappling = false
 
 func _input(event: InputEvent) -> void:
+	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
+	camera_dir = Input.get_last_mouse_screen_velocity()
+	if camera_dir and !inDialogue:
+		var yRotation = deg_to_rad(camera_dir.x * CAMERA_SPEED)
+		
+		rotation.y -= yRotation
+		camera_pivot.rotation.y -= yRotation
+		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
+		#pass
+	camera_dir = Input.get_last_mouse_screen_velocity()
 	if event.is_action_pressed("grapple") and !inDialogue:
 		#print(grappleArea.get_overlapping_areas())
 		if grappleArea.has_overlapping_areas() and !grappling:
@@ -94,20 +104,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
-	camera_dir = Input.get_last_mouse_screen_velocity()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	camera_pivot.global_position = camera_pivot.global_position.lerp(position, delta * CAMERA_PAN_SPEED)
-	
-	if camera_dir and !inDialogue:
-		
-		var yRotation = deg_to_rad(camera_dir.x * CAMERA_SPEED)
-		
-		rotation.y -= yRotation
-		camera_pivot.rotation.y -= yRotation
-		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
-		#pass
 	if direction and !inDialogue:
 		lastDirection = direction
 		velocity.x = direction.x * SPEED
