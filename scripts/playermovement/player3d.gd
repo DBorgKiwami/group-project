@@ -97,8 +97,8 @@ func _physics_process(delta: float) -> void:
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if camera_dir and !inDialogue:
-		rotation.y += deg_to_rad(camera_dir.x * CAMERA_SPEED)
-		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x + (camera_dir.y  * CAMERA_SPEED), -90, 90)
+		rotation.y -= deg_to_rad(camera_dir.x * CAMERA_SPEED)
+		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
 		pass
 	if direction and !inDialogue:
 		lastDirection = direction
