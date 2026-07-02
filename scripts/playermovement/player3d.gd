@@ -104,8 +104,6 @@ func _physics_process(delta: float) -> void:
 		
 		var yRotation = deg_to_rad(camera_dir.x * CAMERA_SPEED)
 		
-		print(yRotation)
-		
 		rotation.y -= yRotation
 		camera_pivot.rotation.y -= yRotation
 		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
