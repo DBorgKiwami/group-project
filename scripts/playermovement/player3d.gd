@@ -8,7 +8,7 @@ extends CharacterBody3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-@export var CAMERA_SPEED = 0.005
+@export var CAMERA_SPEED = 0.5
 @export var CAMERA_PAN_SPEED = 5.0
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
@@ -57,12 +57,14 @@ func endGrapple():
 func _input(event: InputEvent) -> void:
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
 	camera_dir = Input.get_last_mouse_screen_velocity()
-	if camera_dir and !inDialogue:
-		var yRotation = deg_to_rad(camera_dir.x * CAMERA_SPEED)
+	if camera_dir and !inDialogue and event is InputEventMouseMotion:
+		var yRotation = deg_to_rad(event.relative.x * CAMERA_SPEED)
+		
+		print(yRotation)
 		
 		rotation.y -= yRotation
 		camera_pivot.rotation.y -= yRotation
-		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_dir.y  * CAMERA_SPEED), -90, 90)
+		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (event.relative.y  * CAMERA_SPEED), -90, 90)
 		#pass
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	if event.is_action_pressed("grapple") and !inDialogue:
