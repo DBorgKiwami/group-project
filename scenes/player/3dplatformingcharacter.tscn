@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dhh3x6djf2fvc" path="res://scripts/playermovement/player3d.gd" id="4_g608u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
+radius = 0.48632813
 height = 1.2797852
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g608u"]
