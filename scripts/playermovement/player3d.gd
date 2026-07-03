@@ -20,7 +20,7 @@ var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 var inDialogue = false
-var lastDirection = Vector2.ZERO
+var lastDirection = Vector3(-1,0,0)
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -138,6 +138,8 @@ func _physics_process(delta: float) -> void:
 		if last_collision.get_collider() is BouncePad:
 			bounce(last_collision.get_collider().bounce_strength)
 
+func _process(delta: float) -> void:
+	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is GrapplePoint3D:
