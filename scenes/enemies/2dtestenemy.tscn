@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://7uhwbokejenw" path="res://sprites/enemies/testenemy/crab_walk_3.png" id="4_q6280"]
 [ext_resource type="Script" uid="uid://dj8bls2ayt4u4" path="res://scripts/enemies/walkeractive.gd" id="5_1fdds"]
 [ext_resource type="Texture2D" uid="uid://rkv3ftu2cbxr" path="res://sprites/enemies/testenemy/crab_defeated.png" id="6_eexk2"]
-[ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/statemachine.gd" id="6_q6280"]
-[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/dead.gd" id="8_61bjk"]
+[ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="6_q6280"]
+[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="8_61bjk"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]

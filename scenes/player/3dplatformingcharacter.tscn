@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dhh3x6djf2fvc" path="res://scripts/playermovement/player3d.gd" id="4_g608u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
+radius = 0.48632813
 height = 1.2797852
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g608u"]
@@ -64,11 +65,13 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler")]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
 grappleArea = NodePath("Area3D")
 animationControler = NodePath("AnimationPlayer")
+player_camera = NodePath("Node3D/Camera3D")
+camera_pivot = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
@@ -90,6 +93,12 @@ shape = SubResource("SphereShape3D_6ofdj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1373763106]
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1344329634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
