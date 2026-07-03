@@ -19,7 +19,7 @@ var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 var inDialogue = false
-var lastDirection = Vector2.ZERO
+var lastDirection = Vector3(0,0,-1)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -59,8 +59,6 @@ func _input(event: InputEvent) -> void:
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	if camera_dir and !inDialogue and event is InputEventMouseMotion:
 		var yRotation = deg_to_rad(event.relative.x * CAMERA_SPEED)
-		
-		print(yRotation)
 		
 		rotation.y -= yRotation
 		camera_pivot.rotation.y -= yRotation
@@ -125,6 +123,42 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	#Sprite Rotation Code
+	#Ok so this is a lot of math. Im going to try and explain it best I can
+	
+	#Basis is basically the values of the 3 axis arrows that you'd see in the editor when moving an object
+#	In this case, we're using it to know what way an object is facing.
+#   By getting the Vector value of the Z arrow of the camera, we know where its facing (negated because godot cameras are reversed for some reason)
+	var camera_pos = -player_camera.global_basis.z
+	
+#	Last direction (declared in physics process) gives us an idea of where the player character is "Facing"
+#	Rotate it 90 degrees along the Y axis, we get an idea of the player character's east, as opposed to their north
+	var player_east = lastDirection.rotated(Vector3(0, 1, 0), deg_to_rad(90))
+	
+#	The dot product is some math matrix multiplication bullshit. The short of it is: It calculates how similar two directions are to one another
+#	1 if its an exact match, -1 if its an exact opposite
+#	By doing the dot product with the camera position, we can get an idea of whether the sprite is facing us or facing away from us
+#	Do the same with the east to know whether we're seeing the characters left or right side
+	var north_dot = lastDirection.dot(camera_pos)
+	var east_dot = player_east.dot(camera_pos)
+	
+#	Which value is larger overall? This lets us know which side of the character we're seeing
+#	If the absolute value of north is higher than the absolute value of east, we must be seeing the front or back of our character
+#	Otherwise, we're seeing the left or right side
+	if abs(north_dot) > abs(east_dot):
+		if north_dot > 0:
+			sprite.play("backidle")
+		else:
+			sprite.play("frontidle")
+	else:
+		if east_dot > 0:
+			sprite.play("rightidle")
+		else:
+			sprite.play("leftidle")
+	
+	print(north_dot)
+	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is GrapplePoint3D:
