@@ -65,8 +65,6 @@ func _input(event: InputEvent) -> void:
 	if camera_dir and !inDialogue and event is InputEventMouseMotion:
 		var yRotation = deg_to_rad(event.relative.x * CAMERA_SPEED)
 		
-		print(yRotation)
-		
 		rotation.y -= yRotation
 		camera_pivot.rotation.y -= yRotation
 		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (event.relative.y  * CAMERA_SPEED), -90, 90)
@@ -127,7 +125,7 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
-
+	print(velocity)
 	move_and_slide()
 	
 #	Check what we last collided with
@@ -137,6 +135,8 @@ func _physics_process(delta: float) -> void:
 #		For performance reasons it may be precient to change this to run on area instead. Instead of calling this function every second, it would only call on entry to a specific area, improving framerates
 		if last_collision.get_collider() is BouncePad:
 			bounce(last_collision.get_collider().bounce_strength)
+		if last_collision.get_collider() is FadingPlatform:
+			last_collision.get_collider().startFade()
 
 func _process(delta: float) -> void:
 	pass
