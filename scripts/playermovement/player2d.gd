@@ -13,7 +13,7 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var camera_x_bound = 1.0
 @export var camera_y_bound = 1.0
-@export var camera_y_offset = 1.0
+@export var camera_y_offset = 0.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var damage = 10
@@ -54,6 +54,7 @@ func _process(delta: float) -> void:
 				player_camera.global_position.x += x_diff - camera_x_bound
 			else:
 				player_camera.global_position.x += x_diff + camera_x_bound
+		player_camera.global_position.y = position.y + camera_y_offset
 		#var y_diff = position.y - (player_camera.global_position.y - camera_y_offset)
 		#if abs(y_diff) > camera_y_bound:
 			#if y_diff>0:
