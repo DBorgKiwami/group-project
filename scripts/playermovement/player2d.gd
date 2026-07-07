@@ -5,11 +5,15 @@ extends CharacterBody3D
 @export var hitboxDown : Area3D
 @export var animationController : AnimationPlayer
 @export var player_hitbox : Area3D
+@export var player_camera : Camera3D
 
 @export var sprite : AnimatedSprite3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
+@export var camera_x_bound = 1.0
+@export var camera_y_bound = 2.0
+@export var camera_y_offset = 1.0
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var damage = 10
@@ -39,6 +43,13 @@ func _input(event: InputEvent) -> void:
 		animationController.play("attack")
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
+	pass
+
+func _process(delta: float) -> void:
+	#camera movement
+	if player_camera:
+		player_camera.global_position.x = position.x
+		pass
 	pass
 
 func _physics_process(delta: float) -> void:

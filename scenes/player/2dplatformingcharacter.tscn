@@ -165,14 +165,14 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "sprite")]
-collision_layer = 0
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
 hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
 player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
@@ -224,7 +224,8 @@ shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1055626215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+top_level = true
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
