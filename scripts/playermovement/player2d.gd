@@ -12,6 +12,7 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
+@export var damage = 10
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -94,25 +95,26 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
-	print("Entered")
+	print("Entered front")
 	if area is EnemyHitbox:
 		print("Enemy")
-		area.emit_signal("on_hit",10)
+		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
 
 
 func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
-	print("Entered")
+	print("Entered up")
 	if area is EnemyHitbox:
 		print("Enemy")
-		area.emit_signal("on_hit",10)
+		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
 
 
 func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
-	print("Entered")
+	print("Entered down")
 	if area is EnemyHitbox:
 		print("Enemy")
-		area.emit_signal("on_hit",10)
-		velocity.y += JUMP_VELOCITY
+		area.emit_signal("on_hit",damage)
+		Hitstopmanager.hit_stop(0.05)
+		velocity.y = maxf(JUMP_VELOCITY, velocity.y + JUMP_VELOCITY)
 	pass # Replace with function body.
