@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://sq0fy66udhma"]
+
+[ext_resource type="Script" path="res://scripts/elements/bouncepad.gd" id="1_mfc0g"]
+
+[node name="Bounce Pad" type="StaticBody3D" unique_id=1389826334]
+script = ExtResource("1_mfc0g")

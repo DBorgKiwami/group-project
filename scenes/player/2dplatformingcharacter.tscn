@@ -108,6 +108,7 @@ frame_progress = 0.8980016
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0
 collision_mask = 6
+monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Down Attack Hurtbox" unique_id=193153371]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
@@ -116,6 +117,7 @@ polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.
 [node name="Up Attack Hurtbox" type="Area3D" parent="." unique_id=46783837]
 collision_layer = 0
 collision_mask = 6
+monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Up Attack Hurtbox" unique_id=1884746816]
 polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.39307356, 1.2155163, -0.26653796, 1.6309919, 0.051420122, 1.8435464, 0.26844496, 1.9411922, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
@@ -141,4 +143,9 @@ script = ExtResource("4_a1x7n")
 shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1055626215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
+[connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]

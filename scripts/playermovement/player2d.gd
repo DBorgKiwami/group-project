@@ -24,6 +24,8 @@ func _on_player_hit(damage) -> void:
 	print("I've been hit for " + str(damage) + "!")
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
+		print("Down")
 	if event.is_action_pressed("attack"):
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
@@ -90,4 +92,21 @@ func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	if area is EnemyHitbox:
 		print("Enemy")
 		area.emit_signal("on_hit",10)
+	pass # Replace with function body.
+
+
+func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
+	print("Entered")
+	if area is EnemyHitbox:
+		print("Enemy")
+		area.emit_signal("on_hit",10)
+	pass # Replace with function body.
+
+
+func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
+	print("Entered")
+	if area is EnemyHitbox:
+		print("Enemy")
+		area.emit_signal("on_hit",10)
+		velocity.y = minf(velocity.y + JUMP_VELOCITY, JUMP_VELOCITY*2)
 	pass # Replace with function body.

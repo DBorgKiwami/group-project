@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cu465sp73rqmb"]
+
+[ext_resource type="Script" path="res://scripts/elements/fadingplatform.gd" id="1_63cua"]
+
+[node name="Fading Platform" type="StaticBody3D" unique_id=354689758]
+script = ExtResource("1_63cua")
