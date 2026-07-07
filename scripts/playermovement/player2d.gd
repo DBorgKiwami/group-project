@@ -12,7 +12,7 @@ extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var camera_x_bound = 1.0
-@export var camera_y_bound = 2.0
+@export var camera_y_bound = 1.0
 @export var camera_y_offset = 1.0
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
@@ -48,9 +48,18 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	#camera movement
 	if player_camera:
-		player_camera.global_position.x = position.x
-		pass
-	pass
+		var x_diff = position.x - player_camera.global_position.x 
+		if abs(x_diff) > camera_x_bound:
+			if x_diff>0:
+				player_camera.global_position.x += x_diff - camera_x_bound
+			else:
+				player_camera.global_position.x += x_diff + camera_x_bound
+		#var y_diff = position.y - (player_camera.global_position.y - camera_y_offset)
+		#if abs(y_diff) > camera_y_bound:
+			#if y_diff>0:
+				#player_camera.global_position.y += (y_diff - camera_y_bound)
+			#else:
+				#player_camera.global_position.y += (y_diff + camera_y_bound)
 
 func _physics_process(delta: float) -> void:
 	#Reduce the jump buffer if its still running
