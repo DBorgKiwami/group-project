@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://drpfqlwnfvg6h"]
+
+[ext_resource type="Script" uid="uid://bn4yqwk08hx4l" path="res://scripts/menu/mainmenu.tscn.gd" id="1_h1rx6"]
+
+[node name="MainMenu" type="Control" unique_id=2110297206]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h1rx6")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1277123511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13366917, 0.2152802, 0.27775136, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1174790224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1786008535]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1463708664]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "ANTLIA
+Custos Ordinis"
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=139314137]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "PLAY"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=81184499]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1570361735]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "QUIT"
