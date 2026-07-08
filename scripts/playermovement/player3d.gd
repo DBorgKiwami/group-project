@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player3D
 
 @export var sprite : AnimatedSprite3D
 @export var grappleArea : Area3D
@@ -19,6 +20,11 @@ var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
 var inDialogue = false
+var lastDirection = Vector3(-1,0,0)
+
+func bounce(bounce_height):
+	velocity.y = bounce_height
+	pass
 var lastDirection = Vector3(0,0,-1)
 
 func _ready():
@@ -120,8 +126,18 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
-
+	print(velocity)
 	move_and_slide()
+	
+#	Check what we last collided with
+	var last_collision = get_last_slide_collision()
+	if last_collision:
+#		If its a bounce pad, bounce!
+#		For performance reasons it may be precient to change this to run on area instead. Instead of calling this function every second, it would only call on entry to a specific area, improving framerates
+		if last_collision.get_collider() is BouncePad:
+			bounce(last_collision.get_collider().bounce_strength)
+		if last_collision.get_collider() is FadingPlatform:
+			last_collision.get_collider().startFade()
 
 func _process(delta: float) -> void:
 	#Sprite Rotation Code
