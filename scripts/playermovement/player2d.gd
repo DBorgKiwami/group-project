@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player2D
 
 @export var hitboxFront : Area3D
 @export var hitboxUp : Area3D
@@ -33,6 +34,7 @@ func _on_player_hit(damage) -> void:
 	health = health - damage
 	if health <= 0:
 		print("I'm fuckin dead!")
+		state_machine.on_child_transition(state_machine.current_state, "dead")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_level"):

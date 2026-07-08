@@ -2,16 +2,26 @@
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
 [ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="2_a1x7n"]
+[ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="3_8yach"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
 [ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
+[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.1855469, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eym7y")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_a1x7n")
@@ -184,8 +194,8 @@ shape = SubResource("BoxShape3D_vj0l2")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_1haum")
+animation = &"dead"
 autoplay = "default"
-frame_progress = 0.8980016
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0
@@ -236,6 +246,10 @@ metadata/_custom_type_script = "uid://cgdwg4dqcddnb"
 
 [node name="Alive" type="Node" parent="State_Machine" unique_id=924225331 node_paths=PackedStringArray("player_reference")]
 script = ExtResource("6_k8hk2")
+player_reference = NodePath("../..")
+
+[node name="Dead" type="Node" parent="State_Machine" unique_id=894699878 node_paths=PackedStringArray("player_reference")]
+script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]

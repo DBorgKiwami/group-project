@@ -1,6 +1,6 @@
 extends State
 
-@export var player_reference : CharacterBody3D
+@export var player_reference : Player2D
 
 func update(_delta: float):
 	if player_reference.player_camera:
