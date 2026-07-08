@@ -2,6 +2,65 @@
 
 [ext_resource type="Script" uid="uid://bn4yqwk08hx4l" path="res://scripts/menu/mainmenu.tscn.gd" id="1_h1rx6"]
 [ext_resource type="PackedScene" uid="uid://dx15ixrrkailj" path="res://scenes/levels/3d/testlevel.tscn" id="2_vvhkv"]
+[ext_resource type="Shader" uid="uid://btg64e5y8qej6" path="res://shaders/waterfall.gdshader" id="3_mx1li"]
+[ext_resource type="Texture2D" uid="uid://b8iajbei6vlhs" path="res://icon.svg" id="4_fyydt"]
+[ext_resource type="Script" uid="uid://cx2nkp1dhktpo" path="res://scripts/menu/waterfall.gd" id="5_2ni00"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dtaik"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dtaik"]
+noise = SubResource("FastNoiseLite_dtaik")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ni00"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k2bp4"]
+noise = SubResource("FastNoiseLite_2ni00")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ni00"]
+shader = ExtResource("3_mx1li")
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_dtaik")
+shader_parameter/water_mask = SubResource("NoiseTexture2D_k2bp4")
+shader_parameter/gap_stretch = Vector2(1, 0.3)
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.1200000057
+shader_parameter/water_tint = Color(0.06483101, 0.35638788, 0.54090416, 0.6)
+shader_parameter/water_highlight = Color(1, 1, 1, 0.8)
+shader_parameter/speed = 4.00000019
+shader_parameter/flow_gaps = 0.400000019
+shader_parameter/highlight_width = 0.02000000095
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/zoom = 0.6830134
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvhkv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mx1li"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyydt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ni00"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtaik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2bp4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilrvi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhw5r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_byq11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s58ex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbriy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cmjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4jtn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7at1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pgn8"]
 
 [node name="MainMenu" type="Control" unique_id=2110297206]
 layout_mode = 3
@@ -12,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h1rx6")
 game_scene = ExtResource("2_vvhkv")
+metadata/_edit_horizontal_guides_ = [254.0]
 
 [node name="Background" type="ColorRect" parent="." unique_id=1277123511]
 layout_mode = 1
@@ -20,7 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.13366917, 0.2152802, 0.27775136, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1174790224]
 layout_mode = 1
@@ -29,6 +89,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Waterfall" type="Sprite2D" parent="CenterContainer" unique_id=307493136]
+material = SubResource("ShaderMaterial_2ni00")
+position = Vector2(553.99994, 330)
+scale = Vector2(6.5397954, 5.2412105)
+texture = ExtResource("4_fyydt")
+script = ExtResource("5_2ni00")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1786008535]
 layout_mode = 2
@@ -42,14 +109,31 @@ Custos Ordinis"
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=139314137]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vvhkv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mx1li")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fyydt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ni00")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dtaik")
 text = "PLAY"
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=81184499]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k2bp4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ilrvi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vhw5r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_byq11")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s58ex")
 text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1570361735]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dbriy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4cmjg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r4jtn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7at1d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1pgn8")
 text = "QUIT"
+
+[connection signal="item_rect_changed" from="CenterContainer/Waterfall" to="CenterContainer/Waterfall" method="_on_waterfall_item_rect_changed"]
