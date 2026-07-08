@@ -52,6 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_037ec")
+level_scene_path = "res://scenes/levels/3d/testlevel.tscn"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=1458969479]
 layout_mode = 1
@@ -86,3 +87,6 @@ text = "Settings"
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_quit_pressed"]
