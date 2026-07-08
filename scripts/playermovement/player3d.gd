@@ -13,6 +13,8 @@ extends CharacterBody3D
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var grapple_time = 0.3
+@export var bob_amplitude = 0.08
+@export var bob_speed = 8.0
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -20,6 +22,8 @@ var grappleTween : Tween
 var grappling = false
 var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
+var bob_time = 0.0
+var sprite_base_y = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,6 +32,7 @@ func _ready():
 	SignalBus.dialogue_done.connect(_on_dialogue_done)
 	if Scenecontroler._check_start_position():
 		global_position = Scenecontroler.start_position_value
+	sprite_base_y = sprite.position.y
 
 func _on_dialogue_display(_dialogue):
 	inDialogue = true
@@ -124,6 +129,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
+	# --- Sprite bob ---
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed > 0.1 and is_on_floor() and !grappling:
+		bob_time += delta * bob_speed
+		sprite.position.y = sprite_base_y + sin(bob_time) * bob_amplitude
+	else:
+		bob_time = 0.0
+		sprite.position.y = move_toward(sprite.position.y, sprite_base_y, delta * 2.0)
+
 	#Sprite Rotation Code
 	#Ok so this is a lot of math. Im going to try and explain it best I can
 	
@@ -146,16 +160,18 @@ func _process(delta: float) -> void:
 #	Which value is larger overall? This lets us know which side of the character we're seeing
 #	If the absolute value of north is higher than the absolute value of east, we must be seeing the front or back of our character
 #	Otherwise, we're seeing the left or right side
+	var is_moving = horizontal_speed > 0.1
+	
 	if abs(north_dot) > abs(east_dot):
 		if north_dot > 0:
-			sprite.play("backidle")
+			sprite.play("backwalk" if is_moving else "backidle")
 		else:
-			sprite.play("frontidle")
+			sprite.play("frontwalk" if is_moving else "frontidle")
 	else:
 		if east_dot > 0:
-			sprite.play("rightidle")
+			sprite.play("rightwalk" if is_moving else "rightidle")
 		else:
-			sprite.play("leftidle")
+			sprite.play("leftwalk" if is_moving else "leftidle")
 	
 	print(north_dot)
 	pass
