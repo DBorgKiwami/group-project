@@ -25,7 +25,6 @@ var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
-var camera_rotation_value = Vector2(0,0)
 
 
 func bounce(bounce_height):
@@ -72,13 +71,10 @@ func _input(event: InputEvent) -> void:
 	if camera_dir and !inDialogue and event is InputEventMouseMotion:
 		var yRotation = deg_to_rad(event.relative.x * CAMERA_SPEED)
 		
-		camera_rotation_value.y += yRotation
-		camera_rotation_value.x += event.relative.y * CAMERA_SPEED
-		
-		#rotation.y -= yRotation
-		#camera_pivot.rotation.y -= yRotation
-		#camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (event.relative.y  * CAMERA_SPEED), -90, 90)
-		#pass
+		rotation.y -= yRotation
+		camera_pivot.rotation.y -= yRotation
+		camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (event.relative.y  * CAMERA_SPEED), -90, 90)
+		pass
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	if event.is_action_pressed("grapple") and !inDialogue:
 		#print(grappleArea.get_overlapping_areas())
@@ -88,13 +84,6 @@ func _input(event: InputEvent) -> void:
 		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
 
 func _physics_process(delta: float) -> void:
-	#rotation.y -= delta*5
-	#camera_pivot.rotation.y -= delta*5
-	rotation.y -= camera_rotation_value.y
-	camera_pivot.rotation.y -= camera_rotation_value.y
-	camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x - (camera_rotation_value.x), -90, 90)
-	
-	camera_rotation_value = Vector2.ZERO
 	
 	if jump_buffer > 0:
 		jump_buffer -= delta
