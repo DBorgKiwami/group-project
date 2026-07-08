@@ -25,7 +25,7 @@ var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
-var lastDirection = Vector3(-1,0,0)
+
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
