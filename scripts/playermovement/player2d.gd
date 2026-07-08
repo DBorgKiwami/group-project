@@ -17,16 +17,22 @@ extends CharacterBody3D
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var damage = 10
+@export var max_health = 5
+var health
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 
 func _ready() -> void:
+	health = max_health
 	if player_hitbox:
 		player_hitbox.connect("on_hit", _on_player_hit)
 
 func _on_player_hit(damage) -> void:
 	print("I've been hit for " + str(damage) + "!")
+	health = health - damage
+	if health >= 0:
+		print("I'm fuckin dead!")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
