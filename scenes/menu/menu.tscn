@@ -25,6 +25,11 @@ shader_parameter/speed = 0.934000044365
 material = SubResource("ShaderMaterial_mcvr8")
 height = 4.0
 
+[sub_resource type="SystemFont" id="SystemFont_3y2rt"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo0fc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k48pe"]
@@ -35,6 +40,11 @@ height = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4i35"]
 
+[sub_resource type="SystemFont" id="SystemFont_t0a87"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcuxh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64m6r"]
@@ -44,6 +54,11 @@ height = 4.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j8sj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55a8x"]
+
+[sub_resource type="SystemFont" id="SystemFont_qo0fc"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrod7"]
 
@@ -115,6 +130,8 @@ offset_bottom = 514.5
 [node name="Play" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1030186906]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_3y2rt")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qo0fc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k48pe")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
@@ -125,6 +142,8 @@ text = "Play"
 [node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_t0a87")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rcuxh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_64m6r")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_pjdsv")
@@ -135,6 +154,8 @@ text = "Settings"
 [node name="Quit" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1101625141]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_qo0fc")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rrod7")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_faisu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_t2e6u")
