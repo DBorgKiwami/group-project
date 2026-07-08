@@ -3,8 +3,10 @@
 [ext_resource type="Shader" uid="uid://btg64e5y8qej6" path="res://shaders/waterfall.gdshader" id="1_klgdb"]
 [ext_resource type="Texture2D" uid="uid://chsb2hst2uy1a" path="res://shaders/displacement.png.png" id="2_e0arn"]
 [ext_resource type="Texture2D" uid="uid://len85ecnr2bw" path="res://shaders/cloud_noise.png.png" id="3_037ec"]
+[ext_resource type="Texture2D" uid="uid://bcsov5ihs1kyd" path="res://images/Menu Blue.png" id="4_3y2rt"]
 [ext_resource type="Script" uid="uid://ble7agquabdw6" path="res://scripts/menu/menu.gd" id="4_037ec"]
 [ext_resource type="Texture2D" uid="uid://be4ud7hy5u5sc" path="res://scenes/menu/menu png.png" id="4_y1o0p"]
+[ext_resource type="Texture2D" uid="uid://d1g0eow3yeanf" path="res://images/Menu text.png" id="5_t0a87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mcvr8"]
 render_priority = 0
@@ -22,6 +24,36 @@ shader_parameter/speed = 0.934000044365
 [sub_resource type="CylinderMesh" id="CylinderMesh_e0arn"]
 material = SubResource("ShaderMaterial_mcvr8")
 height = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo0fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k48pe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2fum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kaijy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4i35"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcuxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64m6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjdsv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j8sj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55a8x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrod7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_faisu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2e6u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb4qf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riv3r"]
 
 [node name="menu" type="Node3D" unique_id=410197657]
 
@@ -44,6 +76,24 @@ grow_vertical = 2
 texture = ExtResource("4_y1o0p")
 expand_mode = 2
 
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer" unique_id=950281682]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t0a87")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=1625342513]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3y2rt")
+expand_mode = 2
+
 [node name="UI" type="Control" parent="CanvasLayer" unique_id=1981598361]
 layout_mode = 3
 anchors_preset = 15
@@ -56,36 +106,40 @@ level_scene_path = "res://scenes/levels/3d/testlevel.tscn"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=1458969479]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -42.5
-offset_right = 23.0
-offset_bottom = 42.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/VBoxContainer" unique_id=703383820]
-layout_mode = 2
-text = "Antlia
-"
+anchors_preset = -1
+offset_left = 282.0
+offset_top = 320.0
+offset_right = 532.0
+offset_bottom = 514.5
 
 [node name="Play" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1030186906]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qo0fc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k48pe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kaijy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4i35")
 text = "Play"
 
 [node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcuxh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_64m6r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pjdsv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2j8sj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_55a8x")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1101625141]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rrod7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_faisu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t2e6u")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fb4qf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_riv3r")
 text = "Quit"
 
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
