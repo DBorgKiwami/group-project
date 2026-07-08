@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Group Project"
-run/main_scene="uid://dx15ixrrkailj"
+run/main_scene="uid://bmvovc4f3g0qy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -111,3 +111,4 @@ camera_down={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
