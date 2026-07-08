@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ble7agquabdw6" path="res://scripts/menu/menu.gd" id="4_037ec"]
 [ext_resource type="Texture2D" uid="uid://be4ud7hy5u5sc" path="res://scenes/menu/menu png.png" id="4_y1o0p"]
 [ext_resource type="Texture2D" uid="uid://d1g0eow3yeanf" path="res://images/Menu text.png" id="5_t0a87"]
+[ext_resource type="Script" uid="uid://col8ygiudupd2" path="res://scenes/menu/play.gd" id="8_t0a87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mcvr8"]
 render_priority = 0
@@ -24,6 +25,10 @@ shader_parameter/speed = 0.934000044365
 [sub_resource type="CylinderMesh" id="CylinderMesh_e0arn"]
 material = SubResource("ShaderMaterial_mcvr8")
 height = 4.0
+
+[sub_resource type="Environment" id="Environment_t0a87"]
+glow_enabled = true
+glow_strength = 1.51
 
 [sub_resource type="SystemFont" id="SystemFont_3y2rt"]
 font_names = PackedStringArray("Garamond")
@@ -79,6 +84,9 @@ mesh = SubResource("CylinderMesh_e0arn")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=278360079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027061999, 0.4364903, 0.929253)
 fov = 41.8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D" unique_id=1860715432]
+environment = SubResource("Environment_t0a87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=548962052]
 
@@ -138,6 +146,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kaijy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y4i35")
 text = "Play"
+script = ExtResource("8_t0a87")
 
 [node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
 custom_minimum_size = Vector2(250, 60)
@@ -150,6 +159,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_pjdsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2j8sj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_55a8x")
 text = "Settings"
+script = ExtResource("8_t0a87")
 
 [node name="Quit" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1101625141]
 custom_minimum_size = Vector2(250, 60)
@@ -162,6 +172,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_t2e6u")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_fb4qf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_riv3r")
 text = "Quit"
+script = ExtResource("8_t0a87")
 
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_quit_pressed"]
