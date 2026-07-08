@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
-[ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
-[ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
+[ext_resource type="PackedScene" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
+[ext_resource type="PackedScene" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 

@@ -25,7 +25,6 @@ var lastDirection = Vector3(-1,0,0)
 func bounce(bounce_height):
 	velocity.y = bounce_height
 	pass
-var lastDirection = Vector3(0,0,-1)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
