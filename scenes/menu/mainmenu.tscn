@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://drpfqlwnfvg6h"]
 
 [ext_resource type="Script" uid="uid://bn4yqwk08hx4l" path="res://scripts/menu/mainmenu.tscn.gd" id="1_h1rx6"]
+[ext_resource type="PackedScene" uid="uid://dx15ixrrkailj" path="res://scenes/levels/3d/testlevel.tscn" id="2_vvhkv"]
 
 [node name="MainMenu" type="Control" unique_id=2110297206]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h1rx6")
+game_scene = ExtResource("2_vvhkv")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1277123511]
 layout_mode = 1
