@@ -28,7 +28,11 @@ height = 4.0
 
 [sub_resource type="Environment" id="Environment_t0a87"]
 glow_enabled = true
+glow_levels/1 = 0.4
+glow_intensity = 1.0
 glow_strength = 1.51
+glow_bloom = 0.25
+glow_hdr_threshold = 0.85
 
 [sub_resource type="SystemFont" id="SystemFont_3y2rt"]
 font_names = PackedStringArray("Garamond")
@@ -147,6 +151,8 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_kaijy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y4i35")
 text = "Play"
 script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
 
 [node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
 custom_minimum_size = Vector2(250, 60)
@@ -160,6 +166,8 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_2j8sj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_55a8x")
 text = "Settings"
 script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
 
 [node name="Quit" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1101625141]
 custom_minimum_size = Vector2(250, 60)
@@ -173,6 +181,8 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_fb4qf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_riv3r")
 text = "Quit"
 script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
 
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_quit_pressed"]
