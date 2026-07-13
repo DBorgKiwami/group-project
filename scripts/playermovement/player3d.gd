@@ -25,7 +25,6 @@ var lastDirection = Vector3(-1,0,0)
 func bounce(bounce_height):
 	velocity.y = bounce_height
 	pass
-var lastDirection = Vector3(0,0,-1)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -126,8 +125,14 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
-	print(velocity)
+	#print(velocity)
+	if velocity.y > 0:
+		set_collision_mask_value(7, false)
+	else:
+		set_collision_mask_value(7, true)
 	move_and_slide()
+	
+	
 	
 #	Check what we last collided with
 	var last_collision = get_last_slide_collision()
