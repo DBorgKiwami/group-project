@@ -33,6 +33,11 @@ func _input(event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	set_collision_mask_value(7, true)
+	
+	if velocity.y > 0 or Input.is_action_pressed("ui_down"):
+		set_collision_mask_value(7, false)
+	
 	#Reduce the jump buffer if its still running
 	if jump_buffer > 0:
 		jump_buffer -= delta
@@ -40,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		set_collision_mask_value(7, false)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
 	
@@ -61,8 +65,6 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
-		if velocity.y <= 0:
-			set_collision_mask_value(7, true)
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
