@@ -177,8 +177,6 @@ func _process(delta: float) -> void:
 			sprite.play("rightidle")
 		else:
 			sprite.play("leftidle")
-	
-	print(north_dot)
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
