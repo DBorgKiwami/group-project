@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
-[ext_resource type="PackedScene" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
-[ext_resource type="PackedScene" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
+[ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
+[ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="7_2kmou"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
@@ -51,6 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1580389, -2.1031067)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fading Platform" unique_id=1591138906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40124512, -0.30664063, 0.87646484)
 shape = SubResource("BoxShape3D_2kmou")
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("7_2kmou")]
 
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
