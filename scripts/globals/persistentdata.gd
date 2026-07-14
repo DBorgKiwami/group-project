@@ -48,3 +48,6 @@ func remove_data_value(node_path_identifier: String, value_name: String) -> void
 		get_data_entry(node_path_identifier).erase(value_name)
 		if get_data_entry(node_path_identifier).size() == 0:
 			remove_data_entry(node_path_identifier)
+
+func clear_all_data() -> void:
+	data.clear()
