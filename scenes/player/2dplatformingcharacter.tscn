@@ -85,6 +85,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_a1x7n"]
+radius = 0.6497685
+
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "sprite")]
 collision_layer = 0
 script = ExtResource("1_vj0l2")
@@ -140,5 +143,12 @@ script = ExtResource("4_a1x7n")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitbox" unique_id=1156365109]
 shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2101491703]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=366340702]
+shape = SubResource("SphereShape3D_a1x7n")
 
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]

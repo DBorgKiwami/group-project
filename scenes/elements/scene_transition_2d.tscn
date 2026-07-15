@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c04da4cnmb374"]
+
+[ext_resource type="Script" uid="uid://cqssbdqnvg8ny" path="res://scripts/elements/scene_transition.gd" id="1_ly1fo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6l5u2"]
+
+[node name="SceneTransition2D" type="Area3D" unique_id=1962062075]
+script = ExtResource("1_ly1fo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664706398]
+shape = SubResource("SphereShape3D_6l5u2")
