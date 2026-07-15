@@ -5,6 +5,7 @@ extends Node
 
 # A dictionary is basically an array but instead of numbers its words. For an application like this, its pretty damn handy.
 var data : Dictionary
+var collectibles : Dictionary
 
 func _generated_entry_name(node_path_identifier: String) -> String:
 	return str(get_tree().current_scene.get_path(), "/", node_path_identifier)
@@ -51,3 +52,11 @@ func remove_data_value(node_path_identifier: String, value_name: String) -> void
 
 func clear_all_data() -> void:
 	data.clear()
+
+func has_data_collectible(collectible_key) -> bool:
+	if collectibles.has(collectible_key):
+		return true
+	return false
+
+func store_data_collectible(collectible_key, collectible_desc) -> void:
+	collectibles[collectible_key] = collectible_desc

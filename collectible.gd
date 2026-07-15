@@ -1,10 +1,12 @@
 extends Area3D
 
+@export var collectible_id : int = 0
+@export var collectible_description : String = "A Collectible"
 var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree() -> void:
-	if PersistentData.has_data_value(get_path(), "collected"):
+	if PersistentData.has_data_collectible(collectible_id):
 		queue_free()
 
 func _input(event: InputEvent) -> void:
@@ -12,7 +14,8 @@ func _input(event: InputEvent) -> void:
 		_collect_item()
 
 func _collect_item():
-	PersistentData.store_data_value(get_path(), "collected", true)
+	#PersistentData.store_data_value(get_path(), "collected", true)
+	PersistentData.store_data_collectible(collectible_id, collectible_description)
 	queue_free()
 	pass
 
