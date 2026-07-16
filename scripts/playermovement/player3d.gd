@@ -131,7 +131,7 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
 	
 #	Check what we last collided with
@@ -189,7 +189,7 @@ func _process(delta: float) -> void:
 		else:
 			sprite.play("leftwalk" if is_moving else "leftidle")
 	
-	print(north_dot)
+	#print(north_dot)
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

@@ -5,7 +5,7 @@ extends Area3D
 var active = false
 
 func _input(event: InputEvent) -> void:
-	if active and event.is_action_pressed("interact"):
+	if active and event.is_action_pressed("ui_up"):
 		print("Hello")
 		if spawnposition:
 			Scenecontroler.load_scene_with_position(scene, spawnposition)
