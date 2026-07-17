@@ -22,6 +22,8 @@ class_name Player2D
 var health
 var can_jump = false
 var blocking = false
+var block_timer = 0.0
+var block_cooldown = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 
@@ -46,6 +48,12 @@ func _input(event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if block_cooldown > 0:
+		block_cooldown -= delta
+	if blocking:
+		block_timer -= delta
+		if block_timer <= 0:
+			blocking = false
 	move_and_slide()
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
