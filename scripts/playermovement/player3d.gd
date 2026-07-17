@@ -195,7 +195,7 @@ func _process(delta: float) -> void:
 		else:
 			sprite.play("leftwalk" if is_moving else "leftidle")
 	
-	print(north_dot)
+	#print(north_dot)
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
