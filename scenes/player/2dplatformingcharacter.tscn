@@ -177,6 +177,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
+radius = 0.679429
+
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -252,6 +255,13 @@ player_reference = NodePath("../..")
 [node name="Dead" type="Node" parent="State_Machine" unique_id=894699878 node_paths=PackedStringArray("player_reference")]
 script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=936171539]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
+shape = SubResource("SphereShape3D_eym7y")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
