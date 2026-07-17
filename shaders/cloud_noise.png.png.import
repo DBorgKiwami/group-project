@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdw0uqgtor3qg"
-path.s3tc="res://.godot/imported/player_sprite_right_walk1.png-fbe2235715b8bc96785b022ff115670e.s3tc.ctex"
+uid="uid://len85ecnr2bw"
+path.s3tc="res://.godot/imported/cloud_noise.png.png-552133bdcd9c6f70215424987fdd3703.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/player/player_sprite_right_walk1.png"
-dest_files=["res://.godot/imported/player_sprite_right_walk1.png-fbe2235715b8bc96785b022ff115670e.s3tc.ctex"]
+source_file="res://shaders/cloud_noise.png.png"
+dest_files=["res://.godot/imported/cloud_noise.png.png-552133bdcd9c6f70215424987fdd3703.s3tc.ctex"]
 
 [params]
 

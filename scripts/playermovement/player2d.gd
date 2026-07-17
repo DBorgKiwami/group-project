@@ -1,33 +1,42 @@
 extends CharacterBody3D
+class_name Player2D
 
 @export var hitboxFront : Area3D
 @export var hitboxUp : Area3D
 @export var hitboxDown : Area3D
 @export var animationController : AnimationPlayer
 @export var player_hitbox : Area3D
-
+@export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
+@export var state_machine : State_Machine
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
+@export var camera_x_bound = 1.0
+@export var camera_y_bound = 1.0
+@export var camera_y_offset = 0.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
+@export var damage = 10
+@export var max_health = 3
+var health
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 
 func _ready() -> void:
+	health = max_health
 	if player_hitbox:
 		player_hitbox.connect("on_hit", _on_player_hit)
 
 func _on_player_hit(damage) -> void:
 	print("I've been hit for " + str(damage) + "!")
+	health = health - damage
+	if health <= 0:
+		print("I'm fuckin dead!")
+		state_machine.on_child_transition(state_machine.current_state, "dead")
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack"):
-		print("Attacking")
-		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
-		animationController.play("attack")
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
 	pass
@@ -87,12 +96,31 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
-	print("Entered")
+	print("Entered front")
 	if area is EnemyHitbox:
 		print("Enemy")
-		area.emit_signal("on_hit",10)
+		area.emit_signal("on_hit",damage)
+	pass # Replace with function body.
+
+
+func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
+	print("Entered up")
+	if area is EnemyHitbox:
+		print("Enemy")
+		area.emit_signal("on_hit",damage)
+	pass # Replace with function body.
+
+
+func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
+	print("Entered down")
+	if area is EnemyHitbox:
+		print("Enemy")
+		area.emit_signal("on_hit",damage)
+		Hitstopmanager.hit_stop(0.05)
+		velocity.y = maxf(JUMP_VELOCITY, velocity.y + JUMP_VELOCITY)
 	pass # Replace with function body.
