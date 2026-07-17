@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_o0xbc"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="2_f85je"]
 [ext_resource type="PackedScene" uid="uid://c04da4cnmb374" path="res://scenes/elements/scene_transition_2d.tscn" id="3_bli0r"]
+[ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="3_bli0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85je"]
 
@@ -11,6 +12,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_o0xbc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o0xbc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_88ofr"]
 
 [node name="Testlevel2d" type="Node3D" unique_id=1921717961]
 
@@ -30,9 +33,6 @@ debug_color = Color(1, 1, 1, 1)
 
 [node name="2Dtestenemy" parent="." unique_id=650050351 instance=ExtResource("2_f85je")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5913818, 1.4041731, 0)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2106863438]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5996883, 4.3492885)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2026618236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9133224, 0.4010216, 0)
@@ -60,3 +60,12 @@ shape = SubResource("SphereShape3D_o0xbc")
 
 [node name="SceneTransition2D" parent="." unique_id=1962062075 instance=ExtResource("3_bli0r")]
 scene = "res://scenes/levels/3d/testlevel.tscn"
+[node name="EnemyHitbox" type="Area3D" parent="." unique_id=790303945]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_bli0r")
+metadata/_custom_type_script = "uid://bg3t6a3l4s328"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitbox" unique_id=1210897727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.441904, 0, 0)
+shape = SubResource("SphereShape3D_88ofr")

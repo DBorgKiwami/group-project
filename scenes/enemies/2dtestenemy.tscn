@@ -106,7 +106,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eexk2"]
-radius = 0.42576775
+radius = 0.766
 
 [node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler")]
 collision_layer = 16

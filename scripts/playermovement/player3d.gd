@@ -29,6 +29,7 @@ var sprite_base_y = 0.0
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
+	set_collision_mask_value(7, false)
 	pass
 
 func _ready():
@@ -89,6 +90,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if velocity.y <= 0:
+			set_collision_mask_value(7, true)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
 	
@@ -106,6 +109,7 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
+		set_collision_mask_value(7, false)
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -133,6 +137,8 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = false;
 	#print(velocity)
 	move_and_slide()
+	
+	
 	
 #	Check what we last collided with
 	var last_collision = get_last_slide_collision()
