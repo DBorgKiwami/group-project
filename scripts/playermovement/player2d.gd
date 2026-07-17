@@ -21,6 +21,9 @@ class_name Player2D
 @export var max_health = 3
 var health
 var can_jump = false
+var blocking = false
+var block_timer = 0.0
+var block_cooldown = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 
@@ -30,6 +33,9 @@ func _ready() -> void:
 		player_hitbox.connect("on_hit", _on_player_hit)
 
 func _on_player_hit(damage) -> void:
+	if blocking:
+		print("Damage blocked!")
+		return
 	print("I've been hit for " + str(damage) + "!")
 	health = health - damage
 	if health <= 0:
@@ -42,6 +48,12 @@ func _input(event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if block_cooldown > 0:
+		block_cooldown -= delta
+	if blocking:
+		block_timer -= delta
+		if block_timer <= 0:
+			blocking = false
 	move_and_slide()
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:

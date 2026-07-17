@@ -1,6 +1,8 @@
 extends State
 
 @export var player_reference : Player2D
+@export var block_length : float
+@export var block_cooldown : float
 
 func update(_delta: float):
 	if player_reference.player_camera:
@@ -81,3 +83,7 @@ func input(event: InputEvent):
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		player_reference.animationController.play("attack")
+	if event.is_action_pressed("grapple") and player_reference.block_cooldown < 0:
+		player_reference.blocking = !player_reference.blocking
+		player_reference.block_cooldown = block_cooldown
+		player_reference.block_timer = block_length
