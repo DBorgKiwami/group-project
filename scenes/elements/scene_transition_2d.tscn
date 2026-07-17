@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bbb4audyc3wa2"]
+
+[ext_resource type="Script" uid="uid://dj7mbivmt7kxh" path="res://scripts/elements/scene_transition_2d.gd" id="1_ly1fo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6l5u2"]
+
+[node name="SceneTransition2D" type="Area3D" unique_id=1962062075]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_ly1fo")
+scene = "res://scenes/levels/3d/testlevel.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664706398]
+shape = SubResource("SphereShape3D_6l5u2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

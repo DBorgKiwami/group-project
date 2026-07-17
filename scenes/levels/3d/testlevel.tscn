@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
-[ext_resource type="PackedScene" uid="uid://sq0fy66udhma" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
-[ext_resource type="PackedScene" uid="uid://cu465sp73rqmb" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
-[ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="7_2kmou"]
+[ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
+[ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
+[ext_resource type="PackedScene" uid="uid://h2rla3ix8s54" path="res://scenes/elements/semi_solid_platform.tscn" id="7_2kmou"]
+[ext_resource type="PackedScene" uid="uid://bxo3f2kdyyr4y" path="res://scenes/elements/scene_transition.tscn" id="8_mwwa0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
@@ -17,6 +18,9 @@ size = Vector3(2.4766235, 1, 2.0994873)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kmou"]
 size = Vector3(6.3117676, 0.38671875, 2.7529297)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwwa0"]
+size = Vector3(2.0195313, 0.075683594, 2.0610352)
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
 
@@ -55,6 +59,15 @@ shape = SubResource("BoxShape3D_2kmou")
 
 [node name="collectible" parent="." unique_id=743081414 instance=ExtResource("7_2kmou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5567465, 0.368662, 0)
+[node name="SemiSolidPlatform" parent="." unique_id=1852107279 instance=ExtResource("7_2kmou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8818192, 1.9349735, 2.2397177)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidPlatform" unique_id=1968629944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5097656, -0.4621582, 0.5305176)
+shape = SubResource("BoxShape3D_mwwa0")
+
+[node name="SceneTransition" parent="." unique_id=1962062075 instance=ExtResource("8_mwwa0")]
+scene = "res://scenes/levels/2d/testlevel2d.tscn"
 
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]

@@ -2,14 +2,26 @@
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
 [ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="2_a1x7n"]
+[ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="3_8yach"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
+[ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
+[ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
+[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.1855469, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eym7y")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_a1x7n")
@@ -48,6 +60,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Down Attack Hurtbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Up Attack Hurtbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
 resource_name = "attack"
@@ -76,24 +112,84 @@ tracks/1/keys = {
 "values": [Color(0, 0.61711806, 0.617118, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8yach"]
+resource_name = "attack_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Down Attack Hurtbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9956201, 0.082416825, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k8hk2"]
+resource_name = "attack_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Up Attack Hurtbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.41388404, 0.002125454, 0.85341847, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
 _data = {
 &"RESET": SubResource("Animation_vj0l2"),
-&"attack": SubResource("Animation_a1x7n")
+&"attack": SubResource("Animation_a1x7n"),
+&"attack_down": SubResource("Animation_8yach"),
+&"attack_up": SubResource("Animation_k8hk2")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "sprite")]
-collision_layer = 0
+[sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
+radius = 0.679429
+
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
 hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
 player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344, 0)
@@ -102,12 +198,13 @@ shape = SubResource("BoxShape3D_vj0l2")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_1haum")
+animation = &"dead"
 autoplay = "default"
-frame_progress = 0.8980016
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0
 collision_mask = 6
+monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Down Attack Hurtbox" unique_id=193153371]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
@@ -116,6 +213,7 @@ polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.
 [node name="Up Attack Hurtbox" type="Area3D" parent="." unique_id=46783837]
 collision_layer = 0
 collision_mask = 6
+monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Up Attack Hurtbox" unique_id=1884746816]
 polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.39307356, 1.2155163, -0.26653796, 1.6309919, 0.051420122, 1.8435464, 0.26844496, 1.9411922, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
@@ -141,4 +239,30 @@ script = ExtResource("4_a1x7n")
 shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1055626215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+top_level = true
+
+[node name="State_Machine" type="Node" parent="." unique_id=313428382 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_8yach")
+initial_state = NodePath("Alive")
+metadata/_custom_type_script = "uid://cgdwg4dqcddnb"
+
+[node name="Alive" type="Node" parent="State_Machine" unique_id=924225331 node_paths=PackedStringArray("player_reference")]
+script = ExtResource("6_k8hk2")
+player_reference = NodePath("../..")
+
+[node name="Dead" type="Node" parent="State_Machine" unique_id=894699878 node_paths=PackedStringArray("player_reference")]
+script = ExtResource("7_1haum")
+player_reference = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=936171539]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
+shape = SubResource("SphereShape3D_eym7y")
+
+[connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
+[connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]
