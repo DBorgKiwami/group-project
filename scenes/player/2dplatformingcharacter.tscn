@@ -175,6 +175,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
+radius = 0.5168748
 
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_vj0l2")
