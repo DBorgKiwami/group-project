@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Scenecontroler="*uid://btp28npae7yw1"
 SignalBus="*uid://b5pkcy3f4jdnt"
-Hitstopmanager="*uid://cgkxriraiat40"
 
 [input]
 
@@ -104,7 +103,6 @@ camera_down={
 3d_physics/layer_4="Grapple Points"
 3d_physics/layer_5="Enemy Damage Layer"
 3d_physics/layer_6="Dialogue Layer"
-3d_physics/layer_7="Semi-Solid"
 
 [physics]
 

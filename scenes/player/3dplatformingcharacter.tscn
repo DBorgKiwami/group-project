@@ -169,8 +169,6 @@ _data = {
 }
 
 [node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
-collision_layer = 0
-collision_mask = 65
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
 grappleArea = NodePath("Area3D")

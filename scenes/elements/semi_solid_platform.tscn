@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://h2rla3ix8s54"]
-
-[node name="SemiSolidPlatform" type="StaticBody3D" unique_id=1852107279]
-collision_layer = 64
-collision_mask = 0
