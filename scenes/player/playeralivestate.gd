@@ -81,3 +81,5 @@ func input(event: InputEvent):
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		player_reference.animationController.play("attack")
+	if event.is_action_pressed("grapple"):
+		player_reference.blocking = !player_reference.blocking

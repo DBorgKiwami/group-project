@@ -21,6 +21,7 @@ class_name Player2D
 @export var max_health = 3
 var health
 var can_jump = false
+var blocking = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 
@@ -30,6 +31,9 @@ func _ready() -> void:
 		player_hitbox.connect("on_hit", _on_player_hit)
 
 func _on_player_hit(damage) -> void:
+	if blocking:
+		print("Damage blocked!")
+		return
 	print("I've been hit for " + str(damage) + "!")
 	health = health - damage
 	if health <= 0:
