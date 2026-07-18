@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://dvivxdodklglf"]
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
-[ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="2_a1x7n"]
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
-[ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="3_8yach"]
+[ext_resource type="Texture2D" uid="uid://ddejscq4vrrtb" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_g3xmi"]
+[ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="4_7a31i"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
+[ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="5_cudoo"]
 [ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
@@ -24,13 +25,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_a1x7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_8yach")
+"texture": ExtResource("3_g3xmi")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g3xmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7a31i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g3xmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cudoo")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -196,10 +211,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344
 shape = SubResource("BoxShape3D_vj0l2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
+pixel_size = 0.02
 billboard = 1
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_1haum")
-animation = &"dead"
-autoplay = "default"
+animation = &"walk"
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0

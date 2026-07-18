@@ -1,9 +1,7 @@
 extends State
-
 @export var player_reference : Player2D
 @export var block_length : float
 @export var block_cooldown : float
-
 func update(_delta: float):
 	if player_reference.player_camera:
 		var x_diff = player_reference.position.x - player_reference.player_camera.global_position.x 
@@ -13,7 +11,6 @@ func update(_delta: float):
 			else:
 				player_reference.player_camera.global_position.x += x_diff + player_reference.camera_x_bound
 		player_reference.player_camera.global_position.y = player_reference.position.y + player_reference.camera_y_offset
-
 func physicsUpdate(delta: float):
 	#Reduce the jump buffer if its still running
 	if player_reference.jump_buffer > 0:
@@ -61,15 +58,14 @@ func physicsUpdate(delta: float):
 			player_reference.hitboxFront.rotation_degrees = Vector3(0, 0, 0)
 			player_reference.sprite.flip_h = false;
 		player_reference.velocity.x = direction * player_reference.SPEED
+		player_reference.sprite.play("walk")
 	else:
 		player_reference.velocity.x = move_toward(player_reference.velocity.x, 0, player_reference.SPEED)
-
+		player_reference.sprite.play("idle")
 func enter():
 	pass
-
 func exit():
 	pass
-
 func input(event: InputEvent):
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
 		print("Down")
