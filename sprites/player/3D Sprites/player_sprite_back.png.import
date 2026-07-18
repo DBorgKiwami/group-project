@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvbekfw3p8hyr"
-path.s3tc="res://.godot/imported/player_game_over.png-eb3f2a4f2a0794eed2fe50a6b5a3d938.s3tc.ctex"
+uid="uid://byuk37dicbwuw"
+path.s3tc="res://.godot/imported/player_sprite_back.png-5916b3bb12bfdc4bdb99a4d20f85c121.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/player/player_game_over.png"
-dest_files=["res://.godot/imported/player_game_over.png-eb3f2a4f2a0794eed2fe50a6b5a3d938.s3tc.ctex"]
+source_file="res://sprites/player/3D Sprites/player_sprite_back.png"
+dest_files=["res://.godot/imported/player_sprite_back.png-5916b3bb12bfdc4bdb99a4d20f85c121.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ygno8oice4v"
-path.s3tc="res://.godot/imported/player_sprite_front_walk1.png-3251e7139783b396c2cb138dded8e8a6.s3tc.ctex"
+uid="uid://bfsb6aemok01q"
+path.s3tc="res://.godot/imported/player_sprite_front.png-b6b1b5d4a2247d4292004863fd1ae6e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/player/player_sprite_front_walk1.png"
-dest_files=["res://.godot/imported/player_sprite_front_walk1.png-3251e7139783b396c2cb138dded8e8a6.s3tc.ctex"]
+source_file="res://sprites/player/3D Sprites/player_sprite_front.png"
+dest_files=["res://.godot/imported/player_sprite_front.png-b6b1b5d4a2247d4292004863fd1ae6e4.s3tc.ctex"]
 
 [params]
 

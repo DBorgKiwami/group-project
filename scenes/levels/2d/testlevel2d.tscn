@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_o0xbc"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="2_f85je"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="3_bli0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85je"]
 
@@ -56,3 +57,5 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Test Area 2" unique_id=497517575]
 shape = SubResource("SphereShape3D_o0xbc")
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("3_bli0r")]
