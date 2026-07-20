@@ -18,6 +18,9 @@ size = Vector3(2.4766235, 1, 2.0994873)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kmou"]
 size = Vector3(6.3117676, 0.38671875, 2.7529297)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwwa0"]
+size = Vector3(2.0195313, 0.075683594, 2.0610352)
+
 [node name="Testlevel" type="Node3D" unique_id=674870779]
 
 [node name="Grapplepoint3d" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
@@ -32,7 +35,7 @@ debug_color = Color(1, 1, 1, 1)
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1021424080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4181248, 0.4010216, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.532358, 0.4010216, 0)
 mesh = SubResource("BoxMesh_b81ow")
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_55jh8")]
