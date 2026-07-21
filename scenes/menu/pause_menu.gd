@@ -2,8 +2,8 @@ extends CanvasLayer
 
 @export var main_menu_scene_path : String = "res://scenes/menu/menu.tscn"
 
-@onready var panel: Control = $Panel
-@onready var options_panel: Control = $Panel/OptionsPanel
+@onready var panel: Control = $Control/PanelContainer
+@onready var options_panel: Control = null 
 
 func _ready() -> void:
 	# Keep this node (and everything under it) processing even when the tree is paused
@@ -31,10 +31,14 @@ func _on_resume_pressed() -> void:
 	toggle_pause()
 
 func _on_options_pressed() -> void:
-	options_panel.visible = true
+	if options_panel:
+		options_panel.visible = true
+	else:
+		print("Options panel not built yet")
 
 func _on_options_back_pressed() -> void:
-	options_panel.visible = false
+	if options_panel:
+		options_panel.visible = false
 
 func _on_quit_to_menu_pressed() -> void:
 	get_tree().paused = false
