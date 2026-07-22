@@ -48,6 +48,7 @@ func _input(event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	position.z = 0
 	if block_cooldown > 0:
 		block_cooldown -= delta
 	if blocking:
