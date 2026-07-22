@@ -10,6 +10,7 @@ func physicsUpdate(_delta: float):
 
 func enter():
 	player_reference.sprite.play("dead")
+	player_reference.velocity = Vector3.ZERO
 
 func exit():
 	pass
