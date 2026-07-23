@@ -6,6 +6,7 @@ extends Node
 # A dictionary is basically an array but instead of numbers its words. For an application like this, its pretty damn handy.
 var data : Dictionary
 var collectibles : Dictionary
+var coincount : int = 0
 
 func _generated_entry_name(node_path_identifier: String) -> String:
 	return str(get_tree().current_scene.get_path(), "/", node_path_identifier)
