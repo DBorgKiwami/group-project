@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var hurtbox : Area3D
 @export var animationControler : AnimationPlayer
 @export var damage : int = 1
+@export var drop : PackedScene
 
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
@@ -12,6 +13,10 @@ func _ready():
 func die():
 	animationControler.play("die")
 	await animationControler.animation_finished
+	if drop:
+		var newInstance = drop.instantiate()
+		newInstance.position = position
+		get_tree().root.add_child(newInstance)
 	call_deferred("queue_free")
 
 func _physics_process(delta: float) -> void:
