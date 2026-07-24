@@ -2,9 +2,14 @@ extends RigidBody3D
 
 var spawn_impulse : Vector3
 @export var collection_area : Area3D
+@export var fling_x : float = 5
+@export var fling_y : float = 10
+var flyout = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if flyout:
+		apply_impulse(Vector3(randf_range(-fling_x,fling_x),randf_range(0,fling_y),0))
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
