@@ -25,7 +25,7 @@ var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
-
+var animationdirection = "south"
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -197,7 +197,25 @@ func _process(delta: float) -> void:
 		else:
 			sprite.play("leftwalk" if is_moving else "leftidle")
 	
-	#print(north_dot)
+	if north_dot < -0.7:
+		if east_dot < -0.4:
+			animationdirection = "northeast"
+		elif east_dot > 0.4:
+			animationdirection = "northwest"
+		else:
+			animationdirection = "north"
+	elif north_dot > 0.7:
+		if east_dot < -0.4:
+			animationdirection = "southeast"
+		elif east_dot > 0.4:
+			animationdirection = "southwest"
+		else:
+			animationdirection = "south"
+	elif east_dot < 0:
+		animationdirection = "east"
+	else:
+		animationdirection = "west"
+	print(animationdirection)
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
