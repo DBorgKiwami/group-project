@@ -121,18 +121,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vws06"]
-size = Vector3(0.73, 1.4, 0.73)
+[sub_resource type="SphereShape3D" id="SphereShape3D_vws06"]
+radius = 2.5
 
 [sub_resource type="Animation" id="Animation_g608u"]
 length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_loatv"]
 resource_name = "grapple"
@@ -197,7 +190,7 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=577473613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02279973, 0.074198335, 0.012180336)
-shape = SubResource("BoxShape3D_vws06")
+shape = SubResource("SphereShape3D_vws06")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")

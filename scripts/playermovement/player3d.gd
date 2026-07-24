@@ -33,11 +33,13 @@ func bounce(bounce_height):
 	pass
 
 func _ready():
+	print(global_position)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#F9 will release the mouse for editing purposes
 	SignalBus.display_dialogue.connect(_on_dialogue_display)
 	SignalBus.dialogue_done.connect(_on_dialogue_done)
 	if Scenecontroler._check_start_position():
+		print("WAHWHAWHWAHAWHWAHAWH")
 		global_position = Scenecontroler.start_position_value
 	sprite_base_y = sprite.position.y
 
