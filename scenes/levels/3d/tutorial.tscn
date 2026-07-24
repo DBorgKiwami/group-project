@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bg6xc8ykgyku8"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_u5d63"]
+[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://dirt.tres" id="2_s1yo8"]
+[ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://water.tres" id="3_5uatd"]
+[ext_resource type="Material" uid="uid://c20uslp7vniq7" path="res://lilypad.tres" id="4_5uatd"]
+
+[node name="Tutorial" type="Node3D" unique_id=529679215]
+
+[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("1_u5d63")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1982583864]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=494699381]
+transform = Transform3D(1.098178, 0, 0, 0, 1, 0, 0, 0, 1.2742442, -22.633244, -2.198479, 1.5545235)
+size = Vector3(56.100716, 4.38208, 25.430527)
+material = ExtResource("2_s1yo8")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=713679907]
+transform = Transform3D(13.574246, 0, 0, 0, 1.1100502, 0, 0, 0, 10.605674, -8.424308, -1.0760977, 2.915596)
+operation = 2
+polygon = PackedVector2Array(0, 0, 0, 1, 0.9289727, 0.98801446, 1, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("3_5uatd")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2021579821]
+transform = Transform3D(-4.173922, 0, 2.5121934, 0, 1.1338267, 0, -3.293646, 0, -3.1836152, -0.74683475, -1.0854912, -3.4167547)
+operation = 2
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("3_5uatd")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1024982392]
+transform = Transform3D(7.242892, 0, -2.6080565, 0, 1.1166376, 0, 3.325387, 0, 5.6805024, -18.512274, -1.0836351, -2.2481232)
+operation = 2
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("3_5uatd")
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=986755975]
+transform = Transform3D(3.345809, 0, 0, 0, 0.099668086, 0, 0, 0, 3.8111522, -1.4358289, -0.072609186, -2.754877)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("4_5uatd")
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1532206448]
+transform = Transform3D(2.789216, 0, 0, 0, 0.099668086, 0, 0, 0, 2.7745185, -9.773765, -0.072609186, -2.95256)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("4_5uatd")
+
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2087828535]
+transform = Transform3D(-1.0416927, 0, 3.9798722, 0, 0.09966808, 0, -2.765222, 0, -1.4992659, -19.348314, -0.072609186, -3.231815)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("4_5uatd")
+
+[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=46809692]
+transform = Transform3D(3.3440452, 0, 1.4242768, 0, 0.09966808, 0, -1.834606, 0, 2.596114, -2.86698, -0.072609186, 7.363078)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = ExtResource("4_5uatd")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=153885673]
+transform = Transform3D(2.8596916, 0, 0, 0, 1.6212454, 0, 0, 0, 1, -39.082, 0.48, 2.8636494)
+size = Vector3(10.022, 0.6, 5.733)
+material = ExtResource("2_s1yo8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=597835016]
+transform = Transform3D(2.8596916, 0, 0, 0, 1.6212454, 0, 0, 0, 1, -37.326, 0.48, 8.599076)
+size = Vector3(11.25, 0.6, 5.733)
+material = ExtResource("2_s1yo8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=839090923]
+transform = Transform3D(2.8596916, 0, 0, 0, 1.6212454, 0, 0, 0, 1, -43.338, 1.45, -7.331)
+size = Vector3(7.045, 1.8, 14.656)
+material = ExtResource("2_s1yo8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=919569755]
+transform = Transform3D(2.8596916, 0, 0, 0, 1.6212454, 0, 0, 0, 1, -43.338, 1.4474545, 5.731603)
+size = Vector3(7.045, 0.6, 11.469)
+material = ExtResource("2_s1yo8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=572591868]
+transform = Transform3D(1, 0, 0, 0, 0.8203416, 0.5718739, 0, -0.5718739, 0.8203416, 6.6747494, 15.620567, 0)
+light_color = Color(1, 0.9490196, 0.57254905, 1)
+light_energy = 1.948
+light_indirect_energy = 0.894
+light_angular_distance = 1.0
+shadow_enabled = true
+shadow_opacity = 0.7

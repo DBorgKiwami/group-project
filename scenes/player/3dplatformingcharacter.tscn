@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bg6r4y6mkp8al" path="res://sprites/player/3D Sprites/player_sprite_right_walk2.png" id="13_mmlg3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
-radius = 0.48632813
-height = 1.2797852
+radius = 0.317
+height = 1.4
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g608u"]
 animations = [{
@@ -121,8 +121,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6ofdj"]
-radius = 3.256
+[sub_resource type="BoxShape3D" id="BoxShape3D_vws06"]
+size = Vector3(0.73, 1.4, 0.73)
 
 [sub_resource type="Animation" id="Animation_g608u"]
 length = 0.001
@@ -179,23 +179,25 @@ player_camera = NodePath("Node3D/Camera3D")
 camera_pivot = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007080078, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
 shape = SubResource("CapsuleShape3D_s3ukl")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=858905964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2783844, -0.01780665)
 pixel_size = 0.03
 billboard = 2
 alpha_cut = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_g608u")
-animation = &"backwalk"
+animation = &"backidle"
 
 [node name="Area3D" type="Area3D" parent="." unique_id=190598689]
 collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=577473613]
-shape = SubResource("SphereShape3D_6ofdj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02279973, 0.074198335, 0.012180336)
+shape = SubResource("BoxShape3D_vws06")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")
