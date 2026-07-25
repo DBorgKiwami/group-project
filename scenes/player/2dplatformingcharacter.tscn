@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvivxdodklglf"]
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
+[ext_resource type="Texture2D" uid="uid://buco3emnrdqck" path="res://sprites/player/2D Sprites/player_sprite_right_attack.png" id="2_7a31i"]
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://ddejscq4vrrtb" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_g3xmi"]
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="4_7a31i"]
@@ -15,6 +16,17 @@ size = Vector3(1.1184082, 1.1855469, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7a31i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7a31i")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_eym7y")
@@ -215,7 +227,7 @@ pixel_size = 0.02
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_1haum")
-animation = &"walk"
+animation = &"attack"
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0
