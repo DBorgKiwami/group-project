@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjbhqp2besima"]
 
 [ext_resource type="Script" uid="uid://btnjh21428tw8" path="res://scripts/globals/loadscript.gd" id="1_a2dun"]
-[ext_resource type="Texture2D" uid="uid://bfsb6aemok01q" path="res://sprites/player/3D Sprites/player_sprite_front.png" id="2_jdf18"]
-[ext_resource type="Texture2D" uid="uid://c5ygno8oice4v" path="res://sprites/player/3D Sprites/player_sprite_front_walk1.png" id="3_1up31"]
-[ext_resource type="Texture2D" uid="uid://dgvporigoljvh" path="res://sprites/player/3D Sprites/player_sprite_front_walk2.png" id="4_efoxo"]
+[ext_resource type="Texture2D" path="res://sprites/player/3D Sprites/player_sprite_front.png" id="2_jdf18"]
+[ext_resource type="Texture2D" path="res://sprites/player/3D Sprites/player_sprite_front_walk1.png" id="3_1up31"]
+[ext_resource type="Texture2D" path="res://sprites/player/3D Sprites/player_sprite_front_walk2.png" id="4_efoxo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2dun"]
 bg_color = Color(0, 0, 0, 1)
