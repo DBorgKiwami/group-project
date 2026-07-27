@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdo6d0p3f2u6a"
-path="res://.godot/imported/player_sprite_left_walk2.png-b6a55f8f62fa6b93fdb4687d4c554e82.ctex"
+uid="uid://our32mbxeto5"
+path.s3tc="res://.godot/imported/s_idle.png-bcd9810bcc9ca4d6aca16e70f30d3525.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://sprites/player/3D Sprites/player_sprite_left_walk2.png"
-dest_files=["res://.godot/imported/player_sprite_left_walk2.png-b6a55f8f62fa6b93fdb4687d4c554e82.ctex"]
+source_file="res://sprites/player/3D Sprites/s_idle.png"
+dest_files=["res://.godot/imported/s_idle.png-bcd9810bcc9ca4d6aca16e70f30d3525.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
