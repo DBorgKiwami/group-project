@@ -8,7 +8,7 @@
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_qs1aa")
-dialogue = Array[String](["Test String One", "Test String Two", "I'm burnt out as fuck"])
+dialogueKey = "fish_intro"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1659058021]
 shape = SubResource("SphereShape3D_c0r4w")
