@@ -8,7 +8,7 @@
 [node name="Tutorial" type="Node3D" unique_id=529679215]
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("1_u5d63")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0147095, -1.1217918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7062906, -3.2152607)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1982583864]
 use_collision = true
