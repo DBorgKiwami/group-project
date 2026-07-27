@@ -186,36 +186,29 @@ func _process(delta: float) -> void:
 #	Otherwise, we're seeing the left or right side
 	var is_moving = horizontal_speed > 0.1
 	
-	if abs(north_dot) > abs(east_dot):
-		if north_dot > 0:
-			sprite.play("backwalk" if is_moving else "backidle")
-		else:
-			sprite.play("frontwalk" if is_moving else "frontidle")
-	else:
-		if east_dot > 0:
-			sprite.play("rightwalk" if is_moving else "rightidle")
-		else:
-			sprite.play("leftwalk" if is_moving else "leftidle")
-	
-	if north_dot < -0.7:
+	if north_dot > 0.7:
 		if east_dot < -0.4:
-			animationdirection = "northeast"
-		elif east_dot > 0.4:
 			animationdirection = "northwest"
+		elif east_dot > 0.4:
+			animationdirection = "northeast"
 		else:
 			animationdirection = "north"
-	elif north_dot > 0.7:
+	elif north_dot < -0.7:
 		if east_dot < -0.4:
-			animationdirection = "southeast"
-		elif east_dot > 0.4:
 			animationdirection = "southwest"
+		elif east_dot > 0.4:
+			animationdirection = "southeast"
 		else:
 			animationdirection = "south"
 	elif east_dot < 0:
-		animationdirection = "east"
-	else:
 		animationdirection = "west"
-	print(animationdirection)
+	else:
+		animationdirection = "east"
+
+	# Now that our SpriteFrames animations are named to match animationdirection
+	# exactly (e.g. "northeast" + "walk" = "northeastwalk"), we can build the
+	# animation name directly instead of a separate 4-direction if/elif block.
+	sprite.play(animationdirection + ("walk" if is_moving else "idle"))
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
