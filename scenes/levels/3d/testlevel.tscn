@@ -61,8 +61,10 @@ data = PackedVector3Array(10.9586, 4, -14.1665, 11.269899, 4, -14.1739, 11.5335,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.329124, 4.080166, -5.2608643)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=104634332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.71643746, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=932370660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04537165, 0)
 visible = false
 shape = SubResource("WorldBoundaryShape3D_x14dw")
 debug_color = Color(1, 1, 1, 1)
