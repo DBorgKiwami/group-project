@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b2meku3djc0t8"]
+
+[ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_lhry7"]
+[ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
+[ext_resource type="Texture2D" uid="uid://c2gcpwsb73o10" path="res://sprites/textures/nature_03-7.png" id="3_qkvt7"]
+[ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
+albedo_texture = ExtResource("2_ucixo")
+uv1_scale = Vector3(20, 20, 20)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ajr2q"]
+material = SubResource("StandardMaterial3D_qkvt7")
+size = Vector2(125, 78.735)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ucixo"]
+data = PackedVector3Array(62.5, 0, 1, -62.5, 0, 1, 62.5, 0, -1, -62.5, 0, 1, -62.5, 0, -1, 62.5, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjg24"]
+transparency = 1
+albedo_texture = ExtResource("3_qkvt7")
+uv1_scale = Vector3(16.2, 1, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0h4al"]
+lightmap_size_hint = Vector2i(975, 252)
+material = SubResource("StandardMaterial3D_kjg24")
+size = Vector2(195.805, 16.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h4al"]
+albedo_texture = ExtResource("4_kjg24")
+uv1_scale = Vector3(5, 50, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_t7y2g"]
+material = SubResource("StandardMaterial3D_0h4al")
+size = Vector3(5, 50, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kjg24"]
+data = PackedVector3Array(-2.5, 25, 2.5, 2.5, 25, 2.5, -2.5, -25, 2.5, 2.5, 25, 2.5, 2.5, -25, 2.5, -2.5, -25, 2.5, 2.5, 25, -2.5, -2.5, 25, -2.5, 2.5, -25, -2.5, -2.5, 25, -2.5, -2.5, -25, -2.5, 2.5, -25, -2.5, 2.5, 25, 2.5, 2.5, 25, -2.5, 2.5, -25, 2.5, 2.5, 25, -2.5, 2.5, -25, -2.5, 2.5, -25, 2.5, -2.5, 25, -2.5, -2.5, 25, 2.5, -2.5, -25, -2.5, -2.5, 25, 2.5, -2.5, -25, 2.5, -2.5, -25, -2.5, 2.5, 25, 2.5, -2.5, 25, 2.5, 2.5, 25, -2.5, -2.5, 25, 2.5, -2.5, 25, -2.5, 2.5, 25, -2.5, -2.5, -25, 2.5, 2.5, -25, 2.5, -2.5, -25, -2.5, 2.5, -25, 2.5, 2.5, -25, -2.5, -2.5, -25, -2.5)
+
+[node name="Node3D" type="Node3D" unique_id=761353570]
+
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 instance=ExtResource("1_lhry7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
+mesh = SubResource("PlaneMesh_ajr2q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=43083451]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1229706722]
+shape = SubResource("ConcavePolygonShape3D_ucixo")
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=153819397]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 7.435629, -6.1947556)
+mesh = SubResource("PlaneMesh_0h4al")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1224919586]
+transform = Transform3D(0.6686102, -0.25275314, -0.6993398, -0.21069042, -0.9663136, 0.14780943, -0.71314085, 0.0485173, -0.6993398, 6.6747494, 15.620567, 0)
+light_color = Color(1, 0.9490196, 0.57254905, 1)
+light_energy = 1.948
+light_indirect_energy = 0.894
+light_angular_distance = 1.0
+shadow_enabled = true
+shadow_opacity = 0.7
+
+[node name="Left Bound" type="MeshInstance3D" parent="." unique_id=1264888207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.361248, 22.952517, 0)
+mesh = SubResource("BoxMesh_t7y2g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left Bound" unique_id=1770244979]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left Bound/StaticBody3D" unique_id=1636903147]
+shape = SubResource("ConcavePolygonShape3D_kjg24")
