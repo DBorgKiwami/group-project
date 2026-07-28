@@ -186,17 +186,17 @@ func _process(delta: float) -> void:
 #	Otherwise, we're seeing the left or right side
 	var is_moving = horizontal_speed > 0.1
 	
-	if north_dot > 0.7:
-		if east_dot < -0.4:
+	if north_dot > 0.6:
+		if east_dot < -0.5:
 			animationdirection = "northwest"
-		elif east_dot > 0.4:
+		elif east_dot > 0.5:
 			animationdirection = "northeast"
 		else:
 			animationdirection = "north"
-	elif north_dot < -0.7:
-		if east_dot < -0.4:
+	elif north_dot < -0.6:
+		if east_dot < -0.5:
 			animationdirection = "southwest"
-		elif east_dot > 0.4:
+		elif east_dot > 0.5:
 			animationdirection = "southeast"
 		else:
 			animationdirection = "south"
@@ -204,7 +204,9 @@ func _process(delta: float) -> void:
 		animationdirection = "west"
 	else:
 		animationdirection = "east"
-
+	
+	print(animationdirection)
+	
 	# Now that our SpriteFrames animations are named to match animationdirection
 	# exactly (e.g. "northeast" + "walk" = "northeastwalk"), we can build the
 	# animation name directly instead of a separate 4-direction if/elif block.
