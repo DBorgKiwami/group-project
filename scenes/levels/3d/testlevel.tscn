@@ -9,10 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="7_2kmou"]
 [ext_resource type="PackedScene" uid="uid://dvun6k1kniji0" path="res://Tutorial Level.glb" id="8_mwwa0"]
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="9_pcw7c"]
+[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://dirt.tres" id="9_rbpkk"]
 [ext_resource type="PackedScene" uid="uid://b6xb1yaetxrjo" path="res://models/blocky_rocks.glb" id="10_b0cuh"]
 [ext_resource type="Texture2D" uid="uid://sgrlxpt3odvu" path="res://models/blocky_rocks_2.png" id="11_vrbr3"]
 [ext_resource type="PackedScene" uid="uid://bdq42e6por7yk" path="res://models/shrubbery_bush.glb" id="12_vrbr3"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="13_nxbsq"]
+[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="15_hlpmq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b81ow"]
 
@@ -356,11 +358,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.43997192, -2.4402418, -1.68
 visible = false
 
 [node name="Cylinder_001" parent="Tutorial Level" index="2" unique_id=1466798251]
-transform = Transform3D(23.421793, 0, 0, 0, 0.9578914, 0, 0, 0, 14.672149, 15.119867, -0.2590506, -4.1692657)
+transform = Transform3D(23.421793, 0, 0, 0, 0.9578914, 0, 0, 0, 14.672149, 11.784189, -0.31603718, -3.3719087)
+material_override = ExtResource("9_rbpkk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/Cylinder_001" index="0" unique_id=1342376645]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/Cylinder_001/StaticBody3D" unique_id=1495242982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.004822552, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_t7xc8")
 
 [node name="lilipad" parent="Tutorial Level" index="3" unique_id=338152724]
@@ -417,7 +421,7 @@ shape = SubResource("ConcavePolygonShape3D_mwwa0")
 shape = SubResource("ConcavePolygonShape3D_rbpkk")
 
 [node name="ground_level3" parent="Tutorial Level" index="11" unique_id=1168908952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.110338, 0.41757864, -0.26162612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.110338, 0.31014866, -0.26162612)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/ground_level3" index="0" unique_id=2027565034]
 
@@ -746,6 +750,9 @@ transform = Transform3D(0.0006816772, 0.0001860127, -0.00070761266, -0.000217014
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1469614500]
 environment = SubResource("Environment_tkhc4")
+
+[node name="Sketchfab_Scene" parent="." unique_id=669901289 instance=ExtResource("15_hlpmq")]
+transform = Transform3D(45.100296, 0, -21.586185, 0, 50, 0, 21.586185, 0, 45.100296, -177.41702, -78.81287, 97.668465)
 
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
