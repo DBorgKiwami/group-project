@@ -176,6 +176,9 @@ radius = 0.5168748
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
 radius = 0.679429
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1haum"]
+size = Vector3(2, 1.716, 0)
+
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -253,13 +256,23 @@ player_reference = NodePath("../..")
 script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=936171539]
+[node name="Interaction Area" type="Area3D" parent="." unique_id=936171539]
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Area" unique_id=348662155]
 shape = SubResource("SphereShape3D_eym7y")
+
+[node name="Semi-Solid Clip Area" type="Area3D" parent="." unique_id=541358067]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi-Solid Clip Area" unique_id=1875849731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15751648, -0.011962891)
+shape = SubResource("BoxShape3D_1haum")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]
+[connection signal="body_entered" from="Semi-Solid Clip Area" to="." method="_on_semi_solid_clip_area_body_entered"]
+[connection signal="body_exited" from="Semi-Solid Clip Area" to="." method="_on_semi_solid_clip_area_body_exited"]

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_lhry7"]
 [ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
 [ext_resource type="Texture2D" uid="uid://c2gcpwsb73o10" path="res://sprites/textures/nature_03-7.png" id="3_qkvt7"]
+[ext_resource type="Texture2D" uid="uid://ud03jkkrl6jm" path="res://sprites/textures/orangetexture_08.png" id="4_cjfr5"]
 [ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
 [ext_resource type="Texture2D" uid="uid://d4dlc8q755gfr" path="res://sprites/textures/rocks 1.png" id="5_0h4al"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
@@ -29,6 +30,18 @@ texture_filter = 0
 lightmap_size_hint = Vector2i(975, 252)
 material = SubResource("StandardMaterial3D_kjg24")
 size = Vector2(195.805, 16.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pkib"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.7176471)
+albedo_texture = ExtResource("4_cjfr5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1tfyo"]
+material = SubResource("StandardMaterial3D_5pkib")
+size = Vector3(2, 0.155, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cjfr5"]
+points = PackedVector3Array(-1, -0.0775, -0.5, -1, 0.0775, -0.5, 1, -0.0775, -0.5, -1, -0.0775, 0.5, -1, 0.0775, 0.5, 1, 0.0775, -0.5, 1, -0.0775, 0.5, 1, 0.0775, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h4al"]
 albedo_texture = ExtResource("4_kjg24")
@@ -78,6 +91,17 @@ light_angular_distance = 1.0
 shadow_enabled = true
 shadow_opacity = 0.7
 
+[node name="Semi Solid" type="MeshInstance3D" parent="." unique_id=591614145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.974506, 1.7072515, 0)
+mesh = SubResource("BoxMesh_1tfyo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Semi Solid" unique_id=1405731845]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi Solid/StaticBody3D" unique_id=1023194109]
+shape = SubResource("ConvexPolygonShape3D_cjfr5")
+
 [node name="Left Bound" type="MeshInstance3D" parent="." unique_id=1264888207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.361248, 22.952517, 0)
 mesh = SubResource("BoxMesh_t7y2g")
@@ -88,7 +112,7 @@ mesh = SubResource("BoxMesh_t7y2g")
 shape = SubResource("ConcavePolygonShape3D_kjg24")
 
 [node name="Rock" type="MeshInstance3D" parent="." unique_id=1881676168]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5196753, 0.3661623, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.447926, 0.3661623, 0)
 mesh = SubResource("BoxMesh_cjfr5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Rock" unique_id=561801996]
@@ -97,10 +121,10 @@ mesh = SubResource("BoxMesh_cjfr5")
 shape = SubResource("BoxShape3D_5pkib")
 
 [node name="2Dtestenemy" parent="." unique_id=650050351 instance=ExtResource("6_t7y2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0660338, 0.727752, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.994286, 0.727752, 0)
 
 [node name="Rock2" type="MeshInstance3D" parent="." unique_id=1794105754]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1704097, 0.3661623, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75784, 0.3661623, 0)
 mesh = SubResource("BoxMesh_cjfr5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Rock2" unique_id=1220811381]

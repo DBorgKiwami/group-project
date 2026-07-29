@@ -26,6 +26,7 @@ var block_timer = 0.0
 var block_cooldown = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+var clipping = false
 
 func _ready() -> void:
 	health = max_health
@@ -80,4 +81,15 @@ func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 		area.emit_signal("on_hit",damage)
 		Hitstopmanager.hit_stop(0.05)
 		velocity.y = maxf(JUMP_VELOCITY, velocity.y + JUMP_VELOCITY)
+	pass # Replace with function body.
+
+
+func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
+	print("Hello")
+	clipping = true
+	pass # Replace with function body.
+
+
+func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
+	clipping = false
 	pass # Replace with function body.

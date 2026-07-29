@@ -15,6 +15,12 @@ func update(_delta: float):
 		player_reference.player_camera.global_position.y = player_reference.position.y + player_reference.camera_y_offset
 
 func physicsUpdate(delta: float):
+	if player_reference.velocity.y > 0 or Input.is_action_pressed("ui_down") or player_reference.clipping:
+		player_reference.set_collision_mask_value(7, false)
+	else:
+		player_reference.set_collision_mask_value(7, true)
+	#print(player_reference.velocity.y)
+	
 	#Reduce the jump buffer if its still running
 	if player_reference.jump_buffer > 0:
 		player_reference.jump_buffer -= delta
