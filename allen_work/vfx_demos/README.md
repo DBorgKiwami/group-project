@@ -6,7 +6,6 @@ Included demos:
 
 - frog slash arc
 - tongue snap
-- water splash
 - combat warning marker
 - enemy damage feedback / damage numbers
 
