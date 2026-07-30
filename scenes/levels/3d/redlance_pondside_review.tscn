@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
+
+[sub_resource type="Environment" id="Environment_preview"]
+background_mode = 1
+background_color = Color(0.42, 0.64, 0.88, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.62, 0.72, 0.78, 1)
+ambient_light_energy = 0.55
+
+[node name="RedlancePondsideReview" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_preview")
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.95, 0.45, -0.2)
+light_color = Color(1, 0.88, 0.68, 1)
+light_energy = 1.55
+shadow_enabled = true
+
+[node name="SoftBlueFillLight" type="OmniLight3D" parent="."]
+position = Vector3(-4.0, 4.5, 5.5)
+light_color = Color(0.42, 0.65, 0.9, 1)
+light_energy = 0.55
+omni_range = 18.0
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+position = Vector3(-8.4, 3.3, -7.2)
+fov = 58.0
+current = true
+
+[node name="LevelBase" parent="." instance=ExtResource("2_level")]
+
+[node name="3Dplatformingcharacter" parent="." instance=ExtResource("3_player")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5.8, 0.34, -2.4)
