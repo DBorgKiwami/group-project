@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cd7lqp8dcgwo0"]
+
+[ext_resource type="Script" uid="uid://da4xxug3lbbri" path="res://scripts/slash_arc_demo.gd" id="1_demo"]
+
+[node name="SlashArcDemo" type="Node2D" unique_id=1280271766]
+script = ExtResource("1_demo")
