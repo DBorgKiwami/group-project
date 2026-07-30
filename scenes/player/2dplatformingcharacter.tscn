@@ -189,6 +189,7 @@ player_hitbox = NodePath("PlayerHitbox")
 player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
+max_health = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0152282715, 0)
