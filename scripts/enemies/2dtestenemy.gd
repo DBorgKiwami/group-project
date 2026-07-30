@@ -8,10 +8,15 @@ extends CharacterBody3D
 @export var drop : PackedScene
 @export var dropamount : int = 3
 
+var dead = false
+
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
 
 func die():
+	if dead:
+		return
+	dead = true
 	animationControler.play("die")
 	await animationControler.animation_finished
 	if drop:
