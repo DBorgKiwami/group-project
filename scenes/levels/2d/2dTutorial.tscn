@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
 [ext_resource type="Texture2D" uid="uid://d4dlc8q755gfr" path="res://sprites/textures/rocks 1.png" id="5_0h4al"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
+[ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_texture = ExtResource("2_ucixo")
@@ -80,6 +81,9 @@ points = PackedVector3Array(9.005, 0.5, 0.5, 9.005, 0.5, -0.5, -9.005, 0.5, 0.5,
 [sub_resource type="BoxMesh" id="BoxMesh_pphfe"]
 material = SubResource("StandardMaterial3D_cjfr5")
 size = Vector3(8.355, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5pkib"]
+points = PackedVector3Array(4.1766825, 0.5, 0.5, 4.1766825, 0.5, -0.5, -4.1775, 0.5, 0.5, 4.1766825, -0.5, 0.5, 4.1766825, -0.5, -0.5, -4.1775, 0.5, -0.5, -4.1775, -0.5, 0.5, -4.1775, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
@@ -160,6 +164,9 @@ shape = SubResource("ConcavePolygonShape3D_kjg24")
 [node name="2Dtestenemy2" parent="." unique_id=981890454 instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
 
+[node name="AnimatedSprite3D" parent="2Dtestenemy2" index="1" unique_id=351497963]
+flip_h = true
+
 [node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
 
@@ -169,8 +176,17 @@ root_node = NodePath("../../2Dtestenemy2")
 [node name="2Dtestenemy3" parent="." unique_id=1152322179 instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
 
+[node name="AnimatedSprite3D" parent="2Dtestenemy3" index="1" unique_id=351497963]
+flip_h = true
+
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
+
+[node name="SceneTransition2D" parent="." unique_id=1962062075 instance=ExtResource("8_5pkib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
+
+[node name="CollisionShape3D" parent="SceneTransition2D" index="0" unique_id=1664706398]
+debug_color = Color(0.9647059, 0.1882353, 0, 1)
 
 [node name="Rock3" type="MeshInstance3D" parent="." unique_id=1631685465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.097516, 0.49999988, 0)
@@ -185,5 +201,11 @@ shape = SubResource("ConvexPolygonShape3D_1tfyo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.905884, 1.4999999, 0)
 mesh = SubResource("BoxMesh_pphfe")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock4" unique_id=963307392]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock4/StaticBody3D" unique_id=894202818]
+shape = SubResource("ConvexPolygonShape3D_5pkib")
+
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
+[editable path="SceneTransition2D"]
