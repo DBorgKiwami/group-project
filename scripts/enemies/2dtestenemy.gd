@@ -1,15 +1,22 @@
 extends CharacterBody3D
 
+signal defeated
+
 @export var state_machine : State_Machine
 @export var hitbox : EnemyHitbox
 @export var hurtbox : Area3D
 @export var animationControler : AnimationPlayer
 @export var damage : int = 1
+var _is_defeated := false
 
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
 
 func die():
+	if _is_defeated:
+		return
+	_is_defeated = true
+	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
 	call_deferred("queue_free")

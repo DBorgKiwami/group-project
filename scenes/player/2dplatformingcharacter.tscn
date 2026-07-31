@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="2_a1x7n"]
 [ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="3_8yach"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
+[ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="5_jump"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.1855469, 1)
@@ -85,7 +86,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "sprite")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "sprite", "jump_sfx")]
 collision_layer = 0
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -94,6 +95,7 @@ hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
 player_hitbox = NodePath("PlayerHitbox")
 sprite = NodePath("AnimatedSprite3D")
+jump_sfx = NodePath("JumpSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344, 0)
@@ -104,6 +106,10 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_1haum")
 autoplay = "default"
 frame_progress = 0.8980016
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jump")
+volume_db = -6.0
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
 collision_layer = 0

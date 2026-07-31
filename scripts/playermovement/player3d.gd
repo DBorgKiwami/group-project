@@ -6,6 +6,9 @@ class_name Player3D
 @export var animationControler : AnimationPlayer
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
+@export var footstep_sfx : AudioStreamPlayer
+@export var jump_sfx : AudioStreamPlayer
+@export var grapple_sfx : AudioStreamPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -16,6 +19,7 @@ class_name Player3D
 @export var grapple_time = 0.3
 @export var bob_amplitude = 0.08
 @export var bob_speed = 8.0
+@export var footstep_pitch_variation: float = 0.04
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -25,6 +29,9 @@ var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
+var was_walking = false
+var next_footstep_phase = PI
+var footstep_high_pitch = false
 
 
 func bounce(bounce_height):
@@ -58,6 +65,8 @@ func grapple():
 		#sprite.flip_h = false
 	#Tweens are for when animations are too static. They're good for stuff like this, where the grapple point at the end is never guaranteed
 	grappling = true;
+	if grapple_sfx:
+		grapple_sfx.play()
 	grappleTween = get_tree().create_tween()
 	grappleTween.tween_property(self, "position", areaPosition, grapple_time).set_trans(Tween.TRANS_SINE)
 	grappleTween.tween_callback(endGrapple)
@@ -106,6 +115,8 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
+		if jump_sfx:
+			jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -144,15 +155,37 @@ func _physics_process(delta: float) -> void:
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
 
+func _play_footstep() -> void:
+	if not footstep_sfx:
+		return
+
+	var pitch_offset: float = footstep_pitch_variation if footstep_high_pitch else -footstep_pitch_variation
+	footstep_sfx.pitch_scale = 1.0 + pitch_offset
+	footstep_high_pitch = !footstep_high_pitch
+	footstep_sfx.play()
+
+
 func _process(delta: float) -> void:
 	# --- Sprite bob ---
 	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
-	if horizontal_speed > 0.1 and is_on_floor() and !grappling:
+	var is_walking = horizontal_speed > 0.1 and is_on_floor() and !grappling and !inDialogue
+
+	if is_walking:
+		if not was_walking:
+			_play_footstep()
+			next_footstep_phase = PI
+
 		bob_time += delta * bob_speed
 		sprite.position.y = sprite_base_y + sin(bob_time) * bob_amplitude
+		while bob_time >= next_footstep_phase:
+			_play_footstep()
+			next_footstep_phase += PI
 	else:
 		bob_time = 0.0
+		next_footstep_phase = PI
 		sprite.position.y = move_toward(sprite.position.y, sprite_base_y, delta * 2.0)
+
+	was_walking = is_walking
 
 	#Sprite Rotation Code
 	#Ok so this is a lot of math. Im going to try and explain it best I can

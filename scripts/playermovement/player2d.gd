@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var player_hitbox : Area3D
 
 @export var sprite : AnimatedSprite3D
+@export var jump_sfx : AudioStreamPlayer
+@export var punch_sfx : AudioStreamPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -28,6 +30,8 @@ func _input(event: InputEvent) -> void:
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		animationController.play("attack")
+		if punch_sfx:
+			punch_sfx.play()
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
 	pass
@@ -60,6 +64,8 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
+		if jump_sfx:
+			jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
