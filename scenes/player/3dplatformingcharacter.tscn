@@ -287,7 +287,7 @@ libraries/ = SubResource("AnimationLibrary_g608u")
 top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1344329634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.572149, 5)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
