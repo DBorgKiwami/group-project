@@ -7,6 +7,8 @@ signal defeated
 @export var hurtbox : Area3D
 @export var animationControler : AnimationPlayer
 @export var damage : int = 1
+@export var drop : PackedScene
+@export var dropamount : int = 3
 var _is_defeated := false
 
 func _ready():
@@ -19,6 +21,12 @@ func die():
 	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
+	if drop:
+		for i in dropamount:
+			var newInstance = drop.instantiate()
+			newInstance.position = position
+			newInstance.flyout = true
+			get_tree().root.add_child(newInstance)
 	call_deferred("queue_free")
 
 func _physics_process(delta: float) -> void:

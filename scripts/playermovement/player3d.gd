@@ -29,21 +29,24 @@ var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
+var animationdirection = "south"
 var was_walking = false
 var next_footstep_phase = PI
 var footstep_high_pitch = false
 
-
 func bounce(bounce_height):
 	velocity.y = bounce_height
+	set_collision_mask_value(7, false)
 	pass
 
 func _ready():
+	print(global_position)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#F9 will release the mouse for editing purposes
 	SignalBus.display_dialogue.connect(_on_dialogue_display)
 	SignalBus.dialogue_done.connect(_on_dialogue_done)
 	if Scenecontroler._check_start_position():
+		print("WAHWHAWHWAHAWHWAHAWH")
 		global_position = Scenecontroler.start_position_value
 	sprite_base_y = sprite.position.y
 
@@ -98,6 +101,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if velocity.y <= 0:
+			set_collision_mask_value(7, true)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
 	
@@ -115,6 +120,7 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and can_jump:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
+		set_collision_mask_value(7, false)
 		if jump_sfx:
 			jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
@@ -142,9 +148,11 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = true;
 		#elif velocity.x > 0:
 			#sprite.flip_h = false;
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
-	
+
+
+
 #	Check what we last collided with
 	var last_collision = get_last_slide_collision()
 	if last_collision:
@@ -164,12 +172,10 @@ func _play_footstep() -> void:
 	footstep_high_pitch = !footstep_high_pitch
 	footstep_sfx.play()
 
-
 func _process(delta: float) -> void:
 	# --- Sprite bob ---
 	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
 	var is_walking = horizontal_speed > 0.1 and is_on_floor() and !grappling and !inDialogue
-
 	if is_walking:
 		if not was_walking:
 			_play_footstep()
@@ -211,18 +217,31 @@ func _process(delta: float) -> void:
 #	Otherwise, we're seeing the left or right side
 	var is_moving = horizontal_speed > 0.1
 	
-	if abs(north_dot) > abs(east_dot):
-		if north_dot > 0:
-			sprite.play("backwalk" if is_moving else "backidle")
+	if north_dot > 0.6:
+		if east_dot < -0.5:
+			animationdirection = "northwest"
+		elif east_dot > 0.5:
+			animationdirection = "northeast"
 		else:
-			sprite.play("frontwalk" if is_moving else "frontidle")
+			animationdirection = "north"
+	elif north_dot < -0.6:
+		if east_dot < -0.5:
+			animationdirection = "southwest"
+		elif east_dot > 0.5:
+			animationdirection = "southeast"
+		else:
+			animationdirection = "south"
+	elif east_dot < 0:
+		animationdirection = "west"
 	else:
-		if east_dot > 0:
-			sprite.play("rightwalk" if is_moving else "rightidle")
-		else:
-			sprite.play("leftwalk" if is_moving else "leftidle")
-	
-	print(north_dot)
+		animationdirection = "east"
+
+	print(animationdirection)
+
+	# Now that our SpriteFrames animations are named to match animationdirection
+	# exactly (e.g. "northeast" + "walk" = "northeastwalk"), we can build the
+	# animation name directly instead of a separate 4-direction if/elif block.
+	sprite.play(animationdirection + ("walk" if is_moving else "idle"))
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

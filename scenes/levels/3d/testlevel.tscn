@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="1_wopdt"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_55jh8"]
 [ext_resource type="PackedScene" uid="uid://ci0hbngdv8pin" path="res://scenes/elements/dialogue_area.tscn" id="4_iy7w8"]
-[ext_resource type="PackedScene" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
-[ext_resource type="PackedScene" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
-[ext_resource type="AudioStream" uid="uid://bk0turbfxdot7" path="res://audio/music/mainbgm.ogg" id="7_2kmou"]
+[ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="5_oeqc7"]
+[ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="6_ybvn3"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="7_2kmou"]
+[ext_resource type="AudioStream" uid="uid://bk0turbfxdot7" path="res://audio/music/mainbgm.ogg" id="8_main"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x14dw"]
 
@@ -32,7 +33,7 @@ debug_color = Color(1, 1, 1, 1)
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1021424080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4181248, 0.4010216, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.532358, 0.4010216, 0)
 mesh = SubResource("BoxMesh_b81ow")
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_55jh8")]
@@ -53,8 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1580389, -2.1031067)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40124512, -0.30664063, 0.87646484)
 shape = SubResource("BoxShape3D_2kmou")
 
-[node name="MainMusic" type="AudioStreamPlayer" parent="." unique_id=571964694]
-stream = ExtResource("7_2kmou")
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("7_2kmou")]
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_main")
 volume_db = -12.0
 autoplay = true
 
