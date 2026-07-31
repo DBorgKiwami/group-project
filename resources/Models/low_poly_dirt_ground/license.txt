@@ -1,0 +1,8 @@
+Model Information:
+* title:	Low poly dirt ground
+* source:	https://sketchfab.com/3d-models/low-poly-dirt-ground-88bd58f71a4f43688b61c42bdd8934c3
+* author:	Exploring Europe and Beyond (https://sketchfab.com/ExploringEuropeAndBeyond)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

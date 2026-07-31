@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
-size = Vector3(1.1184082, 1.1855469, 1)
+size = Vector3(1.1184082, 1.7390137, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
@@ -188,7 +188,7 @@ sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 0.0052490234, 0)
 shape = SubResource("BoxShape3D_vj0l2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
