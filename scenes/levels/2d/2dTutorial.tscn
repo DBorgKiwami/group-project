@@ -116,7 +116,7 @@ mesh = SubResource("PlaneMesh_ajr2q")
 shape = SubResource("ConcavePolygonShape3D_ucixo")
 
 [node name="Background" type="MeshInstance3D" parent="." unique_id=153819397]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 7.435629, -6.1947556)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.08862686, 7.82973, -6.2809467)
 mesh = SubResource("PlaneMesh_0h4al")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1224919586]
