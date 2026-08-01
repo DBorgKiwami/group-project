@@ -18,7 +18,7 @@ transform = Transform3D(1.098178, 0, 0, 0, 1, 0, 0, 0, 1.2742442, -22.633244, -2
 size = Vector3(56.100716, 4.38208, 25.430527)
 material = ExtResource("2_s1yo8")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=713679907]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=713679907 groups=["footstep_water"]]
 transform = Transform3D(13.574246, 0, 0, 0, 1.1100502, 0, 0, 0, 10.605674, -8.424308, -1.0760977, 2.915596)
 operation = 2
 polygon = PackedVector2Array(0, 0, 0, 1, 0.9289727, 0.98801446, 1, 0)
@@ -27,7 +27,7 @@ spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("3_5uatd")
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2021579821]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2021579821 groups=["footstep_water"]]
 transform = Transform3D(-4.173922, 0, 2.5121934, 0, 1.1338267, 0, -3.293646, 0, -3.1836152, -0.74683475, -1.0854912, -3.4167547)
 operation = 2
 mode = 1
@@ -35,7 +35,7 @@ spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("3_5uatd")
 
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1024982392]
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1024982392 groups=["footstep_water"]]
 transform = Transform3D(7.242892, 0, -2.6080565, 0, 1.1166376, 0, 3.325387, 0, 5.6805024, -18.512274, -1.0836351, -2.2481232)
 operation = 2
 mode = 1
@@ -43,28 +43,28 @@ spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("3_5uatd")
 
-[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=986755975]
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=986755975 groups=["footstep_lotus"]]
 transform = Transform3D(3.345809, 0, 0, 0, 0.099668086, 0, 0, 0, 3.8111522, -1.4358289, -0.072609186, -2.754877)
 mode = 1
 spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("4_5uatd")
 
-[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1532206448]
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1532206448 groups=["footstep_lotus"]]
 transform = Transform3D(2.789216, 0, 0, 0, 0.099668086, 0, 0, 0, 2.7745185, -9.773765, -0.072609186, -2.95256)
 mode = 1
 spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("4_5uatd")
 
-[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2087828535]
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2087828535 groups=["footstep_lotus"]]
 transform = Transform3D(-1.0416927, 0, 3.9798722, 0, 0.09966808, 0, -2.765222, 0, -1.4992659, -19.348314, -0.072609186, -3.231815)
 mode = 1
 spin_degrees = 360.0
 spin_sides = 20
 material = ExtResource("4_5uatd")
 
-[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=46809692]
+[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=46809692 groups=["footstep_lotus"]]
 transform = Transform3D(3.3440452, 0, 1.4242768, 0, 0.09966808, 0, -1.834606, 0, 2.596114, -2.86698, -0.072609186, 7.363078)
 mode = 1
 spin_degrees = 360.0

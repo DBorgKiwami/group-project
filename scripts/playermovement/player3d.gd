@@ -7,6 +7,8 @@ class_name Player3D
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
 @export var footstep_sfx : AudioStreamPlayer
+@export var water_footstep_sfx : AudioStreamPlayer
+@export var lotus_footstep_sfx : AudioStreamPlayer
 @export var jump_sfx : AudioStreamPlayer
 @export var grapple_sfx : AudioStreamPlayer
 
@@ -163,14 +165,31 @@ func _physics_process(delta: float) -> void:
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
 
+func _is_on_footstep_surface(group_name: StringName) -> bool:
+	for surface in get_tree().get_nodes_in_group(group_name):
+		if surface is Node3D:
+			var local_position := (surface as Node3D).to_local(global_position)
+			if Vector2(local_position.x, local_position.z).length_squared() <= 1.0:
+				return true
+	return false
+
+func _get_footstep_sfx() -> AudioStreamPlayer:
+	# Lotus leaves sit inside the water regions, so check them first.
+	if lotus_footstep_sfx and _is_on_footstep_surface(&"footstep_lotus"):
+		return lotus_footstep_sfx
+	if water_footstep_sfx and _is_on_footstep_surface(&"footstep_water"):
+		return water_footstep_sfx
+	return footstep_sfx
+
 func _play_footstep() -> void:
-	if not footstep_sfx:
+	var active_footstep_sfx := _get_footstep_sfx()
+	if not active_footstep_sfx:
 		return
 
 	var pitch_offset: float = footstep_pitch_variation if footstep_high_pitch else -footstep_pitch_variation
-	footstep_sfx.pitch_scale = 1.0 + pitch_offset
+	active_footstep_sfx.pitch_scale = 1.0 + pitch_offset
 	footstep_high_pitch = !footstep_high_pitch
-	footstep_sfx.play()
+	active_footstep_sfx.play()
 
 func _process(delta: float) -> void:
 	# --- Sprite bob ---
