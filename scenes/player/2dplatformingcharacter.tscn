@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="8_jump"]
+[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="9_land"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.1855469, 1)
@@ -177,7 +178,7 @@ radius = 0.5168748
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
 radius = 0.679429
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx")]
 script = ExtResource("1_vj0l2")
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
@@ -188,6 +189,7 @@ player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
 jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.0056152344, 0)
@@ -202,6 +204,10 @@ autoplay = "default"
 
 [node name="JumpSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jump")
+volume_db = -6.0
+
+[node name="LandingSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_land")
 volume_db = -6.0
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]

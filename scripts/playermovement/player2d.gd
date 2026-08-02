@@ -11,6 +11,7 @@ class_name Player2D
 @export var state_machine : State_Machine
 @export var jump_sfx : AudioStreamPlayer
 @export var punch_sfx : AudioStreamPlayer
+@export var landing_sfx : AudioStreamPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -28,6 +29,8 @@ var block_timer = 0.0
 var block_cooldown = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+var has_been_airborne = false
+var physics_started = false
 
 func _ready() -> void:
 	health = max_health
@@ -58,6 +61,18 @@ func _physics_process(delta: float) -> void:
 		if block_timer <= 0:
 			blocking = false
 	move_and_slide()
+
+	var on_floor_now := is_on_floor()
+	if physics_started:
+		if not on_floor_now:
+			has_been_airborne = true
+		elif has_been_airborne:
+			if landing_sfx:
+				landing_sfx.play()
+			has_been_airborne = false
+	else:
+		physics_started = true
+		has_been_airborne = not on_floor_now
 
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered front")

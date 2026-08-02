@@ -252,7 +252,7 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "footstep_sfx", "jump_sfx", "grapple_sfx") groups=["Player"]]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "footstep_sfx", "jump_sfx", "grapple_sfx", "landing_sfx") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
@@ -264,6 +264,7 @@ camera_pivot = NodePath("Node3D")
 footstep_sfx = NodePath("FootstepSfx")
 jump_sfx = NodePath("JumpSfx")
 grapple_sfx = NodePath("GrappleSfx")
+landing_sfx = NodePath("LandingSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
@@ -285,6 +286,10 @@ max_polyphony = 2
 
 [node name="JumpSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_jump")
+volume_db = -6.0
+
+[node name="LandingSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_step")
 volume_db = -6.0
 
 [node name="GrappleSfx" type="AudioStreamPlayer" parent="."]

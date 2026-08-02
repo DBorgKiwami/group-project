@@ -9,6 +9,7 @@ class_name Player3D
 @export var footstep_sfx : AudioStreamPlayer
 @export var jump_sfx : AudioStreamPlayer
 @export var grapple_sfx : AudioStreamPlayer
+@export var landing_sfx : AudioStreamPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -33,6 +34,9 @@ var animationdirection = "south"
 var was_walking = false
 var next_footstep_phase = PI
 var footstep_high_pitch = false
+var has_been_airborne = false
+var physics_started = false
+var just_landed = false
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -151,6 +155,20 @@ func _physics_process(delta: float) -> void:
 	#print(velocity)
 	move_and_slide()
 
+	just_landed = false
+	var on_floor_now := is_on_floor()
+	if physics_started:
+		if not on_floor_now:
+			has_been_airborne = true
+		elif has_been_airborne:
+			if landing_sfx:
+				landing_sfx.play()
+			has_been_airborne = false
+			just_landed = true
+	else:
+		physics_started = true
+		has_been_airborne = not on_floor_now
+
 
 
 #	Check what we last collided with
@@ -178,7 +196,8 @@ func _process(delta: float) -> void:
 	var is_walking = horizontal_speed > 0.1 and is_on_floor() and !grappling and !inDialogue
 	if is_walking:
 		if not was_walking:
-			_play_footstep()
+			if not just_landed:
+				_play_footstep()
 			next_footstep_phase = PI
 
 		bob_time += delta * bob_speed
@@ -192,6 +211,7 @@ func _process(delta: float) -> void:
 		sprite.position.y = move_toward(sprite.position.y, sprite_base_y, delta * 2.0)
 
 	was_walking = is_walking
+	just_landed = false
 
 	#Sprite Rotation Code
 	#Ok so this is a lot of math. Im going to try and explain it best I can
