@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bg6xc8ykgyku8"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_u5d63"]
-[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://dirt.tres" id="2_s1yo8"]
-[ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://water.tres" id="3_5uatd"]
-[ext_resource type="Material" uid="uid://c20uslp7vniq7" path="res://lilypad.tres" id="4_5uatd"]
+[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://sprites/textures/dirt.tres" id="2_s1yo8"]
+[ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://sprites/textures/water.tres" id="3_5uatd"]
+[ext_resource type="Material" uid="uid://c20uslp7vniq7" path="res://sprites/textures/lilypad.tres" id="4_5uatd"]
 
 [node name="Tutorial" type="Node3D" unique_id=529679215]
 

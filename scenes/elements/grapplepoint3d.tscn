@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ym375o801vpr"]
 
 [ext_resource type="Script" uid="uid://cdoxo836tixc0" path="res://scripts/elements/grapplepoint_3d.gd" id="1_b5084"]
-[ext_resource type="Texture2D" uid="uid://b8iajbei6vlhs" path="res://icon.svg" id="2_xjyrf"]
+[ext_resource type="Texture2D" uid="uid://b8iajbei6vlhs" path="res://sprites/props/icon.svg" id="2_xjyrf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b5084"]
 
