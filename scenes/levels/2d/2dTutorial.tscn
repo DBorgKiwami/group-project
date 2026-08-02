@@ -4,13 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
 [ext_resource type="Texture2D" uid="uid://c2gcpwsb73o10" path="res://sprites/textures/nature_03-7.png" id="3_qkvt7"]
 [ext_resource type="Texture2D" uid="uid://ud03jkkrl6jm" path="res://sprites/textures/orangetexture_08.png" id="4_cjfr5"]
+[ext_resource type="Texture2D" uid="uid://dc3jvf23h6707" path="res://sprites/parallax/forest_long.png" id="4_dhk1w"]
 [ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
 [ext_resource type="Texture2D" uid="uid://d4dlc8q755gfr" path="res://sprites/textures/rocks 1.png" id="5_0h4al"]
+[ext_resource type="Script" uid="uid://cjymnlqewiocd" path="res://scripts/parallax/parallax forest.gd" id="5_mi8j5"]
+[ext_resource type="Texture2D" uid="uid://bmow2kh4hrmtv" path="res://sprites/parallax/forest_mountain.png" id="6_gd6s7"]
+[ext_resource type="Texture2D" uid="uid://c8tp4iu20xiul" path="res://sprites/parallax/forest_sky.png" id="6_mi8j5"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
+[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://scripts/parallax/parallax sky.gd" id="7_4sh6k"]
+[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://scripts/parallax/parallax mountain.gd" id="7_jl56t"]
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://signwood.tres" id="9_1tfyo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
+albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
 albedo_texture = ExtResource("2_ucixo")
 uv1_scale = Vector3(20, 20, 20)
 texture_filter = 0
@@ -32,6 +39,27 @@ texture_filter = 0
 lightmap_size_hint = Vector2i(975, 252)
 material = SubResource("StandardMaterial3D_kjg24")
 size = Vector2(195.805, 16.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4sh6k"]
+size = Vector2(6.33, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0utp"]
+transparency = 1
+albedo_texture = ExtResource("4_dhk1w")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_en8hi"]
+size = Vector2(3.167, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3ns5"]
+transparency = 1
+albedo_texture = ExtResource("6_gd6s7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mi8j5"]
+size = Vector2(3.17, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sh6k"]
+transparency = 1
+albedo_texture = ExtResource("6_mi8j5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pkib"]
 transparency = 1
@@ -117,11 +145,33 @@ shape = SubResource("ConcavePolygonShape3D_ucixo")
 
 [node name="Background" type="MeshInstance3D" parent="." unique_id=153819397]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.08862686, 7.82973, -6.2809467)
+visible = false
 mesh = SubResource("PlaneMesh_0h4al")
 
+[node name="forest_long" type="MeshInstance3D" parent="." unique_id=277048430 node_paths=PackedStringArray("camera")]
+transform = Transform3D(20, 0, 0, 0, -8.742278e-07, -20, 0, 20, -8.742278e-07, 0.08862686, 18.620949, -23.904451)
+mesh = SubResource("PlaneMesh_4sh6k")
+surface_material_override/0 = SubResource("StandardMaterial3D_b0utp")
+script = ExtResource("5_mi8j5")
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
+[node name="forest_mountain" type="MeshInstance3D" parent="." unique_id=365408104 node_paths=PackedStringArray("camera")]
+transform = Transform3D(50, 0, 0, 0, -2.1855694e-06, -50, 0, 50, -2.1855694e-06, 0, 5.8104525, -29.286781)
+mesh = SubResource("PlaneMesh_en8hi")
+surface_material_override/0 = SubResource("StandardMaterial3D_d3ns5")
+script = ExtResource("7_jl56t")
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
+[node name="forest_sky" type="MeshInstance3D" parent="." unique_id=1515643376 node_paths=PackedStringArray("camera")]
+transform = Transform3D(60, 0, 0, 0, -2.6226833e-06, -60, 0, 60, -2.6226833e-06, 0.08862686, 1.9377546, -44.592545)
+mesh = SubResource("PlaneMesh_mi8j5")
+surface_material_override/0 = SubResource("StandardMaterial3D_4sh6k")
+script = ExtResource("7_4sh6k")
+parallax_factor = 0.4
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1224919586]
-transform = Transform3D(0.6686102, -0.25275314, -0.6993398, -0.21069042, -0.9663136, 0.14780943, -0.71314085, 0.0485173, -0.6993398, 6.6747494, 15.620567, 0)
-light_color = Color(1, 0.9490196, 0.57254905, 1)
+transform = Transform3D(0.8996652, 0.4199438, -0.11937255, 0.00073336065, 0.27197212, 0.9623049, 0.43657997, -0.8658397, 0.24437585, -31.687632, 15.558855, 5.963291)
 light_energy = 1.948
 light_indirect_energy = 0.894
 light_angular_distance = 1.0
@@ -240,6 +290,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.24
 material_override = ExtResource("9_1tfyo")
 mesh = SubResource("PrismMesh_mi8j5")
 
+[editable path="2Dplatformingcharacter"]
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
 [editable path="SceneTransition2D"]
