@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://tmxhihw7wxd"]
 
-[ext_resource type="Texture2D" uid="uid://bkueij1l1aaw0" path="res://sprites/enemies/testenemy/crab_walk_0.png" id="1_qequp"]
 [ext_resource type="Script" uid="uid://chlpx1va6blf1" path="res://scripts/enemies/2dtestenemy.gd" id="1_v0lon"]
-[ext_resource type="Texture2D" uid="uid://biypjidhgb8rk" path="res://sprites/enemies/testenemy/crab_walk_1.png" id="2_1fdds"]
 [ext_resource type="PackedScene" uid="uid://bs7yiidud6emp" path="res://scenes/elements/coin_2d.tscn" id="2_dh00q"]
-[ext_resource type="Texture2D" uid="uid://bmww8cg3hgk0p" path="res://sprites/enemies/testenemy/crab_walk_2.png" id="3_v0lon"]
-[ext_resource type="Texture2D" uid="uid://7uhwbokejenw" path="res://sprites/enemies/testenemy/crab_walk_3.png" id="4_q6280"]
+[ext_resource type="Texture2D" uid="uid://c50fxi1ok06vi" path="res://sprites/enemies/enemy sprites/crawfish.png" id="3_q6280"]
 [ext_resource type="Script" uid="uid://dj8bls2ayt4u4" path="res://scripts/enemies/walkeractive.gd" id="5_1fdds"]
-[ext_resource type="Texture2D" uid="uid://rkv3ftu2cbxr" path="res://sprites/enemies/testenemy/crab_defeated.png" id="6_eexk2"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="6_q6280"]
 [ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="8_61bjk"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
@@ -19,25 +15,13 @@ radius = 0.620357
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qequp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_1fdds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_v0lon")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_q6280")
+"texture": ExtResource("3_q6280")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_eexk2")
-}],
+"frames": [],
 "loop": true,
 "name": &"die",
 "speed": 5.0
@@ -146,7 +130,10 @@ drop = ExtResource("2_dh00q")
 shape = SubResource("SphereShape3D_ofbrs")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=351497963]
+flip_h = true
+pixel_size = 0.03
 billboard = 1
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_61bjk")
 autoplay = "default"
 

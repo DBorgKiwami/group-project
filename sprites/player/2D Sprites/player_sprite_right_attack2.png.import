@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8f6g6k0tk1l"
-path.s3tc="res://.godot/imported/forest_short.png-150d41eb36b8eca59cc4892db0bed891.s3tc.ctex"
+uid="uid://glkaa1eymt3k"
+path.s3tc="res://.godot/imported/player_sprite_right_attack2.png-7767c257f8dde6702c5e37dc131697b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/parallax/forest_short.png"
-dest_files=["res://.godot/imported/forest_short.png-150d41eb36b8eca59cc4892db0bed891.s3tc.ctex"]
+source_file="res://sprites/player/2D Sprites/player_sprite_right_attack2.png"
+dest_files=["res://.godot/imported/player_sprite_right_attack2.png-7767c257f8dde6702c5e37dc131697b7.s3tc.ctex"]
 
 [params]
 

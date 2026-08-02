@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8f6g6k0tk1l"
-path.s3tc="res://.godot/imported/forest_short.png-150d41eb36b8eca59cc4892db0bed891.s3tc.ctex"
+uid="uid://c50fxi1ok06vi"
+path.s3tc="res://.godot/imported/crawfish.png-3aa5dcd85921c0454922ae5fc1f47e4b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/parallax/forest_short.png"
-dest_files=["res://.godot/imported/forest_short.png-150d41eb36b8eca59cc4892db0bed891.s3tc.ctex"]
+source_file="res://sprites/enemies/enemy sprites/crawfish.png"
+dest_files=["res://.godot/imported/crawfish.png-3aa5dcd85921c0454922ae5fc1f47e4b.s3tc.ctex"]
 
 [params]
 

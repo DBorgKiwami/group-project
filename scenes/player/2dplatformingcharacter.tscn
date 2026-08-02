@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dvivxdodklglf"]
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
-[ext_resource type="Texture2D" uid="uid://buco3emnrdqck" path="res://sprites/player/2D Sprites/player_sprite_right_attack.png" id="2_7a31i"]
+[ext_resource type="Texture2D" uid="uid://e3q3lwdpriae" path="res://sprites/player/2D Sprites/player_sprite_right_attack.png" id="2_7a31i"]
+[ext_resource type="Texture2D" uid="uid://glkaa1eymt3k" path="res://sprites/player/2D Sprites/player_sprite_right_attack2.png" id="2_cudoo"]
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://ck0iqxs4bebwt" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_1haum"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
@@ -12,11 +13,17 @@
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
-size = Vector3(1.1184082, 1.990448, 1)
+size = Vector3(1.1184082, 1.7427292, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cudoo"]
+load_path = "res://.godot/imported/player_sprite_right_attack.png-8271aae5a0a530b8dfc217d03decb50f.s3tc.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cudoo")
+}, {
 "duration": 1.0,
 "texture": ExtResource("2_7a31i")
 }],
@@ -26,7 +33,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7a31i")
+"texture": SubResource("CompressedTexture2D_cudoo")
 }],
 "loop": true,
 "name": &"attack_down",
@@ -34,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7a31i")
+"texture": SubResource("CompressedTexture2D_cudoo")
 }],
 "loop": true,
 "name": &"attack_up",
@@ -135,7 +142,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
 resource_name = "attack"
-length = 0.15
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,7 +170,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8yach"]
 resource_name = "attack_down"
-length = 0.15
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -191,7 +198,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_k8hk2"]
 resource_name = "attack_up"
-length = 0.15
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -248,7 +255,7 @@ JUMP_VELOCITY = 6.0
 max_health = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.18162537, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.05776596, 0)
 shape = SubResource("BoxShape3D_vj0l2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
@@ -298,8 +305,9 @@ shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1055626215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008008957, 2.0313027, 4.913394)
 top_level = true
+near = 0.422
 
 [node name="State_Machine" type="Node" parent="." unique_id=313428382 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8yach")
