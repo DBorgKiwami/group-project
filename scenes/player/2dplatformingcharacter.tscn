@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dvivxdodklglf"]
 
 [ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
+[ext_resource type="Texture2D" uid="uid://buco3emnrdqck" path="res://sprites/player/2D Sprites/player_sprite_right_attack.png" id="2_7a31i"]
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://ck0iqxs4bebwt" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_1haum"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
+[ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
+[ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
@@ -13,6 +16,30 @@ size = Vector3(1.1184082, 1.6576538, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7a31i")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7a31i")
+}],
+"loop": true,
+"name": &"attack_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7a31i")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_eym7y")
@@ -27,6 +54,31 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1haum")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1haum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cudoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1haum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fqeiy")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -47,19 +99,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/path = NodePath("Down Attack Hurtbox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Down Attack Hurtbox:monitoring")
+tracks/2/path = NodePath("Up Attack Hurtbox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -71,18 +123,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Up Attack Hurtbox:monitoring")
+tracks/3/path = NodePath("AnimatedSprite3D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [&"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
 resource_name = "attack"
+length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,18 +151,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/path = NodePath("AnimatedSprite3D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
+"times": PackedFloat32Array(0, 0.0001),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.61711806, 0.617118, 1), Color(1, 1, 1, 1)]
+"update": 1,
+"values": [&"attack", &"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_8yach"]
 resource_name = "attack_down"
+length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,18 +179,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/path = NodePath("AnimatedSprite3D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.9956201, 0.082416825, 0, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_k8hk2"]
 resource_name = "attack_up"
+length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,14 +207,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/path = NodePath("AnimatedSprite3D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.41388404, 0.002125454, 0.85341847, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
@@ -200,6 +255,7 @@ pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_1haum")
+animation = &"attack"
 autoplay = "default"
 
 [node name="Down Attack Hurtbox" type="Area3D" parent="." unique_id=788031771]
