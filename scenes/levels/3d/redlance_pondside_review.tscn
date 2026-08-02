@@ -70,18 +70,17 @@ omni_range = 18.0
 
 [node name="PreviewCamera" type="Camera3D" parent="." unique_id=1768166443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 3.3, -7.2)
-current = true
 fov = 58.0
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.8, 0.2746193, -2.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.7, -2.4)
 
 [node name="GameplayPlan" type="Node3D" parent="."]
 
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.28, -2.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.7, -2.4)
 
 [node name="Disc" type="MeshInstance3D" parent="GameplayPlan/PlayerSpawn"]
 mesh = SubResource("MarkerDiscMesh")
