@@ -6,6 +6,8 @@ class_name Player3D
 @export var animationControler : AnimationPlayer
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
+@export var jump_sfx : AudioStreamPlayer3D
+@export var landing_sfx : AudioStreamPlayer3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -26,6 +28,8 @@ var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
 var animationdirection = "south"
+var has_been_airborne = false
+var physics_started = false
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -112,6 +116,8 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
 		set_collision_mask_value(7, false)
+		if jump_sfx:
+			jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -139,6 +145,18 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = false;
 	#print(velocity)
 	move_and_slide()
+
+	var on_floor_now := is_on_floor()
+	if physics_started:
+		if not on_floor_now:
+			has_been_airborne = true
+		elif has_been_airborne:
+			if landing_sfx:
+				landing_sfx.play()
+			has_been_airborne = false
+	else:
+		physics_started = true
+		has_been_airborne = not on_floor_now
 	
 	
 	
