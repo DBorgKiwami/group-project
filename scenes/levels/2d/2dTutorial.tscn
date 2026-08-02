@@ -50,6 +50,12 @@ transparency = 1
 albedo_texture = ExtResource("4_d3ns5")
 texture_filter = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_567d7"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("4_d3ns5")
+texture_filter = 2
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_gd6s7"]
 size = Vector2(3.167, 2)
 
@@ -175,6 +181,11 @@ mesh = SubResource("PlaneMesh_0h4al")
 transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, -41.38665, 2.127244, -5.4010735)
 mesh = SubResource("PlaneMesh_567d7")
 surface_material_override/0 = SubResource("StandardMaterial3D_wjq58")
+
+[node name="rock2" type="MeshInstance3D" parent="." unique_id=1331045978]
+transform = Transform3D(-5, 4.371139e-07, -1.9106854e-14, 0, -2.1855695e-07, -5, -4.371139e-07, -5, 2.1855695e-07, 17.515823, 2.9570708, -5.4010735)
+mesh = SubResource("PlaneMesh_567d7")
+surface_material_override/0 = SubResource("StandardMaterial3D_567d7")
 
 [node name="forest_short" type="MeshInstance3D" parent="." unique_id=1352051716]
 transform = Transform3D(40, 0, 0, 0, -1.7484556e-06, -40, 0, 40, -1.7484556e-06, -10.465529, 27.772861, -17.562546)
