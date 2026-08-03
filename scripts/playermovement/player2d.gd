@@ -11,6 +11,7 @@ class_name Player2D
 @export var state_machine : State_Machine
 @export var footstep_sfx : AudioStreamPlayer
 @export var jump_sfx : AudioStreamPlayer
+@export var landing_sfx : AudioStreamPlayer
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -33,6 +34,9 @@ var jump_buffer = 0
 var _time_until_next_step := 0.0
 var _was_walking := false
 var _footstep_high_pitch := false
+var _has_been_airborne := false
+var _physics_started := false
+var _just_landed := false
 
 func _ready() -> void:
 	health = max_health
@@ -63,7 +67,25 @@ func _physics_process(delta: float) -> void:
 		if block_timer <= 0:
 			blocking = false
 	move_and_slide()
+	_update_landing_sound()
 	_update_footsteps(delta)
+
+func _update_landing_sound() -> void:
+	_just_landed = false
+	var on_floor_now := is_on_floor()
+
+	if not _physics_started:
+		_physics_started = true
+		_has_been_airborne = not on_floor_now
+		return
+
+	if not on_floor_now:
+		_has_been_airborne = true
+	elif _has_been_airborne:
+		if landing_sfx:
+			landing_sfx.play()
+		_has_been_airborne = false
+		_just_landed = true
 
 func _update_footsteps(delta: float) -> void:
 	if footstep_sfx == null:
@@ -73,6 +95,13 @@ func _update_footsteps(delta: float) -> void:
 	if not is_walking:
 		_was_walking = false
 		_time_until_next_step = 0.0
+		return
+
+	# The landing sound already uses the step sample, so do not double it with
+	# an immediate walking step on the same physics frame.
+	if _just_landed:
+		_was_walking = true
+		_time_until_next_step = footstep_interval
 		return
 
 	if not _was_walking:
