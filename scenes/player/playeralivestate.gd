@@ -45,6 +45,8 @@ func physicsUpdate(delta: float):
 	if player_reference.jump_buffer > 0 and player_reference.can_jump:
 		player_reference.jump_buffer = 0
 		player_reference.velocity.y = player_reference.JUMP_VELOCITY
+		if player_reference.jump_sfx:
+			player_reference.jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		player_reference.can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -74,22 +76,28 @@ func enter():
 	pass
 func exit():
 	pass
+func _play_attack_sfx() -> void:
+	if player_reference.attack_sfx:
+		player_reference.attack_sfx.play()
 func input(event: InputEvent):
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
 		print("Down")
 		player_reference.is_attacking = true
 		player_reference.animationController.play("attack_down")
+		_play_attack_sfx()
 		return
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_up"):
 		print("Down")
 		player_reference.is_attacking = true
 		player_reference.animationController.play("attack_up")
+		_play_attack_sfx()
 		return
 	if event.is_action_pressed("attack"):
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		player_reference.is_attacking = true
 		player_reference.animationController.play("attack")
+		_play_attack_sfx()
 	if event.is_action_pressed("grapple") and player_reference.block_cooldown < 0:
 		player_reference.blocking = !player_reference.blocking
 		player_reference.block_cooldown = block_cooldown

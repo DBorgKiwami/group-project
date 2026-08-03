@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal defeated
+
 @export var state_machine : State_Machine
 @export var hitbox : EnemyHitbox
 @export var hurtbox : Area3D
@@ -17,6 +19,7 @@ func die():
 	if dead:
 		return
 	dead = true
+	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
 	if drop:
