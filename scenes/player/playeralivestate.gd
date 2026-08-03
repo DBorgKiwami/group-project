@@ -42,6 +42,8 @@ func physicsUpdate(delta: float):
 	if player_reference.jump_buffer > 0 and player_reference.can_jump:
 		player_reference.jump_buffer = 0
 		player_reference.velocity.y = player_reference.JUMP_VELOCITY
+		if player_reference.jump_sfx:
+			player_reference.jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		player_reference.can_jump = false
 	if Input.is_action_just_released("ui_accept"):
