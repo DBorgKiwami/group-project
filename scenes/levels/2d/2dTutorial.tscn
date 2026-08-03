@@ -194,7 +194,7 @@ visible = false
 mesh = SubResource("PlaneMesh_0h4al")
 
 [node name="rock1" type="MeshInstance3D" parent="." unique_id=2022454952]
-transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, -34.999374, 2.127244, -5.4010735)
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, -35.367676, 2.127244, -5.4010735)
 mesh = SubResource("PlaneMesh_567d7")
 surface_material_override/0 = SubResource("StandardMaterial3D_wjq58")
 
@@ -247,7 +247,7 @@ camera = NodePath("../2Dplatformingcharacter/Camera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1224919586]
 transform = Transform3D(0.6928216, -0.6751533, -0.25331053, 0.40813804, 0.077538155, 0.90962154, -0.59449273, -0.733591, 0.3292759, -17.578796, 15.558855, 5.963291)
-light_energy = 1.948
+light_energy = 1.823
 light_indirect_energy = 0.894
 light_angular_distance = 1.0
 shadow_enabled = true
