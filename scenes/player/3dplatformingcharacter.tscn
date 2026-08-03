@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://dxp3frdd8811i" path="res://sprites/player/3D Sprites/w_idle.png" id="23_v2ocf"]
 [ext_resource type="Texture2D" uid="uid://dp5dxt5nl3swh" path="res://sprites/player/3D Sprites/w_walk1.png" id="24_guq3d"]
 [ext_resource type="Texture2D" uid="uid://4t2rxpafl3tm" path="res://sprites/player/3D Sprites/w_walk2.png" id="25_o6j7m"]
+[ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="26_jump"]
+[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="27_land"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
 radius = 0.317
@@ -249,8 +251,8 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
-collision_layer = 2
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx") groups=["Player"]]
+collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
@@ -258,6 +260,8 @@ grappleArea = NodePath("Area3D")
 animationControler = NodePath("AnimationPlayer")
 player_camera = NodePath("Node3D/Camera3D")
 camera_pivot = NodePath("Node3D")
+jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
@@ -271,6 +275,16 @@ alpha_cut = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_g608u")
 animation = &"westwalk"
+
+[node name="JumpSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("26_jump")
+volume_db = -4.0
+max_distance = 18.0
+
+[node name="LandingSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("27_land")
+volume_db = -4.0
+max_distance = 18.0
 
 [node name="Area3D" type="Area3D" parent="." unique_id=190598689]
 collision_layer = 32
