@@ -249,7 +249,7 @@ shape = SubResource("BoxShape3D_vj0l2")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 pixel_size = 0.03
 billboard = 1
-texture_filter = 0
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_1haum")
 autoplay = "default"
 
