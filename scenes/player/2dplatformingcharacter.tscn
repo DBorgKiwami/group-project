@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://4tbgqyefdjbw"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_qgvwo"]
+[ext_resource type="PackedScene" uid="uid://dwk53ecvmqvw3" path="res://scenes/enemies/dragonfly_boss.tscn" id="2_obtll"]
+
+[node name="Node3D" type="Node3D" unique_id=1660615237]
+
+[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("1_qgvwo")]
+
+[node name="Dragonfly Boss" parent="." unique_id=1810331413 instance=ExtResource("2_obtll")]
+
+[node name="AnimatedSprite3D" parent="Dragonfly Boss" index="1" unique_id=1187427604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 6, 0)
+
+[editable path="Dragonfly Boss"]
