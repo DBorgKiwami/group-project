@@ -15,6 +15,7 @@ var start_position_value = Vector3(0,0,0)
 
 
 func _check_start_position() -> bool:
+	print(start_position_check)
 	return start_position_check;
 
 func _ready() -> void:

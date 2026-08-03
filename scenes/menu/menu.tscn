@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://bmvovc4f3g0qy"]
+
+[ext_resource type="Shader" uid="uid://btg64e5y8qej6" path="res://shaders/waterfall.gdshader" id="1_klgdb"]
+[ext_resource type="Texture2D" uid="uid://chsb2hst2uy1a" path="res://shaders/displacement.png.png" id="2_e0arn"]
+[ext_resource type="Texture2D" uid="uid://len85ecnr2bw" path="res://shaders/cloud_noise.png.png" id="3_037ec"]
+[ext_resource type="Texture2D" uid="uid://bcsov5ihs1kyd" path="res://images/Menu Blue.png" id="4_3y2rt"]
+[ext_resource type="Script" uid="uid://ble7agquabdw6" path="res://scripts/menu/menu.gd" id="4_037ec"]
+[ext_resource type="Texture2D" uid="uid://be4ud7hy5u5sc" path="res://scenes/menu/menu png.png" id="4_y1o0p"]
+[ext_resource type="Texture2D" uid="uid://c0ntevqw8ybcn" path="res://images/logo menu.png" id="5_t0a87"]
+[ext_resource type="Script" uid="uid://col8ygiudupd2" path="res://scenes/menu/play.gd" id="8_t0a87"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcvr8"]
+render_priority = 0
+shader = ExtResource("1_klgdb")
+shader_parameter/noise_tex = ExtResource("3_037ec")
+shader_parameter/displ_tex = ExtResource("2_e0arn")
+shader_parameter/top_light_color = Color(0.30903625, 0.5005979, 0.61328125, 1)
+shader_parameter/top_dark_color = Color(0.16992188, 0.25432754, 0.33984375, 1)
+shader_parameter/bot_light_color = Color(0.35430908, 0.59410363, 0.671875, 1)
+shader_parameter/bot_dark_color = Color(0.27194214, 0.3965459, 0.51953125, 1)
+shader_parameter/displ_amount = 0.02
+shader_parameter/bottom_foam_threshold = 0.46800002223
+shader_parameter/speed = 0.934000044365
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e0arn"]
+material = SubResource("ShaderMaterial_mcvr8")
+height = 4.0
+
+[sub_resource type="Environment" id="Environment_t0a87"]
+glow_enabled = true
+glow_levels/1 = 0.4
+glow_intensity = 1.0
+glow_strength = 1.51
+glow_bloom = 0.25
+glow_hdr_threshold = 0.85
+
+[sub_resource type="SystemFont" id="SystemFont_3y2rt"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo0fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k48pe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2fum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kaijy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4i35"]
+
+[sub_resource type="SystemFont" id="SystemFont_t0a87"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcuxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64m6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjdsv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j8sj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55a8x"]
+
+[sub_resource type="SystemFont" id="SystemFont_qo0fc"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+font_stretch = 150
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrod7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_faisu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2e6u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb4qf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riv3r"]
+
+[node name="menu" type="Node3D" unique_id=410197657]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=124068540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028481007, 2, 0)
+mesh = SubResource("CylinderMesh_e0arn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=278360079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027061999, 0.4364903, 0.929253)
+fov = 41.8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D" unique_id=1860715432]
+environment = SubResource("Environment_t0a87")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=548962052]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=820518508]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y1o0p")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer" unique_id=950281682]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t0a87")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=1625342513]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3y2rt")
+expand_mode = 2
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1981598361]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_037ec")
+level_scene_path = "res://scenes/levels/3d/testlevel.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=1458969479]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 282.0
+offset_top = 320.0
+offset_right = 532.0
+offset_bottom = 514.5
+
+[node name="Play" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1030186906]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_3y2rt")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qo0fc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k48pe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kaijy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4i35")
+text = "Play"
+script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
+
+[node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_t0a87")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcuxh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_64m6r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pjdsv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2j8sj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_55a8x")
+text = "Settings"
+script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
+
+[node name="Quit" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1101625141]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_qo0fc")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rrod7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_faisu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t2e6u")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fb4qf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_riv3r")
+text = "Quit"
+script = ExtResource("8_t0a87")
+base_outline_size = 0
+hover_outline_size = 0
+
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_quit_pressed"]

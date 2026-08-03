@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dggw4nnyakuum"]
+
+[ext_resource type="Texture2D" uid="uid://j2niqrtfyk87" path="res://materials/Cracked_Mud_001_COLOR.jpg" id="1_lj8ly"]
+[ext_resource type="Texture2D" uid="uid://dl0q3rui1xge3" path="res://materials/Cracked_Mud_001_OCC.jpg" id="2_4pbcb"]
+[ext_resource type="Texture2D" uid="uid://ck5aoyf4tw064" path="res://materials/Cracked_Mud_001_NORM.jpg" id="3_byluu"]
+[ext_resource type="Texture2D" uid="uid://bmqx2jno8mye3" path="res://materials/Cracked_Mud_001_ROUGH.jpg" id="4_sbb71"]
+
+[resource]
+resource_name = "mud"
+albedo_texture = ExtResource("1_lj8ly")
+metallic = 0.14
+metallic_specular = 0.0
+roughness_texture = ExtResource("4_sbb71")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("3_byluu")
+rim_enabled = true
+rim = 0.02
+rim_tint = 0.1
+ao_enabled = true
+ao_light_affect = 0.2
+ao_texture = ExtResource("2_4pbcb")
+heightmap_enabled = true
+heightmap_scale = -0.01
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_flip_texture = true
+uv1_scale = Vector3(0.66, 0.66, 0.66)

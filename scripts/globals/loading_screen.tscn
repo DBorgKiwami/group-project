@@ -1,23 +1,9 @@
 [gd_scene format=3 uid="uid://bjbhqp2besima"]
 
 [ext_resource type="Script" uid="uid://btnjh21428tw8" path="res://scripts/globals/loadscript.gd" id="1_a2dun"]
-[ext_resource type="Texture2D" uid="uid://dv77ksk13114" path="res://sprites/player/player_attack_0.png" id="2_v28g5"]
-[ext_resource type="Texture2D" uid="uid://dlbi0xhkhuyw" path="res://sprites/player/player_attack_1.png" id="3_cwcnw"]
-[ext_resource type="Texture2D" uid="uid://ds3dww32do8vm" path="res://sprites/player/player_attack_2.png" id="4_jsc7f"]
-[ext_resource type="Texture2D" uid="uid://b70n0yk0tv02p" path="res://sprites/player/player_attack_3.png" id="5_p1cuy"]
-[ext_resource type="Texture2D" uid="uid://dv5aj0l7m2mlx" path="res://sprites/player/player_attack_4.png" id="6_nn4lb"]
-[ext_resource type="Texture2D" uid="uid://dc7v52w8448uo" path="res://sprites/player/player_attack_5.png" id="7_3mnl0"]
-[ext_resource type="Texture2D" uid="uid://dq0heha2qfenh" path="res://sprites/player/player_duck.png" id="8_q1hw4"]
-[ext_resource type="Texture2D" uid="uid://bfpy1ra02kt4w" path="res://sprites/player/player_fall.png" id="9_cu7a5"]
-[ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="10_w32h2"]
-[ext_resource type="Texture2D" uid="uid://d1hcjhoqvd0d1" path="res://sprites/player/player_happy_0.png" id="11_x7s4m"]
-[ext_resource type="Texture2D" uid="uid://dkdkf04f2p2pa" path="res://sprites/player/player_happy_1.png" id="12_0qhy2"]
-[ext_resource type="Texture2D" uid="uid://mi8pxrgc4uag" path="res://sprites/player/player_hurt.png" id="13_n8qee"]
-[ext_resource type="Texture2D" uid="uid://cl8e58vu1q6cf" path="res://sprites/player/player_idle_0.png" id="14_21lq6"]
-[ext_resource type="Texture2D" uid="uid://pi1hnvp8pqtv" path="res://sprites/player/player_idle_1.png" id="15_me27n"]
-[ext_resource type="Texture2D" uid="uid://dttm2xoing6i4" path="res://sprites/player/player_jump.png" id="16_vrq6o"]
-[ext_resource type="Texture2D" uid="uid://dcrghfy2kniet" path="res://sprites/player/player_walk_0.png" id="17_rfnqd"]
-[ext_resource type="Texture2D" uid="uid://dpc7g4wnevwuq" path="res://sprites/player/player_walk_1.png" id="18_kwvpk"]
+[ext_resource type="Texture2D" uid="uid://dww51f1lj803y" path="res://sprites/player/3D Sprites/s_walk1.png" id="2_jdf18"]
+[ext_resource type="Texture2D" uid="uid://our32mbxeto5" path="res://sprites/player/3D Sprites/s_idle.png" id="3_1up31"]
+[ext_resource type="Texture2D" uid="uid://cvyoyunfw17mn" path="res://sprites/player/3D Sprites/s_walk2.png" id="4_efoxo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2dun"]
 bg_color = Color(0, 0, 0, 1)
@@ -87,55 +73,16 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v28g5")
+"texture": ExtResource("2_jdf18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_cwcnw")
+"texture": ExtResource("3_1up31")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jsc7f")
+"texture": ExtResource("4_efoxo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_p1cuy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_nn4lb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3mnl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_q1hw4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_cu7a5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_w32h2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_x7s4m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_0qhy2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_n8qee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_21lq6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_me27n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_vrq6o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_rfnqd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_kwvpk")
+"texture": ExtResource("3_1up31")
 }],
 "loop": true,
 "name": &"default",
@@ -160,8 +107,9 @@ libraries/ = SubResource("AnimationLibrary_kab06")
 autoplay = &"transition"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=926619976]
-position = Vector2(539, 296)
-scale = Vector2(2.8833334, 2.8833334)
+texture_filter = 1
+position = Vector2(1088, 564)
+scale = Vector2(1.5048604, 1.5048604)
 sprite_frames = SubResource("SpriteFrames_wmue7")
 autoplay = "default"
 frame_progress = 0.5822842

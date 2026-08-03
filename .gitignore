@@ -5,9 +5,5 @@
 # Local screenshots/renders for progress sharing, not project files
 previews/
 **/*_preview.png
-**/*_preview.png.import
 **/*_demo.gif
 **/*_contact_sheet.png
-
-# Keep this local until the team decides to use it
-allen_work/vfx_demos/water_splash_demo/

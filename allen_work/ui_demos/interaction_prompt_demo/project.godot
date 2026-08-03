@@ -1,0 +1,22 @@
+; Engine configuration file.
+; It is best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+
+config_version=5
+
+[application]
+
+config/name="Frog Interaction Prompt Demo"
+run/main_scene="res://scenes/interaction_prompt_demo.tscn"
+config/features=PackedStringArray("4.6")
+
+[display]
+
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -4,6 +4,7 @@
 
 [node name="DialoguePlayer" type="CanvasLayer" unique_id=1050777168]
 script = ExtResource("1_n3hy0")
+scene_text_file = "res://resources/gamedialogue.json"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1260116820]
 offset_right = 245.0
