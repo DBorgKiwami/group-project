@@ -644,10 +644,10 @@ size = Vector3(35.81537, 0.694397, 63.94214)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.915689, 2.8816972, 0)
 
 [node name="Grapplepoint3d" parent="." unique_id=658253556 instance=ExtResource("1_wopdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.9128, 6.898493, -14.525835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.148, 6.898493, -14.525835)
 
 [node name="Sprite3D" parent="Grapplepoint3d" index="0" unique_id=1884714127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8549347, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007095337, 0, 0)
 
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 JUMP_VELOCITY = 6.0
@@ -27084,6 +27084,24 @@ mesh = SubResource("CylinderMesh_22cug")
 [node name="StaticBody3D" type="StaticBody3D" parent="pillar2" unique_id=1276069234]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pillar2/StaticBody3D" unique_id=1363903956]
+shape = SubResource("ConcavePolygonShape3D_yxisd")
+
+[node name="pillar3" type="MeshInstance3D" parent="." unique_id=1919038978]
+transform = Transform3D(2, 0, 0, 0, 5.562, 0, 0, 0, 2, 119.88144, -2.4490833, -8.0192375)
+mesh = SubResource("CylinderMesh_22cug")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pillar3" unique_id=910105523]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pillar3/StaticBody3D" unique_id=27463072]
+shape = SubResource("ConcavePolygonShape3D_yxisd")
+
+[node name="pillar4" type="MeshInstance3D" parent="." unique_id=1027144980]
+transform = Transform3D(2, 0, 0, 0, 5.562, 0, 0, 0, 2, 123.51954, -2.4490833, -12.564641)
+mesh = SubResource("CylinderMesh_22cug")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pillar4" unique_id=1051706602]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pillar4/StaticBody3D" unique_id=1182827140]
 shape = SubResource("ConcavePolygonShape3D_yxisd")
 
 [node name="Node3D" parent="." unique_id=619712421 node_paths=PackedStringArray("respawnPoint") instance=ExtResource("21_t7xc8")]
