@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bs7yiidud6emp"]
 
-[ext_resource type="Script" uid="uid://dr6xtdeda22" path="res://scenes/elements/coin_2d.gd" id="1_0r3p3"]
+[ext_resource type="Script" path="res://scenes/elements/coin_2d.gd" id="1_0r3p3"]
 [ext_resource type="Texture2D" uid="uid://dapcks5a16xh2" path="res://sprites/props/seedbead16pixel.png" id="2_0r3p3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r3p3"]
 height = 0.5
+radius = 0.20751953
 
 [node name="Coin2D" type="RigidBody3D" unique_id=1596631298]
 collision_layer = 0
