@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -238,6 +238,9 @@ radius = 0.5168748
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
 radius = 0.679429
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
+size = Vector3(1.56, 1.5641162, 1)
+
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("animationController")]
 script = ExtResource("1_cudoo")
 animationController = NodePath("AnimationPlayer")
@@ -309,12 +312,23 @@ script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=936171539]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
 shape = SubResource("SphereShape3D_eym7y")
 
+[node name="SemiSolidClipBox" type="Area3D" parent="." unique_id=1962725852]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidClipBox" unique_id=852405064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12760985, 0)
+shape = SubResource("BoxShape3D_cudoo")
+
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]
+[connection signal="body_entered" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_entered"]
+[connection signal="body_exited" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_exited"]

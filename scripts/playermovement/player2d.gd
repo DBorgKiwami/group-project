@@ -81,10 +81,12 @@ func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 		Hitstopmanager.hit_stop(0.05)
 		velocity.y = maxf(JUMP_VELOCITY, velocity.y + JUMP_VELOCITY)
 	pass # Replace with function body.
+	
 func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
 	print("Hello")
 	clipping = true
 	pass # Replace with function body.
+
 func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
 	clipping = false
 	pass # Replace with function body.
