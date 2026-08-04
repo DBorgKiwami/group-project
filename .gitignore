@@ -2,5 +2,8 @@
 .godot/
 /android/
 
-# Local screenshots/renders for sharing progress, not project files
+# Local screenshots/renders for progress sharing, not project files
 previews/
+**/*_preview.png
+**/*_demo.gif
+**/*_contact_sheet.png

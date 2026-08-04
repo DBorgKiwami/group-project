@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dmnbgi7ewbuqi"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="2_w2eha"]
+[ext_resource type="Material" uid="uid://d1cprp1maou6d" path="res://wood.tres" id="3_wngh0"]
+[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://dirt.tres" id="4_q21ry"]
+[ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="5_lf86p"]
+
+[node name="RdlncPndsd_QuinnStrctrs" type="Node3D" unique_id=170572213]
+
+[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("2_w2eha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14349365, 0.57399786, 0.23937988)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1394082250]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=114734351]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, -6.253601, 28.122969, 0.48543167)
+sides = 16
+material = ExtResource("3_wngh0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=516195052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0489502, -0.49458086, -1.6715469)
+size = Vector3(31.59497, 1, 51.587524)
+material = ExtResource("4_q21ry")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1949670286]
+transform = Transform3D(1.93526, 0, 0, 0, 1.3163887, 0, 0, 0, 15.571341, -6.231285, 8.262121, 11.2948265)
+material = ExtResource("3_wngh0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1225921377]
+transform = Transform3D(2.2096152, -0.07817758, -11.361187, 0.12435327, 1.3140595, -0.7077467, 2.3710148, 0.0039370516, 10.624925, -12.550292, 16.00174, 6.461452)
+size = Vector3(0.6016846, 1, 0.7208252)
+material = ExtResource("3_wngh0")
+
+[node name="Grapplepoint3d" parent="." unique_id=1832192751 instance=ExtResource("5_lf86p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.303446, 10.545372, 17.902239)
+
+[node name="Grapplepoint3d2" parent="." unique_id=1051260453 instance=ExtResource("5_lf86p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.784349, 18.193983, 9.502914)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1201626820]
+transform = Transform3D(0.6812673, 0.71716565, -0.1467931, 0.03834053, 0.16529612, 0.9854986, 0.73103, -0.677016, 0.08511411, 0.9771576, 37.358124, 22.34888)
+light_color = Color(1, 0.9490196, 0.57254905, 1)
+light_energy = 1.948
+light_indirect_energy = 0.894
+light_angular_distance = 1.0
+shadow_enabled = true
+shadow_opacity = 0.7
