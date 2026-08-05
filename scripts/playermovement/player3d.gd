@@ -23,6 +23,7 @@ var jump_timer = jump_timer_max
 var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
+var current_grapple_point : GrapplePoint3D
 var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
@@ -58,7 +59,11 @@ func _on_dialogue_done():
 #Except right now its just done in code anyways because im lazy
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
-	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
+	var grapple_point = grappleArea.get_overlapping_areas()[0]
+	var areaPosition = grapple_point.global_position
+	if grapple_point is GrapplePoint3D:
+		current_grapple_point = grapple_point
+		current_grapple_point.start_grapple()
 	#if areaPosition < position:
 		#sprite.flip_h = true
 	#else:
@@ -71,6 +76,9 @@ func grapple():
 
 func endGrapple():
 	grappling = false
+	if current_grapple_point:
+		current_grapple_point.end_grapple()
+		current_grapple_point = null
 
 func _input(event: InputEvent) -> void:
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
