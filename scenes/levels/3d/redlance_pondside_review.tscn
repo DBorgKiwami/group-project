@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
 [ext_resource type="Script" uid="uid://cqssbdqnvg8ny" path="res://scripts/elements/scene_transition.gd" id="4_transition"]
 [ext_resource type="AudioStream" path="res://audio/music/step.ogg" id="5_step"]
-[ext_resource type="AudioStream" path="res://audio/music/jump.ogg" id="6_jump"]
 [ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
 [ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="8_pond"]
 [ext_resource type="AudioStream" path="res://audio/music/breeze.ogg" id="9_breeze"]
@@ -111,22 +110,10 @@ fov = 58.0
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 
-[node name="3Dplatformingcharacter" parent="." unique_id=2055655660 node_paths=PackedStringArray("jump_sfx", "landing_sfx") instance=ExtResource("3_player")]
+[node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.8, 0.2687053, -2.4)
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
-stream = ExtResource("5_step")
-volume_db = -4.0
-max_distance = 18.0
-
-[node name="JumpSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
-stream = ExtResource("6_jump")
-volume_db = -4.0
-max_distance = 18.0
-
-[node name="LandingSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
 stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
