@@ -8,6 +8,8 @@ Route:
 2. RewardMarker_01
 3. LevelExit
 
+The level base is shifted so PlayerSpawn starts near the tutorial scene's origin area. This keeps the player visible when opening or running the scene.
+
 Current trigger notes:
 
 - This version only covers the 3D pondside traversal space.

@@ -67,20 +67,20 @@ light_energy = 1.55
 shadow_enabled = true
 
 [node name="SoftBlueFillLight" type="OmniLight3D" parent="." unique_id=650026824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.5, 7.5)
 light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
 
 [node name="PreviewCamera" type="Camera3D" parent="." unique_id=1768166443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 3.3, -7.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 3.3, -5.2)
 fov = 58.0
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 1.45, -5.2)
-SPEED = 2.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -3.2)
 
 [node name="Camera3D" parent="3Dplatformingcharacter/Node3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.572149, 5)
@@ -98,18 +98,18 @@ sprite = NodePath("../AnimatedSprite3D")
 [node name="GameplayPlan" type="Node3D" parent="." unique_id=1211180447]
 
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 1.45, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -3.2)
 
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 3.65, -5.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
 
 [node name="LevelExit" type="Marker3D" parent="GameplayPlan" unique_id=1495531785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 3.65, -3.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 
 [node name="GameplayTriggers" type="Node3D" parent="." unique_id=1234368126]
 
 [node name="WaterAreaPlaceholder" type="Area3D" parent="GameplayTriggers" unique_id=2100198787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 2.5)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("14_water")
@@ -119,7 +119,7 @@ water_surface_y = 0.22
 shape = SubResource("WaterAreaShape")
 
 [node name="LevelExit_Area" type="Area3D" parent="GameplayTriggers" unique_id=1046100548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 3.65, -3.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 collision_layer = 0
 collision_mask = 32
 
