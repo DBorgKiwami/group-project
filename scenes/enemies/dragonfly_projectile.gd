@@ -7,6 +7,7 @@ class_name DragonflyProjectile
 @export var projectile_scene : PackedScene
 @export var fire_interval : float = 3.0
 @export var fire_distance : float = 10.0
+@export var fire_distance_from_floor : float = 10.0
 
 var timer
 var projectiles_fired = 0
@@ -25,6 +26,7 @@ func exit():
 func fire():
 	var newInstance = projectile_scene.instantiate()
 	newInstance.position = enemey_reference.position
+	newInstance.position.y -= fire_distance_from_floor
 	if newInstance.position.x < 0:
 		newInstance.position.x -= fire_distance
 	else:
@@ -40,6 +42,7 @@ func physicsUpdate(delta: float):
 		projectiles_fired += 1
 	if projectiles_fired >= number_of_projectiles:
 		Transitioned.emit(self, "dragonflyidle")
+		return
 	#if enemey_reference.position.y > neutral_y and swooping:
 		#var decel = get_tree().create_tween()
 		#decel.tween_property(enemey_reference, "velocity:y", 0, 0.2)
