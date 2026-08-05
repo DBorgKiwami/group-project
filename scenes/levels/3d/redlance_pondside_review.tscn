@@ -79,11 +79,11 @@ fov = 58.0
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -15.2, 3.25, 6.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 1.45, -5.2)
 SPEED = 2.0
 
 [node name="Camera3D" parent="3Dplatformingcharacter/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4716447, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.572149, 5)
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
 stream = ExtResource("5_step")
@@ -98,7 +98,7 @@ sprite = NodePath("../AnimatedSprite3D")
 [node name="GameplayPlan" type="Node3D" parent="." unique_id=1211180447]
 
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2, 3.25, 6.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 1.45, -5.2)
 
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 3.65, -5.3)
