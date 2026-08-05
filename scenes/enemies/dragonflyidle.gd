@@ -2,6 +2,7 @@ extends State
 class_name DragonflyIdle
 
 @export var idle_length : float = 5.0
+@export var attacks : Array[String]
 var timer = 0
 
 func enter():
