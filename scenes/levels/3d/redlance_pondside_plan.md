@@ -1,6 +1,6 @@
 # Redlance Pondside Playable Route Plan
 
-This scene is still a blockout. The markers are here to show the intended playable route before final props and combat logic are added.
+This scene is now a larger environment blockout. It uses bigger stepped landmasses, deeper pond space, and oversized background cliffs so the level reads closer to the tutorial scale and the current art direction.
 
 Route:
 
@@ -14,7 +14,7 @@ Route:
 Current trigger notes:
 
 - CombatTrigger_01_To2DTestCombat uses the existing scene transition script and points to `res://scenes/levels/2d/testlevel2d.tscn`.
-- WaterAreaPlaceholder is only a placeholder area for future water hazard or splash logic.
+- WaterAreaPlaceholder now has simple pond float logic. If the player drops into the lake, they are pushed back toward the water surface instead of falling forever.
 - Checkpoint and exit areas are named and shaped, but they do not have gameplay scripts yet.
 
-The actual trees, rocks, branches, and final environmental props should still be added separately.
+The current trees, rocks, mushrooms, reeds, and lily pads are still broad blockout/detail dressing. Final structures and hand-polished props can be added separately.

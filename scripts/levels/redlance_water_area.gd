@@ -1,0 +1,32 @@
+extends Area3D
+
+@export var water_surface_y := 0.22
+@export var float_height := 0.38
+@export var float_speed := 4.0
+
+var players_in_water: Array[Player3D] = []
+
+
+func _physics_process(delta: float) -> void:
+	for player in players_in_water:
+		if not is_instance_valid(player):
+			continue
+
+		var target_y = water_surface_y + float_height
+		if player.global_position.y < target_y:
+			var pos = player.global_position
+			pos.y = move_toward(pos.y, target_y, float_speed * delta)
+			player.global_position = pos
+			player.velocity.y = max(player.velocity.y, 0.0)
+
+
+func _on_area_entered(area: Area3D) -> void:
+	var player = area.get_parent()
+	if player is Player3D and not players_in_water.has(player):
+		players_in_water.append(player)
+
+
+func _on_area_exited(area: Area3D) -> void:
+	var player = area.get_parent()
+	if player is Player3D:
+		players_in_water.erase(player)
