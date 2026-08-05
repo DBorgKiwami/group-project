@@ -32,6 +32,15 @@ size = Vector3(12, 2.3, 12)
 [sub_resource type="BoxShape3D" id="WaterAreaSouthShape"]
 size = Vector3(10, 2.3, 5)
 
+[sub_resource type="BoxShape3D" id="WaterFloorShape"]
+size = Vector3(13, 0.16, 12)
+
+[sub_resource type="BoxShape3D" id="WaterFloorEastShape"]
+size = Vector3(12, 0.16, 12)
+
+[sub_resource type="BoxShape3D" id="WaterFloorSouthShape"]
+size = Vector3(10, 0.16, 5)
+
 [sub_resource type="BoxShape3D" id="ExitShape"]
 size = Vector3(2.2, 1.4, 2.2)
 
@@ -85,7 +94,7 @@ size = Vector3(0.75, 0.36, 0.05)
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
-add_simple_collision = true
+add_simple_collision = false
 
 [node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=481790632]
 stream = ExtResource("7_damp")
@@ -211,7 +220,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 
 [node name="LevelCollision" type="StaticBody3D" parent="." unique_id=1695016400]
-collision_layer = 0
 
 [node name="StartBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1267443033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.45, -4.55)
@@ -336,6 +344,22 @@ transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 5.8, 23, 0.22, 3.3)
 
 [node name="WaterFootstepSouth" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2.5, 14.5, 0.22, -4.3)
+
+[node name="WaterFloorCollision" type="StaticBody3D" parent="GameplayTriggers"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="MainFloor" type="CollisionShape3D" parent="GameplayTriggers/WaterFloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.12, 2.5)
+shape = SubResource("WaterFloorShape")
+
+[node name="EastFloor" type="CollisionShape3D" parent="GameplayTriggers/WaterFloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.12, 3.3)
+shape = SubResource("WaterFloorEastShape")
+
+[node name="SouthFloor" type="CollisionShape3D" parent="GameplayTriggers/WaterFloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0.12, -4.3)
+shape = SubResource("WaterFloorSouthShape")
 
 [node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 3.55, 5.6)
