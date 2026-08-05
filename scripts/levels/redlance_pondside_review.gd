@@ -10,6 +10,7 @@ extends Node3D
 @onready var player_camera: Camera3D = $"3Dplatformingcharacter/Node3D/Camera3D"
 @onready var player_camera_pivot: Node3D = $"3Dplatformingcharacter/Node3D"
 @onready var player_spawn: Marker3D = $GameplayPlan/PlayerSpawn
+@onready var checkpoint_01: Marker3D = $GameplayPlan/Checkpoint_01
 
 
 func _ready() -> void:
@@ -46,6 +47,8 @@ func should_make_solid(mesh_name: String) -> bool:
 		or mesh_name.contains("mud")
 		or mesh_name.contains("rock")
 		or mesh_name.contains("cliff")
+		or mesh_name.contains("stair")
+		or mesh_name.contains("step")
 	)
 
 
@@ -82,3 +85,9 @@ func get_spawn_offset() -> float:
 
 func sync_player_camera() -> void:
 	player_camera_pivot.global_position = player.global_position
+
+
+func _on_checkpoint_01_area_entered(area: Area3D) -> void:
+	var player_body := area.get_parent() as Player3D
+	if player_body:
+		player_spawn.global_position = checkpoint_01.global_position

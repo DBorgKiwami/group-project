@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
 [ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
 [ext_resource type="Script" uid="uid://dmaywvc6big5n" path="res://scripts/levels/redlance_water_area.gd" id="14_water"]
+[ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="15_grapple"]
+[ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="16_water_step"]
+[ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="17_lotus_step"]
 
 [sub_resource type="Environment" id="Environment_preview"]
 background_mode = 1
@@ -21,7 +24,13 @@ ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
 
 [sub_resource type="BoxShape3D" id="WaterAreaShape"]
-size = Vector3(39, 5.5, 19)
+size = Vector3(13, 2.3, 12)
+
+[sub_resource type="BoxShape3D" id="WaterAreaEastShape"]
+size = Vector3(12, 2.3, 12)
+
+[sub_resource type="BoxShape3D" id="WaterAreaSouthShape"]
+size = Vector3(10, 2.3, 5)
 
 [sub_resource type="BoxShape3D" id="ExitShape"]
 size = Vector3(2.2, 1.4, 2.2)
@@ -53,9 +62,30 @@ size = Vector3(0.82, 0.22, 0.58)
 [sub_resource type="BoxShape3D" id="EastStairCollisionShape"]
 size = Vector3(0.8, 0.24, 0.55)
 
+[sub_resource type="BoxShape3D" id="CheckpointAreaShape"]
+size = Vector3(2.2, 1.7, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="RouteStoneMat"]
+albedo_color = Color(0.4, 0.42, 0.39, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="CheckpointWoodMat"]
+albedo_color = Color(0.36, 0.22, 0.12, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="CheckpointFlagMat"]
+albedo_color = Color(0.72, 0.14, 0.12, 1)
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="CheckpointPostMesh"]
+size = Vector3(0.08, 1.1, 0.08)
+
+[sub_resource type="BoxMesh" id="CheckpointFlagMesh"]
+size = Vector3(0.75, 0.36, 0.05)
+
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
-add_simple_collision = false
+add_simple_collision = true
 
 [node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=481790632]
 stream = ExtResource("7_damp")
@@ -115,15 +145,64 @@ stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" unique_id=406427709 node_paths=PackedStringArray("audio_player", "sprite")]
+[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+stream = ExtResource("16_water_step")
+volume_db = -4.0
+max_distance = 18.0
+
+[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+stream = ExtResource("17_lotus_step")
+volume_db = -4.0
+max_distance = 18.0
+
+[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" unique_id=406427709 node_paths=PackedStringArray("audio_player", "water_audio_player", "lotus_audio_player", "sprite")]
 script = ExtResource("13_footsteps")
 audio_player = NodePath("../FootstepAudio")
+water_audio_player = NodePath("../WaterFootstepAudio")
+lotus_audio_player = NodePath("../LotusFootstepAudio")
 sprite = NodePath("../AnimatedSprite3D")
+
+[node name="Camera3D" parent="3Dplatformingcharacter/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4716447, 1.5)
+
+[node name="RouteStepFinish" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="StoneStep01" type="CSGBox3D" parent="RouteStepFinish"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 11.6, 1.66, 4.0)
+size = Vector3(1.05, 0.24, 0.72)
+material = SubResource("RouteStoneMat")
+
+[node name="StoneStep02" type="CSGBox3D" parent="RouteStepFinish"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 12.35, 1.78, 4.28)
+size = Vector3(1.05, 0.24, 0.72)
+material = SubResource("RouteStoneMat")
+
+[node name="StoneStep03" type="CSGBox3D" parent="RouteStepFinish"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 13.1, 1.9, 4.58)
+size = Vector3(1.05, 0.24, 0.72)
+material = SubResource("RouteStoneMat")
 
 [node name="GameplayPlan" type="Node3D" parent="." unique_id=1211180447]
 
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -3.2)
+
+[node name="Checkpoint_01" type="Marker3D" parent="GameplayPlan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 3.55, 5.6)
+
+[node name="Post" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CheckpointPostMesh")
+material_override = SubResource("CheckpointWoodMat")
+
+[node name="Flag" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.83, 0)
+mesh = SubResource("CheckpointFlagMesh")
+material_override = SubResource("CheckpointFlagMat")
+
+[node name="GrapplePoint_01" parent="GameplayPlan" instance=ExtResource("15_grapple")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7, 3.35, 5.7)
 
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
@@ -132,6 +211,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 
 [node name="LevelCollision" type="StaticBody3D" parent="." unique_id=1695016400]
+collision_layer = 0
 
 [node name="StartBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1267443033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.45, -4.55)
@@ -240,6 +320,31 @@ script = ExtResource("14_water")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=139410510]
 shape = SubResource("WaterAreaShape")
 
+[node name="CollisionShapeEast" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0.8)
+shape = SubResource("WaterAreaEastShape")
+
+[node name="CollisionShapeSouth" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -6.8)
+shape = SubResource("WaterAreaSouthShape")
+
+[node name="WaterFootstepMain" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+transform = Transform3D(6.5, 0, 0, 0, 1, 0, 0, 0, 5.8, 14, 0.22, 2.5)
+
+[node name="WaterFootstepEast" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 5.8, 23, 0.22, 3.3)
+
+[node name="WaterFootstepSouth" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2.5, 14.5, 0.22, -4.3)
+
+[node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 3.55, 5.6)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_01_Area"]
+shape = SubResource("CheckpointAreaShape")
+
 [node name="LevelExit_Area" type="Area3D" parent="GameplayTriggers" unique_id=1046100548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 collision_layer = 0
@@ -250,5 +355,6 @@ shape = SubResource("ExitShape")
 
 [connection signal="area_entered" from="GameplayTriggers/WaterAreaPlaceholder" to="GameplayTriggers/WaterAreaPlaceholder" method="_on_area_entered"]
 [connection signal="area_exited" from="GameplayTriggers/WaterAreaPlaceholder" to="GameplayTriggers/WaterAreaPlaceholder" method="_on_area_exited"]
+[connection signal="area_entered" from="GameplayTriggers/Checkpoint_01_Area" to="." method="_on_checkpoint_01_area_entered"]
 
 [editable path="3Dplatformingcharacter"]

@@ -1,8 +1,10 @@
 extends Area3D
 
 @export var water_surface_y := 0.22
-@export var float_height := 0.38
+@export var float_height := 0.28
 @export var float_speed := 4.0
+@export var sink_speed := 1.2
+@export var water_drag := 2.0
 
 var players_in_water: Array[Player3D] = []
 
@@ -12,12 +14,20 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(player):
 			continue
 
-		var target_y = water_surface_y + float_height
+		var target_y := water_surface_y + float_height
+		var pos := player.global_position
+
 		if player.global_position.y < target_y:
-			var pos = player.global_position
 			pos.y = move_toward(pos.y, target_y, float_speed * delta)
 			player.global_position = pos
-			player.velocity.y = max(player.velocity.y, 0.0)
+			player.velocity.y = max(player.velocity.y, -0.15)
+		elif player.global_position.y > target_y + 0.08:
+			pos.y = move_toward(pos.y, target_y + 0.08, sink_speed * delta)
+			player.global_position = pos
+			player.velocity.y = min(player.velocity.y, 0.0)
+
+		player.velocity.x = move_toward(player.velocity.x, 0.0, water_drag * delta)
+		player.velocity.z = move_toward(player.velocity.z, 0.0, water_drag * delta)
 
 
 func _on_area_entered(area: Area3D) -> void:
