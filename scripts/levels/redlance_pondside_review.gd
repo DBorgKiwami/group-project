@@ -40,7 +40,6 @@ func should_make_solid(mesh_name: String) -> bool:
 	return (
 		mesh_name.contains("land")
 		or mesh_name.contains("mud")
-		or mesh_name.contains("lily")
 		or mesh_name.contains("rock")
 		or mesh_name.contains("cliff")
 	)

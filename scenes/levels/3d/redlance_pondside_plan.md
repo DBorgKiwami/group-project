@@ -10,9 +10,8 @@ Route:
 
 Current trigger notes:
 
-- Checkpoint logic is not included in this version yet.
-- The 2D combat transition is not linked in this scene yet.
+- This version only covers the 3D pondside traversal space.
 - WaterAreaPlaceholder now has simple pond float logic. If the player drops into the lake, they are pushed back toward the water surface instead of falling forever.
 - The exit area is only a placeholder trigger for later level flow.
 
-The current trees, rocks, mushrooms, reeds, and lily pads are still broad blockout/detail dressing. Final structures and hand-polished props can be added separately.
+The current rocks, stone steps, water, and cliffs are broad blockout/detail dressing. Final structures and hand-polished props can be added separately.
