@@ -67,6 +67,7 @@ animationController = NodePath("AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1884714127]
 billboard = 2
+transparent = false
 texture = ExtResource("2_xjyrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1805620442]
