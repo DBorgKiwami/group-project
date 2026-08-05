@@ -112,6 +112,7 @@ fov = 58.0
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.8, 0.2687053, -2.4)
+SPEED = 2.0
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
 stream = ExtResource("5_step")
