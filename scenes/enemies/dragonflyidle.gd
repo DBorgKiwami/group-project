@@ -4,6 +4,7 @@ class_name DragonflyIdle
 @export var idle_length : float = 5.0
 @export var attacks : Array[String]
 var timer = 0
+var index = 0
 
 func enter():
 	timer = 0
@@ -15,7 +16,8 @@ func exit():
 func physicsUpdate(delta: float):
 	timer += delta
 	if timer > idle_length:
-		Transitioned.emit(self, "dragonflyswoop")
+		Transitioned.emit(self, attacks[index])
+		index = (index + 1) % len(attacks)
 	pass
 
 func update(_delta: float):

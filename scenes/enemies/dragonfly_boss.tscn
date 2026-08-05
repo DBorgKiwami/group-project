@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c4j16yrr4084y" path="res://scenes/enemies/DragonflySwoop.gd" id="5_rp2of"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="6_wr4wg"]
 [ext_resource type="Script" uid="uid://b1s4e3ngus141" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
+[ext_resource type="PackedScene" uid="uid://vbsrhde6d3bk" path="res://scenes/enemies/spear.tscn" id="8_xge5m"]
 
 [sub_resource type="Animation" id="Animation_wr4wg"]
 length = 0.001
@@ -115,6 +116,7 @@ metadata/_custom_type_script = "uid://cgdwg4dqcddnb"
 
 [node name="DragonflyIdle" type="Node" parent="State_Machine" unique_id=635600906]
 script = ExtResource("4_kskbt")
+idle_length = 2.0
 attacks = Array[String](["dragonflyswoop", "dragonflyprojectile"])
 
 [node name="DragonflySwoop" type="Node" parent="State_Machine" unique_id=604541016 node_paths=PackedStringArray("animation_player", "sprite", "enemey_reference")]
@@ -123,7 +125,11 @@ animation_player = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite3D")
 enemey_reference = NodePath("../..")
 
-[node name="DragonflyProjectile" type="Node" parent="State_Machine" unique_id=348895497]
+[node name="DragonflyProjectile" type="Node" parent="State_Machine" unique_id=348895497 node_paths=PackedStringArray("sprite", "enemey_reference")]
 script = ExtResource("7_rqeyh")
+sprite = NodePath("../../AnimatedSprite3D")
+enemey_reference = NodePath("../..")
+projectile_scene = ExtResource("8_xge5m")
+fire_distance = 5.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

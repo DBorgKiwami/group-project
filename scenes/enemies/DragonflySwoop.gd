@@ -2,7 +2,7 @@ extends State
 class_name DragonflySwoop
 
 @export var animation_player : AnimationPlayer
-@export var animation_speed : float = 1
+@export var animation_speed : float = 3
 @export var sprite : AnimatedSprite3D
 @export var enemey_reference : CharacterBody3D
 @export var number_of_swoops : int = 1
@@ -24,9 +24,10 @@ func swoop():
 #	Tweak these numbers as needed later
 	var swoopTween = get_tree().create_tween()
 	swoopTween.set_parallel(true)
-	swoopTween.tween_property(enemey_reference, "velocity:y", -1, 2.5)
-	swoopTween.tween_property(enemey_reference, "velocity:y", 1, 2.5).set_delay(2.5)
-	swoopTween.tween_property(enemey_reference, "velocity:y", 0, 2.5).set_delay(5)
+	swoopTween.tween_property(enemey_reference, "velocity:y", -4, 0.75)
+	swoopTween.tween_property(enemey_reference, "velocity:y", 0, 1.25).set_delay(0.75)
+	swoopTween.tween_property(enemey_reference, "velocity:y", 4, 0.75).set_delay(2.5)
+	swoopTween.tween_property(enemey_reference, "velocity:y", 0, 1.25).set_delay(3.25)
 	swoopTween.tween_property(enemey_reference, "velocity:x", animation_speed * dir, 3.625)
 	swoopTween.tween_property(enemey_reference, "velocity:x", 0, 2.5).set_delay(3.625)
 	swoopTween.finished.connect(animation_complete)
