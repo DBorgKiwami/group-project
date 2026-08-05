@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
-[ext_resource type="Script" uid="uid://cqssbdqnvg8ny" path="res://scripts/elements/scene_transition.gd" id="4_transition"]
 [ext_resource type="AudioStream" path="res://audio/music/step.ogg" id="5_step"]
 [ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
 [ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="8_pond"]
@@ -31,14 +30,6 @@ bottom_radius = 0.22
 height = 0.05
 radial_segments = 16
 
-[sub_resource type="StandardMaterial3D" id="MarkerCheckpointMat"]
-albedo_color = Color(0.96, 0.83, 0.24, 1)
-roughness = 0.8
-
-[sub_resource type="StandardMaterial3D" id="MarkerCombatMat"]
-albedo_color = Color(0.95, 0.26, 0.18, 1)
-roughness = 0.8
-
 [sub_resource type="StandardMaterial3D" id="MarkerRewardMat"]
 albedo_color = Color(0.34, 0.76, 1, 1)
 roughness = 0.8
@@ -46,12 +37,6 @@ roughness = 0.8
 [sub_resource type="StandardMaterial3D" id="MarkerExitMat"]
 albedo_color = Color(0.76, 0.45, 1, 1)
 roughness = 0.8
-
-[sub_resource type="BoxShape3D" id="CheckpointShape"]
-size = Vector3(1.4, 1, 1.4)
-
-[sub_resource type="BoxShape3D" id="CombatTriggerShape"]
-size = Vector3(3, 1.4, 2.4)
 
 [sub_resource type="BoxShape3D" id="WaterAreaShape"]
 size = Vector3(39, 5.5, 19)
@@ -137,32 +122,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2, 1.15, 6.8)
 material_override = SubResource("MarkerSpawnMat")
 mesh = SubResource("MarkerDiscMesh")
 
-[node name="Checkpoint_01_AfterPondEdge" type="Marker3D" parent="GameplayPlan" unique_id=694845709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 2.05, 0.7)
-
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01_AfterPondEdge" unique_id=1297977809]
-material_override = SubResource("MarkerCheckpointMat")
-mesh = SubResource("MarkerDiscMesh")
-
-[node name="CombatTrigger_01_Position" type="Marker3D" parent="GameplayPlan" unique_id=1320295731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.2, -6.2)
-
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/CombatTrigger_01_Position" unique_id=412423653]
-material_override = SubResource("MarkerCombatMat")
-mesh = SubResource("MarkerDiscMesh")
-
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 3.65, -5.3)
 
 [node name="Disc" type="MeshInstance3D" parent="GameplayPlan/RewardMarker_01" unique_id=176318714]
 material_override = SubResource("MarkerRewardMat")
-mesh = SubResource("MarkerDiscMesh")
-
-[node name="Checkpoint_02_BeforeExit" type="Marker3D" parent="GameplayPlan" unique_id=2111698304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0, 3.65, 1.6)
-
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_02_BeforeExit" unique_id=686252542]
-material_override = SubResource("MarkerCheckpointMat")
 mesh = SubResource("MarkerDiscMesh")
 
 [node name="LevelExit" type="Marker3D" parent="GameplayPlan" unique_id=1495531785]
@@ -174,24 +138,6 @@ mesh = SubResource("MarkerDiscMesh")
 
 [node name="GameplayTriggers" type="Node3D" parent="." unique_id=1234368126]
 
-[node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers" unique_id=842257683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 2.05, 0.7)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_01_Area" unique_id=1336763541]
-shape = SubResource("CheckpointShape")
-
-[node name="CombatTrigger_01_To2DTestCombat" type="Area3D" parent="GameplayTriggers" unique_id=682417888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.2, -6.2)
-collision_layer = 0
-collision_mask = 32
-script = ExtResource("4_transition")
-scene = "res://scenes/levels/2d/testlevel2d.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/CombatTrigger_01_To2DTestCombat" unique_id=1788602004]
-shape = SubResource("CombatTriggerShape")
-
 [node name="WaterAreaPlaceholder" type="Area3D" parent="GameplayTriggers" unique_id=2100198787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5)
 collision_layer = 0
@@ -202,14 +148,6 @@ water_surface_y = 0.22
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=139410510]
 shape = SubResource("WaterAreaShape")
 
-[node name="Checkpoint_02_Area" type="Area3D" parent="GameplayTriggers" unique_id=2046046733]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0, 3.65, 1.6)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_02_Area" unique_id=996105233]
-shape = SubResource("CheckpointShape")
-
 [node name="LevelExit_Area" type="Area3D" parent="GameplayTriggers" unique_id=1046100548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 3.65, -3.6)
 collision_layer = 0
@@ -218,8 +156,6 @@ collision_mask = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/LevelExit_Area" unique_id=1650361036]
 shape = SubResource("ExitShape")
 
-[connection signal="area_entered" from="GameplayTriggers/CombatTrigger_01_To2DTestCombat" to="GameplayTriggers/CombatTrigger_01_To2DTestCombat" method="_on_area_entered"]
-[connection signal="area_exited" from="GameplayTriggers/CombatTrigger_01_To2DTestCombat" to="GameplayTriggers/CombatTrigger_01_To2DTestCombat" method="_on_area_exited"]
 [connection signal="area_entered" from="GameplayTriggers/WaterAreaPlaceholder" to="GameplayTriggers/WaterAreaPlaceholder" method="_on_area_entered"]
 [connection signal="area_exited" from="GameplayTriggers/WaterAreaPlaceholder" to="GameplayTriggers/WaterAreaPlaceholder" method="_on_area_exited"]
 
