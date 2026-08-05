@@ -13,10 +13,14 @@ extends Node3D
 
 
 func _ready() -> void:
-	if snap_player_to_spawn:
-		player.global_position = player_spawn.global_position
+	if add_simple_collision:
+		add_collision(level_base)
 
-	player_camera_pivot.global_position = player.global_position
+	if snap_player_to_spawn:
+		place_player_at_spawn()
+		call_deferred("place_player_on_ground")
+
+	sync_player_camera()
 
 	if use_preview_camera:
 		preview_camera.current = true
@@ -24,9 +28,6 @@ func _ready() -> void:
 	else:
 		preview_camera.current = false
 		player_camera.current = true
-
-	if add_simple_collision:
-		add_collision(level_base)
 
 
 func add_collision(node: Node) -> void:
@@ -46,3 +47,38 @@ func should_make_solid(mesh_name: String) -> bool:
 		or mesh_name.contains("rock")
 		or mesh_name.contains("cliff")
 	)
+
+
+func place_player_at_spawn() -> void:
+	player.global_position = player_spawn.global_position
+	sync_player_camera()
+
+
+func place_player_on_ground() -> void:
+	await get_tree().physics_frame
+
+	var space_state := get_world_3d().direct_space_state
+	var ray_start := player_spawn.global_position + Vector3.UP * 4.0
+	var ray_end := player_spawn.global_position + Vector3.DOWN * 6.0
+	var query := PhysicsRayQueryParameters3D.create(ray_start, ray_end)
+	query.collision_mask = 1
+
+	var hit := space_state.intersect_ray(query)
+	if hit:
+		var pos := player.global_position
+		pos.x = player_spawn.global_position.x
+		pos.z = player_spawn.global_position.z
+		pos.y = hit.position.y + get_spawn_offset()
+		player.global_position = pos
+		var player_body := player as Player3D
+		if player_body:
+			player_body.velocity = Vector3.ZERO
+		sync_player_camera()
+
+
+func get_spawn_offset() -> float:
+	return 0.75 * abs(player.scale.y) + 0.15
+
+
+func sync_player_camera() -> void:
+	player_camera_pivot.global_position = player.global_position

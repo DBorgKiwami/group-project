@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
-[ext_resource type="AudioStream" path="res://audio/music/step.ogg" id="5_step"]
-[ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
-[ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="8_pond"]
-[ext_resource type="AudioStream" path="res://audio/music/breeze.ogg" id="9_breeze"]
-[ext_resource type="AudioStream" path="res://audio/music/insectchirping.ogg" id="10_insect"]
-[ext_resource type="AudioStream" path="res://audio/music/insectschirping.ogg" id="11_insects"]
-[ext_resource type="Script" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
-[ext_resource type="Script" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
-[ext_resource type="Script" path="res://scripts/levels/redlance_water_area.gd" id="14_water"]
+[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="5_step"]
+[ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
+[ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="8_pond"]
+[ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="9_breeze"]
+[ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="10_insect"]
+[ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
+[ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
+[ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
+[ext_resource type="Script" uid="uid://dmaywvc6big5n" path="res://scripts/levels/redlance_water_area.gd" id="14_water"]
 
 [sub_resource type="Environment" id="Environment_preview"]
 background_mode = 1
@@ -26,30 +26,58 @@ size = Vector3(39, 5.5, 19)
 [sub_resource type="BoxShape3D" id="ExitShape"]
 size = Vector3(2.2, 1.4, 2.2)
 
+[sub_resource type="BoxShape3D" id="StartBankCollisionShape"]
+size = Vector3(11.5, 0.4, 10.1)
+
+[sub_resource type="BoxShape3D" id="CenterStepCollisionShape"]
+size = Vector3(9.2, 0.4, 8)
+
+[sub_resource type="BoxShape3D" id="NorthwestBankCollisionShape"]
+size = Vector3(13, 0.4, 10.6)
+
+[sub_resource type="BoxShape3D" id="EastBankCollisionShape"]
+size = Vector3(17.2, 0.4, 15.3)
+
+[sub_resource type="BoxShape3D" id="SouthIslandCollisionShape"]
+size = Vector3(14.1, 0.4, 9.5)
+
+[sub_resource type="BoxShape3D" id="BackRidgeCollisionShape"]
+size = Vector3(41, 0.4, 5.2)
+
+[sub_resource type="BoxShape3D" id="StartStairCollisionShape"]
+size = Vector3(0.85, 0.2, 0.55)
+
+[sub_resource type="BoxShape3D" id="HighStairCollisionShape"]
+size = Vector3(0.82, 0.22, 0.58)
+
+[sub_resource type="BoxShape3D" id="EastStairCollisionShape"]
+size = Vector3(0.8, 0.24, 0.55)
+
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
+add_simple_collision = false
 
-[node name="DampAndWatery" type="AudioStreamPlayer" parent="."]
+[node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=481790632]
 stream = ExtResource("7_damp")
 volume_db = -12.0
 
-[node name="PondSounds" type="AudioStreamPlayer" parent="."]
+[node name="PondSounds" type="AudioStreamPlayer" parent="." unique_id=214507984]
 stream = ExtResource("8_pond")
 volume_db = -11.0
 
-[node name="Breeze" type="AudioStreamPlayer" parent="."]
+[node name="Breeze" type="AudioStreamPlayer" parent="." unique_id=1452802803]
 stream = ExtResource("9_breeze")
 volume_db = -14.0
 
-[node name="InsectChirping" type="AudioStreamPlayer" parent="."]
+[node name="InsectChirping" type="AudioStreamPlayer" parent="." unique_id=1246809082]
 stream = ExtResource("10_insect")
 volume_db = -12.0
 
-[node name="InsectsChirping" type="AudioStreamPlayer" parent="."]
+[node name="InsectsChirping" type="AudioStreamPlayer" parent="." unique_id=414713516]
 stream = ExtResource("11_insects")
 volume_db = -15.0
 
-[node name="PondAmbience" type="Node" parent="." node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
+[node name="PondAmbience" type="Node" parent="." unique_id=1848370448 node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
 script = ExtResource("12_ambience")
 damp_and_watery = NodePath("../DampAndWatery")
 pond_sounds = NodePath("../PondSounds")
@@ -80,17 +108,14 @@ fov = 58.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -3.2)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.2, -3.2)
 
-[node name="Camera3D" parent="3Dplatformingcharacter/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.572149, 5)
-
-[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=1860963529]
 stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" node_paths=PackedStringArray("audio_player", "sprite")]
+[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" unique_id=406427709 node_paths=PackedStringArray("audio_player", "sprite")]
 script = ExtResource("13_footsteps")
 audio_player = NodePath("../FootstepAudio")
 sprite = NodePath("../AnimatedSprite3D")
@@ -98,13 +123,111 @@ sprite = NodePath("../AnimatedSprite3D")
 [node name="GameplayPlan" type="Node3D" parent="." unique_id=1211180447]
 
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -3.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -3.2)
 
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
 
 [node name="LevelExit" type="Marker3D" parent="GameplayPlan" unique_id=1495531785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
+
+[node name="LevelCollision" type="StaticBody3D" parent="." unique_id=1695016400]
+
+[node name="StartBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1267443033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.45, -4.55)
+shape = SubResource("StartBankCollisionShape")
+
+[node name="CenterStep" type="CollisionShape3D" parent="LevelCollision" unique_id=2121313598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, 1.35, 3)
+shape = SubResource("CenterStepCollisionShape")
+
+[node name="NorthwestBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1674348056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, 11.1)
+shape = SubResource("NorthwestBankCollisionShape")
+
+[node name="EastBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1497917185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2.95, 2.75)
+shape = SubResource("EastBankCollisionShape")
+
+[node name="SouthIsland" type="CollisionShape3D" parent="LevelCollision" unique_id=700535585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.35, 0.85, -6.15)
+shape = SubResource("SouthIslandCollisionShape")
+
+[node name="BackRidge" type="CollisionShape3D" parent="LevelCollision" unique_id=1659578854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 15.1)
+shape = SubResource("BackRidgeCollisionShape")
+
+[node name="StartStair01" type="CollisionShape3D" parent="LevelCollision" unique_id=620173211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0.78, -0.25)
+shape = SubResource("StartStairCollisionShape")
+
+[node name="StartStair02" type="CollisionShape3D" parent="LevelCollision" unique_id=1178168067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05, 0.96, 0.1)
+shape = SubResource("StartStairCollisionShape")
+
+[node name="StartStair03" type="CollisionShape3D" parent="LevelCollision" unique_id=1940611177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 1.14, 0.45)
+shape = SubResource("StartStairCollisionShape")
+
+[node name="StartStair04" type="CollisionShape3D" parent="LevelCollision" unique_id=974406129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35, 1.32, 0.8)
+shape = SubResource("StartStairCollisionShape")
+
+[node name="StartStair05" type="CollisionShape3D" parent="LevelCollision" unique_id=813042794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 1.15)
+shape = SubResource("StartStairCollisionShape")
+
+[node name="HighStair01" type="CollisionShape3D" parent="LevelCollision" unique_id=1759042387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8, 1.72, 6.3)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair02" type="CollisionShape3D" parent="LevelCollision" unique_id=109250573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35, 1.9, 6.68)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair03" type="CollisionShape3D" parent="LevelCollision" unique_id=1136186112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, 2.08, 7.06)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair04" type="CollisionShape3D" parent="LevelCollision" unique_id=334897622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.45, 2.26, 7.44)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair05" type="CollisionShape3D" parent="LevelCollision" unique_id=1461188377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.44, 7.82)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair06" type="CollisionShape3D" parent="LevelCollision" unique_id=1179915103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.55, 2.62, 8.2)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="HighStair07" type="CollisionShape3D" parent="LevelCollision" unique_id=2072308562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, 2.8, 8.58)
+shape = SubResource("HighStairCollisionShape")
+
+[node name="EastStair01" type="CollisionShape3D" parent="LevelCollision" unique_id=967201516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 1.85, 5)
+shape = SubResource("EastStairCollisionShape")
+
+[node name="EastStair02" type="CollisionShape3D" parent="LevelCollision" unique_id=1987508271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 2.07, 5.25)
+shape = SubResource("EastStairCollisionShape")
+
+[node name="EastStair03" type="CollisionShape3D" parent="LevelCollision" unique_id=454126957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3, 2.29, 5.5)
+shape = SubResource("EastStairCollisionShape")
+
+[node name="EastStair04" type="CollisionShape3D" parent="LevelCollision" unique_id=844216561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.85, 2.51, 5.75)
+shape = SubResource("EastStairCollisionShape")
+
+[node name="EastStair05" type="CollisionShape3D" parent="LevelCollision" unique_id=2090834503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4, 2.73, 6)
+shape = SubResource("EastStairCollisionShape")
+
+[node name="EastStair06" type="CollisionShape3D" parent="LevelCollision" unique_id=1404432372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.95, 2.95, 6.25)
+shape = SubResource("EastStairCollisionShape")
 
 [node name="GameplayTriggers" type="Node3D" parent="." unique_id=1234368126]
 
@@ -113,7 +236,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 2.5)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("14_water")
-water_surface_y = 0.22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=139410510]
 shape = SubResource("WaterAreaShape")
