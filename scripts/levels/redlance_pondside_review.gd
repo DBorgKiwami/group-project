@@ -43,9 +43,9 @@ func setup_pond_height() -> void:
 
 
 func set_pond_piece_height(piece_name: String, height: float) -> void:
-	var piece := level_base.find_child(piece_name, true, false)
+	var piece := level_base.find_child(piece_name, true, false) as Node3D
 	if piece == null:
-		piece = level_base.find_child(piece_name + "_Mesh", true, false)
+		piece = level_base.find_child(piece_name + "_Mesh", true, false) as Node3D
 	if piece:
 		piece.position.y = height
 
