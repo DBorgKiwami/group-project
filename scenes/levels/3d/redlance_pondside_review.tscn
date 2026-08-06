@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
+[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="18_canyon"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="5_step"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
@@ -15,10 +16,18 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="15_grapple"]
 [ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="16_water_step"]
 [ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="17_lotus_step"]
+[ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="19_sky"]
+
+[sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
+panorama = ExtResource("19_sky")
+
+[sub_resource type="Sky" id="OuterSky"]
+sky_material = SubResource("OuterSkyMaterial")
 
 [sub_resource type="Environment" id="Environment_preview"]
-background_mode = 1
-background_color = Color(0.42, 0.64, 0.88, 1)
+background_mode = 2
+background_energy_multiplier = 0.85
+sky = SubResource("OuterSky")
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
@@ -145,6 +154,9 @@ fov = 58.0
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+
+[node name="OuterCanyonBackdrop" parent="." instance=ExtResource("18_canyon")]
+transform = Transform3D(90.20059, 0, -43.17237, 0, 100, 0, 43.17237, 0, 90.20059, -341.27402, -157.59357, 199.01869)
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.2, -3.2)
