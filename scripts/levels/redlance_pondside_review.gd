@@ -1,10 +1,10 @@
 extends Node3D
 
+const POND_WATER_MATERIAL := preload("res://materials/redlance_pond_water.tres")
+
 @export var add_simple_collision := true
 @export var snap_player_to_spawn := true
 @export var use_preview_camera := false
-@export var pond_surface_y := 0.72
-@export var pond_bed_y := 0.12
 
 @onready var level_base: Node3D = $LevelBase
 @onready var preview_camera: Camera3D = $PreviewCamera
@@ -16,7 +16,7 @@ extends Node3D
 
 
 func _ready() -> void:
-	setup_pond_height()
+	setup_pond_water()
 
 	if add_simple_collision:
 		add_collision(level_base)
@@ -35,19 +35,10 @@ func _ready() -> void:
 		player_camera.current = true
 
 
-func setup_pond_height() -> void:
-	set_pond_piece_height("Pond_Water_Main_Transparent", pond_surface_y)
-	set_pond_piece_height("Pond_Shallow_Edge_Glow", pond_surface_y + 0.02)
-	set_pond_piece_height("Pond_Shallow_East_Glow", pond_surface_y + 0.02)
-	set_pond_piece_height("Pond_Bed_Deep", pond_bed_y)
-
-
-func set_pond_piece_height(piece_name: String, height: float) -> void:
-	var piece := level_base.find_child(piece_name, true, false) as Node3D
-	if piece == null:
-		piece = level_base.find_child(piece_name + "_Mesh", true, false) as Node3D
-	if piece:
-		piece.position.y = height
+func setup_pond_water() -> void:
+	var water := level_base.find_child("Pond_Water_Main_Transparent", true, false) as MeshInstance3D
+	if water:
+		water.material_override = POND_WATER_MATERIAL
 
 
 func add_collision(node: Node) -> void:

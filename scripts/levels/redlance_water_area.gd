@@ -1,7 +1,7 @@
 extends Area3D
 
-@export var water_surface_y := 0.72
-@export var player_feet_height := 0.18
+@export var water_surface_y := 0.22
+@export var float_height := 0.48
 @export var float_speed := 4.0
 @export var sink_speed := 1.2
 @export var water_drag := 2.0
@@ -15,8 +15,7 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(player):
 			continue
 
-		# The water can reach the character's upper body while the feet stay on the pond bed.
-		var target_y := water_surface_y - player_feet_height - 0.14
+		var target_y := water_surface_y + float_height
 		var pos := player.global_position
 
 		if player.global_position.y < target_y:
