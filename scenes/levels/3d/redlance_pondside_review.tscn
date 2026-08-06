@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="16_water_step"]
 [ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="17_lotus_step"]
 [ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="18_canyon"]
+[ext_resource type="PackedScene" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="20_rock_cluster"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="19_sky"]
 
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
@@ -42,6 +43,9 @@ albedo_color = Color(0.17, 0.19, 0.2, 1)
 [sub_resource type="StandardMaterial3D" id="BoundarySoilMat"]
 albedo_color = Color(0.46, 0.25, 0.14, 1)
 roughness = 0.98
+
+[sub_resource type="BoxShape3D" id="RockClusterCollisionShape"]
+size = Vector3(7, 8, 5)
 
 [sub_resource type="StandardMaterial3D" id="RouteStoneMat"]
 albedo_color = Color(0.4, 0.42, 0.39, 1)
@@ -173,6 +177,7 @@ transform = Transform3D(90.20059, 0, -43.17237, 0, 100, 0, 43.17237, 0, 90.20059
 use_collision = true
 
 [node name="NorthRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.8, 0, 0.2, 0, 2.4, 0, 0.3, 0, 2.2, -5.5, 2.1, 21.2)
 radius = 1.0
 radial_segments = 7
@@ -180,6 +185,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="NorthRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.2, 0, -0.3, 0, 1.6, 0, -0.2, 0, 2.6, -1.8, 1.3, 21.5)
 radius = 1.0
 radial_segments = 7
@@ -187,6 +193,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="NorthRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.3, 0, 0.25, 0, 3.5, 0, 0.2, 0, 2.4, 7.5, 3.1, 22.1)
 radius = 1.0
 radial_segments = 7
@@ -194,6 +201,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="NorthRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.7, 0, -0.2, 0, 2.5, 0, -0.25, 0, 2.1, 11.2, 2.1, 22.2)
 radius = 1.0
 radial_segments = 7
@@ -201,6 +209,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="NorthRockClusterE" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(3.1, 0, 0.15, 0, 3.2, 0, 0.2, 0, 2.5, 22.7, 2.8, 21.4)
 radius = 1.0
 radial_segments = 7
@@ -208,6 +217,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="NorthRockClusterF" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.1, 0, -0.2, 0, 1.8, 0, -0.25, 0, 2.8, 27, 1.6, 21.2)
 radius = 1.0
 radial_segments = 7
@@ -215,6 +225,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="NorthRockClusterG" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.8, 0, 0.25, 0, 2.9, 0, 0.2, 0, 2.3, 34, 2.5, 20.8)
 radius = 1.0
 radial_segments = 7
@@ -222,6 +233,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="WestRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.4, 0, 0.2, 0, 2.5, 0, 0.3, 0, 2.8, -8.3, 2.1, 12.2)
 radius = 1.0
 radial_segments = 7
@@ -229,6 +241,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="WestRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.2, 0, -0.2, 0, 1.6, 0, -0.25, 0, 2.4, -8.5, 1.3, 7.2)
 radius = 1.0
 radial_segments = 7
@@ -236,6 +249,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="WestRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.8, 0, 0.25, 0, 3.1, 0, 0.2, 0, 2.6, -8.8, 2.7, -1.5)
 radius = 1.0
 radial_segments = 7
@@ -243,6 +257,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="WestRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.3, 0, -0.25, 0, 1.9, 0, -0.2, 0, 2.7, -8.5, 1.6, -7.3)
 radius = 1.0
 radial_segments = 7
@@ -250,6 +265,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="EastRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.6, 0, 0.2, 0, 2.4, 0, 0.25, 0, 2.8, 37.2, 2.1, 12.3)
 radius = 1.0
 radial_segments = 7
@@ -257,6 +273,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="EastRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.1, 0, -0.25, 0, 1.6, 0, -0.2, 0, 2.5, 37.4, 1.3, 7.5)
 radius = 1.0
 radial_segments = 7
@@ -264,6 +281,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="EastRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.8, 0, 0.2, 0, 3.2, 0, 0.25, 0, 2.4, 37.5, 2.8, -1.2)
 radius = 1.0
 radial_segments = 7
@@ -271,6 +289,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="EastRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.4, 0, -0.2, 0, 1.9, 0, -0.25, 0, 2.7, 37.2, 1.6, -7.5)
 radius = 1.0
 radial_segments = 7
@@ -278,6 +297,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="SouthRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.7, 0, 0.2, 0, 2.8, 0, 0.25, 0, 2.3, -5.2, 2.3, -13.9)
 radius = 1.0
 radial_segments = 7
@@ -285,6 +305,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="SouthRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.2, 0, -0.25, 0, 1.7, 0, -0.2, 0, 2.6, -1.1, 1.4, -14.2)
 radius = 1.0
 radial_segments = 7
@@ -292,6 +313,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="SouthRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.8, 0, 0.25, 0, 3.1, 0, 0.2, 0, 2.4, 9, 2.8, -14.5)
 radius = 1.0
 radial_segments = 7
@@ -299,6 +321,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="SouthRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.1, 0, -0.2, 0, 1.6, 0, -0.25, 0, 2.7, 14, 1.3, -14.2)
 radius = 1.0
 radial_segments = 7
@@ -306,6 +329,7 @@ rings = 3
 material = SubResource("BoundarySoilMat")
 
 [node name="SouthRockClusterE" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.9, 0, 0.2, 0, 3, 0, 0.25, 0, 2.4, 24, 2.7, -14.2)
 radius = 1.0
 radial_segments = 7
@@ -313,6 +337,7 @@ rings = 3
 material = SubResource("BoundaryCliffMat")
 
 [node name="SouthRockClusterF" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.3, 0, -0.25, 0, 1.8, 0, -0.2, 0, 2.8, 29, 1.5, -13.7)
 radius = 1.0
 radial_segments = 7
@@ -320,6 +345,7 @@ rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="SouthRockClusterG" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+visible = false
 transform = Transform3D(2.7, 0, 0.2, 0, 2.5, 0, 0.25, 0, 2.3, 35, 2, -13.3)
 radius = 1.0
 radial_segments = 7
@@ -339,6 +365,7 @@ depth = 3.2
 material = SubResource("BoundarySoilMat")
 
 [node name="BoulderNorthWest" type="CSGSphere3D" parent="NaturalTerrainBoundary" unique_id=2024435961]
+visible = false
 transform = Transform3D(3.4, 0, 0.5, 0, 2.7, 0, 0.4, 0, 2.5, -6, 1.8, 19.5)
 radius = 1.0
 radial_segments = 8
@@ -346,11 +373,65 @@ rings = 4
 material = SubResource("BoundaryDarkRockMat")
 
 [node name="BoulderSouthEast" type="CSGSphere3D" parent="NaturalTerrainBoundary" unique_id=1175299354]
+visible = false
 transform = Transform3D(2.8, 0, -0.4, 0, 2.1, 0, -0.3, 0, 3.2, 28.631165, 1.4, -9.862659)
 radius = 1.0
 radial_segments = 8
 rings = 4
 material = SubResource("BoundaryCliffMat")
+
+[node name="StratifiedRockBoundary" type="Node3D" parent="."]
+
+[node name="RockCliffNorthWest" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, -5, 0, 21)
+
+[node name="RockCliffNorthCenter" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 9, 0, 22)
+
+[node name="RockCliffNorthEast" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 24, 0, 21)
+
+[node name="RockCliffWest" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(0, 0, -0.9, 0, 0.9, 0, 0.9, 0, 0, -9, 0, 6)
+
+[node name="RockCliffEast" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(0, 0, 0.9, 0, 0.9, 0, -0.9, 0, 0, 38, 0, 5)
+
+[node name="RockCliffSouth" parent="StratifiedRockBoundary" instance=ExtResource("20_rock_cluster")]
+transform = Transform3D(-0.95, 0, 0, 0, 0.95, 0, 0, 0, -0.95, 11, 0, -14)
+
+[node name="RockBoundaryCollision" type="StaticBody3D" parent="."]
+
+[node name="NorthWestCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(-5, 4, 21)
+shape = SubResource("RockClusterCollisionShape")
+
+[node name="NorthCenterCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(9, 3.5, 22)
+scale = Vector3(0.9, 0.9, 0.9)
+shape = SubResource("RockClusterCollisionShape")
+
+[node name="NorthEastCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(24, 4, 21)
+shape = SubResource("RockClusterCollisionShape")
+
+[node name="WestCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(-9, 3.5, 6)
+rotation = Vector3(0, 1.5708, 0)
+scale = Vector3(0.9, 0.9, 0.9)
+shape = SubResource("RockClusterCollisionShape")
+
+[node name="EastCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(38, 3.5, 5)
+rotation = Vector3(0, 1.5708, 0)
+scale = Vector3(0.9, 0.9, 0.9)
+shape = SubResource("RockClusterCollisionShape")
+
+[node name="SouthCollision" type="CollisionShape3D" parent="RockBoundaryCollision"]
+position = Vector3(11, 3.8, -14)
+rotation = Vector3(0, 3.1416, 0)
+scale = Vector3(0.95, 0.95, 0.95)
+shape = SubResource("RockClusterCollisionShape")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.2, -3.2)
