@@ -166,27 +166,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 [node name="OuterCanyonBackdrop" parent="." instance=ExtResource("18_canyon")]
 transform = Transform3D(90.20059, 0, -43.17237, 0, 100, 0, 43.17237, 0, 90.20059, -341.27402, -157.59357, 199.01869)
 
-[node name="PondsideBoundaryWalls" type="CSGCombiner3D" parent="."]
+[node name="RaisedBoundaryLand" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="MountainBoundaryNorth" type="CSGBox3D" parent="PondsideBoundaryWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 5.5, 22)
-size = Vector3(48, 11, 4)
+[node name="NorthEarthFoundation" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 22.5)
+size = Vector3(48, 4, 5)
 material = SubResource("BoundaryRockMat")
 
-[node name="MountainBoundaryWest" type="CSGBox3D" parent="PondsideBoundaryWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5.5, 3)
-size = Vector3(4, 11, 42)
-material = SubResource("BoundaryRockMat")
-
-[node name="GreenBoundarySouth" type="CSGBox3D" parent="PondsideBoundaryWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.8, -14)
-size = Vector3(48, 5.6, 4)
+[node name="NorthGrassTop" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4.25, 22.5)
+size = Vector3(48, 0.5, 5)
 material = SubResource("BoundaryGrassMat")
 
-[node name="GreenBoundaryEast" type="CSGBox3D" parent="PondsideBoundaryWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2.8, 3)
-size = Vector3(4, 5.6, 42)
+[node name="WestEarthFoundation" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2, 3)
+size = Vector3(5, 4, 42)
+material = SubResource("BoundaryRockMat")
+
+[node name="WestGrassTop" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4.25, 3)
+size = Vector3(5, 0.5, 42)
+material = SubResource("BoundaryGrassMat")
+
+[node name="SouthEarthFoundation" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -14.5)
+size = Vector3(48, 4, 5)
+material = SubResource("BoundaryRockMat")
+
+[node name="SouthGrassTop" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4.25, -14.5)
+size = Vector3(48, 0.5, 5)
+material = SubResource("BoundaryGrassMat")
+
+[node name="EastEarthFoundation" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 2, 3)
+size = Vector3(5, 4, 42)
+material = SubResource("BoundaryRockMat")
+
+[node name="EastGrassTop" type="CSGBox3D" parent="RaisedBoundaryLand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 4.25, 3)
+size = Vector3(5, 0.5, 42)
 material = SubResource("BoundaryGrassMat")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
