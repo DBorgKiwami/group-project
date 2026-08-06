@@ -101,6 +101,14 @@ size = Vector3(0.08, 1.1, 0.08)
 [sub_resource type="BoxMesh" id="CheckpointFlagMesh"]
 size = Vector3(0.75, 0.36, 0.05)
 
+[sub_resource type="StandardMaterial3D" id="BoundaryRockMat"]
+albedo_color = Color(0.28, 0.16, 0.1, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="BoundaryGrassMat"]
+albedo_color = Color(0.16, 0.42, 0.18, 1)
+roughness = 0.9
+
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
 add_simple_collision = false
@@ -157,6 +165,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
 [node name="OuterCanyonBackdrop" parent="." instance=ExtResource("18_canyon")]
 transform = Transform3D(90.20059, 0, -43.17237, 0, 100, 0, 43.17237, 0, 90.20059, -341.27402, -157.59357, 199.01869)
+
+[node name="PondsideBoundaryWalls" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="MountainBoundaryNorth" type="CSGBox3D" parent="PondsideBoundaryWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 5.5, 22)
+size = Vector3(48, 11, 4)
+material = SubResource("BoundaryRockMat")
+
+[node name="MountainBoundaryWest" type="CSGBox3D" parent="PondsideBoundaryWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5.5, 3)
+size = Vector3(4, 11, 42)
+material = SubResource("BoundaryRockMat")
+
+[node name="GreenBoundarySouth" type="CSGBox3D" parent="PondsideBoundaryWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.8, -14)
+size = Vector3(48, 5.6, 4)
+material = SubResource("BoundaryGrassMat")
+
+[node name="GreenBoundaryEast" type="CSGBox3D" parent="PondsideBoundaryWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2.8, 3)
+size = Vector3(4, 5.6, 42)
+material = SubResource("BoundaryGrassMat")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.2, -3.2)
