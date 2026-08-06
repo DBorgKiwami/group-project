@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
-[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="18_canyon"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="5_step"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="15_grapple"]
 [ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="16_water_step"]
 [ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="17_lotus_step"]
+[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="18_canyon"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="19_sky"]
 
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
@@ -32,26 +32,34 @@ ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
 
-[sub_resource type="BoxShape3D" id="WaterAreaShape"]
-size = Vector3(13, 2.3, 12)
+[sub_resource type="StandardMaterial3D" id="BoundaryCliffMat"]
+albedo_color = Color(0.27, 0.3, 0.31, 1)
+roughness = 0.96
 
-[sub_resource type="BoxShape3D" id="WaterAreaEastShape"]
-size = Vector3(12, 2.3, 12)
+[sub_resource type="StandardMaterial3D" id="BoundaryDarkRockMat"]
+albedo_color = Color(0.17, 0.19, 0.2, 1)
 
-[sub_resource type="BoxShape3D" id="WaterAreaSouthShape"]
-size = Vector3(10, 2.3, 5)
+[sub_resource type="StandardMaterial3D" id="BoundarySoilMat"]
+albedo_color = Color(0.46, 0.25, 0.14, 1)
+roughness = 0.98
 
-[sub_resource type="BoxShape3D" id="PondFloorMainShape"]
-size = Vector3(13, 0.2, 12)
+[sub_resource type="StandardMaterial3D" id="RouteStoneMat"]
+albedo_color = Color(0.4, 0.42, 0.39, 1)
+roughness = 0.85
 
-[sub_resource type="BoxShape3D" id="PondFloorEastShape"]
-size = Vector3(12, 0.2, 12)
+[sub_resource type="StandardMaterial3D" id="CheckpointWoodMat"]
+albedo_color = Color(0.36, 0.22, 0.12, 1)
+roughness = 0.8
 
-[sub_resource type="BoxShape3D" id="PondFloorSouthShape"]
-size = Vector3(10, 0.2, 5)
+[sub_resource type="BoxMesh" id="CheckpointPostMesh"]
+size = Vector3(0.08, 1.1, 0.08)
 
-[sub_resource type="BoxShape3D" id="ExitShape"]
-size = Vector3(2.2, 1.4, 2.2)
+[sub_resource type="StandardMaterial3D" id="CheckpointFlagMat"]
+albedo_color = Color(0.72, 0.14, 0.12, 1)
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="CheckpointFlagMesh"]
+size = Vector3(0.75, 0.36, 0.05)
 
 [sub_resource type="BoxShape3D" id="StartBankCollisionShape"]
 size = Vector3(11.5, 0.4, 10.1)
@@ -80,38 +88,29 @@ size = Vector3(0.82, 0.22, 0.58)
 [sub_resource type="BoxShape3D" id="EastStairCollisionShape"]
 size = Vector3(0.8, 0.24, 0.55)
 
+[sub_resource type="BoxShape3D" id="WaterAreaShape"]
+size = Vector3(13, 2.3, 12)
+
+[sub_resource type="BoxShape3D" id="WaterAreaEastShape"]
+size = Vector3(12, 2.3, 12)
+
+[sub_resource type="BoxShape3D" id="WaterAreaSouthShape"]
+size = Vector3(10, 2.3, 5)
+
+[sub_resource type="BoxShape3D" id="PondFloorMainShape"]
+size = Vector3(13, 0.2, 12)
+
+[sub_resource type="BoxShape3D" id="PondFloorEastShape"]
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="BoxShape3D" id="PondFloorSouthShape"]
+size = Vector3(10, 0.2, 5)
+
 [sub_resource type="BoxShape3D" id="CheckpointAreaShape"]
 size = Vector3(2.2, 1.7, 2.2)
 
-[sub_resource type="StandardMaterial3D" id="RouteStoneMat"]
-albedo_color = Color(0.4, 0.42, 0.39, 1)
-roughness = 0.85
-
-[sub_resource type="StandardMaterial3D" id="CheckpointWoodMat"]
-albedo_color = Color(0.36, 0.22, 0.12, 1)
-roughness = 0.8
-
-[sub_resource type="StandardMaterial3D" id="CheckpointFlagMat"]
-albedo_color = Color(0.72, 0.14, 0.12, 1)
-roughness = 0.65
-
-[sub_resource type="BoxMesh" id="CheckpointPostMesh"]
-size = Vector3(0.08, 1.1, 0.08)
-
-[sub_resource type="BoxMesh" id="CheckpointFlagMesh"]
-size = Vector3(0.75, 0.36, 0.05)
-
-[sub_resource type="StandardMaterial3D" id="BoundaryCliffMat"]
-albedo_color = Color(0.27, 0.3, 0.31, 1)
-roughness = 0.96
-
-[sub_resource type="StandardMaterial3D" id="BoundarySoilMat"]
-albedo_color = Color(0.46, 0.25, 0.14, 1)
-roughness = 0.98
-
-[sub_resource type="StandardMaterial3D" id="BoundaryDarkRockMat"]
-albedo_color = Color(0.17, 0.19, 0.2, 1)
-roughness = 1.0
+[sub_resource type="BoxShape3D" id="ExitShape"]
+size = Vector3(2.2, 1.4, 2.2)
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
@@ -167,122 +166,188 @@ fov = 58.0
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
-[node name="OuterCanyonBackdrop" parent="." instance=ExtResource("18_canyon")]
+[node name="OuterCanyonBackdrop" parent="." unique_id=714179418 instance=ExtResource("18_canyon")]
 transform = Transform3D(90.20059, 0, -43.17237, 0, 100, 0, 43.17237, 0, 90.20059, -341.27402, -157.59357, 199.01869)
 
-[node name="NaturalTerrainBoundary" type="CSGCombiner3D" parent="."]
+[node name="NaturalTerrainBoundary" type="CSGCombiner3D" parent="." unique_id=1699423441]
 use_collision = true
 
-[node name="NorthCliffLeft" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.98, 0, 0.2, 0, 1, 0, -0.2, 0, 0.98, -5, 0, 22)
-polygon = PackedVector2Array(-5, 0, -4.2, 2.3, -2.8, 4.8, -0.8, 5.8, 1.3, 4.4, 3.2, 6.1, 4.8, 2.1, 5.2, 0)
-mode = 0
-depth = 5.5
+[node name="NorthRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.8, 0, 0.2, 0, 2.4, 0, 0.3, 0, 2.2, -5.5, 2.1, 21.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="NorthCliffMiddle" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.94, 0, -0.34, 0, 1, 0, 0.34, 0, 0.94, 8, 0, 23)
-polygon = PackedVector2Array(-4.3, 0, -3.5, 3.2, -1.7, 5.4, 0.2, 4.2, 1.9, 6.5, 3.6, 3.4, 4.5, 0)
-mode = 0
-depth = 5.8
+[node name="NorthRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.2, 0, -0.3, 0, 1.6, 0, -0.2, 0, 2.6, -1.8, 1.3, 21.5)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="NorthRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.3, 0, 0.25, 0, 3.5, 0, 0.2, 0, 2.4, 7.5, 3.1, 22.1)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
-[node name="NorthCliffRight" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.99, 0, 0.16, 0, 1, 0, -0.16, 0, 0.99, 23, 0, 22.5)
-polygon = PackedVector2Array(-4.8, 0, -4, 2.8, -2.2, 4.1, -0.6, 6.3, 1.2, 4.7, 3, 5.2, 4.6, 2.4, 5, 0)
-mode = 0
-depth = 5.6
+[node name="NorthRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.7, 0, -0.2, 0, 2.5, 0, -0.25, 0, 2.1, 11.2, 2.1, 22.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="NorthCliffFarRight" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.97, 0, -0.24, 0, 1, 0, 0.24, 0, 0.97, 34, 0, 21.5)
-polygon = PackedVector2Array(-4.4, 0, -3.4, 3.1, -1.4, 5.1, 0.5, 4.4, 2.2, 6.2, 4.1, 2.7, 4.8, 0)
-mode = 0
-depth = 5.2
-material = SubResource("BoundaryDarkRockMat")
-
-[node name="WestCliffUpper" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -9, 0, 12)
-polygon = PackedVector2Array(-5, 0, -4.1, 2.6, -2.4, 5.3, -0.5, 4.2, 1.3, 6.4, 3.4, 3, 5, 0)
-mode = 0
-depth = 5.5
+[node name="NorthRockClusterE" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(3.1, 0, 0.15, 0, 3.2, 0, 0.2, 0, 2.5, 22.7, 2.8, 21.4)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="WestCliffLower" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -10, 0, -4)
-polygon = PackedVector2Array(-4.5, 0, -3.2, 3.4, -1.2, 4.5, 0.6, 6.1, 2.5, 4.2, 4.2, 2.3, 4.8, 0)
-mode = 0
-depth = 5.2
+[node name="NorthRockClusterF" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.1, 0, -0.2, 0, 1.8, 0, -0.25, 0, 2.8, 27, 1.6, 21.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="NorthRockClusterG" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.8, 0, 0.25, 0, 2.9, 0, 0.2, 0, 2.3, 34, 2.5, 20.8)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
-[node name="EastCliffUpper" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 38, 0, 12)
-polygon = PackedVector2Array(-4.8, 0, -3.9, 2.2, -2.5, 5.4, -0.7, 4.1, 1.3, 6, 3.2, 3.5, 4.6, 0)
-mode = 0
-depth = 5.5
+[node name="WestRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.4, 0, 0.2, 0, 2.5, 0, 0.3, 0, 2.8, -8.3, 2.1, 12.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="EastCliffLower" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 39, 0, -4)
-polygon = PackedVector2Array(-4.6, 0, -3.3, 3.3, -1.4, 4.7, 0.4, 6.4, 2.3, 4.2, 4, 2.4, 4.8, 0)
-mode = 0
-depth = 5.1
+[node name="WestRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.2, 0, -0.2, 0, 1.6, 0, -0.25, 0, 2.4, -8.5, 1.3, 7.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="WestRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.8, 0, 0.25, 0, 3.1, 0, 0.2, 0, 2.6, -8.8, 2.7, -1.5)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
-[node name="SouthCliffLeft" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.98, 0, -0.18, 0, 1, 0, 0.18, 0, 0.98, -5, 0, -15)
-polygon = PackedVector2Array(-4.8, 0, -3.5, 2.6, -1.7, 4.6, 0.2, 5.8, 2, 4.1, 3.6, 5.1, 4.8, 2.2, 5, 0)
-mode = 0
-depth = 5.5
+[node name="WestRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.3, 0, -0.25, 0, 1.9, 0, -0.2, 0, 2.7, -8.5, 1.6, -7.3)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="SouthCliffMiddle" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.95, 0, 0.3, 0, 1, 0, -0.3, 0, 0.95, 9, 0, -15.5)
-polygon = PackedVector2Array(-4.4, 0, -3.8, 3.4, -2, 5.3, 0, 4.4, 1.6, 6.2, 3.4, 3.1, 4.6, 0)
-mode = 0
-depth = 5.8
-material = SubResource("BoundaryDarkRockMat")
-
-[node name="SouthCliffRight" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.97, 0, -0.24, 0, 1, 0, 0.24, 0, 0.97, 24, 0, -15)
-polygon = PackedVector2Array(-4.7, 0, -3.3, 2.9, -1.2, 5.2, 0.6, 4, 2.4, 6.3, 4.1, 3.1, 4.9, 0)
-mode = 0
-depth = 5.4
+[node name="EastRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.6, 0, 0.2, 0, 2.4, 0, 0.25, 0, 2.8, 37.2, 2.1, 12.3)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryCliffMat")
 
-[node name="SouthCliffFarRight" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(0.99, 0, 0.14, 0, 1, 0, -0.14, 0, 0.99, 35, 0, -14)
-polygon = PackedVector2Array(-4.6, 0, -3.8, 2.5, -2.1, 4.8, -0.4, 5.9, 1.6, 4.2, 3.4, 5.4, 4.8, 2, 5, 0)
-mode = 0
-depth = 5.3
+[node name="EastRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.1, 0, -0.25, 0, 1.6, 0, -0.2, 0, 2.5, 37.4, 1.3, 7.5)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="EastRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.8, 0, 0.2, 0, 3.2, 0, 0.25, 0, 2.4, 37.5, 2.8, -1.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
 material = SubResource("BoundaryDarkRockMat")
 
-[node name="SoilSlopeNorth" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
+[node name="EastRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.4, 0, -0.2, 0, 1.9, 0, -0.25, 0, 2.7, 37.2, 1.6, -7.5)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryCliffMat")
+
+[node name="SouthRockClusterA" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.7, 0, 0.2, 0, 2.8, 0, 0.25, 0, 2.3, -5.2, 2.3, -13.9)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryDarkRockMat")
+
+[node name="SouthRockClusterB" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.2, 0, -0.25, 0, 1.7, 0, -0.2, 0, 2.6, -1.1, 1.4, -14.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="SouthRockClusterC" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.8, 0, 0.25, 0, 3.1, 0, 0.2, 0, 2.4, 9, 2.8, -14.5)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryCliffMat")
+
+[node name="SouthRockClusterD" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.1, 0, -0.2, 0, 1.6, 0, -0.25, 0, 2.7, 14, 1.3, -14.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundarySoilMat")
+
+[node name="SouthRockClusterE" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.9, 0, 0.2, 0, 3, 0, 0.25, 0, 2.4, 24, 2.7, -14.2)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryCliffMat")
+
+[node name="SouthRockClusterF" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.3, 0, -0.25, 0, 1.8, 0, -0.2, 0, 2.8, 29, 1.5, -13.7)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryDarkRockMat")
+
+[node name="SouthRockClusterG" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+transform = Transform3D(2.7, 0, 0.2, 0, 2.5, 0, 0.25, 0, 2.3, 35, 2, -13.3)
+radius = 1.0
+radial_segments = 7
+rings = 3
+material = SubResource("BoundaryCliffMat")
+
+[node name="SoilSlopeNorth" type="CSGPolygon3D" parent="NaturalTerrainBoundary" unique_id=1154572132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 19.8)
 polygon = PackedVector2Array(-22, 0, -18, 1.2, -11, 1.8, -4, 1.1, 2, 2, 9, 1.2, 17, 1.7, 22, 0)
-mode = 0
 depth = 3.5
 material = SubResource("BoundarySoilMat")
 
-[node name="SoilSlopeSouth" type="CSGPolygon3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12.3)
-polygon = PackedVector2Array(-22, 0, -16, 1.4, -9, 1, -2, 1.8, 5, 1.1, 12, 1.7, 19, 1.2, 22, 0)
-mode = 0
+[node name="SoilSlopeSouth" type="CSGPolygon3D" parent="NaturalTerrainBoundary" unique_id=1835519048]
+transform = Transform3D(1.0383531, 0, 0, 0, 2.571777, 0, 0, 0, 13.36164, 14, -3.9505262, 23.048302)
+polygon = PackedVector2Array(-22, 0, -21.6959, 1.5895255, -9.107416, 1.2528502, -1.9591322, 1.4470809, 3.9215984, 1.5046643, 10.585941, 2.174294, 18.393902, 2.0517955, 22, 0)
 depth = 3.2
 material = SubResource("BoundarySoilMat")
 
-[node name="BoulderNorthWest" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
+[node name="BoulderNorthWest" type="CSGSphere3D" parent="NaturalTerrainBoundary" unique_id=2024435961]
 transform = Transform3D(3.4, 0, 0.5, 0, 2.7, 0, 0.4, 0, 2.5, -6, 1.8, 19.5)
 radius = 1.0
-height = 2.0
 radial_segments = 8
 rings = 4
 material = SubResource("BoundaryDarkRockMat")
 
-[node name="BoulderSouthEast" type="CSGSphere3D" parent="NaturalTerrainBoundary"]
-transform = Transform3D(2.8, 0, -0.4, 0, 2.1, 0, -0.3, 0, 3.2, 35, 1.4, -12)
+[node name="BoulderSouthEast" type="CSGSphere3D" parent="NaturalTerrainBoundary" unique_id=1175299354]
+transform = Transform3D(2.8, 0, -0.4, 0, 2.1, 0, -0.3, 0, 3.2, 28.631165, 1.4, -9.862659)
 radius = 1.0
-height = 2.0
 radial_segments = 8
 rings = 4
 material = SubResource("BoundaryCliffMat")
@@ -290,17 +355,20 @@ material = SubResource("BoundaryCliffMat")
 [node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.2, -3.2)
 
+[node name="Camera3D" parent="3Dplatformingcharacter/Node3D" parent_id_path=PackedInt32Array(2055655660, 1373763106) index="0" unique_id=1344329634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4716447, 1.5)
+
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=1860963529]
 stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=560433207]
 stream = ExtResource("16_water_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=407395779]
 stream = ExtResource("17_lotus_step")
 volume_db = -4.0
 max_distance = 18.0
@@ -312,23 +380,20 @@ water_audio_player = NodePath("../WaterFootstepAudio")
 lotus_audio_player = NodePath("../LotusFootstepAudio")
 sprite = NodePath("../AnimatedSprite3D")
 
-[node name="Camera3D" parent="3Dplatformingcharacter/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4716447, 1.5)
-
-[node name="RouteStepFinish" type="CSGCombiner3D" parent="."]
+[node name="RouteStepFinish" type="CSGCombiner3D" parent="." unique_id=2058716946]
 use_collision = true
 
-[node name="StoneStep01" type="CSGBox3D" parent="RouteStepFinish"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 11.6, 1.66, 4.0)
+[node name="StoneStep01" type="CSGBox3D" parent="RouteStepFinish" unique_id=950588627]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 11.6, 1.66, 4)
 size = Vector3(1.05, 0.24, 0.72)
 material = SubResource("RouteStoneMat")
 
-[node name="StoneStep02" type="CSGBox3D" parent="RouteStepFinish"]
+[node name="StoneStep02" type="CSGBox3D" parent="RouteStepFinish" unique_id=1247090440]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 12.35, 1.78, 4.28)
 size = Vector3(1.05, 0.24, 0.72)
 material = SubResource("RouteStoneMat")
 
-[node name="StoneStep03" type="CSGBox3D" parent="RouteStepFinish"]
+[node name="StoneStep03" type="CSGBox3D" parent="RouteStepFinish" unique_id=314954624]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 13.1, 1.9, 4.58)
 size = Vector3(1.05, 0.24, 0.72)
 material = SubResource("RouteStoneMat")
@@ -338,20 +403,20 @@ material = SubResource("RouteStoneMat")
 [node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -3.2)
 
-[node name="Checkpoint_01" type="Marker3D" parent="GameplayPlan"]
+[node name="Checkpoint_01" type="Marker3D" parent="GameplayPlan" unique_id=1948051362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 3.55, 5.6)
 
-[node name="Post" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01"]
+[node name="Post" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01" unique_id=924478941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-mesh = SubResource("CheckpointPostMesh")
 material_override = SubResource("CheckpointWoodMat")
+mesh = SubResource("CheckpointPostMesh")
 
-[node name="Flag" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01"]
+[node name="Flag" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01" unique_id=1789197781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.83, 0)
-mesh = SubResource("CheckpointFlagMesh")
 material_override = SubResource("CheckpointFlagMat")
+mesh = SubResource("CheckpointFlagMesh")
 
-[node name="GrapplePoint_01" parent="GameplayPlan" instance=ExtResource("15_grapple")]
+[node name="GrapplePoint_01" parent="GameplayPlan" unique_id=2076001930 instance=ExtResource("15_grapple")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7, 3.35, 5.7)
 
 [node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
@@ -361,7 +426,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 3.65, -3.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 
 [node name="LevelCollision" type="StaticBody3D" parent="." unique_id=1695016400]
-collision_layer = 1
 
 [node name="StartBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1267443033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.45, -4.55)
@@ -470,45 +534,45 @@ script = ExtResource("14_water")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=139410510]
 shape = SubResource("WaterAreaShape")
 
-[node name="CollisionShapeEast" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder"]
+[node name="CollisionShapeEast" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=27187713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0.8)
 shape = SubResource("WaterAreaEastShape")
 
-[node name="CollisionShapeSouth" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder"]
+[node name="CollisionShapeSouth" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=744253285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -6.8)
 shape = SubResource("WaterAreaSouthShape")
 
-[node name="WaterFootstepMain" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+[node name="WaterFootstepMain" type="Node3D" parent="GameplayTriggers" unique_id=146841611 groups=["footstep_water"]]
 transform = Transform3D(6.5, 0, 0, 0, 1, 0, 0, 0, 5.8, 14, 0.22, 2.5)
 
-[node name="WaterFootstepEast" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+[node name="WaterFootstepEast" type="Node3D" parent="GameplayTriggers" unique_id=963160764 groups=["footstep_water"]]
 transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 5.8, 23, 0.22, 3.3)
 
-[node name="WaterFootstepSouth" type="Node3D" parent="GameplayTriggers" groups=["footstep_water"]]
+[node name="WaterFootstepSouth" type="Node3D" parent="GameplayTriggers" unique_id=1120561817 groups=["footstep_water"]]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2.5, 14.5, 0.22, -4.3)
 
-[node name="PondFloorCollision" type="StaticBody3D" parent="GameplayTriggers"]
+[node name="PondFloorCollision" type="StaticBody3D" parent="GameplayTriggers" unique_id=696761761]
 collision_layer = 64
 collision_mask = 0
 
-[node name="MainFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision"]
+[node name="MainFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision" unique_id=2071647603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1.03, 2.5)
 shape = SubResource("PondFloorMainShape")
 
-[node name="EastFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision"]
+[node name="EastFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision" unique_id=1763045058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -1.03, 3.3)
 shape = SubResource("PondFloorEastShape")
 
-[node name="SouthFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision"]
+[node name="SouthFloor" type="CollisionShape3D" parent="GameplayTriggers/PondFloorCollision" unique_id=2146974431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, -1.03, -4.3)
 shape = SubResource("PondFloorSouthShape")
 
-[node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers"]
+[node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers" unique_id=584615159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 3.55, 5.6)
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_01_Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_01_Area" unique_id=2146183071]
 shape = SubResource("CheckpointAreaShape")
 
 [node name="LevelExit_Area" type="Area3D" parent="GameplayTriggers" unique_id=1046100548]
