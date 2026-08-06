@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3]
 
-[ext_resource type="Script" path="res://scripts/levels/redlance_pondside_review.gd" id="1_level"]
+[ext_resource type="Script" path="res://scripts/levels/redlance_pondside_level_base.gd" id="1_level"]
 [ext_resource type="PackedScene" path="res://scenes/player/3dplatformingcharacter.tscn" id="2_player"]
 [ext_resource type="Script" path="res://scripts/levels/redlance_water_area.gd" id="3_water"]
 
@@ -112,9 +112,6 @@ size = Vector3(4.5, 2.0, 4.5)
 
 [node name="RedlancePondsideLevelBase" type="Node3D"]
 script = ExtResource("1_level")
-add_simple_collision = false
-pond_surface_y = 1.05
-pond_bed_y = 0.57
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pondside")
@@ -329,4 +326,4 @@ shape = SubResource("CheckpointAreaShape")
 
 [connection signal="area_entered" from="GameplayTriggers/WaterArea" to="GameplayTriggers/WaterArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameplayTriggers/WaterArea" to="GameplayTriggers/WaterArea" method="_on_area_exited"]
-[connection signal="area_entered" from="GameplayTriggers/CheckpointArea" to="." method="_on_checkpoint_01_area_entered"]
+[connection signal="area_entered" from="GameplayTriggers/CheckpointArea" to="." method="_on_checkpoint_area_entered"]
