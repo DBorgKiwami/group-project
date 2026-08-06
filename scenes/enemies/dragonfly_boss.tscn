@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="6_wr4wg"]
 [ext_resource type="Script" uid="uid://b1s4e3ngus141" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
 [ext_resource type="PackedScene" uid="uid://vbsrhde6d3bk" path="res://scenes/enemies/spear.tscn" id="8_xge5m"]
+[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="9_dd4s5"]
 
 [sub_resource type="Animation" id="Animation_wr4wg"]
 length = 0.001
@@ -142,5 +143,10 @@ sprite = NodePath("../../AnimatedSprite3D")
 enemey_reference = NodePath("../..")
 projectile_scene = ExtResource("8_xge5m")
 fire_distance = 5.0
+
+[node name="EnemyDead" type="Node" parent="State_Machine" unique_id=941575046 node_paths=PackedStringArray("enemy_body")]
+script = ExtResource("9_dd4s5")
+enemy_body = NodePath("../..")
+metadata/_custom_type_script = "uid://br1fnhshgfc5m"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

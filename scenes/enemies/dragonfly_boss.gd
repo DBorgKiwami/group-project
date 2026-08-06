@@ -11,6 +11,10 @@ func _ready():
 	print("hello")
 	hitbox.connect("on_hit", hitbox_hit)
 
+func die():
+	animationControler.play("die")
+	await animationControler.animation_finished
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
