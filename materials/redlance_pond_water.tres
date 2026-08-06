@@ -1,7 +1,33 @@
-[gd_resource type="StandardMaterial3D" format=3]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3]
+
+[ext_resource type="Shader" path="res://shaders/godot_water_source/water_source.gdshader" id="1_water_shader"]
+[ext_resource type="Texture2D" path="res://shaders/displacement.png.png" id="2_wave"]
+[ext_resource type="Texture2D" path="res://shaders/cloud_noise.png.png" id="3_foam"]
 
 [resource]
-transparency = 1
-albedo_color = Color(0.08, 0.48, 0.68, 0.62)
-metallic_specular = 0.15
-roughness = 0.25
+shader = ExtResource("1_water_shader")
+shader_parameter/surface_color = Color(0.18, 0.58, 0.66, 1)
+shader_parameter/depth_color = Color(0.025, 0.19, 0.27, 1)
+shader_parameter/foam_color = Color(0.66, 0.88, 0.82, 1)
+shader_parameter/depth_size = 4.0
+shader_parameter/surface_roughness = 0.52
+shader_parameter/foam_roughness = 0.78
+shader_parameter/caustics_texture = ExtResource("3_foam")
+shader_parameter/caustics_strength = 0.24
+shader_parameter/caustics_scale = Vector2(0.42, 0.42)
+shader_parameter/wave_texture = ExtResource("2_wave")
+shader_parameter/wave_normal_texture = ExtResource("2_wave")
+shader_parameter/wave_softness = 2.8
+shader_parameter/wave_scale = Vector2(0.22, 0.22)
+shader_parameter/wave_layer_scale = Vector2(1.35, 1.35)
+shader_parameter/wave_highlight = 0.18
+shader_parameter/wave_velocity = Vector2(0.012, -0.009)
+shader_parameter/foam_texture = ExtResource("3_foam")
+shader_parameter/edge_foam_depth_size = 0.45
+shader_parameter/wave_foam_amount = 0.28
+shader_parameter/foam_start = 0.28
+shader_parameter/foam_end = 0.62
+shader_parameter/foam_exponent = 1.7
+shader_parameter/refraction_amount = 0.18
+shader_parameter/refraction_exponent = 0.6
+shader_parameter/displacement_amount = 0.06
