@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 const POND_WATER_MATERIAL := preload("res://materials/redlance_pond_water.tres")
@@ -17,6 +18,8 @@ const POND_WATER_MATERIAL := preload("res://materials/redlance_pond_water.tres")
 
 func _ready() -> void:
 	setup_pond_water()
+	if Engine.is_editor_hint():
+		return
 
 	if add_simple_collision:
 		add_collision(level_base)
