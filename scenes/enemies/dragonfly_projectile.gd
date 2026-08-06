@@ -8,6 +8,7 @@ class_name DragonflyProjectile
 @export var fire_interval : float = 3.0
 @export var fire_distance : float = 10.0
 @export var fire_distance_from_floor : float = 10.0
+@export var fire_from_floor_variant : float = 5.0
 
 var timer
 var projectiles_fired = 0
@@ -26,7 +27,7 @@ func exit():
 func fire():
 	var newInstance = projectile_scene.instantiate()
 	newInstance.position = enemey_reference.position
-	newInstance.position.y -= fire_distance_from_floor
+	newInstance.position.y -= fire_distance_from_floor + (fire_from_floor_variant * (projectiles_fired % 2))
 	if newInstance.position.x < 0:
 		newInstance.position.x -= fire_distance
 	else:
