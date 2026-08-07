@@ -7,7 +7,7 @@ extends Area3D
 @export var water_drag := 2.0
 
 var players_in_water: Array[Player3D] = []
-var old_land_masks := {}
+var old_collision_masks := {}
 
 
 func _physics_process(delta: float) -> void:
@@ -35,15 +35,20 @@ func _on_area_entered(area: Area3D) -> void:
 	var player = area.get_parent()
 	if player is Player3D and not players_in_water.has(player):
 		players_in_water.append(player)
-		old_land_masks[player] = player.get_collision_mask_value(1)
-		player.set_collision_mask_value(1, false)
-		player.set_collision_mask_value(7, true)
+		old_collision_masks[player] = {
+			"land": player.get_collision_mask_value(1),
+			"pond_floor": player.get_collision_mask_value(7)
+		}
+		# Keep land collision for the shoreline, but do not stand on the pond floor.
+		player.set_collision_mask_value(7, false)
 
 
 func _on_area_exited(area: Area3D) -> void:
 	var player = area.get_parent()
 	if player is Player3D:
 		players_in_water.erase(player)
-		if old_land_masks.has(player):
-			player.set_collision_mask_value(1, old_land_masks[player])
-			old_land_masks.erase(player)
+		if old_collision_masks.has(player):
+			var old_masks: Dictionary = old_collision_masks[player]
+			player.set_collision_mask_value(1, old_masks["land"])
+			player.set_collision_mask_value(7, old_masks["pond_floor"])
+			old_collision_masks.erase(player)
