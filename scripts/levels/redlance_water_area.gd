@@ -15,17 +15,14 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(player):
 			continue
 
-		var target_y := water_surface_y + float_height
-		var pos := player.global_position
+		# The water should not let the player stand on the hidden pond floor.
+		player.set_meta("in_pond_water", true)
+		player.set_collision_mask_value(7, false)
 
-		if player.global_position.y < target_y:
-			pos.y = move_toward(pos.y, target_y, float_speed * delta)
-			player.global_position = pos
-			player.velocity.y = max(player.velocity.y, -0.15)
-		elif player.global_position.y > target_y + 0.08:
-			pos.y = move_toward(pos.y, target_y + 0.08, sink_speed * delta)
-			player.global_position = pos
-			player.velocity.y = min(player.velocity.y, 0.0)
+		var target_y := water_surface_y + float_height
+		var height_error := target_y - player.global_position.y
+		var target_vertical_speed: float = clampf(height_error * 4.0, -1.0, 1.0)
+		player.velocity.y = move_toward(player.velocity.y, target_vertical_speed, float_speed * delta)
 
 		player.velocity.x = move_toward(player.velocity.x, 0.0, water_drag * delta)
 		player.velocity.z = move_toward(player.velocity.z, 0.0, water_drag * delta)
@@ -35,6 +32,7 @@ func _on_area_entered(area: Area3D) -> void:
 	var player = area.get_parent()
 	if player is Player3D and not players_in_water.has(player):
 		players_in_water.append(player)
+		player.set_meta("in_pond_water", true)
 		old_collision_masks[player] = {
 			"land": player.get_collision_mask_value(1),
 			"pond_floor": player.get_collision_mask_value(7)
@@ -47,6 +45,7 @@ func _on_area_exited(area: Area3D) -> void:
 	var player = area.get_parent()
 	if player is Player3D:
 		players_in_water.erase(player)
+		player.set_meta("in_pond_water", false)
 		if old_collision_masks.has(player):
 			var old_masks: Dictionary = old_collision_masks[player]
 			player.set_collision_mask_value(1, old_masks["land"])

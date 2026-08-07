@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		if velocity.y <= 0:
+		if velocity.y <= 0 and not get_meta("in_pond_water", false):
 			set_collision_mask_value(7, true)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
