@@ -54,11 +54,13 @@ func _play_step() -> void:
 
 
 func _get_surface_audio_player() -> AudioStreamPlayer3D:
-	# Lotus leaves overlap the pond, so they must take priority over water.
-	if lotus_audio_player != null and _is_inside_surface_group(&"footstep_lotus"):
-		return lotus_audio_player
-	if water_audio_player != null and _is_inside_surface_group(&"footstep_water"):
-		return water_audio_player
+	# The large water markers can overlap nearby land, so use the real water area state.
+	var in_pond_water: bool = bool(player.get_meta("in_pond_water", false))
+	if in_pond_water:
+		if lotus_audio_player != null and _is_inside_surface_group(&"footstep_lotus"):
+			return lotus_audio_player
+		if water_audio_player != null:
+			return water_audio_player
 	return audio_player
 
 
