@@ -43,6 +43,10 @@ func setup_pond_water() -> void:
 	if water:
 		water.material_override = POND_WATER_MATERIAL
 
+	var white_water_panel := level_base.find_child("Pond_Shallow_Edge_Glow", true, false) as MeshInstance3D
+	if white_water_panel:
+		white_water_panel.visible = false
+
 
 func add_collision(node: Node) -> void:
 	for child in node.get_children():
