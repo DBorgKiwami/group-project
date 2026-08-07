@@ -2,6 +2,7 @@
 extends Node3D
 
 const POND_WATER_MATERIAL := preload("res://materials/redlance_pond_water.tres")
+const POND_WATER_SCALE := Vector3(1.12, 1.0, 1.10)
 
 @export var add_simple_collision := true
 @export var snap_player_to_spawn := true
@@ -42,6 +43,15 @@ func setup_pond_water() -> void:
 	var water := level_base.find_child("Pond_Water_Main_Transparent", true, false) as MeshInstance3D
 	if water:
 		water.material_override = POND_WATER_MATERIAL
+		water.scale = POND_WATER_SCALE
+
+	var pond_bed := level_base.find_child("Pond_Bed_Deep", true, false) as MeshInstance3D
+	if pond_bed:
+		pond_bed.scale = POND_WATER_SCALE
+
+	var water_area := get_node_or_null("GameplayTriggers/WaterAreaPlaceholder") as Area3D
+	if water_area:
+		water_area.scale = POND_WATER_SCALE
 
 	var white_water_panel := level_base.find_child("Pond_Shallow_Edge_Glow", true, false) as MeshInstance3D
 	if white_water_panel:
