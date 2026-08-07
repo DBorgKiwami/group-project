@@ -236,7 +236,7 @@ _data = {
 radius = 0.5168748
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
-radius = 0.679429
+radius = 0.8824353
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
 size = Vector3(1.56, 1.5641162, 1)
@@ -319,7 +319,6 @@ script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=936171539]
-visible = false
 collision_layer = 32
 collision_mask = 0
 
