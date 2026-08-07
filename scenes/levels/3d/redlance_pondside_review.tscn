@@ -117,6 +117,30 @@ size = Vector3(2.2, 1.7, 2.2)
 [sub_resource type="BoxShape3D" id="ExitShape"]
 size = Vector3(2.2, 1.4, 2.2)
 
+[sub_resource type="BoxShape3D" id="PondShoreNorthWestShape"]
+size = Vector3(9.5, 0.7, 0.65)
+
+[sub_resource type="BoxShape3D" id="PondShoreNorthEastShape"]
+size = Vector3(10.5, 0.7, 0.65)
+
+[sub_resource type="BoxShape3D" id="PondShoreEastShape"]
+size = Vector3(0.65, 0.7, 7.5)
+
+[sub_resource type="BoxShape3D" id="PondShoreSouthEastShape"]
+size = Vector3(11, 0.7, 0.65)
+
+[sub_resource type="BoxShape3D" id="PondShoreSouthMiddleShape"]
+size = Vector3(8, 0.7, 0.65)
+
+[sub_resource type="BoxShape3D" id="PondShoreSouthWestShape"]
+size = Vector3(8, 0.7, 0.65)
+
+[sub_resource type="BoxShape3D" id="PondShoreWestShape"]
+size = Vector3(0.65, 0.7, 7.2)
+
+[sub_resource type="BoxShape3D" id="PondShoreWestNorthShape"]
+size = Vector3(0.65, 0.7, 5.5)
+
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
 add_simple_collision = false
@@ -542,6 +566,38 @@ shape = SubResource("SouthIslandCollisionShape")
 [node name="BackRidge" type="CollisionShape3D" parent="LevelCollision" unique_id=1659578854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 15.1)
 shape = SubResource("BackRidgeCollisionShape")
+
+[node name="PondShoreNorthWest" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.995004, 0, -0.0998334, 0, 1, 0, 0.0998334, 0, 0.995004, 3, 0.55, 9.9)
+shape = SubResource("PondShoreNorthWestShape")
+
+[node name="PondShoreNorthEast" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.996802, 0, 0.0799147, 0, 1, 0, -0.0799147, 0, 0.996802, 20, 0.55, 9.6)
+shape = SubResource("PondShoreNorthEastShape")
+
+[node name="PondShoreEast" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.992809, 0, -0.119712, 0, 1, 0, 0.119712, 0, 0.992809, 32, 0.55, 3.6)
+shape = SubResource("PondShoreEastShape")
+
+[node name="PondShoreSouthEast" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.983844, 0, 0.17903, 0, 1, 0, -0.17903, 0, 0.983844, 26, 0.55, -4.8)
+shape = SubResource("PondShoreSouthEastShape")
+
+[node name="PondShoreSouthMiddle" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.992809, 0, -0.119712, 0, 1, 0, 0.119712, 0, 0.992809, 14, 0.55, -5.1)
+shape = SubResource("PondShoreSouthMiddleShape")
+
+[node name="PondShoreSouthWest" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.995004, 0, 0.0998334, 0, 1, 0, -0.0998334, 0, 0.995004, 4, 0.55, -4.6)
+shape = SubResource("PondShoreSouthWestShape")
+
+[node name="PondShoreWest" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.995004, 0, 0.0998334, 0, 1, 0, -0.0998334, 0, 0.995004, -4.6, 0.55, 0.3)
+shape = SubResource("PondShoreWestShape")
+
+[node name="PondShoreWestNorth" type="CollisionShape3D" parent="LevelCollision"]
+transform = Transform3D(0.996802, 0, -0.0799147, 0, 1, 0, 0.0799147, 0, 0.996802, -4.3, 0.55, 6)
+shape = SubResource("PondShoreWestNorthShape")
 
 [node name="StartStair01" type="CollisionShape3D" parent="LevelCollision" unique_id=620173211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0.78, -0.25)
