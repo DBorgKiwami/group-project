@@ -24,6 +24,9 @@ func _ready() -> void:
 
 	if add_simple_collision:
 		add_collision(level_base)
+		var external_rocks := get_node_or_null("ExternalRockScatter")
+		if external_rocks:
+			add_collision(external_rocks)
 
 	if snap_player_to_spawn:
 		place_player_at_spawn()
@@ -63,9 +66,31 @@ func add_collision(node: Node) -> void:
 		if child is MeshInstance3D:
 			var mesh_name := String(child.name).to_lower()
 			if should_make_solid(mesh_name):
-				child.create_trimesh_collision()
+				add_simple_mesh_collision(child)
 
 		add_collision(child)
+
+
+func add_simple_mesh_collision(mesh_instance: MeshInstance3D) -> void:
+	if mesh_instance.mesh == null:
+		return
+
+	var parent := mesh_instance.get_parent()
+	var collision_name := mesh_instance.name + "_SimpleCollision"
+	if parent.get_node_or_null(collision_name):
+		return
+
+	var mesh_aabb: AABB = mesh_instance.mesh.get_aabb()
+	var body := StaticBody3D.new()
+	body.name = collision_name
+	parent.add_child(body)
+	body.global_transform = mesh_instance.global_transform * Transform3D(Basis.IDENTITY, mesh_aabb.get_center())
+
+	var shape_node := CollisionShape3D.new()
+	var box_shape := BoxShape3D.new()
+	box_shape.size = mesh_aabb.size
+	shape_node.shape = box_shape
+	body.add_child(shape_node)
 
 
 func should_make_solid(mesh_name: String) -> bool:
