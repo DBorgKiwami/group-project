@@ -66,36 +66,39 @@ func add_collision(node: Node) -> void:
 		if child is MeshInstance3D:
 			var mesh_name := String(child.name).to_lower()
 			if should_make_solid(mesh_name):
-				add_simple_mesh_collision(child)
+				add_mesh_collision(child)
 
 		add_collision(child)
 
 
-func add_simple_mesh_collision(mesh_instance: MeshInstance3D) -> void:
+func add_mesh_collision(mesh_instance: MeshInstance3D) -> void:
 	if mesh_instance.mesh == null:
 		return
 
+	var mesh_faces: PackedVector3Array = mesh_instance.mesh.get_faces()
+	if mesh_faces.is_empty():
+		return
+
 	var parent := mesh_instance.get_parent()
-	var collision_name := mesh_instance.name + "_SimpleCollision"
+	var collision_name := mesh_instance.name + "_MeshCollision"
 	if parent.get_node_or_null(collision_name):
 		return
 
-	var mesh_aabb: AABB = mesh_instance.mesh.get_aabb()
 	var body := StaticBody3D.new()
 	body.name = collision_name
 	parent.add_child(body)
-	body.global_transform = mesh_instance.global_transform * Transform3D(Basis.IDENTITY, mesh_aabb.get_center())
+	body.global_transform = mesh_instance.global_transform
 
 	var shape_node := CollisionShape3D.new()
-	var box_shape := BoxShape3D.new()
-	box_shape.size = mesh_aabb.size
-	shape_node.shape = box_shape
+	var mesh_shape := ConcavePolygonShape3D.new()
+	mesh_shape.set_faces(mesh_faces)
+	shape_node.shape = mesh_shape
 	body.add_child(shape_node)
 
 
 func should_make_solid(mesh_name: String) -> bool:
 	return (
-		mesh_name.contains("mud")
+		mesh_name.contains("land")
 		or mesh_name.contains("rock")
 		or mesh_name.contains("cliff")
 	)

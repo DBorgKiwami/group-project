@@ -522,26 +522,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 3.65, -1.6)
 
 [node name="StartBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1267443033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -0.8, -4.55)
+disabled = true
 shape = SubResource("StartBankCollisionShape")
 
 [node name="CenterStep" type="CollisionShape3D" parent="LevelCollision" unique_id=2121313598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -0.55, 3)
+disabled = true
 shape = SubResource("CenterStepCollisionShape")
 
 [node name="NorthwestBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1674348056]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.15, 11.1)
+disabled = true
 shape = SubResource("NorthwestBankCollisionShape")
 
 [node name="EastBank" type="CollisionShape3D" parent="LevelCollision" unique_id=1497917185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.025, 2.75)
+disabled = true
 shape = SubResource("EastBankCollisionShape")
 
 [node name="SouthIsland" type="CollisionShape3D" parent="LevelCollision" unique_id=700535585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.35, -0.55, -6.15)
+disabled = true
 shape = SubResource("SouthIslandCollisionShape")
 
 [node name="BackRidge" type="CollisionShape3D" parent="LevelCollision" unique_id=1659578854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.55, 15.1)
+disabled = true
 shape = SubResource("BackRidgeCollisionShape")
 
 [node name="StartStair01" type="CollisionShape3D" parent="LevelCollision" unique_id=620173211]
