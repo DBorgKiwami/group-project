@@ -15,7 +15,7 @@ class_name Player2D
 @export var camera_y_offset = 0.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
-@export var damage = 10
+@export var damage = 1
 @export var max_health = 3
 var health
 var can_jump = false

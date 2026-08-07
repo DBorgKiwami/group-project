@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bcdw8ywkobnrm"]
 
 [ext_resource type="PackedScene" uid="uid://b6tvuehfmf3sk" path="res://resources/Models/low_poly_dirt_ground/scene.gltf" id="1_ikx5s"]
+[ext_resource type="PackedScene" uid="uid://dwk53ecvmqvw3" path="res://scenes/enemies/dragonfly_boss.tscn" id="1_kulgr"]
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_v06so"]
 [ext_resource type="Texture2D" uid="uid://jxi8jv02a1kx" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/coral 4.png" id="2_4wily"]
 [ext_resource type="PackedScene" uid="uid://cyo2gumu2bw4i" path="res://resources/Models/low_poly_water.glb" id="2_igq41"]
@@ -363,6 +364,13 @@ uv1_scale = Vector3(4.844, 144, -11)
 
 [node name="Bosslevel" type="Node3D" unique_id=508633355]
 
+[node name="Dragonfly Boss" parent="." unique_id=1810331413 instance=ExtResource("1_kulgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.181927, 6.244214, 0)
+
+[node name="DragonflyProjectile" parent="Dragonfly Boss/State_Machine" parent_id_path=PackedInt32Array(1810331413, 309539935) index="2" unique_id=348895497]
+fire_distance_from_floor = 2.0
+fire_from_floor_variant = 3.0
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580185758]
 transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 18.534254, 0)
 light_energy = 1.5
@@ -648,7 +656,7 @@ environment = SubResource("Environment_q7fgl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1621776, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform" unique_id=459834676]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, -7.042, 1.1859007, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -663,7 +671,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.997775, 1.2975221, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform2" unique_id=1127644307]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 1.8584023, -0.07441044, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -678,7 +686,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0779011, 2.5175204, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform3" unique_id=1431219245]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, -0.27562284, -0.4990716, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -694,6 +702,7 @@ transform = Transform3D(1, 0, 0, 0, 4.06, 0, 0, 0, 1, -8.674231, 0, -0.8621621)
 mesh = SubResource("CylinderMesh_7g2nu")
 surface_material_override/0 = SubResource("StandardMaterial3D_15h12")
 
+[editable path="Dragonfly Boss"]
 [editable path="Trail"]
 [editable path="Grass"]
 [editable path="Free Pack - Rocks Stylized"]

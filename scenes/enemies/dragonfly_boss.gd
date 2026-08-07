@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var hurtbox : Area3D
 @export var animationControler : AnimationPlayer
 @export var contactDamage : int = 1
-@export var health : int = 50
+@export var health : int = 10
 
 func _ready():
 	print("hello")
@@ -27,5 +27,5 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 func hitbox_hit(damage: Variant) -> void:
 	health -= damage
 	if health <= 0:
-		state_machine.on_child_transition(state_machine.current_state, "dead")
+		state_machine.on_child_transition(state_machine.current_state, "enemydead")
 	pass # Replace with function body.
