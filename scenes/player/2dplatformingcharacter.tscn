@@ -241,9 +241,16 @@ radius = 0.679429
 [sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
 size = Vector3(1.56, 1.5641162, 1)
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("animationController")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_cudoo")
+hitboxFront = NodePath("Front Attack Hurtbox")
+hitboxUp = NodePath("Up Attack Hurtbox")
+hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
+player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
+sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
