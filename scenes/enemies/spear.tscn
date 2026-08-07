@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://vbsrhde6d3bk"]
+
+[ext_resource type="Script" uid="uid://bxf6fwjt4xq1o" path="res://spear.gd" id="1_x05wj"]
+[ext_resource type="Texture2D" uid="uid://cu37h3xemi28f" path="res://sprites/enemies/enemy sprites/spear.png" id="2_vkx0n"]
+
+[node name="Spear" type="CharacterBody3D" unique_id=735275481]
+script = ExtResource("1_x05wj")
+lifetime = 10.0
+speed = 3.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=55097773]
+texture = ExtResource("2_vkx0n")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1485334066]
+collision_layer = 0
+collision_mask = 16
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
