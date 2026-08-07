@@ -70,12 +70,9 @@ func add_collision(node: Node) -> void:
 
 func should_make_solid(mesh_name: String) -> bool:
 	return (
-		mesh_name.contains("land")
-		or mesh_name.contains("mud")
+		mesh_name.contains("mud")
 		or mesh_name.contains("rock")
 		or mesh_name.contains("cliff")
-		or mesh_name.contains("stair")
-		or mesh_name.contains("step")
 	)
 
 

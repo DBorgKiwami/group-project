@@ -119,7 +119,7 @@ size = Vector3(2.2, 1.4, 2.2)
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
-add_simple_collision = false
+add_simple_collision = true
 
 [node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=481790632]
 stream = ExtResource("7_damp")
@@ -471,6 +471,7 @@ audio_player = NodePath("../FootstepAudio")
 water_audio_player = NodePath("../WaterFootstepAudio")
 lotus_audio_player = NodePath("../LotusFootstepAudio")
 sprite = NodePath("../AnimatedSprite3D")
+step_interval = 0.55
 
 [node name="RouteStepFinish" type="CSGCombiner3D" parent="." unique_id=2058716946]
 use_collision = true
