@@ -142,7 +142,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
 resource_name = "attack"
-length = 1.1333333
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,7 @@ tracks/0/path = NodePath("Front Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -165,12 +165,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_8yach"]
 resource_name = "attack_down"
-length = 1.1666666
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,7 +178,7 @@ tracks/0/path = NodePath("Down Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -193,12 +193,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"attack_down"]
 }
 
 [sub_resource type="Animation" id="Animation_k8hk2"]
 resource_name = "attack_up"
-length = 1.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -206,7 +206,7 @@ tracks/0/path = NodePath("Up Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -221,7 +221,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"attack_up"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
@@ -236,11 +236,21 @@ _data = {
 radius = 0.5168748
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
-radius = 0.679429
+radius = 0.8824353
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("animationController")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
+size = Vector3(1.56, 1.5641162, 1)
+
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
 script = ExtResource("1_cudoo")
+hitboxFront = NodePath("Front Attack Hurtbox")
+hitboxUp = NodePath("Up Attack Hurtbox")
+hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
+player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
+sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
@@ -249,7 +259,7 @@ shape = SubResource("BoxShape3D_vj0l2")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 pixel_size = 0.03
 billboard = 1
-texture_filter = 0
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_1haum")
 autoplay = "default"
 
@@ -315,6 +325,16 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
 shape = SubResource("SphereShape3D_eym7y")
 
+[node name="SemiSolidClipBox" type="Area3D" parent="." unique_id=1962725852]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidClipBox" unique_id=852405064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12760985, 0)
+shape = SubResource("BoxShape3D_cudoo")
+
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]
+[connection signal="body_entered" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_entered"]
+[connection signal="body_exited" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_exited"]
