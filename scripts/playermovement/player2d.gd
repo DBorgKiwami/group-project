@@ -49,8 +49,19 @@ func _on_player_hit(damage) -> void:
 		print("I'm fuckin dead!")
 		sprite.play("dead")
 		state_machine.on_child_transition(state_machine.current_state, "dead")
+		if hud:
+			hud.visible = false
 		if death_screen:
 			death_screen.show_death_screen()
+			death_screen.retry_pressed.connect(_on_retry_pressed)
+			death_screen.return_pressed.connect(_on_return_pressed)
+func _on_retry_pressed() -> void:
+	print("Retry handler fired")
+	get_tree().reload_current_scene()
+
+func _on_return_pressed() -> void:
+	Scenecontroler.load_scene_with_position("res://scenes/menu/main_menu.tscn", Vector3.ZERO)
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))

@@ -1,5 +1,8 @@
 extends Node2D
 
+signal retry_pressed
+signal return_pressed
+
 const PLAYER_PORTRAIT := preload("res://allen_work/allen_work/ui_demos/simple_hud_demo/assets/ui/player_portrait.png")
 
 const BG := Color(0.010, 0.020, 0.026)
@@ -60,13 +63,24 @@ func _process(delta: float) -> void:
 	time += delta
 	queue_redraw()
 
-
 func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	print("Death screen received input, visible=true")
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_LEFT or event.keycode == KEY_RIGHT:
 			selected_button = 1 - selected_button
+		if event.keycode == KEY_ENTER or event.keycode == KEY_SPACE:
+			_confirm_selection()
 		if event.keycode == KEY_R:
 			time = 0.0
+			
+func _confirm_selection() -> void:
+	print("Confirm pressed, selected_button=", selected_button)
+	if selected_button == 0:
+		retry_pressed.emit()
+	else:
+		return_pressed.emit()
 
 
 func _draw() -> void:
