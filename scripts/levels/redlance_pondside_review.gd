@@ -5,23 +5,9 @@ extends Node3D
 @export var use_preview_camera := false
 
 @onready var level_base: Node3D = $LevelBase
-@onready var preview_camera: Camera3D = $PreviewCamera
 @onready var player: Node3D = $"3Dplatformingcharacter"
-@onready var player_camera: Camera3D = $"3Dplatformingcharacter/Node3D/Camera3D"
-@onready var player_spawn: Marker3D = $GameplayPlan/PlayerSpawn
-
 
 func _ready() -> void:
-	if use_preview_camera:
-		preview_camera.current = true
-		preview_camera.look_at(Vector3(1.6, 0.45, 1.8), Vector3.UP)
-	else:
-		preview_camera.current = false
-		player_camera.current = true
-
-	if snap_player_to_spawn:
-		player.global_position = player_spawn.global_position
-
 	if add_simple_collision:
 		add_collision(level_base)
 

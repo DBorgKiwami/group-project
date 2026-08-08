@@ -43,7 +43,6 @@ radius = 0.8
 height = 0.3
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_script")
 
 [node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=261087804]
@@ -73,6 +72,9 @@ pond_sounds = NodePath("../PondSounds")
 breeze = NodePath("../Breeze")
 insect_chirping = NodePath("../InsectChirping")
 insects_chirping = NodePath("../InsectsChirping")
+
+[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4433367, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1430494369]
 environment = SubResource("Environment_preview")
@@ -338,6 +340,3 @@ radius = 0.1
 height = 8.624023
 sides = 12
 material = ExtResource("9_osbx4")
-
-[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48.187847, 1.1524394, -52.788624)
