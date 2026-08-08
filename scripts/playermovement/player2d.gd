@@ -9,6 +9,7 @@ class_name Player2D
 @export var sprite : AnimatedSprite3D
 @export var state_machine : State_Machine
 @export var hud : Node2D
+@export var death_screen : Node2D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var camera_x_bound = 1.0
@@ -48,6 +49,8 @@ func _on_player_hit(damage) -> void:
 		print("I'm fuckin dead!")
 		sprite.play("dead")
 		state_machine.on_child_transition(state_machine.current_state, "dead")
+		if death_screen:
+			death_screen.show_death_screen()
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))

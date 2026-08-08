@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
+[ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -174,7 +175,7 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "player_hitbox", "player_camera", "sprite", "state_machine", "hud") instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "player_hitbox", "player_camera", "sprite", "state_machine", "hud", "death_screen") instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
@@ -184,6 +185,7 @@ player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
+death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 JUMP_VELOCITY = 6.0
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
@@ -366,6 +368,11 @@ mesh = SubResource("BoxMesh_dhk1w")
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.2413063, 1.6382947, 0)
 material_override = ExtResource("9_1tfyo")
 mesh = SubResource("PrismMesh_mi8j5")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1309620679]
+
+[node name="DeathScreenDemo" parent="CanvasLayer2" unique_id=1242030890 instance=ExtResource("19_wjq58")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1728365147]
 
