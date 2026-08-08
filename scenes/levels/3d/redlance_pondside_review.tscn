@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
-[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
-[ext_resource type="Script" uid="uid://cqssbdqnvg8ny" path="res://scripts/elements/scene_transition.gd" id="4_transition"]
-[ext_resource type="AudioStream" path="res://audio/music/step.ogg" id="5_step"]
-[ext_resource type="AudioStream" path="res://audio/music/jump.ogg" id="6_jump"]
-[ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
-[ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="8_pond"]
-[ext_resource type="AudioStream" path="res://audio/music/breeze.ogg" id="9_breeze"]
-[ext_resource type="AudioStream" path="res://audio/music/insectchirping.ogg" id="10_insect"]
-[ext_resource type="AudioStream" path="res://audio/music/insectschirping.ogg" id="11_insects"]
-[ext_resource type="Script" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
-[ext_resource type="Script" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
+[ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
+[ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="8_gqagh"]
+[ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="8_pond"]
+[ext_resource type="Material" uid="uid://c3wn5hp3uclmn" path="res://sprites/textures/leaf.tres" id="9_b8xro"]
+[ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="9_breeze"]
+[ext_resource type="Material" uid="uid://d1cprp1maou6d" path="res://sprites/textures/wood.tres" id="9_osbx4"]
+[ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="10_i0cgp"]
+[ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="10_insect"]
+[ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
+[ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
+[ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
+[ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 
 [sub_resource type="Environment" id="Environment_preview"]
 background_mode = 1
@@ -21,68 +22,51 @@ ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
 
-[sub_resource type="StandardMaterial3D" id="MarkerSpawnMat"]
-albedo_color = Color(0.22, 0.85, 0.36, 1)
-roughness = 0.8
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26fj"]
+albedo_color = Color(0.26, 0.20149998, 0.195, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
-[sub_resource type="CylinderMesh" id="MarkerDiscMesh"]
-top_radius = 0.22
-bottom_radius = 0.22
-height = 0.05
-radial_segments = 16
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i8moa"]
+height = 0.5
+radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="MarkerCheckpointMat"]
-albedo_color = Color(0.96, 0.83, 0.24, 1)
-roughness = 0.8
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j26fj"]
+height = 0.6
+radius = 1.3
 
-[sub_resource type="StandardMaterial3D" id="MarkerCombatMat"]
-albedo_color = Color(0.95, 0.26, 0.18, 1)
-roughness = 0.8
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wyodo"]
+height = 0.5
+radius = 0.8
 
-[sub_resource type="StandardMaterial3D" id="MarkerRewardMat"]
-albedo_color = Color(0.34, 0.76, 1, 1)
-roughness = 0.8
-
-[sub_resource type="StandardMaterial3D" id="MarkerExitMat"]
-albedo_color = Color(0.76, 0.45, 1, 1)
-roughness = 0.8
-
-[sub_resource type="BoxShape3D" id="CheckpointShape"]
-size = Vector3(1.4, 1, 1.4)
-
-[sub_resource type="BoxShape3D" id="CombatTriggerShape"]
-size = Vector3(3, 1.4, 2.4)
-
-[sub_resource type="BoxShape3D" id="WaterAreaShape"]
-size = Vector3(6.5, 1, 5.2)
-
-[sub_resource type="BoxShape3D" id="ExitShape"]
-size = Vector3(2.2, 1.4, 2.2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wmh0y"]
+height = 0.3
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_script")
 
-[node name="DampAndWatery" type="AudioStreamPlayer" parent="."]
+[node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=261087804]
 stream = ExtResource("7_damp")
 volume_db = -12.0
 
-[node name="PondSounds" type="AudioStreamPlayer" parent="."]
+[node name="PondSounds" type="AudioStreamPlayer" parent="." unique_id=192584397]
 stream = ExtResource("8_pond")
-volume_db = -11.0
+volume_db = -6.0
 
-[node name="Breeze" type="AudioStreamPlayer" parent="."]
+[node name="Breeze" type="AudioStreamPlayer" parent="." unique_id=489540298]
 stream = ExtResource("9_breeze")
-volume_db = -14.0
+volume_db = -10.0
 
-[node name="InsectChirping" type="AudioStreamPlayer" parent="."]
+[node name="InsectChirping" type="AudioStreamPlayer" parent="." unique_id=1923729611]
 stream = ExtResource("10_insect")
+volume_db = -10.0
+
+[node name="InsectsChirping" type="AudioStreamPlayer" parent="." unique_id=1270983750]
+stream = ExtResource("11_insects")
 volume_db = -12.0
 
-[node name="InsectsChirping" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_insects")
-volume_db = -15.0
-
-[node name="PondAmbience" type="Node" parent="." node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
+[node name="PondAmbience" type="Node" parent="." unique_id=576051525 node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
 script = ExtResource("12_ambience")
 damp_and_watery = NodePath("../DampAndWatery")
 pond_sounds = NodePath("../PondSounds")
@@ -105,124 +89,255 @@ light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
 
-[node name="PreviewCamera" type="Camera3D" parent="." unique_id=1768166443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 3.3, -7.2)
-fov = 58.0
+[node name="Fading Platform2" parent="." unique_id=354689758 instance=ExtResource("8_gqagh")]
+transform = Transform3D(0.71269983, 0, 0.7014692, 0, 1, 0, -0.7014692, 0, 0.71269983, -5.1953, 12.495394, -32.989044)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Fading Platform2" unique_id=236913426]
+transform = Transform3D(0.89100647, 0.45399058, -1.9844558e-08, 0, -4.371139e-08, -1, -0.45399058, 0.89100647, -3.8947128e-08, -1.1399994, 0.44060898, 0.24703312)
+depth = 0.3
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform2" unique_id=344384542]
+transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+depth = 0.3
+material = ExtResource("9_b8xro")
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="3Dplatformingcharacter" parent="." unique_id=2055655660 node_paths=PackedStringArray("jump_sfx", "landing_sfx") instance=ExtResource("3_player")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.8, 0.2687053, -2.4)
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1980574931]
+transform = Transform3D(-0.9982933, 0, -0.058400333, 0, 1, 0, 0.058400333, 0, -0.9982933, -24.060501, -1.181804, -31.275862)
+use_collision = true
 
-[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
-stream = ExtResource("5_step")
-volume_db = -4.0
-max_distance = 18.0
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1419384319]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, -6.253601, 28.122969, 0.48543167)
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="JumpSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
-stream = ExtResource("6_jump")
-volume_db = -4.0
-max_distance = 18.0
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=748008338]
+transform = Transform3D(2.8028646, 0, 2.682209e-06, 0, 1.3163887, 0, 0, 0, 15.571138, -6.250471, 6.833398, 13.688147)
+size = Vector3(1, 1, 1.3074036)
+material = ExtResource("9_osbx4")
 
-[node name="LandingSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
-stream = ExtResource("5_step")
-volume_db = -4.0
-max_distance = 18.0
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1106616910]
+transform = Transform3D(2.1107142, 0, -11.822868, 0, 1.3163887, 0, 2.4626126, 0, 10.133424, -13.2471695, 12.590891, 6.430094)
+size = Vector3(0.8862915, 1, 0.7837219)
+material = ExtResource("9_osbx4")
 
-[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" node_paths=PackedStringArray("audio_player", "sprite")]
-script = ExtResource("13_footsteps")
-audio_player = NodePath("../FootstepAudio")
-sprite = NodePath("../AnimatedSprite3D")
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2033326755]
+transform = Transform3D(5.5800433, 0, 0, 0, 15.615117, 0, 0, 0, 5.5800433, -21.24826, 11.036791, -5.257203)
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="GameplayPlan" type="Node3D" parent="." unique_id=1211180447]
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=408414330]
+transform = Transform3D(2.9562693, 0, -6.4053526, 0, 1.3163888, 0, 1.3341857, 0, 14.192886, -24.640844, 13.963249, 2.2476897)
+size = Vector3(0.8862915, 1, 0.7837219)
+material = ExtResource("9_osbx4")
 
-[node name="PlayerSpawn" type="Marker3D" parent="GameplayPlan" unique_id=1062512196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.7, -2.4)
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=935633981]
+transform = Transform3D(-0.46781155, 0, -15.408513, 0, 1.3163887, 0, 3.2094753, 0, -2.245938, -29.255373, 13.963249, 5.770488)
+size = Vector3(0.8862915, 1, 0.22760773)
+material = ExtResource("9_osbx4")
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/PlayerSpawn" unique_id=1375298802]
-material_override = SubResource("MarkerSpawnMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="Fading Platform" parent="." unique_id=1058409451 instance=ExtResource("8_gqagh")]
+transform = Transform3D(-0.95110506, 0, -0.30886754, 0, 1, 0, 0.30886754, 0, -0.95110506, -5.0184283, 11.412941, -38.128338)
 
-[node name="Checkpoint_01_AfterPondEdge" type="Marker3D" parent="GameplayPlan" unique_id=694845709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.26, -0.85)
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Fading Platform" unique_id=431683820]
+transform = Transform3D(0.89100647, 0.45399058, -1.9844558e-08, 0, -4.371139e-08, -1, -0.45399058, 0.89100647, -3.8947128e-08, -1.1399994, 0.44060898, 0.24703312)
+depth = 0.3
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+debug_color = Color(0, 1, 0, 1)
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_01_AfterPondEdge" unique_id=1297977809]
-material_override = SubResource("MarkerCheckpointMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform" unique_id=367683689]
+transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+depth = 0.3
+material = ExtResource("9_b8xro")
 
-[node name="CombatTrigger_01_Position" type="Marker3D" parent="GameplayPlan" unique_id=1320295731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.27, 0.95)
+[node name="Bounce Pad" parent="." unique_id=1389826334 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.321615, 16.259724, -36.616764)
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/CombatTrigger_01_Position" unique_id=412423653]
-material_override = SubResource("MarkerCombatMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad" unique_id=1452172869]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
+radius = 1.0
+material = SubResource("StandardMaterial3D_j26fj")
 
-[node name="RewardMarker_01" type="Marker3D" parent="GameplayPlan" unique_id=145611958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.28, 1.75)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad" unique_id=950025172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_i8moa")
+debug_color = Color(0.82, 0.41, 0, 1)
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/RewardMarker_01" unique_id=176318714]
-material_override = SubResource("MarkerRewardMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad" unique_id=365183334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
+sides = 12
+material = ExtResource("9_osbx4")
 
-[node name="Checkpoint_02_BeforeExit" type="Marker3D" parent="GameplayPlan" unique_id=2111698304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.26, 1.35)
+[node name="Grapplepoint3d" parent="." unique_id=1832192751 instance=ExtResource("18_j26fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.990236, 7.260397, -53.751373)
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/Checkpoint_02_BeforeExit" unique_id=686252542]
-material_override = SubResource("MarkerCheckpointMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="Grapplepoint3d2" parent="." unique_id=1627400254 instance=ExtResource("18_j26fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.099582, 12.971504, -37.001724)
 
-[node name="LevelExit" type="Marker3D" parent="GameplayPlan" unique_id=1495531785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.3, 2.8)
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=260157277]
 
-[node name="Disc" type="MeshInstance3D" parent="GameplayPlan/LevelExit" unique_id=1429895990]
-material_override = SubResource("MarkerExitMat")
-mesh = SubResource("MarkerDiscMesh")
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1068454552]
+transform = Transform3D(2.5462828, 0, -9.645026, 0, 1.3163888, 0, 2.0089853, 0, 12.224564, 44.438732, 5.2637796, -57.60175)
+size = Vector3(0.7076187, 1, 0.5305805)
+material = ExtResource("9_osbx4")
 
-[node name="GameplayTriggers" type="Node3D" parent="." unique_id=1234368126]
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=250617586]
+transform = Transform3D(0.004811503, 0, -15.571318, 0, 1.3163887, 0, 3.2433863, 0, 0.023101127, 12.36607, 5.8043737, -22.59774)
+size = Vector3(0.6034241, 1, 0.41041565)
+material = ExtResource("9_osbx4")
 
-[node name="Checkpoint_01_Area" type="Area3D" parent="GameplayTriggers" unique_id=842257683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.65, -0.85)
-collision_layer = 0
-collision_mask = 32
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=532748736]
+transform = Transform3D(2.5462828, 0, -9.645026, 0, 1.3163888, 0, 2.0089853, 0, 12.224564, 12.911611, 10.936771, -15.503945)
+size = Vector3(0.7076187, 1, 0.76428604)
+material = ExtResource("9_osbx4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_01_Area" unique_id=1336763541]
-shape = SubResource("CheckpointShape")
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=2059526414]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, -16.30352, 27.510729, 18.837364)
+radius = 0.4
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="CombatTrigger_01_To2DTestCombat" type="Area3D" parent="GameplayTriggers" unique_id=682417888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.75, 0.95)
-collision_layer = 0
-collision_mask = 32
-script = ExtResource("4_transition")
-scene = "res://scenes/levels/2d/testlevel2d.tscn"
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=2116046156]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, -7.003258, 27.000532, 33.46277)
+radius = 0.4
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/CombatTrigger_01_To2DTestCombat" unique_id=1788602004]
-shape = SubResource("CombatTriggerShape")
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=595242354]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 3.3470352, 24.653624, 48.463196)
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="WaterAreaPlaceholder" type="Area3D" parent="GameplayTriggers" unique_id=2100198787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0.45, -3.2)
-collision_layer = 0
-collision_mask = 32
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=870596249]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, -44.772564, 20.182026, 48.224766)
+radius = 0.3
+height = 1.4907227
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/WaterAreaPlaceholder" unique_id=139410510]
-shape = SubResource("WaterAreaShape")
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=1717542835]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 18.755018, 27.000532, -22.556343)
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="Checkpoint_02_Area" type="Area3D" parent="GameplayTriggers" unique_id=2046046733]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.65, 1.35)
-collision_layer = 0
-collision_mask = 32
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=1861281927]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 46.348785, 27.510729, -29.631422)
+radius = 0.4
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/Checkpoint_02_Area" unique_id=996105233]
-shape = SubResource("CheckpointShape")
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=2062896918]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 20.22666, 27.510729, -71.569695)
+radius = 0.4
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="LevelExit_Area" type="Area3D" parent="GameplayTriggers" unique_id=1046100548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.75, 2.8)
-collision_layer = 0
-collision_mask = 32
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=165601186]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 48.79774, 27.510729, -63.100403)
+sides = 16
+material = ExtResource("9_osbx4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayTriggers/LevelExit_Area" unique_id=1650361036]
-shape = SubResource("ExitShape")
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=657265684]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 39.103985, 27.510729, -67.38607)
+radius = 0.25
+sides = 16
+material = ExtResource("9_osbx4")
 
-[connection signal="area_entered" from="GameplayTriggers/CombatTrigger_01_To2DTestCombat" to="GameplayTriggers/CombatTrigger_01_To2DTestCombat" method="_on_area_entered"]
-[connection signal="area_exited" from="GameplayTriggers/CombatTrigger_01_To2DTestCombat" to="GameplayTriggers/CombatTrigger_01_To2DTestCombat" method="_on_area_exited"]
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=593310255]
+transform = Transform3D(7.077233, 0, 0, 0, 28.121868, 0, 0, 0, 7.077233, 30.226534, 27.510729, -74.22271)
+radius = 0.25
+sides = 16
+material = ExtResource("9_osbx4")
+
+[node name="Bounce Pad2" parent="." unique_id=1725999715 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.640594, 3.314074, -42.66282)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad2" unique_id=1048875751]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
+radius = 1.3
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad2" unique_id=1769459172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_j26fj")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad2" unique_id=1759488488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="Bounce Pad3" parent="." unique_id=132545869 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.72349, 3.314074, -46.479633)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad3" unique_id=87833113]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 0.14094687, -2.1776314)
+radius = 1.0
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad3" unique_id=768927775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 0.13053083, -2.1806526)
+shape = SubResource("CylinderShape3D_i8moa")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad3" unique_id=1995213496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -1.5703363, -2.172943)
+use_collision = true
+radius = 0.2
+height = 3.0
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="Bounce Pad4" parent="." unique_id=678781703 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.689037, 3.314074, -47.906097)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad4" unique_id=541372823]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 2.7267637, -2.1776314)
+radius = 0.8
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad4" unique_id=496913724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 2.7569094, -2.1806526)
+shape = SubResource("CylinderShape3D_wyodo")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad4" unique_id=475931567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -0.25734806, -2.172943)
+use_collision = true
+radius = 0.18
+height = 5.6259766
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="Bounce Pad5" parent="." unique_id=1684335158 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.64076, 3.314074, -45.025696)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad5" unique_id=102435602]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 5.66007, -2.1776314)
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad5" unique_id=1001366218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 5.6551147, -2.1806526)
+shape = SubResource("CylinderShape3D_wmh0y")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad5" unique_id=1929632135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, 1.2416754, -2.172943)
+use_collision = true
+radius = 0.1
+height = 8.624023
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48.187847, 1.1524394, -52.788624)

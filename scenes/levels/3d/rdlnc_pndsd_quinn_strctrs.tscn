@@ -1,21 +1,19 @@
 [gd_scene format=3 uid="uid://dmnbgi7ewbuqi"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="2_w2eha"]
-[ext_resource type="Material" uid="uid://d1cprp1maou6d" path="res://wood.tres" id="3_wngh0"]
-[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://dirt.tres" id="4_q21ry"]
+[ext_resource type="Material" uid="uid://d1cprp1maou6d" path="res://sprites/textures/wood.tres" id="3_wngh0"]
+[ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://materials/dirt.tres" id="4_q21ry"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="5_lf86p"]
 [ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="5_peh0i"]
-[ext_resource type="Material" uid="uid://dv6exidtbp2y5" path="res://leaf.tres" id="6_w2eha"]
+[ext_resource type="Material" uid="uid://c3wn5hp3uclmn" path="res://sprites/textures/leaf.tres" id="6_q21ry"]
 [ext_resource type="PackedScene" uid="uid://bs7yiidud6emp" path="res://scenes/elements/coin_2d.tscn" id="7_q21ry"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="8_lf86p"]
-[ext_resource type="Texture2D" uid="uid://d0j3pdwgvkh2h" path="res://sprites/textures/plaintexture_06.png" id="9_lf86p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojxh3"]
 size = Vector3(1.2, 1.2, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojxh3"]
 albedo_color = Color(0.26, 0.20149998, 0.195, 1)
-albedo_texture = ExtResource("9_lf86p")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -27,7 +25,6 @@ radius = 1.0
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("2_w2eha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34328604, 0.5739974, 0.23072445)
-jump_timer_max = 0.2
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1394082250]
 use_collision = true
@@ -95,7 +92,7 @@ debug_color = Color(0, 1, 0, 1)
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
-material = ExtResource("6_w2eha")
+material = ExtResource("6_q21ry")
 
 [node name="Fading Platform2" parent="." unique_id=955349705 instance=ExtResource("5_peh0i")]
 transform = Transform3D(-0.7790316, 0, -0.6269847, 0, 1, 0, 0.6269847, 0, -0.7790316, -19.674816, 13.55357, 2.321091)
@@ -110,7 +107,7 @@ debug_color = Color(0, 1, 0, 1)
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
-material = ExtResource("6_w2eha")
+material = ExtResource("6_q21ry")
 
 [node name="Coin2D" parent="." unique_id=1596631298 node_paths=PackedStringArray("collection_area") instance=ExtResource("7_q21ry")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.196926, 27.264309, -5.2406263)
