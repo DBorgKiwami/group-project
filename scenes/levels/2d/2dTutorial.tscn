@@ -3,20 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_lhry7"]
 [ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
 [ext_resource type="Texture2D" uid="uid://c2gcpwsb73o10" path="res://sprites/textures/nature_03-7.png" id="3_qkvt7"]
-[ext_resource type="Texture2D" uid="uid://ud03jkkrl6jm" path="res://sprites/textures/orangetexture_08.png" id="4_cjfr5"]
 [ext_resource type="Texture2D" uid="uid://bfoer8e6rqrd0" path="res://sprites/props/Rock1.png" id="4_d3ns5"]
 [ext_resource type="Texture2D" uid="uid://dc3jvf23h6707" path="res://sprites/parallax/forest_long.png" id="4_dhk1w"]
 [ext_resource type="Texture2D" uid="uid://cm8f6g6k0tk1l" path="res://sprites/parallax/forest_short.png" id="4_jl56t"]
 [ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
 [ext_resource type="Texture2D" uid="uid://d4dlc8q755gfr" path="res://sprites/textures/rocks 1.png" id="5_0h4al"]
 [ext_resource type="Texture2D" uid="uid://c3cd0vaaxb2fk" path="res://sprites/props/Rock2.png" id="5_567d7"]
-[ext_resource type="Script" uid="uid://db55ujvmtpsl4" path="res://scripts/parallax/parallax shortforest.gd" id="5_en8hi"]
-[ext_resource type="Script" uid="uid://cjymnlqewiocd" path="res://scripts/parallax/parallax forest.gd" id="5_mi8j5"]
+[ext_resource type="Script" uid="uid://db55ujvmtpsl4" path="res://sprites/parallax/parallax shortforest.gd" id="5_en8hi"]
+[ext_resource type="Script" uid="uid://cjymnlqewiocd" path="res://sprites/parallax/parallax forest.gd" id="5_mi8j5"]
 [ext_resource type="Texture2D" uid="uid://bmow2kh4hrmtv" path="res://sprites/parallax/forest_mountain.png" id="6_gd6s7"]
 [ext_resource type="Texture2D" uid="uid://c8tp4iu20xiul" path="res://sprites/parallax/forest_sky.png" id="6_mi8j5"]
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
-[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://scripts/parallax/parallax sky.gd" id="7_4sh6k"]
-[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://scripts/parallax/parallax mountain.gd" id="7_jl56t"]
+[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://sprites/parallax/parallax sky.gd" id="7_4sh6k"]
+[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="7_jl56t"]
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
 
@@ -107,7 +106,6 @@ texture_filter = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pkib"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.7176471)
-albedo_texture = ExtResource("4_cjfr5")
 
 [sub_resource type="BoxMesh" id="BoxMesh_1tfyo"]
 material = SubResource("StandardMaterial3D_5pkib")
