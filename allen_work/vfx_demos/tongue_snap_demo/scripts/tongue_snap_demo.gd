@@ -1,7 +1,7 @@
 extends Node2D
 
-const PLAYER_TEXTURE := preload("res://assets/player_reference.png")
-const PLAYER_MOUTH_OPEN_TEXTURE := preload("res://assets/player_reference_mouth_open.png")
+const PLAYER_TEXTURE := preload("res://allen_work/vfx_demos/tongue_snap_demo/assets/player_reference.png")
+const PLAYER_MOUTH_OPEN_TEXTURE := preload("res://allen_work/vfx_demos/tongue_snap_demo/assets/player_reference_mouth_open.png")
 
 var player_pos := Vector2(48, 60)
 var mouth_pos := Vector2(90, 120)

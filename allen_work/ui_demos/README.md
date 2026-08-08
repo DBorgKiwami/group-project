@@ -1,6 +1,6 @@
 # Allen UI Demos
 
-This branch keeps Allen's UI prototypes separate from the main group scenes.
+These UI prototypes are stored inside the main Godot project as separate demo scenes.
 
 Included demos:
 
@@ -13,4 +13,4 @@ Included demos:
 - objective tracker
 - screen transition
 
-These are isolated prototype folders. They are not merged into `main` gameplay scenes yet.
+They are not merged into the main gameplay scenes yet, but they can now be opened from the main project's FileSystem dock.

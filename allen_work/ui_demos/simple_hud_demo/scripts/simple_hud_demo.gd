@@ -1,6 +1,6 @@
 extends Node2D
 
-const PLAYER_PORTRAIT := preload("res://assets/ui/player_portrait.png")
+const PLAYER_PORTRAIT := preload("res://allen_work/ui_demos/simple_hud_demo/assets/ui/player_portrait.png")
 
 const BG := Color(0.020, 0.035, 0.048)
 const TILE := Color(0.060, 0.090, 0.110)
