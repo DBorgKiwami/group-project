@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://ck0iqxs4bebwt" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_1haum"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
+[ext_resource type="Texture2D" uid="uid://bebyoq340fpps" path="res://sprites/player/2D Sprites/player_sprite_down_attack.png" id="4_bkeyn"]
+[ext_resource type="Texture2D" uid="uid://c4xigu2n1dj6" path="res://sprites/player/2D Sprites/player_sprite_up_attack.png" id="5_4qi3b"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -30,10 +32,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cudoo")
+"texture": ExtResource("2_7a31i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7a31i")
+"texture": ExtResource("4_bkeyn")
 }],
 "loop": true,
 "name": &"attack_down",
@@ -41,10 +43,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cudoo")
+"texture": ExtResource("2_7a31i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7a31i")
+"texture": ExtResource("5_4qi3b")
 }],
 "loop": true,
 "name": &"attack_up",
