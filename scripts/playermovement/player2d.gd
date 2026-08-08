@@ -15,7 +15,7 @@ class_name Player2D
 @export var camera_y_offset = 0.5
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
-@export var damage = 1
+@export var damage = 10
 @export var max_health = 3
 var health
 var can_jump = false
@@ -43,18 +43,15 @@ func _on_player_hit(damage) -> void:
 		print("Damage blocked!")
 		return
 	print("I've been hit for " + str(damage) + "!")
-	animationController.play("hit")
 	health = health - damage
 	if health <= 0:
 		print("I'm fuckin dead!")
 		sprite.play("dead")
 		state_machine.on_child_transition(state_machine.current_state, "dead")
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_level"):
 		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
 	pass
-
 func _physics_process(delta: float) -> void:
 	position.z = 0
 	if block_cooldown > 0:
@@ -64,21 +61,18 @@ func _physics_process(delta: float) -> void:
 		if block_timer <= 0:
 			blocking = false
 	move_and_slide()
-
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered front")
 	if area is EnemyHitbox:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
-
 func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered up")
 	if area is EnemyHitbox:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
-
 func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered down")
 	if area is EnemyHitbox:
@@ -86,8 +80,8 @@ func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 		area.emit_signal("on_hit",damage)
 		Hitstopmanager.hit_stop(0.05)
 		velocity.y = maxf(JUMP_VELOCITY, velocity.y + JUMP_VELOCITY)
-	pass # Replace with function body
-
+	pass # Replace with function body.
+	
 func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
 	print("Hello")
 	clipping = true

@@ -22,10 +22,6 @@ SignalBus="*uid://b5pkcy3f4jdnt"
 PersistentData="*uid://cftlwamfmwl02"
 Hitstopmanager="*uid://cgkxriraiat40"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [input]
 
 ui_left={

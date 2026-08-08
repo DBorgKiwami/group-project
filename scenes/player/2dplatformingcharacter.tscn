@@ -139,42 +139,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [&"default"]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite3D:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerHitbox:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerHitbox:monitorable")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
 resource_name = "attack"
@@ -260,73 +224,26 @@ tracks/1/keys = {
 "values": [&"attack_up"]
 }
 
-[sub_resource type="Animation" id="Animation_cudoo"]
-resource_name = "hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.100000024, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHitbox:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerHitbox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
 _data = {
 &"RESET": SubResource("Animation_vj0l2"),
 &"attack": SubResource("Animation_a1x7n"),
 &"attack_down": SubResource("Animation_8yach"),
-&"attack_up": SubResource("Animation_k8hk2"),
-&"hit": SubResource("Animation_cudoo")
+&"attack_up": SubResource("Animation_k8hk2")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
-radius = 0.8824353
+radius = 0.679429
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
 size = Vector3(1.56, 1.5641162, 1)
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("animationController")]
 script = ExtResource("1_cudoo")
-hitboxFront = NodePath("Front Attack Hurtbox")
-hitboxUp = NodePath("Up Attack Hurtbox")
-hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
-player_hitbox = NodePath("PlayerHitbox")
-player_camera = NodePath("Camera3D")
-sprite = NodePath("AnimatedSprite3D")
-state_machine = NodePath("State_Machine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
@@ -395,6 +312,7 @@ script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=936171539]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
