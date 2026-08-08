@@ -8,6 +8,7 @@ class_name Player2D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
 @export var state_machine : State_Machine
+@export var hud : Node2D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var camera_x_bound = 1.0
@@ -16,7 +17,7 @@ class_name Player2D
 @export var jump_timer_max = 0.2
 @export var jump_buffer_len = 0.12
 @export var damage = 10
-@export var max_health = 3
+@export var max_health = 5
 var health
 var can_jump = false
 var blocking = false
@@ -26,24 +27,23 @@ var jump_timer = jump_timer_max
 var jump_buffer = 0
 var clipping = false
 var is_attacking = false
-
 func _ready() -> void:
 	health = max_health
 	if player_hitbox:
 		player_hitbox.connect("on_hit", _on_player_hit)
 	if animationController:
 		animationController.animation_finished.connect(_on_attack_animation_finished)
-
 func _on_attack_animation_finished(anim_name: String) -> void:
 	if anim_name in ["attack", "attack_up", "attack_down"]:
 		is_attacking = false
-
 func _on_player_hit(damage) -> void:
 	if blocking:
 		print("Damage blocked!")
 		return
 	print("I've been hit for " + str(damage) + "!")
-	health = health - damage
+	health = health - 1
+	if hud:
+		hud.take_hit()
 	if health <= 0:
 		print("I'm fuckin dead!")
 		sprite.play("dead")
@@ -86,7 +86,6 @@ func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
 	print("Hello")
 	clipping = true
 	pass # Replace with function body.
-
 func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
 	clipping = false
 	pass # Replace with function body.

@@ -1,6 +1,6 @@
 extends Node2D
 
-const PLAYER_PORTRAIT := preload("res://allen_work/allen_work/ui_demos/simple_hud_demo/assets/ui/player_portrait.png")
+const PLAYER_PORTRAIT := preload("res://allen_work/ui_demos/simple_hud_demo/assets/ui/player_portrait.png")
 
 const BG := Color(0.020, 0.035, 0.048)
 const TILE := Color(0.060, 0.090, 0.110)
@@ -40,6 +40,11 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_SPACE:
+			take_hit()
+
 
 func take_hit() -> void:
 	if health > 0:
@@ -48,6 +53,7 @@ func take_hit() -> void:
 
 
 func _draw() -> void:
+	draw_demo_background()
 	draw_hud_panel()
 
 

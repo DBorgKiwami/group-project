@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfw8udpxgt0vs"]
+
+[ext_resource type="Script" path="res://allen_work/ui_demos/simple_hud_demo/scripts/simple_hud_demo.gd" id="1_demo"]
+
+[node name="SimpleHudDemo" type="Node2D" unique_id=60244026]
+script = ExtResource("1_demo")
