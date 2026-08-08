@@ -1,6 +1,6 @@
 extends Node2D
 
-const SLASH_SHEET := preload("res://assets/vfx/slash_arc_sheet.png")
+const SLASH_SHEET := preload("res://allen_work/vfx_demos/frog_slash_arc_demo/assets/vfx/slash_arc_sheet.png")
 const FRAME_SIZE := Vector2(64.0, 64.0)
 
 @export var frame_count := 6

@@ -4,10 +4,10 @@ Minimal Godot 4.6 prototype for testing only the sword slash VFX. The scene inte
 
 ## Open
 
-Open this folder in Godot:
+Open the main group project in Godot, then open this scene:
 
 ```text
-C:\Users\ASUS\Documents\Codex\2026-07-02\new-chat\outputs\frog_slash_arc_demo
+res://allen_work/vfx_demos/frog_slash_arc_demo/scenes/slash_arc_demo.tscn
 ```
 
 Run the main scene. Press `Space` to trigger the slash at the center, or left-click to place a slash manually.

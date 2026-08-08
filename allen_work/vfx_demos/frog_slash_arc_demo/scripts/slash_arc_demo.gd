@@ -1,6 +1,6 @@
 extends Node2D
 
-const SlashArcVFX := preload("res://scripts/slash_arc_vfx.gd")
+const SlashArcVFX := preload("res://allen_work/vfx_demos/frog_slash_arc_demo/scripts/slash_arc_vfx.gd")
 
 const BG := Color(0.015, 0.027, 0.052)
 const GRID := Color(0.035, 0.105, 0.135)

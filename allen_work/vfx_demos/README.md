@@ -1,6 +1,6 @@
 # Allen VFX Demos
 
-This branch keeps Allen's VFX prototypes separate from the main group scenes.
+These VFX prototypes are stored inside the main Godot project as separate demo scenes.
 
 Included demos:
 
@@ -9,4 +9,4 @@ Included demos:
 - combat warning marker
 - enemy damage feedback / damage numbers
 
-These are isolated prototype folders. They are not merged into `main` gameplay scenes yet.
+They are not merged into the main gameplay scenes yet, but they can now be opened from the main project's FileSystem dock.
