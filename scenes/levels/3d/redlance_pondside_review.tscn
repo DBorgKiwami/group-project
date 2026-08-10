@@ -1,18 +1,18 @@
-[gd_scene format=3 uid="uid://bslekgn6f1u54"]
+[gd_scene format=3 uid="uid://d4bugk2e7rnwx"]
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="3_player"]
-[ext_resource type="Script" uid="uid://cqssbdqnvg8ny" path="res://scripts/elements/scene_transition.gd" id="4_transition"]
-[ext_resource type="AudioStream" path="res://audio/music/step.ogg" id="5_step"]
-[ext_resource type="AudioStream" path="res://audio/music/jump.ogg" id="6_jump"]
-[ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
-[ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="8_pond"]
-[ext_resource type="AudioStream" path="res://audio/music/breeze.ogg" id="9_breeze"]
-[ext_resource type="AudioStream" path="res://audio/music/insectchirping.ogg" id="10_insect"]
-[ext_resource type="AudioStream" path="res://audio/music/insectschirping.ogg" id="11_insects"]
-[ext_resource type="Script" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
-[ext_resource type="Script" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
+[ext_resource type="Script" uid="uid://cg0cjprti2fw0" path="res://scripts/elements/scene_transition.gd" id="4_transition"]
+[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="5_step"]
+[ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="6_jump"]
+[ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
+[ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="8_pond"]
+[ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="9_breeze"]
+[ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="10_insect"]
+[ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
+[ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
+[ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="13_footsteps"]
 
 [sub_resource type="Environment" id="Environment_preview"]
 background_mode = 1
@@ -62,27 +62,27 @@ size = Vector3(2.2, 1.4, 2.2)
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
 
-[node name="DampAndWatery" type="AudioStreamPlayer" parent="."]
+[node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=302641208]
 stream = ExtResource("7_damp")
 volume_db = -12.0
 
-[node name="PondSounds" type="AudioStreamPlayer" parent="."]
+[node name="PondSounds" type="AudioStreamPlayer" parent="." unique_id=989255728]
 stream = ExtResource("8_pond")
 volume_db = -11.0
 
-[node name="Breeze" type="AudioStreamPlayer" parent="."]
+[node name="Breeze" type="AudioStreamPlayer" parent="." unique_id=1148334064]
 stream = ExtResource("9_breeze")
 volume_db = -14.0
 
-[node name="InsectChirping" type="AudioStreamPlayer" parent="."]
+[node name="InsectChirping" type="AudioStreamPlayer" parent="." unique_id=33282135]
 stream = ExtResource("10_insect")
 volume_db = -12.0
 
-[node name="InsectsChirping" type="AudioStreamPlayer" parent="."]
+[node name="InsectsChirping" type="AudioStreamPlayer" parent="." unique_id=327277186]
 stream = ExtResource("11_insects")
 volume_db = -15.0
 
-[node name="PondAmbience" type="Node" parent="." node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
+[node name="PondAmbience" type="Node" parent="." unique_id=712536306 node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
 script = ExtResource("12_ambience")
 damp_and_watery = NodePath("../DampAndWatery")
 pond_sounds = NodePath("../PondSounds")
@@ -111,27 +111,25 @@ fov = 58.0
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 
-[node name="3Dplatformingcharacter" parent="." unique_id=2055655660 node_paths=PackedStringArray("jump_sfx", "landing_sfx") instance=ExtResource("3_player")]
+[node name="3Dplatformingcharacter" parent="." unique_id=2055655660 instance=ExtResource("3_player")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.8, 0.2687053, -2.4)
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
 
-[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=386889350]
 stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="JumpSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="JumpSfx2" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=833103298]
 stream = ExtResource("6_jump")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="LandingSfx" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter"]
+[node name="LandingSfx2" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=394750188]
 stream = ExtResource("5_step")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" node_paths=PackedStringArray("audio_player", "sprite")]
+[node name="FootstepController" type="Node" parent="3Dplatformingcharacter" unique_id=519345536 node_paths=PackedStringArray("audio_player", "sprite")]
 script = ExtResource("13_footsteps")
 audio_player = NodePath("../FootstepAudio")
 sprite = NodePath("../AnimatedSprite3D")
