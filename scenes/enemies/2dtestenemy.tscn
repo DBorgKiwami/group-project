@@ -97,7 +97,7 @@ _data = {
 radius = 0.766
 
 [node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler")]
-collision_layer = 16
+collision_layer = 0
 script = ExtResource("1_v0lon")
 state_machine = NodePath("State Machine")
 hitbox = NodePath("Hitbox")
