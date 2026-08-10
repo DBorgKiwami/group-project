@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -378,7 +379,13 @@ visible = false
 
 [node name="SimpleHudDemo" parent="CanvasLayer" unique_id=1239103860 instance=ExtResource("19_567d7")]
 
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("22_h0xj1")]
+
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
 [editable path="2Dplatformingcharacter"]
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
 [editable path="SceneTransition2D"]
+[editable path="PauseMenu"]
