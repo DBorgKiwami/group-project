@@ -43,6 +43,7 @@ func _on_player_hit(damage) -> void:
 		return
 	print("I've been hit for " + str(damage) + "!")
 	health = health - 1
+	animationController.play("hit")
 	if hud:
 		hud.take_hit()
 	if health <= 0:
