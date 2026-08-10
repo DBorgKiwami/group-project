@@ -385,15 +385,10 @@ mesh = SubResource("PlaneMesh_4wily")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=711532432]
 shape = SubResource("ConcavePolygonShape3D_7bhyk")
 
-<<<<<<< HEAD
 [node name="Player" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_v06so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
-=======
-[node name="Player" parent="." unique_id=387257704 instance=ExtResource("1_v06so")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
->>>>>>> 5c992966a7fcaeef245ca35639ba23aa6332c0c2
 JUMP_VELOCITY = 5.0
 
 [node name="Trail" parent="." unique_id=1331654535 instance=ExtResource("1_ikx5s")]
