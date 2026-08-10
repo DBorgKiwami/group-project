@@ -68,9 +68,9 @@ script = ExtResource("1_b5084")
 animationController = NodePath("AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1884714127]
-modulate = Color(1, 0, 0, 1)
+pixel_size = 0.001
 billboard = 2
-transparent = false
+alpha_cut = 3
 texture = ExtResource("2_xjyrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1805620442]
