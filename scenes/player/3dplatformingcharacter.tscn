@@ -276,12 +276,12 @@ texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_g608u")
 animation = &"westwalk"
 
-[node name="JumpSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="JumpSfx" type="AudioStreamPlayer3D" parent="." unique_id=836460488]
 stream = ExtResource("26_jump")
 volume_db = -4.0
 max_distance = 18.0
 
-[node name="LandingSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="LandingSfx" type="AudioStreamPlayer3D" parent="." unique_id=1783291000]
 stream = ExtResource("27_land")
 volume_db = -4.0
 max_distance = 18.0
