@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://4tbgqyefdjbw"]
+[gd_scene format=3 uid="uid://cxi5g0iqcs5xs"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="1_qgvwo"]
-[ext_resource type="PackedScene" uid="uid://dwk53ecvmqvw3" path="res://scenes/enemies/dragonfly_boss.tscn" id="2_obtll"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/dragonfly_boss.tscn" id="2_obtll"]
 
 [node name="Node3D" type="Node3D" unique_id=1660615237]
 
