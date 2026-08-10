@@ -645,11 +645,23 @@ size = Vector3(35.81537, 3.5433655, 63.94214)
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
 
-[node name="Grapplepoint3d" parent="." unique_id=658253556 instance=ExtResource("1_wopdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.148, 6.898493, -14.525835)
+[node name="Grapplepoint3d2" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.332977, 4.40955, 0.29916072)
 
-[node name="Sprite3D" parent="Grapplepoint3d" index="0" unique_id=1884714127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007095337, 0, 0)
+[node name="Sprite3D" parent="Grapplepoint3d2" index="0" unique_id=1884714127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6172123, -0.9818039, -0.70902824)
+sorting_offset = 1.0
+modulate = Color(1, 1, 1, 1)
+pixel_size = 0.001
+transparent = true
+texture_filter = 2
+render_priority = 100
+
+[node name="CollisionShape3D" parent="Grapplepoint3d2" index="1" unique_id=1805620442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6228447, -0.97010136, -0.73105335)
+
+[node name="AnimationPlayer" parent="Grapplepoint3d2" index="2" unique_id=1707036375]
+root_node = NodePath("../../Grapplepoint3d2")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 JUMP_VELOCITY = 6.0
@@ -27160,7 +27172,7 @@ debug_color = Color(0.98617727, 0, 0.3310366, 0.41960785)
 [node name="Node3D" type="Node3D" parent="SceneTransition/Node3D" unique_id=1310095243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.412941, 5.3633666, -0.7901485)
 
-[editable path="Grapplepoint3d"]
+[editable path="Grapplepoint3d2"]
 [editable path="3Dplatformingcharacter"]
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
