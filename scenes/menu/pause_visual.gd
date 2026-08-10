@@ -44,12 +44,15 @@ func _ready() -> void:
 	set_process(true)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	_compute_button_positions()
+	get_viewport().size_changed.connect(_compute_button_positions)
 
 
 func _compute_button_positions() -> void:
 	button_positions.clear()
+	var center_x := get_viewport_rect().size.x / 2.0
+	var start_y := 300.0
 	for i in range(OPTIONS.size()):
-		button_positions.append(Vector2(400, 300 + i * 78))
+		button_positions.append(Vector2(center_x - button_size.x / 2.0, start_y + i * 78))
 
 
 func _process(delta: float) -> void:
@@ -103,8 +106,12 @@ func choose_option() -> void:
 func _draw() -> void:
 	var size := get_viewport_rect().size
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.020, 0.025, 0.025, 0.62))
-	draw_panel(Vector2(276, 156), Vector2(600, 384))
-	draw_pixel_text_center(Vector2(576, 210), "PAUSED", 6, WHITE)
+
+	var panel_size := Vector2(600, 384)
+	var panel_pos := Vector2(size.x / 2.0 - panel_size.x / 2.0, 156)
+	draw_panel(panel_pos, panel_size)
+
+	draw_pixel_text_center(Vector2(size.x / 2.0, 210), "PAUSED", 6, WHITE)
 	for i in range(OPTIONS.size()):
 		draw_button(button_positions[i], OPTIONS[i], selected_option == i)
 
