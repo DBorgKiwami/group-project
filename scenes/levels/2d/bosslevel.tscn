@@ -652,7 +652,7 @@ environment = SubResource("Environment_q7fgl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1621776, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform" unique_id=459834676]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, -6.488544, 1.6345018, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -667,7 +667,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.997775, 1.2975221, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform2" unique_id=1127644307]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943346, 0.20927763, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -682,7 +682,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0779011, 2.5175204, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform3" unique_id=1431219245]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 1.2149677, -0.10295105, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
