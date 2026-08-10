@@ -22,9 +22,9 @@ SignalBus="*uid://b5pkcy3f4jdnt"
 PersistentData="*uid://cftlwamfmwl02"
 Hitstopmanager="*uid://cgkxriraiat40"
 
-[filesystem]
+[display]
 
-import/blender/enabled=false
+window/stretch/mode="canvas_items"
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ja1sr87mkyin"]
+[gd_scene format=3 uid="uid://b2meku3djc0t8"]
 
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_lhry7"]
 [ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
@@ -18,6 +18,9 @@
 [ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="7_jl56t"]
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
+[ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
+[ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -173,8 +176,10 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
+hud = NodePath("../CanvasLayer/SimpleHudDemo")
+death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 JUMP_VELOCITY = 6.0
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
@@ -305,9 +310,6 @@ shape = SubResource("ConcavePolygonShape3D_kjg24")
 [node name="2Dtestenemy2" parent="." unique_id=981890454 instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
 
-[node name="AnimatedSprite3D" parent="2Dtestenemy2" index="1" unique_id=351497963]
-flip_h = false
-
 [node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
 
@@ -316,9 +318,6 @@ root_node = NodePath("../../2Dtestenemy2")
 
 [node name="2Dtestenemy3" parent="." unique_id=1152322179 instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
-
-[node name="AnimatedSprite3D" parent="2Dtestenemy3" index="1" unique_id=351497963]
-flip_h = false
 
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -364,7 +363,22 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.24
 material_override = ExtResource("9_1tfyo")
 mesh = SubResource("PrismMesh_mi8j5")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1309620679]
+
+[node name="DeathScreenDemo" parent="CanvasLayer2" unique_id=1242030890 instance=ExtResource("19_wjq58")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1728365147]
+
+[node name="SimpleHudDemo" parent="CanvasLayer" unique_id=1239103860 instance=ExtResource("19_567d7")]
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("22_h0xj1")]
+
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
 [editable path="2Dplatformingcharacter"]
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
 [editable path="SceneTransition2D"]
+[editable path="PauseMenu"]

@@ -212,6 +212,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_tqe7u"]
+radius = 1.6422604
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_vws06"]
 radius = 2.5
 
@@ -252,15 +255,19 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_dq5nv"]
+
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
-grappleArea = NodePath("Area3D")
+grappleArea = NodePath("Grapple Area")
 animationControler = NodePath("AnimationPlayer")
-player_camera = NodePath("Node3D/Camera3D")
-camera_pivot = NodePath("Node3D")
+player_camera = NodePath("SpringArm3D/Camera3D")
+camera_pivot = NodePath("SpringArm3D")
+jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
@@ -296,23 +303,31 @@ max_distance = 18.0
 [node name="FootstepController" type="Node" parent="." unique_id=1364249115]
 script = ExtResource("28_dq5nv")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=190598689]
-transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
+[node name="Interaction Area" type="Area3D" parent="." unique_id=1412579038]
 collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Area" unique_id=1975552858]
+shape = SubResource("SphereShape3D_tqe7u")
+
+[node name="Grapple Area" type="Area3D" parent="." unique_id=190598689]
+collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=577473613]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grapple Area" unique_id=577473613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02279973, 0.074198335, 0.012180336)
 shape = SubResource("SphereShape3D_vws06")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1373763106]
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=856807692]
 top_level = true
+shape = SubResource("SphereShape3D_dq5nv")
+spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1344329634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.572149, 5)
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1344329634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5546684, 0)
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Grapple Area" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Grapple Area" to="." method="_on_area_3d_area_exited"]
