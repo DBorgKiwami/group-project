@@ -675,6 +675,9 @@ shape = SubResource("BoxShape3D_2kmou")
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("7_2kmou")]
 
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=253198299]
 transform = Transform3D(0.86990595, 0.34697288, 0.35053325, -0.49201545, 0.56088257, 0.6658315, 0.034417495, -0.7516785, 0.6586311, 216.08095, 26.31256, 148.09047)
 light_color = Color(0.97265625, 0.9244509, 0.86247253, 1)
@@ -2033,7 +2036,10 @@ shape = SubResource("ConcavePolygonShape3D_1l355")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock3_1/rock3_1_rockset1_0/StaticBody3D" unique_id=583436833]
 shape = SubResource("ConcavePolygonShape3D_gktau")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 1453050040) index="0" unique_id=227505174]
+[node name="rock4_rockset1_0" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4" parent_id_path=PackedInt32Array(1234034315, 1040894570) index="0" unique_id=1453050040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.849106, 0, -108.268585)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" index="0" unique_id=227505174]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=2049931576]
 shape = SubResource("ConcavePolygonShape3D_5qquf")
@@ -2043,7 +2049,10 @@ shape = SubResource("ConcavePolygonShape3D_5qquf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0/StaticBody3D" unique_id=1538953928]
 shape = SubResource("ConcavePolygonShape3D_nicfq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 651602700) index="0" unique_id=1619759598]
+[node name="rock5_rockset1_0" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5" parent_id_path=PackedInt32Array(1234034315, 704440102) index="0" unique_id=651602700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.000183, 2.1175824e-22, 9.536743e-07)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0" index="0" unique_id=1619759598]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0/StaticBody3D" unique_id=181799603]
 shape = SubResource("ConcavePolygonShape3D_dshpo")
@@ -2053,7 +2062,10 @@ shape = SubResource("ConcavePolygonShape3D_dshpo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5_1/rock5_1_rockset1_0/StaticBody3D" unique_id=1638708681]
 shape = SubResource("ConcavePolygonShape3D_dgotf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 939525722) index="0" unique_id=387506679]
+[node name="rock6_rockset1_0" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6" parent_id_path=PackedInt32Array(1234034315, 427181501) index="0" unique_id=939525722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.00308, 44.605637, -4.4998625e-22)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" index="0" unique_id=387506679]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0/StaticBody3D" unique_id=699132686]
 shape = SubResource("ConcavePolygonShape3D_42u5h")
@@ -2101,7 +2113,10 @@ shape = SubResource("ConcavePolygonShape3D_wnvyl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=567158936]
 shape = SubResource("ConcavePolygonShape3D_v1gai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 1815272620) index="0" unique_id=1189554595]
+[node name="rock4_1_rockset1_0" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1" parent_id_path=PackedInt32Array(2036762369, 1094849794) index="0" unique_id=1815272620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 4.2351647e-22, 28.010868)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0" index="0" unique_id=1189554595]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0/StaticBody3D" unique_id=1761580994]
 shape = SubResource("ConcavePolygonShape3D_m5myd")
@@ -2116,7 +2131,10 @@ shape = SubResource("ConcavePolygonShape3D_6wxuw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5_1/rock5_1_rockset1_0/StaticBody3D" unique_id=784686556]
 shape = SubResource("ConcavePolygonShape3D_fhfcs")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 939525722) index="0" unique_id=1738023792]
+[node name="rock6_rockset1_0" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6" parent_id_path=PackedInt32Array(2036762369, 427181501) index="0" unique_id=939525722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.77759, -8.4703295e-22, -3.8146973e-06)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" index="0" unique_id=1738023792]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0/StaticBody3D" unique_id=1866544221]
 shape = SubResource("ConcavePolygonShape3D_gxqra")
@@ -2159,7 +2177,10 @@ shape = SubResource("ConcavePolygonShape3D_8x5ye")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock3_1/rock3_1_rockset1_0/StaticBody3D" unique_id=294728034]
 shape = SubResource("ConcavePolygonShape3D_sj14v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1173176101, 1453050040) index="0" unique_id=1036963157]
+[node name="rock4_rockset1_0" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4" parent_id_path=PackedInt32Array(1173176101, 1040894570) index="0" unique_id=1453050040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.934784, -8.4703295e-22, -3.8146973e-06)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" index="0" unique_id=1036963157]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=847007541]
 shape = SubResource("ConcavePolygonShape3D_scluf")

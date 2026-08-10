@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://dwk53ecvmqvw3"]
+[gd_scene format=3 uid="uid://cbci031n01l70"]
 
-[ext_resource type="Texture2D" uid="uid://c6x5e4sluxyp5" path="res://sprites/enemies/enemy sprites/dragonfly_idle.png" id="1_2vmx4"]
-[ext_resource type="Script" uid="uid://bbnorel3wdorx" path="res://scenes/enemies/dragonfly_boss.gd" id="1_bar2a"]
+[ext_resource type="Script" path="res://scenes/enemies/dragonfly_boss.gd" id="1_bar2a"]
+[ext_resource type="Texture2D" uid="uid://cc0yfnp0h2os1" path="res://sprites/enemies/enemy sprites/dragonfly.png" id="2_dd4s5"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="3_4xcxh"]
-[ext_resource type="Script" uid="uid://cjufftxwnev0u" path="res://scenes/enemies/dragonflyidle.gd" id="4_kskbt"]
-[ext_resource type="Script" uid="uid://c4j16yrr4084y" path="res://scenes/enemies/DragonflySwoop.gd" id="5_rp2of"]
+[ext_resource type="Script" path="res://scenes/enemies/dragonflyidle.gd" id="4_kskbt"]
+[ext_resource type="Script" path="res://scenes/enemies/DragonflySwoop.gd" id="5_rp2of"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="6_wr4wg"]
-[ext_resource type="Script" uid="uid://b1s4e3ngus141" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
-[ext_resource type="PackedScene" uid="uid://vbsrhde6d3bk" path="res://scenes/enemies/spear.tscn" id="8_xge5m"]
+[ext_resource type="Script" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/spear.tscn" id="8_xge5m"]
 [ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="9_dd4s5"]
 
 [sub_resource type="Animation" id="Animation_wr4wg"]
@@ -50,7 +50,7 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2vmx4")
+"texture": ExtResource("2_dd4s5")
 }],
 "loop": true,
 "name": &"default",
@@ -76,6 +76,8 @@ animationControler = NodePath("AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_xge5m")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1187427604]
+pixel_size = 0.03
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_bar2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=881256]
