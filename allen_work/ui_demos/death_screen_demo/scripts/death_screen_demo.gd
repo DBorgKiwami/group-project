@@ -47,6 +47,7 @@ const LETTERS := {
 
 var time := 0.0
 var selected_button := 0
+var button_size := Vector2(204, 54)
 
 
 func _ready() -> void:
@@ -66,17 +67,44 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
-	print("Death screen received input, visible=true")
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_LEFT or event.keycode == KEY_RIGHT:
 			selected_button = 1 - selected_button
-		if event.keycode == KEY_ENTER or event.keycode == KEY_SPACE:
+		if event.keycode == KEY_ENTER:
 			_confirm_selection()
 		if event.keycode == KEY_R:
 			time = 0.0
-			
+
+	if event is InputEventMouseMotion:
+		var hovered := _get_hovered_button(event.position)
+		if hovered != -1:
+			selected_button = hovered
+
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var clicked := _get_hovered_button(event.position)
+			if clicked != -1:
+				selected_button = clicked
+				_confirm_selection()
+
+func _get_button_positions() -> Array[Vector2]:
+	var size := get_viewport_rect().size
+	return [
+		Vector2(size.x / 2.0 - 267, 516),
+		Vector2(size.x / 2.0 + 51, 516)
+	]
+
+
+func _get_hovered_button(mouse_pos: Vector2) -> int:
+	var positions := _get_button_positions()
+	for i in range(positions.size()):
+		var rect := Rect2(positions[i], button_size)
+		if rect.has_point(mouse_pos):
+			return i
+	return -1
+
+
 func _confirm_selection() -> void:
-	print("Confirm pressed, selected_button=", selected_button)
 	if selected_button == 0:
 		retry_pressed.emit()
 	else:
@@ -106,18 +134,20 @@ func draw_dark_water() -> void:
 
 
 func draw_death_card() -> void:
+	var size := get_viewport_rect().size
 	var card_pos := Vector2(117, 48)
 	var card_size := Vector2(918, 552)
 	draw_panel(card_pos, card_size)
 
-	draw_pixel_text_center(Vector2(576, 114), "YOU CROAKED!", 9, Color(1.000, 0.900, 0.840))
-	draw_pixel_text_center(Vector2(576, 210), "THE POND PULLS YOU UNDER", 3, CREAM)
+	draw_pixel_text_center(Vector2(size.x / 2.0, 114), "YOU CROAKED!", 9, Color(1.000, 0.900, 0.840))
+	draw_pixel_text_center(Vector2(size.x / 2.0, 210), "THE POND PULLS YOU UNDER", 3, CREAM)
 
-	draw_death_portrait(Vector2(492, 246))
-	draw_empty_hearts(Vector2(384, 441))
+	draw_death_portrait(Vector2(size.x / 2.0 - 84, 246))
+	draw_empty_hearts(Vector2(size.x / 2.0 - 192, 441))
 
-	draw_button(Vector2(321, 516), "RETRY", selected_button == 0)
-	draw_button(Vector2(627, 516), "RETURN", selected_button == 1)
+	var positions := _get_button_positions()
+	draw_button(positions[0], "RETRY", selected_button == 0)
+	draw_button(positions[1], "RETURN", selected_button == 1)
 
 
 func draw_panel(pos: Vector2, size: Vector2) -> void:
@@ -158,12 +188,12 @@ func draw_heart_pixels(pos: Vector2, color: Color) -> void:
 
 func draw_button(pos: Vector2, label: String, selected: bool) -> void:
 	var frame_color := RED_LIGHT if selected else FRAME
-	draw_rect(Rect2(pos, Vector2(204, 54)), DARK)
-	draw_rect(Rect2(pos + Vector2(6, 6), Vector2(192, 42)), frame_color)
-	draw_rect(Rect2(pos + Vector2(12, 12), Vector2(180, 30)), Color(0.120, 0.065, 0.070))
+	draw_rect(Rect2(pos, button_size), DARK)
+	draw_rect(Rect2(pos + Vector2(6, 6), button_size - Vector2(12, 12)), frame_color)
+	draw_rect(Rect2(pos + Vector2(12, 12), button_size - Vector2(24, 24)), Color(0.120, 0.065, 0.070))
 	if selected:
-		draw_rect(Rect2(pos + Vector2(15, 15), Vector2(174, 24)), Color(0.450, 0.055, 0.060, 0.30))
-	draw_pixel_text_center(pos + Vector2(102, 15), label, 3, WHITE)
+		draw_rect(Rect2(pos + Vector2(15, 15), button_size - Vector2(30, 30)), Color(0.450, 0.055, 0.060, 0.30))
+	draw_pixel_text_center(pos + Vector2(button_size.x / 2, 15), label, 3, WHITE)
 
 
 func draw_pixel_text_center(pos: Vector2, text: String, scale: int, color: Color) -> void:
