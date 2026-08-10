@@ -649,7 +649,6 @@ size = Vector3(35.81537, 3.5433655, 63.94214)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.332977, 4.40955, 0.29916072)
 
 [node name="Sprite3D" parent="Grapplepoint3d2" index="0" unique_id=1884714127]
-alpha_cut = 3
 texture_filter = 2
 render_priority = 100
 
@@ -27169,7 +27168,6 @@ debug_color = Color(0.98617727, 0, 0.3310366, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.412941, 5.3633666, -0.7901485)
 
 [editable path="Grapplepoint3d2"]
-[editable path="3Dplatformingcharacter"]
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
 [editable path="PauseMenu"]
