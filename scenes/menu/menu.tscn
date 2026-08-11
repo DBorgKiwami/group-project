@@ -14,13 +14,13 @@ render_priority = 0
 shader = ExtResource("1_klgdb")
 shader_parameter/noise_tex = ExtResource("3_037ec")
 shader_parameter/displ_tex = ExtResource("2_e0arn")
-shader_parameter/top_light_color = Color(0.30903625, 0.5005979, 0.61328125, 1)
-shader_parameter/top_dark_color = Color(0.16992188, 0.25432754, 0.33984375, 1)
+shader_parameter/top_light_color = Color(0.26382446, 0.56823725, 0.7421875, 1)
+shader_parameter/top_dark_color = Color(0.09741211, 0.30847168, 0.51953125, 1)
 shader_parameter/bot_light_color = Color(0.35430908, 0.59410363, 0.671875, 1)
 shader_parameter/bot_dark_color = Color(0.27194214, 0.3965459, 0.51953125, 1)
-shader_parameter/displ_amount = 0.02
-shader_parameter/bottom_foam_threshold = 0.46800002223
-shader_parameter/speed = 0.934000044365
+shader_parameter/displ_amount = 0.086000004085
+shader_parameter/bottom_foam_threshold = 0.49600002356
+shader_parameter/speed = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e0arn"]
 material = SubResource("ShaderMaterial_mcvr8")
@@ -93,6 +93,7 @@ fov = 41.8
 environment = SubResource("Environment_t0a87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=548962052]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=820518508]
 anchors_preset = 15
