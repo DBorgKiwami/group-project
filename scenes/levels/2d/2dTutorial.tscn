@@ -16,10 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
 [ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://sprites/parallax/parallax sky.gd" id="7_4sh6k"]
 [ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="7_jl56t"]
-[ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
+[ext_resource type="PackedScene" uid="uid://bxo3f2kdyyr4y" path="res://scenes/elements/scene_transition.tscn" id="21_u8ol6"]
+[ext_resource type="PackedScene" uid="uid://3mqpvpiwn8wi" path="res://scenes/elements/spikes.tscn" id="22_4t7du"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
@@ -174,6 +175,9 @@ size = Vector3(2.075, 1, 0.125)
 [sub_resource type="PrismMesh" id="PrismMesh_mi8j5"]
 size = Vector3(1, 1, 0.125)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfdl5"]
+size = Vector3(35.81537, 3.5433655, 63.94214)
+
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
 [node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_lhry7")]
@@ -322,12 +326,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
 
-[node name="SceneTransition2D" parent="." unique_id=1962062075 instance=ExtResource("8_5pkib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
-
-[node name="CollisionShape3D" parent="SceneTransition2D" index="0" unique_id=1664706398]
-debug_color = Color(0.9647059, 0.1882353, 0, 1)
-
 [node name="Rock3" type="MeshInstance3D" parent="." unique_id=1631685465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.097516, 0.49999988, 0)
 mesh = SubResource("BoxMesh_5pkib")
@@ -377,8 +375,27 @@ visible = false
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
 
+[node name="SceneTransition" parent="." unique_id=1962062075 instance=ExtResource("21_u8ol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.331598, 2.4128776, 0.04762602)
+scene = "D:/College/Masters/Summer Project/group-project/scenes/levels/3d/redlance_pondside_review.tscn"
+
+[node name="CollisionShape3D" parent="SceneTransition" index="0" unique_id=1664706398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39741564, 0)
+
+[node name="Node3D" parent="SceneTransition" unique_id=619712421 node_paths=PackedStringArray("respawnPoint") instance=ExtResource("22_4t7du")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.341797, -2.1811833, 11.859304)
+respawnPoint = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneTransition/Node3D" unique_id=957367718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7740173, -3.13972, 6.414599)
+shape = SubResource("BoxShape3D_yfdl5")
+debug_color = Color(0.98617727, 0, 0.3310366, 0.41960785)
+
+[node name="Node3D" type="Node3D" parent="SceneTransition/Node3D" unique_id=68305480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.412941, 5.3633666, -0.7901485)
+
 [editable path="2Dplatformingcharacter"]
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
-[editable path="SceneTransition2D"]
 [editable path="PauseMenu"]
+[editable path="SceneTransition"]
