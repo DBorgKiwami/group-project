@@ -1,41 +1,77 @@
 [gd_scene format=3 uid="uid://ym375o801vpr"]
 
 [ext_resource type="Script" uid="uid://cdoxo836tixc0" path="res://scripts/elements/grapplepoint_3d.gd" id="1_b5084"]
-[ext_resource type="Texture2D" path="res://sprites/ui/grapple/grapple_idle.png" id="2_idle"]
-[ext_resource type="Texture2D" path="res://sprites/ui/grapple/grapple_active.png" id="3_active"]
+[ext_resource type="Texture2D" uid="uid://b8iajbei6vlhs" path="res://icon.svg" id="2_xjyrf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b5084"]
 
-[node name="Grapplepoint3d" type="Area3D" unique_id=1832192751 node_paths=PackedStringArray("icon_sprite", "prompt_label")]
+[sub_resource type="Animation" id="Animation_b5084"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xjyrf"]
+resource_name = "new_animation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_07v2x"]
+resource_name = "unhighlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxyow"]
+_data = {
+&"RESET": SubResource("Animation_b5084"),
+&"highlight": SubResource("Animation_xjyrf"),
+&"unhighlight": SubResource("Animation_07v2x")
+}
+
+[node name="Grapplepoint3d" type="Area3D" unique_id=1832192751 node_paths=PackedStringArray("animationController")]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_b5084")
-icon_sprite = NodePath("Sprite3D")
-prompt_label = NodePath("PromptLabel")
-idle_icon = ExtResource("2_idle")
-grapple_icon = ExtResource("3_active")
+animationController = NodePath("AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1884714127]
-pixel_size = 0.02
 billboard = 2
-transparent = true
-alpha_cut = 1
-texture_filter = 1
-texture = ExtResource("2_idle")
-
-[node name="PromptLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
-visible = false
-pixel_size = 0.006
-billboard = 2
-no_depth_test = true
-fixed_size = true
-text = "RIGHT CLICK"
-font_size = 24
-outline_size = 6
-modulate = Color(0.86, 0.95, 1, 1)
-outline_modulate = Color(0.02, 0.06, 0.08, 1)
-horizontal_alignment = 1
+transparent = false
+texture = ExtResource("2_xjyrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1805620442]
 shape = SubResource("SphereShape3D_b5084")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1707036375]
+libraries/ = SubResource("AnimationLibrary_bxyow")
