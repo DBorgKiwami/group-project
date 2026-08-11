@@ -23,6 +23,7 @@ var jump_timer = jump_timer_max
 var jump_buffer = 0
 var grappleTween : Tween
 var grappling = false
+var current_grapple_point : GrapplePoint3D
 var inDialogue = false
 var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
@@ -58,7 +59,11 @@ func _on_dialogue_done():
 #Except right now its just done in code anyways because im lazy
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
-	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
+	var grapple_point = grappleArea.get_overlapping_areas()[0]
+	var areaPosition = grapple_point.global_position
+	if grapple_point is GrapplePoint3D:
+		current_grapple_point = grapple_point
+		current_grapple_point.start_grapple()
 	#if areaPosition < position:
 		#sprite.flip_h = true
 	#else:
@@ -71,6 +76,9 @@ func grapple():
 
 func endGrapple():
 	grappling = false
+	if current_grapple_point:
+		current_grapple_point.end_grapple()
+		current_grapple_point = null
 
 func _input(event: InputEvent) -> void:
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
@@ -93,14 +101,16 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if jump_buffer > 0:
 		jump_buffer -= delta
-	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		if velocity.y <= 0:
 			set_collision_mask_value(7, true)
+
+	if not is_on_floor():
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
-	
+
 	#If you're on the floor, you can jump
 	if is_on_floor():
 		can_jump = true;
@@ -147,6 +157,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var on_floor_now := is_on_floor()
+
 	if physics_started:
 		if not on_floor_now:
 			has_been_airborne = true
