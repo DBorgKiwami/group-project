@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 
 [sub_resource type="Environment" id="Environment_preview"]
@@ -85,6 +86,7 @@ insects_chirping = NodePath("../InsectsChirping")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.1857853, -47.19583)
+JUMP_VELOCITY = 6.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1430494369]
 environment = SubResource("Environment_preview")
@@ -1055,3 +1057,10 @@ material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad14" parent="." unique_id=2088121065 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
+
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
+[editable path="PauseMenu"]
