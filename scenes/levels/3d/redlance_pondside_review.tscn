@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bslekgn6f1u54"]
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
+[ext_resource type="PackedScene" path="res://scenes/levels/3d/redlance_pondside_level_base_editable.tscn" id="2_level"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
 [ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="8_gqagh"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="8_pond"]
@@ -13,16 +13,30 @@
 [ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
 [ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
+[ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
+[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="19_canyon"]
+[ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
+[ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+
+[sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
+panorama = ExtResource("20_sky")
+
+[sub_resource type="Sky" id="OuterSky"]
+sky_material = SubResource("OuterSkyMaterial")
 
 [sub_resource type="Environment" id="Environment_preview"]
-background_mode = 1
-background_color = Color(0.42, 0.64, 0.88, 1)
+background_mode = 2
+background_energy_multiplier = 0.85
+sky = SubResource("OuterSky")
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
+size = Vector3(1.65, 0.08, 0.76)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26fj"]
 albedo_color = Color(0.26, 0.20149998, 0.195, 1)
@@ -84,7 +98,7 @@ insect_chirping = NodePath("../InsectChirping")
 insects_chirping = NodePath("../InsectsChirping")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.1857853, -47.19583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.12, -47.19583)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1430494369]
 environment = SubResource("Environment_preview")
@@ -100,6 +114,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 5.5)
 light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
+
+[node name="OuterCanyonBackdrop" parent="." unique_id=1254376500 instance=ExtResource("19_canyon")]
+transform = Transform3D(-39.78365, 0, 91.745636, 0, 100.000015, 0, -91.745636, 0, -39.78365, 817.8492, 17.986359, 1081.385)
+
+[node name="ReferenceRockScatter" type="Node3D" parent="." unique_id=1444216806]
+
+[node name="NorthRock01" parent="ReferenceRockScatter" unique_id=49247272 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-29.815302, 0, -32.149555, 0, 20.103302, 0, 16.687462, 0, -37.581898, 193.03818, -5.905749, 349.12708)
+
+[node name="NorthRock02" parent="ReferenceRockScatter" unique_id=593866415 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(0.43831858, 0, -2.7949224, 0, 4.1764174, 0, 3.8248584, 0, -0.25627363, 71.66312, -1.847522, -15.364718)
+
+[node name="NorthRock03" parent="ReferenceRockScatter" unique_id=1037336351 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-1.3477634, 0, 2.573005, 0, 4.9713535, 0, -3.7502792, 0, -1.5267584, 89.79891, -3.238544, -29.897106)
+
+[node name="NorthRock04" parent="ReferenceRockScatter" unique_id=881175891 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-4.684711, 0, -6.3513155, 0, 7.135218, 0, 6.795344, 0, -3.3002818, 60.411472, -3.7711916, 38.843086)
+
+[node name="NorthRock05" parent="ReferenceRockScatter" unique_id=15624984 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-0.6109896, 0, 4.129142, 0, 3.5505235, 0, -3.4775226, 0, 0.06555927, 67.88879, -1.973658, -45.133972)
+
+[node name="SouthRock01" parent="ReferenceRockScatter" unique_id=690889043 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-1.2871716, 0, 2.274688, 0, 3.6509767, 0, -3.60983, 0, -1.3071976, 58.565575, -1.7712233, -0.40053368)
+
+[node name="SouthRock04" parent="ReferenceRockScatter" unique_id=1548359903 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-0.58358973, 0, 12.00149, 0, 10.176685, 0, -8.492925, 0, -2.9082644, -92.87088, -5.4033537, 49.039608)
+
+[node name="SouthRock05" parent="ReferenceRockScatter" unique_id=524110217 instance=ExtResource("21_stratified_rock")]
+transform = Transform3D(-0.3288355, 0, 2.8096201, 0, 1.7999998, 0, -2.2851405, 0, 0.09237814, -58.517963, -1.5, 5.9404144)
 
 [node name="Fading Platform2" parent="." unique_id=354689758 instance=ExtResource("8_gqagh")]
 transform = Transform3D(0.71269983, 0, 0.7014692, 0, 1, 0, -0.7014692, 0, 0.71269983, -5.1953, 12.495394, -32.989044)
@@ -118,6 +161,214 @@ material = ExtResource("9_b8xro")
 
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0.043750763, 0, 0.0017242432)
+
+[node name="Land_West_Lower_Bank" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="3" unique_id=1772819528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28968096)
+
+[node name="Land_Expansion_South_Connector" parent="LevelBase/Terrain_Base_Generated/Land_Expansion" index="5"]
+transform = Transform3D(1.1089839, 0, 0.22556634, 0, 1, 0, -0.15157664, 0, 1.6503159, 1.4783031, 0, -2.9197326)
+
+[node name="Lily_Pad_1" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="5"]
+transform = Transform3D(1.56327, 0, 0.040225845, 0, 1.1598437, 0, -0.04694003, 0, 1.3396637, 0.9545315, -0.18, 1.8162996)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_1" index="0"]
+transform = Transform3D(28.9, 0, 0, 0, 12, 0, 0, 0, 14.6, -1.183, -0.1092, -0.0117)
+
+[node name="Step_Collision" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.183, -0.1492, -0.0117)
+
+[node name="Lily_Pad_2" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="6"]
+transform = Transform3D(1.1626142, 0, -0.07943932, 0, 1, 0, 0.07706368, 0, 1.1984539, 3.3133914, -0.18, 1.4785724)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_2" index="0"]
+transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
+
+[node name="Step_Collision" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323, -0.1492, -0.0128)
+
+[node name="Lily_Pad_5" type="Node3D" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="7" unique_id=161802343]
+transform = Transform3D(0.99781036, 0, -0.06613969, 0, 1, 0, 0.06613969, 0, 0.99781036, 5.3014016, -0.18, -0.4134021)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_5" unique_id=651844759 instance=ExtResource("15_wyodo")]
+transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
+
+[node name="Step_Collision" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_5" unique_id=673379874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323, -0.1492, -0.0128)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_5/Step_Collision" unique_id=1689473918]
+shape = SubResource("BoxShape3D_lily_2")
+
+[node name="Lily_Pad_6" type="Node3D" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="8" unique_id=210571839]
+transform = Transform3D(0.99781036, 0, -0.06613969, 0, 1, 0, 0.06613969, 0, 0.99781036, 4.718905, -0.18, 0.67885894)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_6" unique_id=434684616 instance=ExtResource("15_wyodo")]
+transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
+
+[node name="Step_Collision" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_6" unique_id=668882510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323, -0.1492, -0.0128)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_6/Step_Collision" unique_id=515969369]
+shape = SubResource("BoxShape3D_lily_2")
+
+[node name="Lily_Pad_3" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="9"]
+transform = Transform3D(0.97894156, 0, 0.20414086, 0, 1, 0, -0.20414086, 0, 0.97894156, 10.567036, -0.18, 1.6105084)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_3" index="0"]
+transform = Transform3D(25.5, 0, 0, 0, 12.000006, 0, 4.7683716e-07, 0, 12.500001, -3.2895846, -0.109200016, -0.9413017)
+
+[node name="Step_Collision" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2895846, -0.1492, -0.9413017)
+
+[node name="Lily_Pad_4" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="10"]
+transform = Transform3D(0.996719, 0, -0.08093936, 0, 1, 0, 0.08093936, 0, 0.996719, 6.4997463, -0.18, 3.0724092)
+
+[node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_4" index="0"]
+transform = Transform3D(37.399998, 0, 1.1920929e-07, 0, 11.999998, 0, -2.3841858e-07, 0, 17.399996, -1.462739, -0.109200016, 0.826688)
+
+[node name="Step_Collision" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.462739, -0.1492, 0.826688)
+
+[node name="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_4/Step_Collision" index="0"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Pond_Shallow_Water_Shelf" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="15" unique_id=1432386212]
+transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 0.9999954, 0.00019244435, 0.00018748573, -0.00019188075, 0.99999994, -0.00029220618, 0.018900966, -0.0011508942)
+visible = false
+
+[node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, 0.035729982, -0.008130645)
+
+[node name="Pond_Bottom_Cylinder" parent="LevelBase/Terrain_Base_Generated/Pond_Swim_Base" index="0"]
+transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
+
+[node name="Decorative_Background_Forest" parent="LevelBase" index="1"]
+transform = Transform3D(0.41932988, 0, 0, 0, 0.5077277, 0, 0, 0, 0.4363992, 0, 3.488629, 0)
+
+[node name="ForestCluster_North_01" parent="LevelBase/Decorative_Background_Forest" index="0"]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, -334.12753, 0.20000029, -220.13113)
+
+[node name="ForestCluster_North_02" parent="LevelBase/Decorative_Background_Forest" index="1"]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 294.97476, 0.24999952, -367.04105)
+
+[node name="ForestCluster_North_03" parent="LevelBase/Decorative_Background_Forest" index="2"]
+transform = Transform3D(0.13, 0, 0, 0, 0.12999998, 0, 0, 0, 0.13, 8.499999, 0.45941687, 13.6)
+
+[node name="ForestCluster_North_04" parent="LevelBase/Decorative_Background_Forest" index="3"]
+transform = Transform3D(0.14999996, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -54.09043, 0.8499999, -434.74158)
+
+[node name="ForestCluster_East_01" parent="LevelBase/Decorative_Background_Forest" index="4"]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, -234.81265, 0.6000004, 376.26236)
+
+[node name="ForestCluster_East_02" parent="LevelBase/Decorative_Background_Forest" index="5"]
+transform = Transform3D(0.14999998, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 486.37186, 0.3499999, 3)
+
+[node name="ForestCluster_East_03" parent="LevelBase/Decorative_Background_Forest" index="6"]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 14, 0.1, -2)
+
+[node name="ForestCluster_East_04" parent="LevelBase/Decorative_Background_Forest" index="7"]
+transform = Transform3D(0.14999995, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -451.6413, 0, 157.21565)
+
+[node name="ForestCluster_Southeast_01" parent="LevelBase/Decorative_Background_Forest" index="8"]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 12.5, 0, -10.5)
+
+[node name="North_01" parent="LevelBase/Decorative_Forest_Collision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 13.2)
+
+[node name="North_02" parent="LevelBase/Decorative_Forest_Collision" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.3, 14)
+
+[node name="North_03" parent="LevelBase/Decorative_Forest_Collision" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.55, 13.6)
+
+[node name="North_04" parent="LevelBase/Decorative_Forest_Collision" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, 0.85, 11.7)
+
+[node name="East_01" parent="LevelBase/Decorative_Forest_Collision" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.6, 8)
+
+[node name="East_02" parent="LevelBase/Decorative_Forest_Collision" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 0.35, 3)
+
+[node name="East_03" parent="LevelBase/Decorative_Forest_Collision" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.1, -2)
+
+[node name="East_04" parent="LevelBase/Decorative_Forest_Collision" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, -7)
+
+[node name="Southeast_01" parent="LevelBase/Decorative_Forest_Collision" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -10.5)
+
+[node name="West_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.8, 1)
+
+[node name="East_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.8, 1)
+
+[node name="South_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -12)
+
+[node name="North_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 14)
+
+[node name="Small_Reed_1" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="55" unique_id=2027547868]
+transform = Transform3D(0.96991205, 0, -0.24345568, 0, 1, 0, 0.24345568, 0, 0.96991205, -1.138519, -0.08, 1.4241883)
+
+[node name="Small_Reed_10" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="56" unique_id=421320896]
+transform = Transform3D(0.9999804, 0, -0.006271647, 0, 1, 0, 0.006271647, 0, 0.9999804, -1.900155, -0.08, 1.397863)
+
+[node name="Small_Reed_11" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="57" unique_id=1360918730]
+transform = Transform3D(0.9981791, 0, -0.06032151, 0, 1, 0, 0.06032151, 0, 0.9981791, -0.8698021, -0.08, 2.8681996)
+
+[node name="Small_Reed_12" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="58" unique_id=956635064]
+transform = Transform3D(0.9998235, 0, -0.018785847, 0, 1, 0, 0.018785847, 0, 0.9998235, -0.9809987, 0.0644541, 1.1531626)
+
+[node name="Small_Reed_13" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="59" unique_id=1578827284]
+transform = Transform3D(0.96094793, 0, 0.27672932, 0, 1, 0, -0.27672932, 0, 0.96094793, -0.6537403, -0.08, 2.132645)
+
+[node name="Small_Reed_14" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="60" unique_id=1106620254]
+transform = Transform3D(0.99659663, 0, 0.08243277, 0, 1, 0, -0.08243277, 0, 0.99659663, -1.341601, -0.07551887, 2.3654041)
+
+[node name="Small_Reed_15" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="61" unique_id=1021731580]
+transform = Transform3D(0.9447223, 0, -0.32787168, 0, 1, 0, 0.32787168, 0, 0.9447223, -0.35437745, -0.08, 2.9446971)
+
+[node name="Small_Reed_16" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="62" unique_id=1674623203]
+transform = Transform3D(0.9922547, 0, -0.12422072, 0, 1, 0, 0.12422072, 0, 0.9922547, -0.37296548, -0.08, 2.2267172)
+
+[node name="Small_Reed_17" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="63" unique_id=1980994401]
+transform = Transform3D(0.986967, 0, 0.16092287, 0, 1, 0, -0.16092287, 0, 0.986967, -1.5089571, -0.08, 1.7604674)
+
+[node name="Small_Reed_18" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="64" unique_id=1768688631]
+transform = Transform3D(0.97769827, 0, -0.21001454, 0, 1, 0, 0.21001454, 0, 0.97769827, -0.92472297, -0.08, 1.979062)
+
+[node name="Small_Reed_19" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="65" unique_id=1832477799]
+transform = Transform3D(0.99816334, 0, -0.06058147, 0, 1, 0, 0.06058147, 0, 0.99816334, -1.348751, -0.08, 2.126448)
+
+[node name="Small_Reed_2" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="66" unique_id=254084799]
+transform = Transform3D(0.9912268, 0, 0.13217218, 0, 1, 0, -0.13217218, 0, 0.9912268, -1.2638193, 0.06822312, 1.5528672)
+
+[node name="Small_Reed_20" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="67" unique_id=1569707278]
+transform = Transform3D(0.99577826, 0, 0.09179111, 0, 1, 0, -0.09179111, 0, 0.99577826, -1.2254082, -0.08, 2.680543)
+
+[node name="Small_Reed_3" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="68" unique_id=495246417]
+transform = Transform3D(0.9583058, 0, -0.2857448, 0, 1, 0, 0.2857448, 0, 0.9583058, -2.099368, -0.08, 2.0148375)
+
+[node name="Small_Reed_4" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="69" unique_id=1146949485]
+transform = Transform3D(0.98719704, 0, 0.15950601, 0, 1, 0, -0.15950601, 0, 0.98719704, -0.9070236, -0.08, 1.9466733)
+
+[node name="Small_Reed_5" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="70" unique_id=1959869274]
+transform = Transform3D(0.999119, 0, 0.04196743, 0, 1, 0, -0.04196743, 0, 0.999119, -1.1752656, -0.08, 1.9544346)
+
+[node name="Small_Reed_6" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="71" unique_id=1866153850]
+transform = Transform3D(0.96095383, 0, 0.27670887, 0, 1, 0, -0.27670887, 0, 0.96095383, -0.6468543, -0.08, 2.237566)
+
+[node name="Small_Reed_7" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="72" unique_id=751111905]
+transform = Transform3D(0.9998562, 0, 0.016957352, 0, 1, 0, -0.016957352, 0, 0.9998562, -1.4346688, -0.08, 1.2984576)
+
+[node name="Small_Reed_8" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="73" unique_id=646908574]
+transform = Transform3D(0.99999756, 0, 0.0022218698, 0, 1, 0, -0.0022218698, 0, 0.99999756, -1.129397, -0.07551887, 2.597899)
+
+[node name="Small_Reed_9" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="74" unique_id=103086026]
+transform = Transform3D(0.9999372, 0, 0.011212206, 0, 1, 0, -0.011212206, 0, 0.9999372, -1.0584719, -0.08, 2.944489)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1980574931]
 transform = Transform3D(-0.9982933, 0, -0.058400333, 0, 1, 0, 0.058400333, 0, -0.9982933, -24.060501, -1.181804, -31.275862)
@@ -918,3 +1169,5 @@ radius = 0.3
 height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
+
+[editable path="LevelBase"]
