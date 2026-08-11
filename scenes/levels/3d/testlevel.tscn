@@ -645,18 +645,11 @@ size = Vector3(35.81537, 3.5433655, 63.94214)
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
 
-[node name="Grapplepoint3d2" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
+[node name="Grapplepoint3d3" parent="." unique_id=1832192751 instance=ExtResource("1_wopdt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.332977, 4.40955, 10.2183695)
+
+[node name="Grapplepoint3d2" parent="." unique_id=928281688 instance=ExtResource("1_wopdt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.332977, 4.40955, 0.29916072)
-
-[node name="Sprite3D" parent="Grapplepoint3d2" index="0" unique_id=1884714127]
-texture_filter = 2
-render_priority = 100
-
-[node name="CollisionShape3D" parent="Grapplepoint3d2" index="1" unique_id=1805620442]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6228447, -0.97010136, -0.73105335)
-
-[node name="AnimationPlayer" parent="Grapplepoint3d2" index="2" unique_id=1707036375]
-root_node = NodePath("../../Grapplepoint3d2")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 JUMP_VELOCITY = 6.0
@@ -2043,7 +2036,7 @@ shape = SubResource("ConcavePolygonShape3D_1l355")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock3_1/rock3_1_rockset1_0/StaticBody3D" unique_id=583436833]
 shape = SubResource("ConcavePolygonShape3D_gktau")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 290335734) index="0" unique_id=227505174]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 1684634642) index="0" unique_id=227505174]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=2049931576]
 shape = SubResource("ConcavePolygonShape3D_5qquf")
@@ -2053,7 +2046,7 @@ shape = SubResource("ConcavePolygonShape3D_5qquf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0/StaticBody3D" unique_id=1538953928]
 shape = SubResource("ConcavePolygonShape3D_nicfq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 1749168583) index="0" unique_id=1619759598]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 822651058) index="0" unique_id=1619759598]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5/rock5_rockset1_0/StaticBody3D" unique_id=181799603]
 shape = SubResource("ConcavePolygonShape3D_dshpo")
@@ -2063,7 +2056,7 @@ shape = SubResource("ConcavePolygonShape3D_dshpo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5_1/rock5_1_rockset1_0/StaticBody3D" unique_id=1638708681]
 shape = SubResource("ConcavePolygonShape3D_dgotf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 1420570568) index="0" unique_id=387506679]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(1234034315, 1224837970) index="0" unique_id=387506679]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks2/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0/StaticBody3D" unique_id=699132686]
 shape = SubResource("ConcavePolygonShape3D_42u5h")
@@ -2111,7 +2104,7 @@ shape = SubResource("ConcavePolygonShape3D_wnvyl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=567158936]
 shape = SubResource("ConcavePolygonShape3D_v1gai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 673164274) index="0" unique_id=1189554595]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 111200234) index="0" unique_id=1189554595]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4_1/rock4_1_rockset1_0/StaticBody3D" unique_id=1761580994]
 shape = SubResource("ConcavePolygonShape3D_m5myd")
@@ -2126,7 +2119,7 @@ shape = SubResource("ConcavePolygonShape3D_6wxuw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock5_1/rock5_1_rockset1_0/StaticBody3D" unique_id=784686556]
 shape = SubResource("ConcavePolygonShape3D_fhfcs")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 1420570568) index="0" unique_id=1738023792]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0" parent_id_path=PackedInt32Array(2036762369, 1224837970) index="0" unique_id=1738023792]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks3/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock6/rock6_rockset1_0/StaticBody3D" unique_id=1866544221]
 shape = SubResource("ConcavePolygonShape3D_gxqra")
@@ -2169,7 +2162,7 @@ shape = SubResource("ConcavePolygonShape3D_8x5ye")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock3_1/rock3_1_rockset1_0/StaticBody3D" unique_id=294728034]
 shape = SubResource("ConcavePolygonShape3D_sj14v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1173176101, 290335734) index="0" unique_id=1036963157]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0" parent_id_path=PackedInt32Array(1173176101, 1684634642) index="0" unique_id=1036963157]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial Level/rocks/rocks6/Sketchfab_model/040bf872b91a440b9a2014b7d3c7f751_fbx/RootNode/rockset1/rock4/rock4_rockset1_0/StaticBody3D" unique_id=847007541]
 shape = SubResource("ConcavePolygonShape3D_scluf")
@@ -27149,7 +27142,6 @@ debug_color = Color(0.98617727, 0, 0.3310366, 0.41960785)
 [node name="Node3D" type="Node3D" parent="SceneTransition/Node3D" unique_id=1310095243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.412941, 5.3633666, -0.7901485)
 
-[editable path="Grapplepoint3d2"]
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
 [editable path="PauseMenu"]
