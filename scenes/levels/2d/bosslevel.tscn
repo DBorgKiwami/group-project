@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d1ly4dy5fn8dy"]
+[gd_scene format=4 uid="uid://c77n5nhrue7p8"]
 
 [ext_resource type="PackedScene" uid="uid://b6tvuehfmf3sk" path="res://resources/Models/low_poly_dirt_ground/scene.gltf" id="1_ikx5s"]
 [ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_v06so"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://d2thhbpugdfbe" path="res://sprites/textures/Pixel Art Textures/seasonal water animations/summer waterfall B 16x16.png" id="3_7bhyk"]
 [ext_resource type="Texture2D" uid="uid://dnqu6t6nigq1" path="res://resources/Models/free-pack-rocks-stylized/textures/Rocks_Stylized_Color.png" id="3_em2vd"]
 [ext_resource type="PackedScene" uid="uid://bs8kp1ukerb08" path="res://resources/Models/lowpoly-grass/source/sketchfab.glb" id="5_mm4eq"]
+[ext_resource type="Texture2D" uid="uid://c8tp4iu20xiul" path="res://sprites/parallax/forest_sky.png" id="6_7g2nu"]
 [ext_resource type="PackedScene" uid="uid://quocte1mx578" path="res://resources/Models/origami-water-lilies/source/WaterLily_06.fbx" id="7_ikx5s"]
+[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://sprites/parallax/parallax sky.gd" id="7_t6yma"]
 [ext_resource type="Texture2D" uid="uid://b0d0xmnwe4e4u" path="res://resources/Models/origami-water-lilies/textures/WaterLily.jpeg" id="8_pp461"]
+[ext_resource type="Texture2D" uid="uid://bamox8e14kbgf" path="res://sprites/parallax/desert/desert_mountain.png" id="8_xjuap"]
+[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="9_xjuap"]
 [ext_resource type="Texture2D" uid="uid://3iusj4qul1g4" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/rocks 4.png" id="10_pp461"]
 [ext_resource type="Texture2D" uid="uid://blxjhnlwpgcw2" path="res://sprites/textures/Sprite-0001.png" id="12_tksqf"]
 [ext_resource type="Texture2D" uid="uid://by56j5j3oyqwe" path="res://sprites/textures/Sprite-0002.png" id="13_5oh3x"]
@@ -24,6 +28,10 @@
 [ext_resource type="AudioStream" path="res://audio/music/insectchirping.ogg" id="22_insect"]
 [ext_resource type="AudioStream" path="res://audio/music/insectschirping.ogg" id="23_insects"]
 [ext_resource type="AudioStream" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
+[ext_resource type="PackedScene" uid="uid://cbci031n01l70" path="res://scenes/enemies/dragonfly_boss.tscn" id="21_kulgr"]
+[ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="22_i30ng"]
+[ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="23_keb27"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="24_xtumi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bhyk"]
 albedo_texture = ExtResource("2_4wily")
@@ -34,6 +42,20 @@ material = SubResource("StandardMaterial3D_7bhyk")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7bhyk"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_15h12"]
+size = Vector2(10, 6.316)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6yma"]
+transparency = 1
+albedo_texture = ExtResource("6_7g2nu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kulgr"]
+size = Vector2(2, 0.526)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axhj6"]
+transparency = 1
+albedo_texture = ExtResource("8_xjuap")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84pff"]
 resource_name = "RocksStylized_M"
@@ -351,7 +373,10 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 albedo_texture = ExtResource("16_77dte")
 uv1_scale = Vector3(4.844, 144, -11)
 
-[node name="Bosslevel" type="Node3D" unique_id=508633355]
+[node name="Bosslevel2" type="Node3D" unique_id=508633355]
+
+[node name="Dragonfly Boss" parent="." unique_id=1810331413 instance=ExtResource("21_kulgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.334983, 5.2656646, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580185758]
 transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 18.534254, 0)
@@ -367,9 +392,11 @@ mesh = SubResource("PlaneMesh_4wily")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=711532432]
 shape = SubResource("ConcavePolygonShape3D_7bhyk")
 
-[node name="Player" parent="." unique_id=387257704 instance=ExtResource("1_v06so")]
+[node name="Player" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_v06so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
-JUMP_VELOCITY = 5.0
+hud = NodePath("../CanvasLayer/SimpleHudDemo")
+death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
+JUMP_VELOCITY = 6.0
 
 [node name="BossSoundscape" type="Node" parent="." node_paths=PackedStringArray("background_music", "damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping", "left_waterfall", "right_waterfall")]
 script = ExtResource("17_soundscape")
@@ -427,78 +454,90 @@ transform = Transform3D(-1.0348424, 0, 0.018063229, 0, 1.66, 0, -0.018063229, 0,
 transform = Transform3D(4.015, 0, 0, 0, 2.265, 0, 0, 0, 4.615, 30.747, 0.225, -21.149)
 
 [node name="Water2" parent="." unique_id=186209234 instance=ExtResource("2_igq41")]
-transform = Transform3D(4.015, 0, 0, 0, 2.43, 0, 0, 0, 4.285, -28.863, 0.24, -19.121)
+transform = Transform3D(4.015, 0, 0, 0, 2.43, 0, 0, 0, 4.285, -28.863, 0.290282, -19.121)
 
 [node name="Grass" parent="." unique_id=108599935 instance=ExtResource("5_mm4eq")]
 transform = Transform3D(9.28, 0, 0, 0, 9.28, 0, 0, 0, 9.28, 0, 13.828339, 7.193102)
 
-[node name="2dgrass2" parent="Grass" index="0" unique_id=1802790637]
+[node name="2dgrass2" parent="Grass" index="0" unique_id=2128508541]
 transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 0, -1.2834622, -4.8604035)
 
-[node name="2dgrass3" parent="Grass" index="1" unique_id=350258503]
+[node name="2dgrass3" parent="Grass" index="1" unique_id=40804035]
 transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 1.3483169, -1.4204395, -2.7769978)
 
-[node name="2dgrass1" parent="Grass" index="2" unique_id=529923743]
+[node name="2dgrass1" parent="Grass" index="2" unique_id=1597041499]
 transform = Transform3D(0.17364834, -0.9848085, 4.304734e-08, 0, -4.371142e-08, -1.0000004, 0.9848085, 0.17364834, -7.590405e-09, -1.4780006, -1.4547896, -2.8060632)
 
-[node name="grass2" parent="Grass" index="3" unique_id=572580707]
+[node name="grass2" parent="Grass" index="3" unique_id=1466399527]
 transform = Transform3D(0.7253749, -0.688355, 3.0088948e-08, 0, -4.371142e-08, -1.0000004, 0.688355, 0.7253749, -3.170712e-08, 1.3406252, -1.3993472, -2.1011138)
 
-[node name="grass1" parent="Grass" index="4" unique_id=461540803]
+[node name="grass1" parent="Grass" index="4" unique_id=2107838827]
 transform = Transform3D(0.6691308, -0.7431451, 3.2483904e-08, 0, -4.3711402e-08, -1.0000004, 0.7431451, 0.6691308, -2.9248637e-08, -1.4567817, -1.4755673, -1.4476082)
 
-[node name="grass3" parent="Grass" index="5" unique_id=1963544675]
+[node name="grass3" parent="Grass" index="5" unique_id=1303956463]
 transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 1.41742, -1.4914743, -1.0952322)
+
+[node name="forest_sky" type="MeshInstance3D" parent="." unique_id=1280148109]
+transform = Transform3D(30, 0, 0, 0, -1.9932394e-08, -29.091, 0, 0.456, -1.271608e-06, -0.0832758, -1.1111794, -58.17923)
+mesh = SubResource("PlaneMesh_15h12")
+surface_material_override/0 = SubResource("StandardMaterial3D_t6yma")
+script = ExtResource("7_t6yma")
+
+[node name="desert_mountain" type="MeshInstance3D" parent="." unique_id=1364941614]
+transform = Transform3D(100, 0, 0, 0, -6.644131e-08, -96.97, 0, 1.52, -4.2386932e-06, -0.0832758, 10.584118, -33.61239)
+mesh = SubResource("PlaneMesh_kulgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_axhj6")
+script = ExtResource("9_xjuap")
 
 [node name="Free Pack - Rocks Stylized" parent="." unique_id=1435139680 instance=ExtResource("2_nqc8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.694707, 0, 0)
 
-[node name="SM_Rocks_12" type="MeshInstance3D" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="0" unique_id=411583114]
+[node name="SM_Rocks_12" type="MeshInstance3D" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="0" unique_id=411583114]
 transform = Transform3D(6.198, 0, 0, 0, 6.198, 0, 0, 0, 6.198, -22.348469, -0.66785675, -3.6229131)
 mesh = SubResource("ArrayMesh_fv6s4")
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_01" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="1" unique_id=706748833]
+[node name="SM_Rocks_01" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="1" unique_id=2001359368]
 transform = Transform3D(1.835, 0, 0, 0, 1.835, 0, 0, 0, 1.835, 8.624006, -1e-08, -1.456222)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_02" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="2" unique_id=117461189]
+[node name="SM_Rocks_02" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="2" unique_id=715548204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.280676, -1e-08, -0.019216344)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_03" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="3" unique_id=1628416159]
+[node name="SM_Rocks_03" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="3" unique_id=153583835]
 transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -23.746464, -1e-08, -1.4476411)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_04" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="4" unique_id=1732007403]
+[node name="SM_Rocks_04" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="4" unique_id=964890333]
 transform = Transform3D(2.48, 0, 0, 0, 2.48, 0, 0, 0, 2.48, -20.460768, -1e-08, -2.7355413)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_05" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="5" unique_id=1194816294]
+[node name="SM_Rocks_05" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="5" unique_id=1007212949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.364918, -1e-08, -1.5698596)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_06" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="6" unique_id=24200384]
+[node name="SM_Rocks_06" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="6" unique_id=1714113922]
 transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 10.0097, -1e-08, 0.1683938)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_07" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="7" unique_id=1285912241]
+[node name="SM_Rocks_07" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="7" unique_id=1908923955]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10722, -1e-08, 0.3371337)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_08" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="8" unique_id=1930994596]
+[node name="SM_Rocks_08" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="8" unique_id=1395441093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.292894, -1e-08, -0.8157004)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_09" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="9" unique_id=1202334449]
+[node name="SM_Rocks_09" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="9" unique_id=1949564286]
 transform = Transform3D(3.055, 0, 0, 0, 4.695, 0, 0, 0, 3.055, 11.111023, -0.16469957, -2.421716)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_10" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="10" unique_id=1742742976]
+[node name="SM_Rocks_10" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="10" unique_id=1734291321]
 transform = Transform3D(2.835, 0, 0, 0, 2.835, 0, 0, 0, 2.835, -20.271544, 0.015673151, -0.89126426)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
-[node name="SM_Rocks_11" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 1411574034) index="11" unique_id=921404023]
+[node name="SM_Rocks_11" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="11" unique_id=1885729629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.294481, -1e-08, -2.2812762)
 surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
 
@@ -597,35 +636,36 @@ frame_progress = 0.26918605
 [node name="WaterLily_06" parent="." unique_id=1933157131 instance=ExtResource("7_ikx5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3433733, 0, -0.65929985)
 
-[node name="WaterLily_Leaf" parent="WaterLily_06" index="0" unique_id=823056169]
+[node name="WaterLily_Leaf" parent="WaterLily_06" index="0" unique_id=1239888048]
 transform = Transform3D(-6.109034, 0.2700379, -9.233393e-07, 0.2700379, 6.109034, 4.0774594e-08, 9.2423915e-07, -3.977547e-11, -6.115, 17.832531, 0.6388452, -11.9036045)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily_Leaf_002" parent="WaterLily_06" index="1" unique_id=1740185803]
+[node name="WaterLily_Leaf_002" parent="WaterLily_06" index="1" unique_id=1146310131]
 transform = Transform3D(1.8593957, 0, -5.5940747, 0, 5.895, 0, 5.5940747, 0, 1.8593957, 16.25618, 0.6570449, -22.783829)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily_Leaf_003" parent="WaterLily_06" index="2" unique_id=1188962575]
+[node name="WaterLily_Leaf_003" parent="WaterLily_06" index="2" unique_id=2042302400]
 transform = Transform3D(5.9239144, 0, -2.5514178, 0, 6.45, 0, 2.5514178, 0, 5.9239144, -27.081882, 0.65452003, -13.844612)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily_Leaf_004" parent="WaterLily_06" index="3" unique_id=117255715]
+[node name="WaterLily_Leaf_004" parent="WaterLily_06" index="3" unique_id=1472202834]
 transform = Transform3D(-3.7360272, 0.27921343, 3.430822, 0.25692406, 5.0717554, -0.1329789, -3.432563, 0.0757181, -3.7440856, 24.979973, 1.0910416, -32.530632)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily" parent="WaterLily_06" index="4" unique_id=8392335]
+[node name="WaterLily" parent="WaterLily_06" index="4" unique_id=1053457379]
 transform = Transform3D(-5.21, 0, -7.8668813e-07, 0, 5.21, 0, 7.8668813e-07, 0, -5.21, 14.87033, 0.7490282, -26.255758)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily_001" parent="WaterLily_06" index="5" unique_id=1172082541]
+[node name="WaterLily_001" parent="WaterLily_06" index="5" unique_id=1611852416]
 transform = Transform3D(-4.5, 0, -6.794811e-07, 0, 4.5, 0, 6.794811e-07, 0, -4.5, -27.403252, 0.95857424, -14.977545)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
-[node name="WaterLily_002" parent="WaterLily_06" index="6" unique_id=1867897703]
+[node name="WaterLily_002" parent="WaterLily_06" index="6" unique_id=1174049732]
 transform = Transform3D(-7.135, 0, -6.2376154e-07, 0, 7.135, 0, 6.2376154e-07, 0, -7.135, 17.43459, 0.6557216, -12.132678)
 surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
 
 [node name="Skywall" type="Node3D" parent="." unique_id=340266691]
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Skywall" unique_id=610076131]
 transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, 5.9604645e-08, 11.895178, -41.93159)
@@ -674,7 +714,7 @@ environment = SubResource("Environment_q7fgl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1621776, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform" unique_id=459834676]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, -6.488544, 1.6345018, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -689,7 +729,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.997775, 1.2975221, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform2" unique_id=1127644307]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943346, 0.20927763, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -704,7 +744,7 @@ shape = SubResource("ConcavePolygonShape3D_owttj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0779011, 2.5175204, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform3" unique_id=1431219245]
-transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943341, 0.735, 0)
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 1.2149677, -0.10295105, 0)
 mesh = SubResource("BoxMesh_q7fgl")
 surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
 
@@ -720,7 +760,23 @@ transform = Transform3D(1, 0, 0, 0, 4.06, 0, 0, 0, 1, -8.674231, 0, -0.8621621)
 mesh = SubResource("CylinderMesh_7g2nu")
 surface_material_override/0 = SubResource("StandardMaterial3D_15h12")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=2122830755]
+
+[node name="DeathScreenDemo" parent="CanvasLayer2" unique_id=1242030890 instance=ExtResource("22_i30ng")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1423207975]
+
+[node name="SimpleHudDemo" parent="CanvasLayer" unique_id=60244026 instance=ExtResource("23_keb27")]
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("24_xtumi")]
+
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
+[editable path="Player"]
 [editable path="Trail"]
 [editable path="Grass"]
 [editable path="Free Pack - Rocks Stylized"]
 [editable path="WaterLily_06"]
+[editable path="PauseMenu"]

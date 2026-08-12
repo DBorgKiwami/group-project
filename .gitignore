@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Local screenshots/renders for progress sharing, not project files
+previews/
+**/*_preview.png
+**/*_demo.gif
+**/*_contact_sheet.png
