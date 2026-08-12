@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
+[ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="22_u8ol6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -176,7 +177,7 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
@@ -322,8 +323,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
 
-[node name="SceneTransition2D" parent="." unique_id=1962062075 instance=ExtResource("8_5pkib")]
+[node name="SceneTransition2D" parent="." unique_id=1962062075 node_paths=PackedStringArray("prompt") instance=ExtResource("8_5pkib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
+scene = "D:/College/Masters/Summer Project/group-project/scenes/levels/3d/redlance_pondside_review.tscn"
+interact_distance = 5.0
+prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
 
 [node name="CollisionShape3D" parent="SceneTransition2D" index="0" unique_id=1664706398]
 debug_color = Color(0.9647059, 0.1882353, 0, 1)
@@ -376,6 +380,10 @@ visible = false
 
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1503220375]
+
+[node name="InteractionPromptDemo" parent="CanvasLayer3" unique_id=1692059102 instance=ExtResource("22_u8ol6")]
 
 [editable path="2Dplatformingcharacter"]
 [editable path="2Dtestenemy2"]

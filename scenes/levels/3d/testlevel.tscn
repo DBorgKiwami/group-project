@@ -668,6 +668,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40124512, -0.30664063, 0.87
 shape = SubResource("BoxShape3D_2kmou")
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("7_2kmou")]
+layer = 100
 
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 z_index = 100
