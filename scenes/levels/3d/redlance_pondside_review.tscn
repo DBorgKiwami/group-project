@@ -1059,6 +1059,7 @@ material = ExtResource("9_osbx4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
+layer = 100
 
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true

@@ -377,6 +377,7 @@ visible = false
 [node name="SimpleHudDemo" parent="CanvasLayer" unique_id=1239103860 instance=ExtResource("19_567d7")]
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("22_h0xj1")]
+layer = 100
 
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
