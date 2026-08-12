@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
 [ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
+[ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -445,6 +447,19 @@ collision_mask = 64
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidClipBox" unique_id=852405064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12760985, 0)
 shape = SubResource("BoxShape3D_cudoo")
+
+[node name="FootstepSfx" type="AudioStreamPlayer" parent="." unique_id=840421851]
+stream = ExtResource("8_step")
+volume_db = -6.0
+max_polyphony = 2
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=723620972]
+stream = ExtResource("9_jump")
+volume_db = -6.0
+
+[node name="LandingSfx" type="AudioStreamPlayer" parent="." unique_id=1186690864]
+stream = ExtResource("8_step")
+volume_db = -6.0
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
