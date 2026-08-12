@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://h2rla3ix8s54" path="res://scenes/elements/semi_solid_platform.tscn" id="14_owttj"]
 [ext_resource type="Texture2D" uid="uid://dfixrevfih34e" path="res://sprites/textures/Pixel Art Textures/Another texture/blktex_bark_03.png" id="15_q7fgl"]
 [ext_resource type="Texture2D" uid="uid://cyllym8yoli00" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/wood 1.png" id="16_77dte"]
-[ext_resource type="Script" uid="uid://cw34wrtuik8ke" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
+[ext_resource type="Script" uid="uid://ef2gpl68inq8" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
 [ext_resource type="AudioStream" uid="uid://bc46kjyyhey3v" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="19_damp"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="20_pond"]
@@ -30,7 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="22_insect"]
 [ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="23_insects"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="23_keb27"]
-[ext_resource type="AudioStream" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
+[ext_resource type="AudioStream" uid="uid://bumfcdujvlsf0" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="24_xtumi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bhyk"]
@@ -725,16 +725,8 @@ visible = false
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
 
-[node name="BossSoundscape" type="Node" parent="." unique_id=947676124 node_paths=PackedStringArray("background_music", "damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping", "left_waterfall", "right_waterfall")]
+[node name="BossSoundscape" type="Node" parent="." unique_id=947676124]
 script = ExtResource("17_soundscape")
-background_music = NodePath("BackgroundMusic")
-damp_and_watery = NodePath("DampAndWatery")
-pond_sounds = NodePath("PondSounds")
-breeze = NodePath("Breeze")
-insect_chirping = NodePath("InsectChirping")
-insects_chirping = NodePath("InsectsChirping")
-left_waterfall = NodePath("LeftWaterfall")
-right_waterfall = NodePath("RightWaterfall")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=616901964]
 stream = ExtResource("18_bgm")
