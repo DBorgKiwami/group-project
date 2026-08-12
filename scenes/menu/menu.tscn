@@ -93,7 +93,6 @@ fov = 41.8
 environment = SubResource("Environment_t0a87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=548962052]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=820518508]
 anchors_preset = 15

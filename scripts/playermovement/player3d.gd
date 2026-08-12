@@ -11,6 +11,7 @@ class_name Player3D
 @export var grapple_point_calc : Node3D
 
 @export var SPEED = 5.0
+@export var SPRINT_SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_DISTANCE_FROM_GROUND = 1.0
 @export var CAMERA_SPEED = 0.5
@@ -20,6 +21,9 @@ class_name Player3D
 @export var grapple_time = 0.3
 @export var bob_amplitude = 0.08
 @export var bob_speed = 8.0
+@export var normal_anim_speed := 1.0
+@export var sprint_anim_speed := 1.6
+@export var anim_speed_ramp := 3.0
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -33,6 +37,7 @@ var animationdirection = "south"
 var has_been_airborne = false
 var physics_started = false
 var grapplearealist = []
+var current_anim_speed := 1.0
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -140,15 +145,17 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	var current_speed : float = SPRINT_SPEED if Input.is_action_pressed("sprint") else SPEED
+	
 	camera_pivot.global_position = camera_pivot.global_position.lerp(position + Vector3(0, CAMERA_DISTANCE_FROM_GROUND, 0), delta * CAMERA_PAN_SPEED)
 	if direction and !inDialogue:
 		lastDirection = direction
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 	else:
 		#Deceleration towards a velocity of 0x and 0z
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
 	#if !grappling:
 		#if velocity.x < 0:
 			#sprite.flip_h = true;
@@ -235,6 +242,11 @@ func _process(delta: float) -> void:
 		animationdirection = "east"
 	
 	print(animationdirection)
+	
+	# --- Sprint animation speed ramp ---
+	var target_anim_speed := sprint_anim_speed if Input.is_action_pressed("sprint") else normal_anim_speed
+	current_anim_speed = move_toward(current_anim_speed, target_anim_speed, anim_speed_ramp * delta)
+	sprite.speed_scale = current_anim_speed
 	
 	# Now that our SpriteFrames animations are named to match animationdirection
 	# exactly (e.g. "northeast" + "walk" = "northeastwalk"), we can build the
