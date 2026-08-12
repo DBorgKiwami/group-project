@@ -13,8 +13,12 @@ class_name Player2D
 @export var landing_sfx : AudioStreamPlayer
 @export var hud : Node2D
 @export var death_screen : Node2D
-
 @export var SPEED = 5.0
+@export var SPRINT_SPEED = 8.0
+@export var normal_anim_speed := 1.0
+@export var sprint_anim_speed := 1.6
+@export var anim_speed_ramp := 3.0
+var current_anim_speed := 1.0
 @export var JUMP_VELOCITY = 4.5
 @export var camera_x_bound = 1.0
 @export var camera_y_bound = 1.0
