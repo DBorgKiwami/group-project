@@ -20,14 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://h2rla3ix8s54" path="res://scenes/elements/semi_solid_platform.tscn" id="14_owttj"]
 [ext_resource type="Texture2D" uid="uid://dfixrevfih34e" path="res://sprites/textures/Pixel Art Textures/Another texture/blktex_bark_03.png" id="15_q7fgl"]
 [ext_resource type="Texture2D" uid="uid://cyllym8yoli00" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/wood 1.png" id="16_77dte"]
-[ext_resource type="Script" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
-[ext_resource type="AudioStream" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
-[ext_resource type="AudioStream" path="res://audio/music/dampandwatery.ogg" id="19_damp"]
-[ext_resource type="AudioStream" path="res://audio/music/pondsounds.ogg" id="20_pond"]
-[ext_resource type="AudioStream" path="res://audio/music/breeze.ogg" id="21_breeze"]
-[ext_resource type="AudioStream" path="res://audio/music/insectchirping.ogg" id="22_insect"]
-[ext_resource type="AudioStream" path="res://audio/music/insectschirping.ogg" id="23_insects"]
-[ext_resource type="AudioStream" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
 [ext_resource type="PackedScene" uid="uid://cbci031n01l70" path="res://scenes/enemies/dragonfly_boss.tscn" id="21_kulgr"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="22_i30ng"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="23_keb27"]
@@ -397,55 +389,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 JUMP_VELOCITY = 6.0
-
-[node name="BossSoundscape" type="Node" parent="." node_paths=PackedStringArray("background_music", "damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping", "left_waterfall", "right_waterfall")]
-script = ExtResource("17_soundscape")
-background_music = NodePath("BackgroundMusic")
-damp_and_watery = NodePath("DampAndWatery")
-pond_sounds = NodePath("PondSounds")
-breeze = NodePath("Breeze")
-insect_chirping = NodePath("InsectChirping")
-insects_chirping = NodePath("InsectsChirping")
-left_waterfall = NodePath("LeftWaterfall")
-right_waterfall = NodePath("RightWaterfall")
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("18_bgm")
-volume_db = -12.0
-
-[node name="DampAndWatery" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("19_damp")
-volume_db = -12.0
-
-[node name="PondSounds" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("20_pond")
-volume_db = -11.0
-
-[node name="Breeze" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("21_breeze")
-volume_db = -14.0
-
-[node name="InsectChirping" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("22_insect")
-volume_db = -12.0
-
-[node name="InsectsChirping" type="AudioStreamPlayer" parent="BossSoundscape"]
-stream = ExtResource("23_insects")
-volume_db = -15.0
-
-[node name="LeftWaterfall" type="AudioStreamPlayer3D" parent="BossSoundscape"]
-position = Vector3(-15.53, 2, 0.39)
-stream = ExtResource("24_waterfall")
-volume_db = -2.0
-unit_size = 4.0
-max_distance = 45.0
-
-[node name="RightWaterfall" type="AudioStreamPlayer3D" parent="BossSoundscape"]
-position = Vector3(15.804, 2, 0.39)
-stream = ExtResource("24_waterfall")
-volume_db = -2.0
-unit_size = 4.0
-max_distance = 45.0
 
 [node name="Trail" parent="." unique_id=1331654535 instance=ExtResource("1_ikx5s")]
 transform = Transform3D(-1.0348424, 0, 0.018063229, 0, 1.66, 0, -0.018063229, 0, -1.0348424, 0, 0.55040985, -22.463)
