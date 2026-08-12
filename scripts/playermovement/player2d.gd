@@ -8,6 +8,10 @@ class_name Player2D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
 @export var state_machine : State_Machine
+@export var footstep_sfx : AudioStreamPlayer
+@export var jump_sfx : AudioStreamPlayer
+@export var landing_sfx : AudioStreamPlayer
+
 @export var hud : Node2D
 @export var death_screen : Node2D
 @export var SPEED = 5.0
@@ -19,6 +23,8 @@ class_name Player2D
 @export var jump_buffer_len = 0.12
 @export var damage = 10
 @export var max_health = 5
+@export_range(0.1, 1.0, 0.01) var footstep_interval := 0.4
+@export_range(0.0, 0.2, 0.01) var footstep_pitch_variation := 0.04
 var health
 var can_jump = false
 var blocking = false
@@ -26,6 +32,13 @@ var block_timer = 0.0
 var block_cooldown = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
+var _time_until_next_step := 0.0
+var _was_walking := false
+var _footstep_high_pitch := false
+var _has_been_airborne := false
+var _physics_started := false
+var _just_landed := false
+
 var clipping = false
 var is_attacking = false
 func _ready() -> void:
@@ -76,6 +89,64 @@ func _physics_process(delta: float) -> void:
 		if block_timer <= 0:
 			blocking = false
 	move_and_slide()
+	_update_landing_sound()
+	_update_footsteps(delta)
+
+func _update_landing_sound() -> void:
+	_just_landed = false
+	var on_floor_now := is_on_floor()
+
+	if not _physics_started:
+		_physics_started = true
+		_has_been_airborne = not on_floor_now
+		return
+
+	if not on_floor_now:
+		_has_been_airborne = true
+	elif _has_been_airborne:
+		if landing_sfx:
+			landing_sfx.play()
+		_has_been_airborne = false
+		_just_landed = true
+
+func _update_footsteps(delta: float) -> void:
+	if footstep_sfx == null:
+		return
+
+	var is_walking := absf(velocity.x) > 0.1 and is_on_floor() and not blocking
+	if not is_walking:
+		_was_walking = false
+		_time_until_next_step = 0.0
+		return
+
+	# The landing sound already uses the step sample, so do not double it with
+	# an immediate walking step on the same physics frame.
+	if _just_landed:
+		_was_walking = true
+		_time_until_next_step = footstep_interval
+		return
+
+	if not _was_walking:
+		_was_walking = true
+		_play_footstep()
+		_time_until_next_step = footstep_interval
+		return
+
+	_time_until_next_step -= delta
+	if _time_until_next_step <= 0.0:
+		_play_footstep()
+		_time_until_next_step += footstep_interval
+
+func _play_footstep() -> void:
+	var pitch_offset := (
+		footstep_pitch_variation
+		if _footstep_high_pitch
+		else -footstep_pitch_variation
+	)
+	footstep_sfx.pitch_scale = 1.0 + pitch_offset
+	_footstep_high_pitch = not _footstep_high_pitch
+	footstep_sfx.play()
+
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered front")
 	if area is EnemyHitbox:
