@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dfixrevfih34e" path="res://sprites/textures/Pixel Art Textures/Another texture/blktex_bark_03.png" id="15_q7fgl"]
 [ext_resource type="Texture2D" uid="uid://cyllym8yoli00" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/wood 1.png" id="16_77dte"]
 [ext_resource type="Script" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
-[ext_resource type="AudioStream" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
+[ext_resource type="AudioStream" uid="uid://bc46kjyyhey3v" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="19_damp"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="20_pond"]
 [ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="21_breeze"]
