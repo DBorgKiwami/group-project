@@ -20,6 +20,7 @@ const LETTERS := {
 	"S": ["01111", "10000", "10000", "01110", "00001", "00001", "11110"],
 	"T": ["11111", "00100", "00100", "00100", "00100", "00100", "00100"],
 	"U": ["10001", "10001", "10001", "10001", "10001", "10001", "01110"],
+	"X": ["10001", "10001", "01010", "00100", "01010", "10001", "10001"],
 }
 
 @export var text_scale := 2
@@ -106,7 +107,7 @@ func draw_key_box(pos: Vector2, glow: float) -> void:
 	draw_rect(Rect2(pos, Vector2(17 * s, 14 * s)), SHADOW)
 	draw_rect(Rect2(pos + Vector2(2 * s, 2 * s), Vector2(13 * s, 10 * s)), FRAME_LIGHT)
 	draw_rect(Rect2(pos + Vector2(4 * s, 4 * s), Vector2(9 * s, 6 * s)), fill)
-	draw_pixel_text(pos + Vector2(7 * s, 4 * s), "E", s, CREAM)
+	draw_pixel_text(pos + Vector2(7 * s, 4 * s), "X", s, CREAM)
 
 
 func draw_prompt_tail(pos: Vector2) -> void:

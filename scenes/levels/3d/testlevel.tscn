@@ -670,6 +670,7 @@ shape = SubResource("BoxShape3D_2kmou")
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("7_2kmou")]
 
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+z_index = 100
 metadata/_edit_use_anchors_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=253198299]
@@ -27141,7 +27142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.455673, 5.3633666, -0.790
 [node name="SceneTransition" parent="." unique_id=1962062075 node_paths=PackedStringArray("prompt") instance=ExtResource("22_i68a1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.09152, 2.5186515, -14.984945)
 scene = "D:/College/Masters/Summer Project/group-project/scenes/levels/2d/2dTutorial.tscn"
-interact_distance = 20.0
+interact_distance = 10.0
 prompt = NodePath("../CanvasLayer/InteractionPromptDemo")
 
 [node name="CollisionShape3D" parent="SceneTransition" index="0" unique_id=1664706398]
@@ -27150,6 +27151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39741564, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1144342521]
 
 [node name="InteractionPromptDemo" parent="CanvasLayer" unique_id=1692059102 instance=ExtResource("23_n4vy0")]
+z_index = 1
 
 [editable path="Dialogue Area"]
 [editable path="Bounce Pad"]
