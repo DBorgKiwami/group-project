@@ -181,6 +181,7 @@ size = Vector3(1, 1, 0.125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
+SPRINT_SPEED = 6.5
 JUMP_VELOCITY = 6.0
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
