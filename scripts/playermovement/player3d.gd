@@ -9,7 +9,7 @@ class_name Player3D
 @export var jump_sfx : AudioStreamPlayer3D
 @export var landing_sfx : AudioStreamPlayer3D
 @export var grapple_point_calc : Node3D
-
+@export var tongue : MeshInstance3D
 @export var SPEED = 5.0
 @export var SPRINT_SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
@@ -38,11 +38,13 @@ var has_been_airborne = false
 var physics_started = false
 var grapplearealist = []
 var current_anim_speed := 1.0
+var grapple_target := Vector3.ZERO
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
 	set_collision_mask_value(7, false)
 	pass
+
 
 func _ready():
 	print(global_position)
@@ -67,18 +69,32 @@ func _on_dialogue_done():
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
 	var areaPosition = grapplearealist[0].global_position
-	#if areaPosition < position:
-		#sprite.flip_h = true
-	#else:
-		#sprite.flip_h = false
-	#Tweens are for when animations are too static. They're good for stuff like this, where the grapple point at the end is never guaranteed
-	grappling = true;
+	grapple_target = areaPosition
+	grappling = true
+	if tongue:
+		tongue.visible = true
 	grappleTween = get_tree().create_tween()
 	grappleTween.tween_property(self, "position", areaPosition, grapple_time).set_trans(Tween.TRANS_SINE)
 	grappleTween.tween_callback(endGrapple)
 
 func endGrapple():
 	grappling = false
+	if tongue:
+		tongue.visible = false
+		
+func _update_tongue() -> void:
+	if not tongue:
+		return
+	var start := global_position
+	var end := grapple_target
+	var dist := start.distance_to(end)
+	if dist < 0.001:
+		return
+	var mid := start.lerp(end, 0.5)
+	tongue.global_position = mid
+	tongue.look_at(end, Vector3.UP)
+	tongue.rotate_object_local(Vector3.RIGHT, PI / 2.0)
+	tongue.scale = Vector3(0.4, dist, 0.4)
 
 func _input(event: InputEvent) -> void:
 	grapplearealist.sort_custom(custom_sorter)
@@ -116,6 +132,8 @@ func _physics_process(delta: float) -> void:
 			set_collision_mask_value(7, true)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
+	if grappling:
+		_update_tongue()
 	
 	#If you're on the floor, you can jump
 	if is_on_floor():

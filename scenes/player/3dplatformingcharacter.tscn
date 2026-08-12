@@ -257,7 +257,15 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dq5nv"]
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "grapple_point_calc") groups=["Player"]]
+[sub_resource type="CylinderMesh" id="CylinderMesh_dq5nv"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40gki"]
+albedo_color = Color(0.76953125, 0.49298096, 0.49298096, 1)
+
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "grapple_point_calc", "tongue") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
@@ -267,6 +275,7 @@ animationControler = NodePath("AnimationPlayer")
 player_camera = NodePath("SpringArm3D/Camera3D")
 camera_pivot = NodePath("SpringArm3D")
 grapple_point_calc = NodePath("SpringArm3D/Camera3D/GrappleDistanceCalc")
+tongue = NodePath("Tongue")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
@@ -330,6 +339,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5546684, 0)
 
 [node name="GrappleDistanceCalc" type="Node3D" parent="SpringArm3D/Camera3D" unique_id=1456099713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Tongue" type="MeshInstance3D" parent="." unique_id=1532104333]
+visible = false
+mesh = SubResource("CylinderMesh_dq5nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_40gki")
 
 [connection signal="area_entered" from="Grapple Area" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Grapple Area" to="." method="_on_area_3d_area_exited"]
