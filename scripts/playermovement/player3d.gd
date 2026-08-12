@@ -6,13 +6,9 @@ class_name Player3D
 @export var animationControler : AnimationPlayer
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
-@export var jump_sfx : AudioStreamPlayer3D
-@export var landing_sfx : AudioStreamPlayer3D
-@export var grapple_point_calc : Node3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-@export var CAMERA_DISTANCE_FROM_GROUND = 1.0
 @export var CAMERA_SPEED = 0.5
 @export var CAMERA_PAN_SPEED = 5.0
 @export var jump_timer_max = 0.2
@@ -30,9 +26,6 @@ var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
 var animationdirection = "south"
-var has_been_airborne = false
-var physics_started = false
-var grapplearealist = []
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -61,7 +54,7 @@ func _on_dialogue_done():
 #Except right now its just done in code anyways because im lazy
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
-	var areaPosition = grapplearealist[0].global_position
+	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
 	#if areaPosition < position:
 		#sprite.flip_h = true
 	#else:
@@ -76,14 +69,6 @@ func endGrapple():
 	grappling = false
 
 func _input(event: InputEvent) -> void:
-	grapplearealist.sort_custom(custom_sorter)
-	
-	if !grapplearealist.is_empty():
-		grapplearealist[0].highlight()
-		
-		for i in range(1, grapplearealist.size()):
-			grapplearealist[i].unhighlight()
-	
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	if camera_dir and !inDialogue and event is InputEventMouseMotion:
@@ -127,8 +112,6 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
 		set_collision_mask_value(7, false)
-		if jump_sfx:
-			jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -140,7 +123,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	camera_pivot.global_position = camera_pivot.global_position.lerp(position + Vector3(0, CAMERA_DISTANCE_FROM_GROUND, 0), delta * CAMERA_PAN_SPEED)
+	camera_pivot.global_position = camera_pivot.global_position.lerp(position, delta * CAMERA_PAN_SPEED)
 	if direction and !inDialogue:
 		lastDirection = direction
 		velocity.x = direction.x * SPEED
@@ -156,18 +139,6 @@ func _physics_process(delta: float) -> void:
 			#sprite.flip_h = false;
 	#print(velocity)
 	move_and_slide()
-
-	var on_floor_now := is_on_floor()
-	if physics_started:
-		if not on_floor_now:
-			has_been_airborne = true
-		elif has_been_airborne:
-			if landing_sfx:
-				landing_sfx.play()
-			has_been_airborne = false
-	else:
-		physics_started = true
-		has_been_airborne = not on_floor_now
 	
 	
 	
@@ -242,32 +213,13 @@ func _process(delta: float) -> void:
 	sprite.play(animationdirection + ("walk" if is_moving else "idle"))
 	pass
 
-#This is for Grappling
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	if area is not GrapplePoint3D:
-		return
-	
-	grapplearealist = grappleArea.get_overlapping_areas()
-	grapplearealist.sort_custom(custom_sorter)
-	
-	if !grapplearealist.is_empty():
-		grapplearealist[0].highlight()
-		
-		for i in range(1, grapplearealist.size()):
-			grapplearealist[i].unhighlight()
+	if area is GrapplePoint3D:
+		area.highlight()
+	pass # Replace with function body.
 
-#This is for Grappling
+
 func _on_area_3d_area_exited(area: Area3D) -> void:
-	if area is not GrapplePoint3D:
-		return
-	
-	area.unhighlight()
-	
-	grapplearealist = grappleArea.get_overlapping_areas()
-
-var home_pos = 0
-
-func custom_sorter(a,b) -> bool:
-	if a.global_position.distance_squared_to(grapple_point_calc.global_position) < b.global_position.distance_squared_to(grapple_point_calc.global_position):
-		return true
-	return false
+	if area is GrapplePoint3D:
+		area.unhighlight()
+	pass # Replace with function body.
