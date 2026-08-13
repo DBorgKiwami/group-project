@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c20uslp7vniq7"]
+
+[ext_resource type="Texture2D" uid="uid://ntw5rr1bawo2" path="res://sprites/textures/Pixel Art Textures/greentexture_08.png" id="1_0bfpd"]
+
+[resource]
+albedo_color = Color(0.73, 0.73, 0.73, 1)
+albedo_texture = ExtResource("1_0bfpd")
+uv1_triplanar = true
+uv1_world_triplanar = true

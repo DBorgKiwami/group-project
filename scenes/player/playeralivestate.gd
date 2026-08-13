@@ -13,6 +13,7 @@ func update(_delta: float):
 		player_reference.player_camera.global_position.y = player_reference.position.y + player_reference.camera_y_offset
 func physicsUpdate(delta: float):
 	if player_reference.velocity.y > 0 or Input.is_action_pressed("ui_down") or player_reference.clipping:
+		#print("No Semi-Solid")
 		player_reference.set_collision_mask_value(7, false)
 	else:
 		player_reference.set_collision_mask_value(7, true)
@@ -56,6 +57,12 @@ func physicsUpdate(delta: float):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	var current_speed : float = player_reference.SPRINT_SPEED if Input.is_action_pressed("sprint") else player_reference.SPEED
+	
+	# --- Sprint animation speed ramp ---
+	var target_anim_speed := player_reference.sprint_anim_speed if Input.is_action_pressed("sprint") else player_reference.normal_anim_speed
+	player_reference.current_anim_speed = move_toward(player_reference.current_anim_speed, target_anim_speed, player_reference.anim_speed_ramp * delta)
+	player_reference.sprite.speed_scale = player_reference.current_anim_speed
 	
 	if direction:
 		#Flip character depending on their direction
@@ -65,11 +72,11 @@ func physicsUpdate(delta: float):
 		else:
 			player_reference.hitboxFront.rotation_degrees = Vector3(0, 0, 0)
 			player_reference.sprite.flip_h = false;
-		player_reference.velocity.x = direction * player_reference.SPEED
+		player_reference.velocity.x = direction * current_speed
 		if not player_reference.is_attacking:
 			player_reference.sprite.play("walk")
 	else:
-		player_reference.velocity.x = move_toward(player_reference.velocity.x, 0, player_reference.SPEED)
+		player_reference.velocity.x = move_toward(player_reference.velocity.x, 0, current_speed)
 		if not player_reference.is_attacking:
 			player_reference.sprite.play("idle")
 func enter():
@@ -87,7 +94,7 @@ func input(event: InputEvent):
 		_play_attack_sfx()
 		return
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_up"):
-		print("Down")
+		print("Up")
 		player_reference.is_attacking = true
 		player_reference.animationController.play("attack_up")
 		_play_attack_sfx()

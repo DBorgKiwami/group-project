@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://4t2rxpafl3tm" path="res://sprites/player/3D Sprites/w_walk2.png" id="25_o6j7m"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="26_jump"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="27_land"]
+[ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="28_dq5nv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
 radius = 0.317
@@ -211,8 +212,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_tqe7u"]
+radius = 1.6422604
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_vws06"]
-radius = 2.5
+radius = 10.0
 
 [sub_resource type="Animation" id="Animation_g608u"]
 length = 0.001
@@ -251,17 +255,27 @@ _data = {
 &"jump": SubResource("Animation_6ofdj")
 }
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx") groups=["Player"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_dq5nv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dq5nv"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40gki"]
+albedo_color = Color(0.76953125, 0.49298096, 0.49298096, 1)
+
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "grapple_point_calc", "tongue") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
 sprite = NodePath("AnimatedSprite3D")
-grappleArea = NodePath("Area3D")
+grappleArea = NodePath("Grapple Area")
 animationControler = NodePath("AnimationPlayer")
-player_camera = NodePath("Node3D/Camera3D")
-camera_pivot = NodePath("Node3D")
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
+player_camera = NodePath("SpringArm3D/Camera3D")
+camera_pivot = NodePath("SpringArm3D")
+grapple_point_calc = NodePath("SpringArm3D/Camera3D/GrappleDistanceCalc")
+tongue = NodePath("Tongue")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
@@ -276,32 +290,60 @@ texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_g608u")
 animation = &"westwalk"
 
-[node name="JumpSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="JumpSfx2" type="AudioStreamPlayer3D" parent="." unique_id=1186266927]
 stream = ExtResource("26_jump")
-volume_db = -4.0
+volume_db = -12.0
+max_db = 0.0
 max_distance = 18.0
 
-[node name="LandingSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="LandingSfx2" type="AudioStreamPlayer3D" parent="." unique_id=1953854100]
 stream = ExtResource("27_land")
-volume_db = -4.0
+volume_db = -12.0
+max_db = 0.0
 max_distance = 18.0
 
-[node name="Area3D" type="Area3D" parent="." unique_id=190598689]
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1747575922]
+stream = ExtResource("27_land")
+volume_db = -12.0
+max_db = 0.0
+max_distance = 18.0
+
+[node name="FootstepController" type="Node" parent="." unique_id=1364249115]
+script = ExtResource("28_dq5nv")
+
+[node name="Interaction Area" type="Area3D" parent="." unique_id=1412579038]
 collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Area" unique_id=1975552858]
+shape = SubResource("SphereShape3D_tqe7u")
+
+[node name="Grapple Area" type="Area3D" parent="." unique_id=190598689]
+collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=577473613]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grapple Area" unique_id=577473613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02279973, 0.074198335, 0.012180336)
 shape = SubResource("SphereShape3D_vws06")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=453225793]
 libraries/ = SubResource("AnimationLibrary_g608u")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1373763106]
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=856807692]
 top_level = true
+shape = SubResource("SphereShape3D_dq5nv")
+spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1344329634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1344329634 groups=["Player_Camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5546684, 0)
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[node name="GrappleDistanceCalc" type="Node3D" parent="SpringArm3D/Camera3D" unique_id=1456099713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Tongue" type="MeshInstance3D" parent="." unique_id=1532104333]
+visible = false
+mesh = SubResource("CylinderMesh_dq5nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_40gki")
+
+[connection signal="area_entered" from="Grapple Area" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Grapple Area" to="." method="_on_area_3d_area_exited"]

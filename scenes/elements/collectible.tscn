@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bprwaaoqs7yaq"]
 
-[ext_resource type="Script" uid="uid://uajmwgp33uwp" path="res://scripts/collectible.gd" id="1_exwit"]
+[ext_resource type="Script" uid="uid://uajmwgp33uwp" path="res://collectible.gd" id="1_exwit"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6tqyf"]
 radius = 0.35

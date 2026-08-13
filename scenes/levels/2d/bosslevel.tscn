@@ -1,0 +1,774 @@
+[gd_scene format=4 uid="uid://c77n5nhrue7p8"]
+
+[ext_resource type="PackedScene" uid="uid://b6tvuehfmf3sk" path="res://resources/Models/low_poly_dirt_ground/scene.gltf" id="1_ikx5s"]
+[ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_v06so"]
+[ext_resource type="Texture2D" uid="uid://jxi8jv02a1kx" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/coral 4.png" id="2_4wily"]
+[ext_resource type="PackedScene" uid="uid://cyo2gumu2bw4i" path="res://resources/Models/low_poly_water.glb" id="2_igq41"]
+[ext_resource type="PackedScene" uid="uid://ce4eoedmjcji3" path="res://resources/Models/free-pack-rocks-stylized/source/Free Pack - Rocks Stylized.fbx" id="2_nqc8u"]
+[ext_resource type="Texture2D" uid="uid://d2thhbpugdfbe" path="res://sprites/textures/Pixel Art Textures/seasonal water animations/summer waterfall B 16x16.png" id="3_7bhyk"]
+[ext_resource type="Texture2D" uid="uid://dnqu6t6nigq1" path="res://resources/Models/free-pack-rocks-stylized/textures/Rocks_Stylized_Color.png" id="3_em2vd"]
+[ext_resource type="PackedScene" uid="uid://bs8kp1ukerb08" path="res://resources/Models/lowpoly-grass/source/sketchfab.glb" id="5_mm4eq"]
+[ext_resource type="Texture2D" uid="uid://c8tp4iu20xiul" path="res://sprites/parallax/forest_sky.png" id="6_7g2nu"]
+[ext_resource type="PackedScene" uid="uid://quocte1mx578" path="res://resources/Models/origami-water-lilies/source/WaterLily_06.fbx" id="7_ikx5s"]
+[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://sprites/parallax/parallax sky.gd" id="7_t6yma"]
+[ext_resource type="Texture2D" uid="uid://b0d0xmnwe4e4u" path="res://resources/Models/origami-water-lilies/textures/WaterLily.jpeg" id="8_pp461"]
+[ext_resource type="Texture2D" uid="uid://bamox8e14kbgf" path="res://sprites/parallax/desert/desert_mountain.png" id="8_xjuap"]
+[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="9_xjuap"]
+[ext_resource type="Texture2D" uid="uid://3iusj4qul1g4" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/rocks 4.png" id="10_pp461"]
+[ext_resource type="Texture2D" uid="uid://blxjhnlwpgcw2" path="res://sprites/textures/Sprite-0001.png" id="12_tksqf"]
+[ext_resource type="Texture2D" uid="uid://by56j5j3oyqwe" path="res://sprites/textures/Sprite-0002.png" id="13_5oh3x"]
+[ext_resource type="PackedScene" uid="uid://h2rla3ix8s54" path="res://scenes/elements/semi_solid_platform.tscn" id="14_owttj"]
+[ext_resource type="Texture2D" uid="uid://dfixrevfih34e" path="res://sprites/textures/Pixel Art Textures/Another texture/blktex_bark_03.png" id="15_q7fgl"]
+[ext_resource type="Texture2D" uid="uid://cyllym8yoli00" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/wood 1.png" id="16_77dte"]
+[ext_resource type="Script" uid="uid://ef2gpl68inq8" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
+[ext_resource type="AudioStream" uid="uid://bc46kjyyhey3v" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
+[ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="19_damp"]
+[ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="20_pond"]
+[ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="21_breeze"]
+[ext_resource type="PackedScene" uid="uid://cbci031n01l70" path="res://scenes/enemies/dragonfly_boss.tscn" id="21_kulgr"]
+[ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="22_i30ng"]
+[ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="22_insect"]
+[ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="23_insects"]
+[ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="23_keb27"]
+[ext_resource type="AudioStream" uid="uid://bumfcdujvlsf0" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="24_xtumi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bhyk"]
+albedo_texture = ExtResource("2_4wily")
+uv1_scale = Vector3(64, 64, 64)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4wily"]
+material = SubResource("StandardMaterial3D_7bhyk")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7bhyk"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_15h12"]
+size = Vector2(10, 6.316)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6yma"]
+transparency = 1
+albedo_texture = ExtResource("6_7g2nu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kulgr"]
+size = Vector2(2, 0.526)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axhj6"]
+transparency = 1
+albedo_texture = ExtResource("8_xjuap")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84pff"]
+resource_name = "RocksStylized_M"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_phn4t"]
+_surfaces = [{
+"aabb": AABB(-0.43950748, 0, -0.37203214, 0.87901497, 1.5949527, 0.7440643),
+"format": 34359742465,
+"index_count": 204,
+"index_data": PackedByteArray("BQAHAAQABwAFABMAEwAFABIAFAAFAAQAEgAFABQACgAUAAQAEwASAAgABwATAAgAFQAHAAgAFgAIABIAFwAVAAgACAAWABcAFQAXAA8AFQAPAAcAFgAQABcAEAAPABcAFgASAAYAGAAWAAYAAwAWABgAFgADABAAGQADABgAGQAYAAYAAwAZABAACQAGABIABgAJABkACQASABQAFAANAAkAFAAKAA0AEQAZAAkAEQAJAA0AGQAaABAAGgAZABEAGgAbABAAEAAbAA8AEQAOABoADgAbABoAHAARAA0AEQAcAA4ACgAcAA0AAQAPABsADgABABsADwABAAsAHAACAA4ACgACABwAHQABAA4ACwABAB0ADgAeAB0ADgACAB8AHwAeAA4AHwACAAoADAAdAB4AHwAMAB4ADAAgAB0AHQAgAAsAIQAMAB8ACgAhAB8AIgAgAAwAIgAMACEACwAgACIAIgAhAAoACgAAACIAIgAAAAsABAAAAAoACwAAACMABAAjAAAADwALACMABwAjAAQADwAjAAcA"),
+"lods": [0.17587653, PackedByteArray("BQAHAAQABAAHAAAACgAFAAQABAAAAAoACwAAAAcAAAACAAoAAAALAAwAAAAMAAIACgACAA0ABQAKAA0AAgAMAA4ADAALAAEADAABAA4ADwALAAcADwABAAsABwAFAAgACAAPAAcAEAABAA8ACAAQAA8ADgABABAAEQACAA4AEQAOABAAAgARAA0AEQAJAA0AEAAJABEABQANAAkACAADABAAAwAJABAABQASAAgAAwAIABIACQASAAUAAwASAAYACQAGABIACQADAAYA"), 0.3211511, PackedByteArray("BQAHAAQABAAHAAAABAAAAAIAAgAFAAQACAAAAAcABwAFAAgAAAABAAIACAABAAAABQACAAkACQACAAEABQAGAAgACQAGAAUAAwAIAAYACQADAAYAAwABAAgACQABAAMA"), 0.80424935, PackedByteArray("AAABAAIAAwABAAAAAgABAAMAAwAAAAQABAAAAAIABAAFAAMAAgAFAAQABQAGAAMAAgADAAYAAgAGAAUA")],
+"name": "RocksStylized_M",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("1nO6PstFmj2S6n4+gZmovkNTWD3/er6+WMGsvvF/fT2A+rk+PxClvq6ovD9uwVG+yUnWPvhUCT8hS30+JXXUPtE8uD8DHRs+IUUCvv+syj/uQm4+IAfhPkGDkD/SPdu9fEuiPi9Dxz+Igie+m8aYvhrwgT//er4+yNG5vW2EXj1WhK4+rJh0PgotbT2IThC+X1EFvgAAAACFODE9fUh0vkpvDj+yC7c+UzjZvlI7hT3pewW+bLr5vT7vIj8dq66+Bv/OvliykD9lD7i+BiS6vhoALj83C4s+jUNhPmknzD9AMzY+r+3PPnMwwj+kyXm9wVGFPpXiej+0qZk+O+pVPpyfmD/F7Gq+YVvnvcVKwz8TCIe+qZSavX9Ssz/WELC+fP6SvuBhwj/N9U89FqW2vn3tlD/a3jQ+IAfhvnsmSz/f61C+yarHvnUQDz9vXau+lsiuviXFhD68S7o+m2+cvofHXzyTmae+Kv/GvhWOxDwkwt293Sygvh9DrDy356Y+Wl5HPvX3kjyK7Pa9dqHFvZVYZTzJaJw+6nScPtfFCD0sjmc+mEenPpWrHj92LuC9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fv6s4"]
+resource_name = "SM_Rocks_09"
+_surfaces = [{
+"aabb": AABB(-0.43950748, 0, -0.37203214, 0.87901497, 1.5949527, 0.7440643),
+"attribute_data": PackedByteArray("OXyiPsS4az7mdoc+qGvGPaaZvj5cWwg+UihbP1jwSz6jA14/fIPXPkgzNj+UZts+GoozP7D+tz7exjI/lI5iPm/TPz4W4PM+UrmZPs7Fhz75npk+ilvNPti4Xj7cmXk+MZWWPpTZ8D7ieNY+kL0mPwzmpz7iVuE+IGDNPlgZ1T6e65s+0v4nP9pz0T7ANVc+Vu/APgioAD6vst4+yBykPRmMPT9k0oc+GYw9P2TShz6Qv0A/tHlMPnKl5j54vTQ+RG9BPp6BqT7pntU+xLIBPxgjRj9UWNk+sDdVP0RSqz5DIF8/3BCDPtwtoT4YIhc+0jm3PlRyLj5cy5w+wOy+PbZKiD4wOEM+uTPLPlS0Mj5sr2U+ZJDzPkRtSz4wSc0+q10zPtz4wz5uaIo+XKl3Pv8DnD44wPw++BbOPrgFDz+U3q8+OiInP5GZiz6E+as+kfA9Pqa25D6oGaI+XIZfPlp/sz7oTCo+3gW6PqiQCz6wOIw+6PQ8Ps76nD6Qq9E9MjuLPrCh1D2m8OA+KElHPgWM5j7IVOE98wLMPuguwj0NqF8/XB2wPqKaUj80lEo+ntJRP9zXYT5L5EY/FMeBPqVqOz/IrlQ+3sYyP5SOYj6giEE/pmOuPhqKMz+w/rc++DbFPrAk+T5szLs+0F7dPtLDqD7dQgs/6KGePuRqFD+CGtY+ZCQfPw=="),
+"format": 34359742487,
+"index_count": 204,
+"index_data": PackedByteArray("BwAUAAYAKQAJAAoAJQAJACkAGAAlACkAGAALACUAIgApAAoACgAMACIAKQAjABgAKQAiACMAJAAYACMAKgAkACMAIgAqACMAIgAIACoAKwAdACwAKwAsAB4AHgAAACsAKwAAACAAHgAsAC0ALAAdAC0ALQACAB4AHwACAC0AIAAuACsAKwAuAB0ALQAvAB8ALQAdAC8AHwAvADAAHQAwAC8AHQAuADAAMAAuACAAMAABAB8AIAABADAAMQARACEAMQAhABcAMgAXACEAMgAhABIAMwAyABIAEwAyADMAGwAEABoABAAbADQAHAA0ABsANQADABwANQAcADYAHAAbADYAFgA1ADYANwA2ABsANgA3ABYANwAVABYANwAbABUAFQA4ABYAFQA5ADgAGwA6ABUAGwAaADoAFQA6ADsAGgAFADoAOwA6AAUAPAA9AA8APAAOAD0ADwAZADwADgA8ACYAJwA8ABkAPAA+ACYAPgA8ACcAPgA/ACYAJwAoAD4AKAA/AD4AKAAQAD8AJwBAACgAQAANACgA"),
+"lods": [0.17587653, PackedByteArray("BwAUAAYABgAVAAUAFQAHABYAGgAFABUAGwAaABUAFgAbABUAGwAEABoAHAAEABsAFgAcABsAFgADABwAAAAdAAIAAAACAB4AAgAdAB8AAAAgAB0AHQABAB8AHQAgAAEAEwAXACEAEQAhABcAEwAhABIAIgAJAAoACgAMACIACQAiACMAIgAIACMACAAkACMAJAAYACMACQAjABgAGAAlAAkAGAALACUAGQAOAA8ADgAZACYAJgAZACcAJwAoACYAKAAQACYAJwANACgA"), 0.3211511, PackedByteArray("BwAUAAYABgAVAAUAFQAHABYAFgAFABUAFgAEAAUAAwAEABYAAAABAAIAEwAXABIAEQASABcACAAJAAoACgAMAAgACQAIABgAGAALAAkAGQAOAA8AGQAQAA4AGQANABAA"), 0.80424935, PackedByteArray("AAABAAIAAwAEAAUAAwAFAAYABgAHAAMACAAJAAoACAALAAkACgAMAAgADQAOAA8ADQAQAA4AEQASABMA")],
+"material": SubResource("StandardMaterial3D_84pff"),
+"name": "RocksStylized_M",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 65,
+"vertex_data": PackedByteArray("1nO6PstFmj2S6n4+gZmovkNTWD3/er6+WMGsvvF/fT2A+rk+PxClvq6ovD9uwVG+gZmovkNTWD3/er6+1nO6PstFmj2S6n4+yUnWPvhUCT8hS30+JXXUPtE8uD8DHRs+WMGsvvF/fT2A+rk+JXXUPtE8uD8DHRs+yUnWPvhUCT8hS30+IUUCvv+syj/uQm4+1nO6PstFmj2S6n4+WMGsvvF/fT2A+rk+PxClvq6ovD9uwVG+IUUCvv+syj/uQm4+gZmovkNTWD3/er6+JXXUPtE8uD8DHRs+IUUCvv+syj/uQm4+PxClvq6ovD9uwVG+IAfhPkGDkD/SPdu9IAfhPkGDkD/SPdu9fEuiPi9Dxz+Igie+fEuiPi9Dxz+Igie+m8aYvhrwgT//er4+m8aYvhrwgT//er4+rJh0PgotbT2IThC+bLr5vT7vIj8dq66+Bv/OvliykD9lD7i+X1EFvgAAAACFODE9yNG5vW2EXj1WhK4+UzjZvlI7hT3pewW+rJh0PgotbT2IThC+jUNhPmknzD9AMzY+yNG5vW2EXj1WhK4+fUh0vkpvDj+yC7c+BiS6vhoALj83C4s+jUNhPmknzD9AMzY+Bv/OvliykD9lD7i+BiS6vhoALj83C4s+UzjZvlI7hT3pewW+wVGFPpXiej+0qZk+lsiuviXFhD68S7o+6nScPtfFCD0sjmc+dqHFvZVYZTzJaJw+3Sygvh9DrDy356Y+Wl5HPvX3kjyK7Pa9Kv/GvhWOxDwkwt29m2+cvofHXzyTmae+r+3PPnMwwj+kyXm9YVvnvcVKwz8TCIe+fP6SvuBhwj/N9U89yarHvnUQDz9vXau+YVvnvcVKwz8TCIe+qZSavX9Ssz/WELC+O+pVPpyfmD/F7Gq+r+3PPnMwwj+kyXm9JXXUPtE8uD8DHRs+mEenPpWrHj92LuC9yUnWPvhUCT8hS30+FqW2vn3tlD/a3jQ+fP6SvuBhwj/N9U89IAfhvnsmSz/f61C+yarHvnUQDz9vXau+lsiuviXFhD68S7o+wKfKPDZc7cLlP6YVJ2Mkr0Bg0ke5dCfaxiPY5FsrELeU+9YaGAUxsEf0K1k8Cj6OKfV1gWT3eIQp9XWBZPd4hKGK13+z+j64hp2RkMP9Yq5rmil+KPwMsU+O7JK+/4K3PJXafbf8zrMDFcp9wZKOvoIdJ5VEiaq+dkQBmz+s4bnlB4JWfl0fvqGx4brr+0Tw2mYs81z3lIsSWkbmW/mkiyn1dYFk93iEsv37T20H/ZUa9AjShgZbpIeWAvHr9Z6LBoTQh+X+W718Mc2OmaPcu5z3sjzpBg+ed/zJF+kFdbFzC9H5ERJZubF+UwLOXY3AnolRSDNjGdlrOfg+h2eOx8vFQiexbyupyZWe68f534yAj6F+5/tXtqFuKoR+65K+XEs8fc7IwL55kvGSFf/atMMRb48vgoy+mBZBgvuTAL4aBbZx43YLvpqdp4jo/BKvEoI3giX6Hbyendc0PVx/xV6GOS5gYPXOyWQdOsBtSdNvtZka02oVr/tPei/MZi3He019DrxiMrLXqs3McPt7jbVjQfCH95WLpFtD58f5oItyAlr8bQp3vMosKvbSFLS36eOk+csLv7Q0/hkodwQrqtL0c61VCCeRJPbQhhD5tYF89dw/WAfcmxv0212EC7+LsC6zk9ecdLyFNKuYH56wu/0B+4gEeW2+GAUBXrJikr6TFCh+oZKUvg==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_phn4t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afdmy"]
+albedo_texture = ExtResource("3_em2vd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wily"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4wily"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7bhyk"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4c60y"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bhyk"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c60y"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqc8u"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em2vd"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afdmy"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igq41"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikx5s"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp461"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjuap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bhyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c60y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqc8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em2vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afdmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igq41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikx5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp461")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4eq"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tksqf"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oh3x"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owttj"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7fgl"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77dte"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g2nu"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15h12"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kulgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tksqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oh3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owttj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7fgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77dte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g2nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15h12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axhj6"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxhfy"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i30ng"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(32, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keb27"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(48, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtumi"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(64, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe72k"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdrdx"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(96, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koqcv"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(112, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6yma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axhj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxhfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i30ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keb27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtumi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe72k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdrdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koqcv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klhqc"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcb7p"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(16, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng3r5"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(32, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7ap3"]
+atlas = ExtResource("3_7bhyk")
+region = Rect2(48, 96, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2t4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klhqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcb7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng3r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7ap3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm4eq"]
+albedo_texture = ExtResource("8_pp461")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikx5s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksqf"]
+albedo_texture = ExtResource("10_pp461")
+uv1_scale = Vector3(11.02, 0.68, 7.72)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5oh3x"]
+panorama = ExtResource("13_5oh3x")
+
+[sub_resource type="Sky" id="Sky_owttj"]
+sky_material = SubResource("PanoramaSkyMaterial_5oh3x")
+
+[sub_resource type="Environment" id="Environment_q7fgl"]
+background_mode = 2
+sky = SubResource("Sky_owttj")
+ambient_light_source = 3
+ambient_light_color = Color(0.3916564, 0.6558621, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q7fgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77dte"]
+albedo_texture = ExtResource("15_q7fgl")
+uv1_scale = Vector3(3.395, 0.975, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_owttj"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7g2nu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15h12"]
+albedo_texture = ExtResource("16_77dte")
+uv1_scale = Vector3(4.844, 144, -11)
+
+[node name="Bosslevel2" type="Node3D" unique_id=508633355]
+
+[node name="Dragonfly Boss" parent="." unique_id=1810331413 instance=ExtResource("21_kulgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.334983, 5.2656646, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580185758]
+transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 18.534254, 0)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=522775246]
+transform = Transform3D(33, 0, 0, 0, 0.5, 0, 0, 0, 32, -0.083275795, 0.01567316, -18.17098)
+mesh = SubResource("PlaneMesh_4wily")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1665409111]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=711532432]
+shape = SubResource("ConcavePolygonShape3D_7bhyk")
+
+[node name="Player" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_v06so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
+hud = NodePath("../CanvasLayer/SimpleHudDemo")
+death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
+JUMP_VELOCITY = 6.0
+
+[node name="Trail" parent="." unique_id=1331654535 instance=ExtResource("1_ikx5s")]
+transform = Transform3D(-1.0348424, 0, 0.018063229, 0, 1.66, 0, -0.018063229, 0, -1.0348424, 0, 0.55040985, -22.463)
+
+[node name="Water" parent="." unique_id=1582612742 instance=ExtResource("2_igq41")]
+transform = Transform3D(4.015, 0, 0, 0, 2.265, 0, 0, 0, 4.615, 30.747, 0.225, -21.149)
+
+[node name="Water2" parent="." unique_id=186209234 instance=ExtResource("2_igq41")]
+transform = Transform3D(4.015, 0, 0, 0, 2.43, 0, 0, 0, 4.285, -28.863, 0.290282, -19.121)
+
+[node name="Grass" parent="." unique_id=108599935 instance=ExtResource("5_mm4eq")]
+transform = Transform3D(9.28, 0, 0, 0, 9.28, 0, 0, 0, 9.28, 0, 13.828339, 7.193102)
+
+[node name="2dgrass2" parent="Grass" index="0" unique_id=2128508541]
+transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 0, -1.2834622, -4.8604035)
+
+[node name="2dgrass3" parent="Grass" index="1" unique_id=40804035]
+transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 1.3483169, -1.4204395, -2.7769978)
+
+[node name="2dgrass1" parent="Grass" index="2" unique_id=1597041499]
+transform = Transform3D(0.17364834, -0.9848085, 4.304734e-08, 0, -4.371142e-08, -1.0000004, 0.9848085, 0.17364834, -7.590405e-09, -1.4780006, -1.4547896, -2.8060632)
+
+[node name="grass2" parent="Grass" index="3" unique_id=1466399527]
+transform = Transform3D(0.7253749, -0.688355, 3.0088948e-08, 0, -4.371142e-08, -1.0000004, 0.688355, 0.7253749, -3.170712e-08, 1.3406252, -1.3993472, -2.1011138)
+
+[node name="grass1" parent="Grass" index="4" unique_id=2107838827]
+transform = Transform3D(0.6691308, -0.7431451, 3.2483904e-08, 0, -4.3711402e-08, -1.0000004, 0.7431451, 0.6691308, -2.9248637e-08, -1.4567817, -1.4755673, -1.4476082)
+
+[node name="grass3" parent="Grass" index="5" unique_id=1303956463]
+transform = Transform3D(1.0000004, 0, 0, 0, 0, -1.0000004, 0, 1.0000004, 0, 1.41742, -1.4914743, -1.0952322)
+
+[node name="forest_sky" type="MeshInstance3D" parent="." unique_id=1280148109]
+transform = Transform3D(30, 0, 0, 0, -1.9932394e-08, -29.091, 0, 0.456, -1.271608e-06, -0.0832758, -1.1111794, -58.17923)
+mesh = SubResource("PlaneMesh_15h12")
+surface_material_override/0 = SubResource("StandardMaterial3D_t6yma")
+script = ExtResource("7_t6yma")
+
+[node name="desert_mountain" type="MeshInstance3D" parent="." unique_id=1364941614]
+transform = Transform3D(100, 0, 0, 0, -6.644131e-08, -96.97, 0, 1.52, -4.2386932e-06, -0.0832758, 10.584118, -33.61239)
+mesh = SubResource("PlaneMesh_kulgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_axhj6")
+script = ExtResource("9_xjuap")
+
+[node name="Free Pack - Rocks Stylized" parent="." unique_id=1435139680 instance=ExtResource("2_nqc8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.694707, 0, 0)
+
+[node name="SM_Rocks_12" type="MeshInstance3D" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="0" unique_id=411583114]
+transform = Transform3D(6.198, 0, 0, 0, 6.198, 0, 0, 0, 6.198, -22.348469, -0.66785675, -3.6229131)
+mesh = SubResource("ArrayMesh_fv6s4")
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_01" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="1" unique_id=2001359368]
+transform = Transform3D(1.835, 0, 0, 0, 1.835, 0, 0, 0, 1.835, 8.624006, -1e-08, -1.456222)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_02" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="2" unique_id=715548204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.280676, -1e-08, -0.019216344)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_03" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="3" unique_id=153583835]
+transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -23.746464, -1e-08, -1.4476411)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_04" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="4" unique_id=964890333]
+transform = Transform3D(2.48, 0, 0, 0, 2.48, 0, 0, 0, 2.48, -20.460768, -1e-08, -2.7355413)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_05" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="5" unique_id=1007212949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.364918, -1e-08, -1.5698596)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_06" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="6" unique_id=1714113922]
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 10.0097, -1e-08, 0.1683938)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_07" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="7" unique_id=1908923955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10722, -1e-08, 0.3371337)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_08" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="8" unique_id=1395441093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.292894, -1e-08, -0.8157004)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_09" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="9" unique_id=1949564286]
+transform = Transform3D(3.055, 0, 0, 0, 4.695, 0, 0, 0, 3.055, 11.111023, -0.16469957, -2.421716)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_10" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="10" unique_id=1734291321]
+transform = Transform3D(2.835, 0, 0, 0, 2.835, 0, 0, 0, 2.835, -20.271544, 0.015673151, -0.89126426)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="SM_Rocks_11" parent="Free Pack - Rocks Stylized/Rocks_Stylized" parent_id_path=PackedInt32Array(1435139680, 268442107) index="11" unique_id=1885729629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.294481, -1e-08, -2.2812762)
+surface_material_override/0 = SubResource("StandardMaterial3D_afdmy")
+
+[node name="Leftbound" type="MeshInstance3D" parent="." unique_id=1680984731]
+transform = Transform3D(-6.993822e-07, 1, 0, -16, -4.371139e-08, 0, 0, 0, 1, -16, 8, 0)
+visible = false
+mesh = SubResource("BoxMesh_4wily")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Leftbound" unique_id=306609550]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leftbound/StaticBody3D" unique_id=972189002]
+shape = SubResource("WorldBoundaryShape3D_4wily")
+
+[node name="Rightbound" type="MeshInstance3D" parent="." unique_id=1347028718]
+transform = Transform3D(-6.993822e-07, 1, 0, -16, -4.371139e-08, 0, 0, 0, 1, 16, 8, 0)
+visible = false
+mesh = SubResource("BoxMesh_7bhyk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rightbound" unique_id=1466174475]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rightbound/StaticBody3D" unique_id=1698417393]
+shape = SubResource("WorldBoundaryShape3D_4c60y")
+debug_color = Color(0.99607843, 0, 0.18039216, 1)
+
+[node name="Waterfall" type="Node3D" parent="." unique_id=1161015051]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.804, 2, 2.39)
+
+[node name="Top" type="AnimatedSprite3D" parent="Waterfall" unique_id=643567276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.654581, -9.999999)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_xjuap")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.62328935
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Waterfall" unique_id=1771403953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.64958, -9.999999)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_kulgr")
+frame_progress = 0.08275511
+
+[node name="Top2" type="AnimatedSprite3D" parent="Waterfall" unique_id=934088422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65, -10)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_t6yma")
+autoplay = "default"
+frame_progress = 0.5269756
+
+[node name="Bottom" type="AnimatedSprite3D" parent="Waterfall" unique_id=657144455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.258342, -9.327097)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_b2t4g")
+autoplay = "default"
+frame_progress = 0.63147855
+
+[node name="Waterfall2" type="Node3D" parent="." unique_id=556910732]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.53, 2, 2.39)
+
+[node name="Top" type="AnimatedSprite3D" parent="Waterfall2" unique_id=1776202037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.654581, -9.999999)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_xjuap")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.5073478
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Waterfall2" unique_id=433050219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.64958, -9.999999)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_kulgr")
+autoplay = "default"
+frame_progress = 0.291563
+
+[node name="Top2" type="AnimatedSprite3D" parent="Waterfall2" unique_id=280340156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65, -10)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_t6yma")
+autoplay = "default"
+frame_progress = 0.09447509
+
+[node name="Bottom" type="AnimatedSprite3D" parent="Waterfall2" unique_id=1982000332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.258342, -9.327097)
+pixel_size = 0.5
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_b2t4g")
+autoplay = "default"
+frame_progress = 0.26918605
+
+[node name="WaterLily_06" parent="." unique_id=1933157131 instance=ExtResource("7_ikx5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3433733, 0, -0.65929985)
+
+[node name="WaterLily_Leaf" parent="WaterLily_06" index="0" unique_id=1239888048]
+transform = Transform3D(-6.109034, 0.2700379, -9.233393e-07, 0.2700379, 6.109034, 4.0774594e-08, 9.2423915e-07, -3.977547e-11, -6.115, 17.832531, 0.6388452, -11.9036045)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily_Leaf_002" parent="WaterLily_06" index="1" unique_id=1146310131]
+transform = Transform3D(1.8593957, 0, -5.5940747, 0, 5.895, 0, 5.5940747, 0, 1.8593957, 16.25618, 0.6570449, -22.783829)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily_Leaf_003" parent="WaterLily_06" index="2" unique_id=2042302400]
+transform = Transform3D(5.9239144, 0, -2.5514178, 0, 6.45, 0, 2.5514178, 0, 5.9239144, -27.081882, 0.65452003, -13.844612)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily_Leaf_004" parent="WaterLily_06" index="3" unique_id=1472202834]
+transform = Transform3D(-3.7360272, 0.27921343, 3.430822, 0.25692406, 5.0717554, -0.1329789, -3.432563, 0.0757181, -3.7440856, 24.979973, 1.0910416, -32.530632)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily" parent="WaterLily_06" index="4" unique_id=1053457379]
+transform = Transform3D(-5.21, 0, -7.8668813e-07, 0, 5.21, 0, 7.8668813e-07, 0, -5.21, 14.87033, 0.7490282, -26.255758)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily_001" parent="WaterLily_06" index="5" unique_id=1611852416]
+transform = Transform3D(-4.5, 0, -6.794811e-07, 0, 4.5, 0, 6.794811e-07, 0, -4.5, -27.403252, 0.95857424, -14.977545)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="WaterLily_002" parent="WaterLily_06" index="6" unique_id=1174049732]
+transform = Transform3D(-7.135, 0, -6.2376154e-07, 0, 7.135, 0, 6.2376154e-07, 0, -7.135, 17.43459, 0.6557216, -12.132678)
+surface_material_override/0 = SubResource("StandardMaterial3D_mm4eq")
+
+[node name="Skywall" type="Node3D" parent="." unique_id=340266691]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Skywall" unique_id=610076131]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, 5.9604645e-08, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Skywall" unique_id=1531433116]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, 22.598204, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Skywall" unique_id=669975480]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, -22.528738, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Skywall" unique_id=1048936507]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, 44.737988, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Skywall" unique_id=196143609]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, -44.283535, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Skywall" unique_id=1530343322]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, -65.50926, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Skywall" unique_id=179094682]
+transform = Transform3D(35.555, 0, 0, 0, 35.554996, 0, 0, 0, 35.555, 62.42699, 11.895178, -41.93159)
+texture_filter = 0
+texture = ExtResource("12_tksqf")
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=900391918]
+transform = Transform3D(21.445, 0, 0, 0, 1.185, 0, 0, 0, 1.04, 0.7191062, 0.60817313, -3.9438777)
+mesh = SubResource("BoxMesh_ikx5s")
+surface_material_override/0 = SubResource("StandardMaterial3D_tksqf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1799781493]
+environment = SubResource("Environment_q7fgl")
+
+[node name="SemiSolidPlatform" parent="." unique_id=1852107279 instance=ExtResource("14_owttj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1621776, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform" unique_id=459834676]
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, -6.488544, 1.6345018, 0)
+mesh = SubResource("BoxMesh_q7fgl")
+surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SemiSolidPlatform/MeshInstance3D" unique_id=1564351425]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidPlatform/MeshInstance3D/StaticBody3D" unique_id=457434265]
+shape = SubResource("ConcavePolygonShape3D_owttj")
+
+[node name="SemiSolidPlatform2" parent="." unique_id=1952293894 instance=ExtResource("14_owttj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.997775, 1.2975221, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform2" unique_id=1127644307]
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 2.5943346, 0.20927763, 0)
+mesh = SubResource("BoxMesh_q7fgl")
+surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SemiSolidPlatform2/MeshInstance3D" unique_id=1194098842]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidPlatform2/MeshInstance3D/StaticBody3D" unique_id=612931171]
+shape = SubResource("ConcavePolygonShape3D_owttj")
+
+[node name="SemiSolidPlatform3" parent="." unique_id=1144067574 instance=ExtResource("14_owttj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0779011, 2.5175204, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SemiSolidPlatform3" unique_id=1431219245]
+transform = Transform3D(2.56, 0, 0, 0, 0.38, 0, 0, 0, 1, 1.2149677, -0.10295105, 0)
+mesh = SubResource("BoxMesh_q7fgl")
+surface_material_override/0 = SubResource("StandardMaterial3D_77dte")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SemiSolidPlatform3/MeshInstance3D" unique_id=879489968]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidPlatform3/MeshInstance3D/StaticBody3D" unique_id=1187193771]
+shape = SubResource("ConcavePolygonShape3D_owttj")
+
+[node name="Tree?" type="MeshInstance3D" parent="." unique_id=1496374500]
+transform = Transform3D(1, 0, 0, 0, 4.06, 0, 0, 0, 1, -8.674231, 0, -0.8621621)
+mesh = SubResource("CylinderMesh_7g2nu")
+surface_material_override/0 = SubResource("StandardMaterial3D_15h12")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=2122830755]
+
+[node name="DeathScreenDemo" parent="CanvasLayer2" unique_id=1242030890 instance=ExtResource("22_i30ng")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1423207975]
+
+[node name="SimpleHudDemo" parent="CanvasLayer" unique_id=60244026 instance=ExtResource("23_keb27")]
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("24_xtumi")]
+
+[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
+[node name="BossSoundscape" type="Node" parent="." unique_id=947676124]
+script = ExtResource("17_soundscape")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=616901964]
+stream = ExtResource("18_bgm")
+volume_db = -12.0
+
+[node name="DampAndWatery" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=1526382952]
+stream = ExtResource("19_damp")
+volume_db = -12.0
+
+[node name="PondSounds" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=1419448739]
+stream = ExtResource("20_pond")
+volume_db = -11.0
+
+[node name="Breeze" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=1430363282]
+stream = ExtResource("21_breeze")
+volume_db = -14.0
+
+[node name="InsectChirping" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=602380536]
+stream = ExtResource("22_insect")
+volume_db = -12.0
+
+[node name="InsectsChirping" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=1130052633]
+stream = ExtResource("23_insects")
+volume_db = -15.0
+
+[node name="LeftWaterfall" type="AudioStreamPlayer3D" parent="BossSoundscape" unique_id=657965038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.53, 2, 0.39)
+stream = ExtResource("24_waterfall")
+volume_db = -2.0
+unit_size = 4.0
+max_distance = 45.0
+
+[node name="RightWaterfall" type="AudioStreamPlayer3D" parent="BossSoundscape" unique_id=580932513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.804, 2, 0.39)
+stream = ExtResource("24_waterfall")
+volume_db = -2.0
+unit_size = 4.0
+max_distance = 45.0
+
+[editable path="Player"]
+[editable path="Trail"]
+[editable path="Grass"]
+[editable path="Free Pack - Rocks Stylized"]
+[editable path="WaterLily_06"]
+[editable path="PauseMenu"]

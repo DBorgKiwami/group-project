@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://dvivxdodklglf"]
 
-[ext_resource type="Script" uid="uid://ciljuu6dkx04p" path="res://scripts/playermovement/player2d.gd" id="1_vj0l2"]
+[ext_resource type="Script" uid="uid://88d5j7ny4c42" path="res://scripts/playermovement/player2d.gd" id="1_cudoo"]
 [ext_resource type="Texture2D" uid="uid://e3q3lwdpriae" path="res://sprites/player/2D Sprites/player_sprite_right_attack.png" id="2_7a31i"]
 [ext_resource type="Texture2D" uid="uid://glkaa1eymt3k" path="res://sprites/player/2D Sprites/player_sprite_right_attack2.png" id="2_cudoo"]
 [ext_resource type="Texture2D" uid="uid://bvbekfw3p8hyr" path="res://sprites/player/player_game_over.png" id="2_eym7y"]
 [ext_resource type="Texture2D" uid="uid://ck0iqxs4bebwt" path="res://sprites/player/2D Sprites/player_sprite_right.png" id="3_1haum"]
 [ext_resource type="Script" uid="uid://dj2mp3k44ikpy" path="res://scripts/utilities/playerhitbox.gd" id="4_a1x7n"]
+[ext_resource type="Texture2D" uid="uid://bebyoq340fpps" path="res://sprites/player/2D Sprites/player_sprite_down_attack.png" id="4_bkeyn"]
+[ext_resource type="Texture2D" uid="uid://c4xigu2n1dj6" path="res://sprites/player/2D Sprites/player_sprite_up_attack.png" id="5_4qi3b"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="5_8yach"]
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
-[ext_resource type="Script" uid="uid://d10nt2jlfcjvx" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
+[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
+[ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
-size = Vector3(1.1184082, 1.7427292, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cudoo"]
-load_path = "res://.godot/imported/player_sprite_right_attack.png-8271aae5a0a530b8dfc217d03decb50f.s3tc.ctex"
+size = Vector3(1.1184082, 1.4648438, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1haum"]
 animations = [{
@@ -35,7 +35,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_cudoo")
+"texture": ExtResource("2_7a31i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bkeyn")
 }],
 "loop": true,
 "name": &"attack_down",
@@ -43,7 +46,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_cudoo")
+"texture": ExtResource("2_7a31i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4qi3b")
 }],
 "loop": true,
 "name": &"attack_up",
@@ -74,9 +80,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_1haum")
-}, {
 "duration": 1.0,
 "texture": ExtResource("5_cudoo")
 }, {
@@ -139,7 +142,43 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"default"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite3D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerHitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHitbox:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_a1x7n"]
@@ -152,7 +191,7 @@ tracks/0/path = NodePath("Front Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -164,10 +203,10 @@ tracks/1/path = NodePath("AnimatedSprite3D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0001),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack", &"attack"]
+"values": [&"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_8yach"]
@@ -180,7 +219,7 @@ tracks/0/path = NodePath("Down Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -195,7 +234,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"attack_down"]
 }
 
 [sub_resource type="Animation" id="Animation_k8hk2"]
@@ -208,7 +247,7 @@ tracks/0/path = NodePath("Up Attack Hurtbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -223,7 +262,80 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"attack_up"]
+}
+
+[sub_resource type="Animation" id="Animation_cudoo"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("PlayerHitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("PlayerHitbox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHitbox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"monitorable", false],
+"method": &"set_deferred"
+}, {
+"args": [&"monitorable", true],
+"method": &"set_deferred"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"monitoring", false],
+"method": &"set_deferred"
+}, {
+"args": [&"monitoring", true],
+"method": &"set_deferred"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yach"]
@@ -231,20 +343,25 @@ _data = {
 &"RESET": SubResource("Animation_vj0l2"),
 &"attack": SubResource("Animation_a1x7n"),
 &"attack_down": SubResource("Animation_8yach"),
-&"attack_up": SubResource("Animation_k8hk2")
+&"attack_up": SubResource("Animation_k8hk2"),
+&"hit": SubResource("Animation_cudoo")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vj0l2"]
 radius = 0.5168748
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eym7y"]
-radius = 0.679429
+radius = 0.8824353
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1haum"]
-size = Vector3(2, 1.716, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
+size = Vector3(1.56, 1.5641162, 1)
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "footstep_sfx", "jump_sfx", "landing_sfx")]
-script = ExtResource("1_vj0l2")
+[sub_resource type="SphereShape3D" id="SphereShape3D_55rie"]
+radius = 0.3
+
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "attack_tongue", "tongue_hitbox", "footstep_sfx", "jump_sfx", "landing_sfx")]
+collision_layer = 0
+script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
 hitboxDown = NodePath("Down Attack Hurtbox")
@@ -256,19 +373,18 @@ state_machine = NodePath("State_Machine")
 footstep_sfx = NodePath("FootstepSfx")
 jump_sfx = NodePath("JumpSfx")
 landing_sfx = NodePath("LandingSfx")
-JUMP_VELOCITY = 6.0
-max_health = 5
+attack_tongue = NodePath("AttackTongue")
+tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.05776596, 0)
+transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
 shape = SubResource("BoxShape3D_vj0l2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=866562291]
 pixel_size = 0.03
 billboard = 1
-texture_filter = 0
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_1haum")
-animation = &"attack"
 autoplay = "default"
 
 [node name="FootstepSfx" type="AudioStreamPlayer" parent="."]
@@ -323,9 +439,8 @@ shape = SubResource("SphereShape3D_vj0l2")
 debug_color = Color(0.2627451, 0.63529414, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1055626215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008008957, 2.0313027, 4.913394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
 top_level = true
-near = 0.422
 
 [node name="State_Machine" type="Node" parent="." unique_id=313428382 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8yach")
@@ -340,23 +455,53 @@ player_reference = NodePath("../..")
 script = ExtResource("7_1haum")
 player_reference = NodePath("../..")
 
-[node name="Interaction Area" type="Area3D" parent="." unique_id=936171539]
+[node name="Area3D" type="Area3D" parent="." unique_id=936171539]
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Area" unique_id=348662155]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348662155]
 shape = SubResource("SphereShape3D_eym7y")
 
-[node name="Semi-Solid Clip Area" type="Area3D" parent="." unique_id=541358067]
+[node name="SemiSolidClipBox" type="Area3D" parent="." unique_id=1962725852]
 collision_layer = 0
 collision_mask = 64
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi-Solid Clip Area" unique_id=1875849731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15751648, -0.011962891)
-shape = SubResource("BoxShape3D_1haum")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SemiSolidClipBox" unique_id=852405064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12760985, 0)
+shape = SubResource("BoxShape3D_cudoo")
+
+[node name="FootstepSfx" type="AudioStreamPlayer" parent="." unique_id=840421851]
+stream = ExtResource("8_step")
+volume_db = -6.0
+max_polyphony = 2
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=723620972]
+stream = ExtResource("9_jump")
+volume_db = -6.0
+
+[node name="LandingSfx" type="AudioStreamPlayer" parent="." unique_id=1186690864]
+stream = ExtResource("8_step")
+volume_db = -6.0
+
+[node name="AttackTongue" type="Sprite3D" parent="." unique_id=255749597]
+visible = false
+texture_filter = 2
+texture = ExtResource("16_sdofs")
+region_enabled = true
+region_rect = Rect2(-1.25, -1.25, 38, 14)
+
+[node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackTongue/TongueHitbox" unique_id=645249408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3136742, 0.024496019, 0)
+shape = SubResource("SphereShape3D_55rie")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Front Attack Hurtbox" to="." method="_on_front_attack_hitbox_area_entered"]
-[connection signal="body_entered" from="Semi-Solid Clip Area" to="." method="_on_semi_solid_clip_area_body_entered"]
-[connection signal="body_exited" from="Semi-Solid Clip Area" to="." method="_on_semi_solid_clip_area_body_exited"]
+[connection signal="body_entered" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_entered"]
+[connection signal="body_exited" from="SemiSolidClipBox" to="." method="_on_semi_solid_clip_area_body_exited"]
+[connection signal="area_entered" from="AttackTongue/TongueHitbox" to="." method="_on_tongue_hitbox_area_entered"]
