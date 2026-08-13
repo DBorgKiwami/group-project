@@ -27,7 +27,7 @@ func exit():
 func fire():
 	var newInstance = projectile_scene.instantiate()
 	newInstance.position = enemey_reference.position
-	newInstance.position.y -= fire_distance_from_floor + (fire_from_floor_variant * (projectiles_fired % 2))
+	newInstance.position.y += fire_distance_from_floor + (fire_from_floor_variant * (projectiles_fired%2))
 	if newInstance.position.x < 0:
 		newInstance.position.x -= fire_distance
 	else:

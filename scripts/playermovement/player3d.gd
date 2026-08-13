@@ -8,9 +8,12 @@ class_name Player3D
 @export var camera_pivot : Node3D
 @export var jump_sfx : AudioStreamPlayer3D
 @export var landing_sfx : AudioStreamPlayer3D
-
+@export var grapple_point_calc : Node3D
+@export var tongue : MeshInstance3D
 @export var SPEED = 5.0
+@export var SPRINT_SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
+@export var CAMERA_DISTANCE_FROM_GROUND = 1.0
 @export var CAMERA_SPEED = 0.5
 @export var CAMERA_PAN_SPEED = 5.0
 @export var jump_timer_max = 0.2
@@ -18,6 +21,9 @@ class_name Player3D
 @export var grapple_time = 0.3
 @export var bob_amplitude = 0.08
 @export var bob_speed = 8.0
+@export var normal_anim_speed := 1.0
+@export var sprint_anim_speed := 1.6
+@export var anim_speed_ramp := 3.0
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -30,11 +36,15 @@ var sprite_base_y = 0.0
 var animationdirection = "south"
 var has_been_airborne = false
 var physics_started = false
+var grapplearealist = []
+var current_anim_speed := 1.0
+var grapple_target := Vector3.ZERO
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
 	set_collision_mask_value(7, false)
 	pass
+
 
 func _ready():
 	print(global_position)
@@ -58,21 +68,43 @@ func _on_dialogue_done():
 #Except right now its just done in code anyways because im lazy
 #This is just a proof of concept for the mechanic and is in need of polish
 func grapple():
-	var areaPosition = grappleArea.get_overlapping_areas()[0].global_position
-	#if areaPosition < position:
-		#sprite.flip_h = true
-	#else:
-		#sprite.flip_h = false
-	#Tweens are for when animations are too static. They're good for stuff like this, where the grapple point at the end is never guaranteed
-	grappling = true;
+	var areaPosition = grapplearealist[0].global_position
+	grapple_target = areaPosition
+	grappling = true
+	if tongue:
+		tongue.visible = true
 	grappleTween = get_tree().create_tween()
 	grappleTween.tween_property(self, "position", areaPosition, grapple_time).set_trans(Tween.TRANS_SINE)
 	grappleTween.tween_callback(endGrapple)
 
 func endGrapple():
 	grappling = false
+	if tongue:
+		tongue.visible = false
+		
+func _update_tongue() -> void:
+	if not tongue:
+		return
+	var start := global_position
+	var end := grapple_target
+	var dist := start.distance_to(end)
+	if dist < 0.001:
+		return
+	var mid := start.lerp(end, 0.5)
+	tongue.global_position = mid
+	tongue.look_at(end, Vector3.UP)
+	tongue.rotate_object_local(Vector3.RIGHT, PI / 2.0)
+	tongue.scale = Vector3(0.4, dist, 0.4)
 
 func _input(event: InputEvent) -> void:
+	grapplearealist.sort_custom(custom_sorter)
+	
+	if !grapplearealist.is_empty():
+		grapplearealist[0].highlight()
+		
+		for i in range(1, grapplearealist.size()):
+			grapplearealist[i].unhighlight()
+	
 	var camera_dir := Input.get_vector("camera_left","camera_right","camera_up","camera_down")
 	camera_dir = Input.get_last_mouse_screen_velocity()
 	if camera_dir and !inDialogue and event is InputEventMouseMotion:
@@ -100,6 +132,8 @@ func _physics_process(delta: float) -> void:
 			set_collision_mask_value(7, true)
 		#Decrease jump timer whilst not on the floor
 		jump_timer -= delta;
+	if grappling:
+		_update_tongue()
 	
 	#If you're on the floor, you can jump
 	if is_on_floor():
@@ -129,15 +163,17 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	camera_pivot.global_position = camera_pivot.global_position.lerp(position, delta * CAMERA_PAN_SPEED)
+	var current_speed : float = SPRINT_SPEED if Input.is_action_pressed("sprint") else SPEED
+	
+	camera_pivot.global_position = camera_pivot.global_position.lerp(position + Vector3(0, CAMERA_DISTANCE_FROM_GROUND, 0), delta * CAMERA_PAN_SPEED)
 	if direction and !inDialogue:
 		lastDirection = direction
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 	else:
 		#Deceleration towards a velocity of 0x and 0z
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
 	#if !grappling:
 		#if velocity.x < 0:
 			#sprite.flip_h = true;
@@ -225,19 +261,43 @@ func _process(delta: float) -> void:
 	
 	print(animationdirection)
 	
+	# --- Sprint animation speed ramp ---
+	var target_anim_speed := sprint_anim_speed if Input.is_action_pressed("sprint") else normal_anim_speed
+	current_anim_speed = move_toward(current_anim_speed, target_anim_speed, anim_speed_ramp * delta)
+	sprite.speed_scale = current_anim_speed
+	
 	# Now that our SpriteFrames animations are named to match animationdirection
 	# exactly (e.g. "northeast" + "walk" = "northeastwalk"), we can build the
 	# animation name directly instead of a separate 4-direction if/elif block.
 	sprite.play(animationdirection + ("walk" if is_moving else "idle"))
 	pass
 
+#This is for Grappling
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	if area is GrapplePoint3D:
-		area.highlight()
-	pass # Replace with function body.
+	if area is not GrapplePoint3D:
+		return
+	
+	grapplearealist = grappleArea.get_overlapping_areas()
+	grapplearealist.sort_custom(custom_sorter)
+	
+	if !grapplearealist.is_empty():
+		grapplearealist[0].highlight()
+		
+		for i in range(1, grapplearealist.size()):
+			grapplearealist[i].unhighlight()
 
-
+#This is for Grappling
 func _on_area_3d_area_exited(area: Area3D) -> void:
-	if area is GrapplePoint3D:
-		area.unhighlight()
-	pass # Replace with function body.
+	if area is not GrapplePoint3D:
+		return
+	
+	area.unhighlight()
+	
+	grapplearealist = grappleArea.get_overlapping_areas()
+
+var home_pos = 0
+
+func custom_sorter(a,b) -> bool:
+	if a.global_position.distance_squared_to(grapple_point_calc.global_position) < b.global_position.distance_squared_to(grapple_point_calc.global_position):
+		return true
+	return false

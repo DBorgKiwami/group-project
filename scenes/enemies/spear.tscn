@@ -9,7 +9,7 @@ size = Vector3(1, 0.265, 1)
 [node name="Spear" type="CharacterBody3D" unique_id=735275481]
 script = ExtResource("1_x05wj")
 lifetime = 10.0
-speed = 3.0
+speed = 10.0
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=55097773]
 texture = ExtResource("2_vkx0n")
