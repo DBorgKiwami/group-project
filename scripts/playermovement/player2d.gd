@@ -207,6 +207,7 @@ func tongue_attack() -> void:
 
 	if tongue_hitbox:
 		tongue_hitbox.position = Vector3(tongue_hitbox_offset, 0, 0)
+		tongue_hitbox.monitoring = true
 
 	var extend_tween := get_tree().create_tween()
 	extend_tween.set_parallel(true)
@@ -223,6 +224,8 @@ func _end_tongue_attack() -> void:
 	tongue_attacking = false
 	if attack_tongue:
 		attack_tongue.visible = false
+	if tongue_hitbox:
+		tongue_hitbox.monitoring = false
 
 func _on_tongue_hitbox_area_entered(area: Area3D) -> void:
 	if area is EnemyHitbox:
