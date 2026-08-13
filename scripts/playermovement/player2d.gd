@@ -31,6 +31,7 @@ var current_anim_speed := 1.0
 @export_range(0.0, 0.2, 0.01) var footstep_pitch_variation := 0.04
 @export var attack_tongue : Sprite3D
 @export var tongue_hitbox : Area3D
+@export var tongue_hitbox_offset := 0.5
 @export var tongue_attack_range := 3.0
 @export var tongue_attack_speed := 0.15
 @export var tongue_attack_damage := 1
@@ -203,22 +204,19 @@ func tongue_attack() -> void:
 	attack_tongue.rotation = Vector3.ZERO
 	attack_tongue.scale = Vector3(0.01, 1.0, 1.0)
 	attack_tongue.position = Vector3.ZERO
+
 	if tongue_hitbox:
-		tongue_hitbox.position = Vector3.ZERO
+		tongue_hitbox.position = Vector3(tongue_hitbox_offset, 0, 0)
 
 	var extend_tween := get_tree().create_tween()
 	extend_tween.set_parallel(true)
 	extend_tween.tween_property(attack_tongue, "scale:x", tongue_attack_range, tongue_attack_speed)
 	extend_tween.tween_property(attack_tongue, "position:x", facing_dir * tongue_attack_range / 2.0, tongue_attack_speed)
-	if tongue_hitbox:
-		extend_tween.tween_property(tongue_hitbox, "position:x", facing_dir * tongue_attack_range, tongue_attack_speed)
 
 	var retract_tween := get_tree().create_tween()
 	retract_tween.set_parallel(true)
 	retract_tween.tween_property(attack_tongue, "scale:x", 0.01, tongue_attack_speed).set_delay(tongue_attack_speed)
 	retract_tween.tween_property(attack_tongue, "position:x", 0.0, tongue_attack_speed).set_delay(tongue_attack_speed)
-	if tongue_hitbox:
-		retract_tween.tween_property(tongue_hitbox, "position:x", 0.0, tongue_attack_speed).set_delay(tongue_attack_speed)
 	retract_tween.tween_callback(_end_tongue_attack).set_delay(tongue_attack_speed * 2.0)
 	
 func _end_tongue_attack() -> void:

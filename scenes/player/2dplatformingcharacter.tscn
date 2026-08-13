@@ -475,9 +475,12 @@ region_enabled = true
 region_rect = Rect2(-1.25, -1.25, 38, 14)
 
 [node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackTongue/TongueHitbox" unique_id=645249408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4695373, -0.11834657, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3136742, 0.024496019, 0)
 shape = SubResource("SphereShape3D_55rie")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
