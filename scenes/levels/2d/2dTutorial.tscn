@@ -18,6 +18,15 @@
 [ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="7_jl56t"]
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
+[ext_resource type="Script" path="res://scripts/audio/tutorial_combat_audio.gd" id="10_audio"]
+[ext_resource type="AudioStream" path="res://audio/music/combatstart.ogg" id="11_start"]
+[ext_resource type="AudioStream" path="res://audio/music/combatmiddle.ogg" id="12_middle"]
+[ext_resource type="AudioStream" path="res://audio/music/combatfinal.ogg" id="13_final"]
+[ext_resource type="AudioStream" path="res://audio/music/swordblow.ogg" id="14_sword"]
+[ext_resource type="AudioStream" path="res://audio/music/enemycry.ogg" id="15_cry"]
+[ext_resource type="AudioStream" path="res://audio/music/victory.ogg" id="16_victory"]
+[ext_resource type="AudioStream" path="res://audio/music/birdschirping.ogg" id="17_birds"]
+[ext_resource type="AudioStream" path="res://audio/music/tutorial_breeze.ogg" id="18_breeze"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
@@ -177,12 +186,49 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen", "attack_sfx") groups=["Player"] instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 SPRINT_SPEED = 6.5
 JUMP_VELOCITY = 6.0
+attack_sfx = NodePath("../TutorialAudio/SwordBlow")
+
+[node name="TutorialAudio" type="Node" parent="." node_paths=PackedStringArray("combat_player", "enemy_cry_player", "victory_player", "birds_player", "breeze_player")]
+script = ExtResource("10_audio")
+combat_player = NodePath("CombatMusic")
+combat_start = ExtResource("11_start")
+combat_middle = ExtResource("12_middle")
+combat_final = ExtResource("13_final")
+enemy_cry_player = NodePath("EnemyCry")
+victory_player = NodePath("Victory")
+birds_player = NodePath("BirdsChirping")
+breeze_player = NodePath("Breeze")
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="TutorialAudio"]
+volume_db = -12.0
+
+[node name="SwordBlow" type="AudioStreamPlayer" parent="TutorialAudio"]
+stream = ExtResource("14_sword")
+volume_db = -6.0
+max_polyphony = 2
+
+[node name="EnemyCry" type="AudioStreamPlayer" parent="TutorialAudio"]
+stream = ExtResource("15_cry")
+volume_db = -6.0
+max_polyphony = 3
+
+[node name="Victory" type="AudioStreamPlayer" parent="TutorialAudio"]
+stream = ExtResource("16_victory")
+volume_db = -6.0
+
+[node name="BirdsChirping" type="AudioStreamPlayer" parent="TutorialAudio"]
+stream = ExtResource("17_birds")
+volume_db = -18.0
+
+[node name="Breeze" type="AudioStreamPlayer" parent="TutorialAudio"]
+stream = ExtResource("18_breeze")
+volume_db = -20.0
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.51535)

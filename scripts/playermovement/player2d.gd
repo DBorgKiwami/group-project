@@ -8,6 +8,7 @@ class_name Player2D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
 @export var state_machine : State_Machine
+@export var attack_sfx : AudioStreamPlayer
 @export var footstep_sfx : AudioStreamPlayer
 @export var jump_sfx : AudioStreamPlayer
 @export var landing_sfx : AudioStreamPlayer
@@ -130,14 +131,18 @@ func _update_footsteps(delta: float) -> void:
 	if footstep_sfx == null:
 		return
 
-	var is_walking := absf(velocity.x) > 0.1 and is_on_floor() and not blocking
+	var is_walking := (
+		absf(velocity.x) > 0.1
+		and is_on_floor()
+		and not blocking
+		and not is_attacking
+	)
 	if not is_walking:
 		_was_walking = false
 		_time_until_next_step = 0.0
 		return
 
-	# The landing sound already uses the step sample, so do not double it with
-	# an immediate walking step on the same physics frame.
+	# Landing already uses the step sample, so do not double it on this frame.
 	if _just_landed:
 		_was_walking = true
 		_time_until_next_step = footstep_interval
@@ -163,7 +168,6 @@ func _play_footstep() -> void:
 	footstep_sfx.pitch_scale = 1.0 + pitch_offset
 	_footstep_high_pitch = not _footstep_high_pitch
 	footstep_sfx.play()
-
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered front")
 	if area is EnemyHitbox:
