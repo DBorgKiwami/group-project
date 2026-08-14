@@ -359,7 +359,7 @@ size = Vector3(1.56, 1.5641162, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_55rie"]
 radius = 0.3
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "footstep_sfx", "jump_sfx", "landing_sfx", "attack_tongue", "tongue_hitbox")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -370,9 +370,9 @@ player_hitbox = NodePath("PlayerHitbox")
 player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
-footstep_sfx = NodePath("FootstepSfx")
 jump_sfx = NodePath("JumpSfx")
 landing_sfx = NodePath("LandingSfx")
+footstep_sfx = NodePath("FootstepSfx")
 attack_tongue = NodePath("AttackTongue")
 tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 

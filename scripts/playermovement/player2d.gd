@@ -13,7 +13,6 @@ class_name Player2D
 @export var landing_sfx : AudioStreamPlayer
 @export var attack_sfx : AudioStreamPlayer
 @export var footstep_sfx : AudioStreamPlayer
-@export var jump_sfx : AudioStreamPlayer
 @export var hud : Node2D
 @export var death_screen : Node2D
 @export var SPEED = 5.0
