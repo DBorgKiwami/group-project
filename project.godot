@@ -26,6 +26,10 @@ Hitstopmanager="*uid://cgkxriraiat40"
 
 window/stretch/mode="canvas_items"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={

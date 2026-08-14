@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="2_f85je"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="3_bli0r"]
 [ext_resource type="PackedScene" uid="uid://bs7yiidud6emp" path="res://scenes/elements/coin_2d.tscn" id="4_88ofr"]
-[ext_resource type="Script" path="res://scripts/audio/combat_music.gd" id="5_combat"]
+[ext_resource type="Script" uid="uid://byrwtjypnp54k" path="res://scripts/audio/combat_music.gd" id="5_combat"]
 [ext_resource type="AudioStream" uid="uid://cflbms0hnc8b1" path="res://audio/music/combatstart.ogg" id="6_start"]
 [ext_resource type="AudioStream" uid="uid://itl54bbb23vm" path="res://audio/music/combatmiddle.ogg" id="7_middle"]
 [ext_resource type="AudioStream" uid="uid://ba0olmu72gp5v" path="res://audio/music/combatfinal.ogg" id="8_final"]
@@ -21,7 +21,7 @@
 
 [node name="Testlevel2d" type="Node3D" unique_id=1921717961]
 
-[node name="CombatMusic" type="AudioStreamPlayer" parent="."]
+[node name="CombatMusic" type="AudioStreamPlayer" parent="." unique_id=1400823153]
 volume_db = -12.0
 script = ExtResource("5_combat")
 combat_start = ExtResource("6_start")
@@ -44,7 +44,7 @@ debug_color = Color(1, 1, 1, 1)
 [node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("punch_sfx") instance=ExtResource("1_o0xbc")]
 punch_sfx = NodePath("../PunchSfx")
 
-[node name="PunchSfx" type="AudioStreamPlayer" parent="."]
+[node name="PunchSfx" type="AudioStreamPlayer" parent="." unique_id=172797065]
 stream = ExtResource("10_punch")
 volume_db = -6.0
 max_polyphony = 2
