@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="6_q6280"]
 [ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="8_61bjk"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
+[ext_resource type="AudioStream" path="res://audio/music/enemycry.ogg" id="9_enemy_cry"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
 radius = 0.620357
@@ -96,13 +97,14 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_eexk2"]
 radius = 0.766
 
-[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler")]
+[node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler", "defeat_sfx") groups=["combat_enemy"]]
 collision_layer = 0
 script = ExtResource("1_v0lon")
 state_machine = NodePath("State Machine")
 hitbox = NodePath("Hitbox")
 hurtbox = NodePath("EnemyHurtbox")
 animationControler = NodePath("AnimationPlayer")
+defeat_sfx = NodePath("DefeatSfx")
 drop = ExtResource("2_dh00q")
 
 [node name="Node3D" type="CollisionShape3D" parent="." unique_id=259154116]
@@ -139,6 +141,11 @@ debug_color = Color(0.9780964, 0.14949349, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=700514418]
 libraries/ = SubResource("AnimationLibrary_dh00q")
+
+[node name="DefeatSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_enemy_cry")
+volume_db = -4.0
+max_polyphony = 2
 
 [node name="EnemyHurtbox" type="Area3D" parent="." unique_id=777189720]
 collision_layer = 0

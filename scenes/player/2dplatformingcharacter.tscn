@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
+[ext_resource type="AudioStream" path="res://audio/music/swordblow.ogg" id="10_sword"]
+[ext_resource type="AudioStream" path="res://audio/music/frogcry.ogg" id="11_hurt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -355,7 +357,7 @@ radius = 0.8824353
 [sub_resource type="BoxShape3D" id="BoxShape3D_cudoo"]
 size = Vector3(1.56, 1.5641162, 1)
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "footstep_sfx", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -366,6 +368,11 @@ player_hitbox = NodePath("PlayerHitbox")
 player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
+footstep_sfx = NodePath("FootstepSfx")
+jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
+attack_sfx = NodePath("AttackSfx")
+hurt_sfx = NodePath("HurtSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
@@ -450,7 +457,7 @@ shape = SubResource("BoxShape3D_cudoo")
 
 [node name="FootstepSfx" type="AudioStreamPlayer" parent="." unique_id=840421851]
 stream = ExtResource("8_step")
-volume_db = -6.0
+volume_db = -10.0
 max_polyphony = 2
 
 [node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=723620972]
@@ -459,7 +466,17 @@ volume_db = -6.0
 
 [node name="LandingSfx" type="AudioStreamPlayer" parent="." unique_id=1186690864]
 stream = ExtResource("8_step")
-volume_db = -6.0
+volume_db = -10.0
+
+[node name="AttackSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_sword")
+volume_db = -4.0
+max_polyphony = 2
+
+[node name="HurtSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hurt")
+volume_db = -3.0
+max_polyphony = 2
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]

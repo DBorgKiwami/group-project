@@ -23,6 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://3mqpvpiwn8wi" path="res://scenes/elements/spikes.tscn" id="21_t7xc8"]
 [ext_resource type="PackedScene" uid="uid://bxo3f2kdyyr4y" path="res://scenes/elements/scene_transition.tscn" id="22_i68a1"]
 [ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="23_n4vy0"]
+[ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="30_damp"]
+[ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="31_pond"]
+[ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="32_breeze"]
+[ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="33_insect"]
+[ext_resource type="AudioStream" path="res://audio/music/frogcroaking.ogg" id="34_frog"]
+[ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="35_ambience"]
+[ext_resource type="AudioStream" uid="uid://bi26unojgh4qe" path="res://audio/music/mainbgm.wav" id="36_main_bgm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybvn3"]
 size = Vector3(2.4766235, 1, 2.0994873)
@@ -644,6 +651,37 @@ data = PackedVector3Array(0, 1, 0.5, 0.049, 1, 0.4976, 0, 0.59999996, 0.5, 0.049
 size = Vector3(48.342743, 3.5433655, 63.94214)
 
 [node name="Testlevel" type="Node3D" unique_id=674870779]
+
+[node name="MainBgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_main_bgm")
+volume_db = -18.0
+autoplay = true
+
+[node name="DampAndWatery" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_damp")
+volume_db = -6.0
+
+[node name="PondSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_pond")
+volume_db = -4.0
+
+[node name="Breeze" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_breeze")
+
+[node name="InsectChirping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_insect")
+
+[node name="FrogCroaking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_frog")
+volume_db = -16.0
+
+[node name="PondAmbience" type="Node" parent="." node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "frog_croaking")]
+script = ExtResource("35_ambience")
+damp_and_watery = NodePath("../DampAndWatery")
+pond_sounds = NodePath("../PondSounds")
+breeze = NodePath("../Breeze")
+insect_chirping = NodePath("../InsectChirping")
+frog_croaking = NodePath("../FrogCroaking")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=1535395532 instance=ExtResource("1_b81ow")]
 JUMP_VELOCITY = 6.0

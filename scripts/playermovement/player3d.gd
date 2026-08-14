@@ -8,6 +8,8 @@ class_name Player3D
 @export var camera_pivot : Node3D
 @export var jump_sfx : AudioStreamPlayer3D
 @export var landing_sfx : AudioStreamPlayer3D
+@export var grapple_sfx : AudioStreamPlayer3D
+@export var grapple_notification_sfx : AudioStreamPlayer
 @export var grapple_point_calc : Node3D
 @export var tongue : MeshInstance3D
 @export var SPEED = 5.0
@@ -39,6 +41,7 @@ var physics_started = false
 var grapplearealist = []
 var current_anim_speed := 1.0
 var grapple_target := Vector3.ZERO
+@onready var footstep_controller: Node = get_node_or_null("FootstepController")
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -71,6 +74,8 @@ func grapple():
 	var areaPosition = grapplearealist[0].global_position
 	grapple_target = areaPosition
 	grappling = true
+	if grapple_sfx:
+		grapple_sfx.play()
 	if tongue:
 		tongue.visible = true
 	grappleTween = get_tree().create_tween()
@@ -120,9 +125,12 @@ func _input(event: InputEvent) -> void:
 		if grappleArea.has_overlapping_areas() and !grappling:
 			grapple()
 	if event.is_action_pressed("debug_swap_level"):
-		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
+		Scenecontroler.load_scene_with_transition_sound(
+			"res://scenes/levels/2d/testlevel2d.tscn"
+		)
 
 func _physics_process(delta: float) -> void:
+	_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
 	# Add the gravity.
@@ -187,7 +195,9 @@ func _physics_process(delta: float) -> void:
 		if not on_floor_now:
 			has_been_airborne = true
 		elif has_been_airborne:
-			if landing_sfx:
+			if footstep_controller != null and footstep_controller.has_method("play_surface_step"):
+				footstep_controller.play_surface_step()
+			elif landing_sfx:
 				landing_sfx.play()
 			has_been_airborne = false
 	else:
@@ -205,6 +215,21 @@ func _physics_process(delta: float) -> void:
 			bounce(last_collision.get_collider().bounce_strength)
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
+
+
+func _update_grapple_notification() -> void:
+	if grapple_notification_sfx == null:
+		return
+	var grapple_available := (
+		grappleArea.has_overlapping_areas()
+		and not grappling
+		and not inDialogue
+	)
+	if grapple_available:
+		if not grapple_notification_sfx.playing:
+			grapple_notification_sfx.play()
+	elif grapple_notification_sfx.playing:
+		grapple_notification_sfx.stop()
 
 func _process(delta: float) -> void:
 	# --- Sprite bob ---

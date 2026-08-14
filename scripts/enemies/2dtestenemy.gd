@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal defeated
+
 @export var state_machine : State_Machine
 @export var hitbox : EnemyHitbox
 @export var hurtbox : Area3D
@@ -7,11 +9,20 @@ extends CharacterBody3D
 @export var damage : int = 1
 @export var drop : PackedScene
 @export var dropamount : int = 3
+@export var defeat_sfx : AudioStreamPlayer
+var _is_defeated := false
 
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
 
 func die():
+	if _is_defeated:
+		return
+	_is_defeated = true
+	if defeat_sfx:
+		defeat_sfx.pitch_scale = randf_range(0.96, 1.04)
+		defeat_sfx.play()
+	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
 	if drop:

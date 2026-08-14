@@ -5,7 +5,8 @@ extends Node
 @export var breeze: AudioStreamPlayer
 @export var insect_chirping: AudioStreamPlayer
 @export var insects_chirping: AudioStreamPlayer
-@export_range(-6.0, 8.0, 0.5) var ambience_gain_db := 6.0
+@export var frog_croaking: AudioStreamPlayer
+@export_range(-6.0, 12.0, 0.5) var ambience_gain_db := 8.0
 
 var _random := RandomNumberGenerator.new()
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	_play_breezes()
 	_play_single_insect()
 	_play_insect_group()
+	_play_frog()
 
 
 func _apply_ambience_gain() -> void:
@@ -28,6 +30,7 @@ func _apply_ambience_gain() -> void:
 		breeze,
 		insect_chirping,
 		insects_chirping,
+		frog_croaking,
 	]:
 		if player != null:
 			player.volume_db += ambience_gain_db
@@ -57,7 +60,7 @@ func _vary_pond_layer() -> void:
 		tween.tween_property(
 			pond_sounds,
 			"volume_db",
-			_random.randf_range(-13.0, -9.0) + ambience_gain_db,
+			_random.randf_range(-9.0, -4.0) + ambience_gain_db,
 			transition_time
 		).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(
@@ -69,23 +72,21 @@ func _vary_pond_layer() -> void:
 
 
 func _play_breezes() -> void:
+	await get_tree().create_timer(_random.randf_range(2.0, 4.0)).timeout
 	while is_inside_tree():
-		await get_tree().create_timer(_random.randf_range(5.0, 9.0)).timeout
-		if not is_inside_tree():
-			return
-		_play_with_variation(breeze, -17.0, -12.5, 0.98, 1.02)
+		_play_with_variation(breeze, -9.0, -4.0, 0.98, 1.02)
 		if breeze != null and breeze.playing:
 			await breeze.finished
+		await get_tree().create_timer(_random.randf_range(5.0, 9.0)).timeout
 
 
 func _play_single_insect() -> void:
+	await get_tree().create_timer(_random.randf_range(1.0, 2.0)).timeout
 	while is_inside_tree():
-		await get_tree().create_timer(_random.randf_range(6.0, 7.0)).timeout
-		if not is_inside_tree():
-			return
-		_play_with_variation(insect_chirping, -15.0, -10.5, 0.94, 1.06)
+		_play_with_variation(insect_chirping, -8.0, -3.0, 0.94, 1.06)
 		if insect_chirping != null and insect_chirping.playing:
 			await insect_chirping.finished
+		await get_tree().create_timer(_random.randf_range(6.0, 7.0)).timeout
 
 
 func _play_insect_group() -> void:
@@ -93,9 +94,20 @@ func _play_insect_group() -> void:
 		await get_tree().create_timer(_random.randf_range(1.8, 2.2)).timeout
 		if not is_inside_tree():
 			return
-		_play_with_variation(insects_chirping, -18.0, -13.0, 0.95, 1.05)
+		_play_with_variation(insects_chirping, -12.0, -7.0, 0.95, 1.05)
 		if insects_chirping != null and insects_chirping.playing:
 			await insects_chirping.finished
+
+
+func _play_frog() -> void:
+	await get_tree().create_timer(_random.randf_range(3.0, 5.0)).timeout
+	while is_inside_tree():
+		# With the shared +8 dB ambience gain, this produces a restrained
+		# final croak range of about -16 to -12 dB.
+		_play_with_variation(frog_croaking, -24.0, -20.0, 0.92, 1.07)
+		if frog_croaking != null and frog_croaking.playing:
+			await frog_croaking.finished
+		await get_tree().create_timer(_random.randf_range(6.0, 7.0)).timeout
 
 
 func _play_with_variation(
