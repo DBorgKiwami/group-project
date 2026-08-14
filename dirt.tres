@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://deyox3ys7mlic"]
-
-[ext_resource type="Texture2D" uid="uid://ud03jkkrl6jm" path="res://sprites/textures/orangetexture_08.png" id="1_05lc2"]
-
-[resource]
-albedo_color = Color(0.66, 0.66, 0.66, 1)
-albedo_texture = ExtResource("1_05lc2")
-uv1_triplanar = true
-uv1_world_triplanar = true

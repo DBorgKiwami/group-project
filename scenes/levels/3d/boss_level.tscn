@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://qwbnuapvn1at"]
+
+[ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_fiwuu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fiwuu"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fiwuu"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Bosslevel" type="Node3D" unique_id=1741385795]
+
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "player_hitbox", "player_camera", "sprite", "state_machine") instance=ExtResource("1_fiwuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91829675, 0)
+hitboxFront = NodePath("Front Attack Hurtbox")
+hitboxUp = NodePath("Up Attack Hurtbox")
+hitboxDown = NodePath("Down Attack Hurtbox")
+player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
+sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1071969277]
+transform = Transform3D(64, 0, 0, 0, 0.1, 0, 0, 0, 64, 0, 0, 0)
+mesh = SubResource("PlaneMesh_fiwuu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1085472790]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=413526089]
+shape = SubResource("ConcavePolygonShape3D_fiwuu")
+
+[editable path="2Dplatformingcharacter"]
