@@ -418,8 +418,9 @@ monitoring = false
 polygon = PackedVector2Array(-0.2929237, 0.74979186, -0.2929237, 0.74979186, -0.39307356, 1.2155163, -0.26653796, 1.6309919, 0.051420122, 1.8435464, 0.26844496, 1.9411922, 0.46642447, 1.7717667, 0.5576379, 1.3863337, 0.56856906, 0.9347969, 0.43262535, 0.6852319)
 
 [node name="Front Attack Hurtbox" type="Area3D" parent="." unique_id=2012989158]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 6
 monitoring = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Front Attack Hurtbox" unique_id=1128966999]

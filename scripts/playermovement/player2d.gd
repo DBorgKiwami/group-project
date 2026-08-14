@@ -175,12 +175,14 @@ func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
+
 func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered up")
 	if area is EnemyHitbox:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
+
 func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered down")
 	if area is EnemyHitbox:
@@ -194,6 +196,7 @@ func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
 	print("Hello")
 	clipping = true
 	pass # Replace with function body.
+
 func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
 	clipping = false
 	pass # Replace with function body.

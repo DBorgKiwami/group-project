@@ -13,13 +13,14 @@ var _is_defeated := false
 
 func _ready():
 	hitbox.connect("on_hit", hitbox_hit)
+
 func die():
 	if _is_defeated:
 		return
 	_is_defeated = true
 	if hurtbox:
-		hurtbox.monitoring = false
-		hurtbox.monitorable = false
+		set_deferred("monitorable", false)
+		set_deferred("monitoring", false)
 	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
@@ -35,9 +36,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
+	
 func hitbox_hit(damage: Variant) -> void:
 	state_machine.on_child_transition(state_machine.current_state, "Dead")
 	pass # Replace with function body.
+
 func _on_enemy_hurtbox_area_entered(area: Area3D) -> void:
 	print("Gottem")
 	if area is PlayerHitbox:
