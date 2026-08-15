@@ -216,7 +216,7 @@ animations = [{
 radius = 1.6422604
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vws06"]
-radius = 2.5
+radius = 6.5
 
 [sub_resource type="Animation" id="Animation_g608u"]
 length = 0.001
@@ -257,7 +257,7 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dq5nv"]
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx") groups=["Player"]]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
@@ -266,8 +266,6 @@ grappleArea = NodePath("Grapple Area")
 animationControler = NodePath("AnimationPlayer")
 player_camera = NodePath("SpringArm3D/Camera3D")
 camera_pivot = NodePath("SpringArm3D")
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=479806587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08100891, 0.0041069984)
