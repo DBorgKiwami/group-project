@@ -1,6 +1,7 @@
 extends CanvasLayer
 @export var main_menu_scene_path : String = "res://scenes/menu/menu.tscn"
 @onready var visual: Control = $Control
+@onready var popup_sfx: AudioStreamPlayer = $PopupSfx
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -17,10 +18,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func toggle_pause() -> void:
-	get_tree().paused = not get_tree().paused
+	var opening := not get_tree().paused
+	get_tree().paused = opening
 	visible = get_tree().paused
 	if visual:
 		visual.visible = get_tree().paused
+	if opening and popup_sfx:
+		popup_sfx.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if get_tree().paused else Input.MOUSE_MODE_CAPTURED)
 
 func _on_resume_pressed() -> void:

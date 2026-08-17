@@ -9,6 +9,7 @@ signal defeated
 @export var damage : int = 1
 @export var drop : PackedScene
 @export var dropamount : int = 3
+@export var defeat_sfx : AudioStreamPlayer
 var _is_defeated := false
 
 func _ready():
@@ -18,6 +19,9 @@ func die():
 	if _is_defeated:
 		return
 	_is_defeated = true
+	if defeat_sfx:
+		defeat_sfx.pitch_scale = randf_range(0.96, 1.04)
+		defeat_sfx.play()
 	if hurtbox:
 		set_deferred("monitorable", false)
 		set_deferred("monitoring", false)

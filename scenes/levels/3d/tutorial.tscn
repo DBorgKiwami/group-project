@@ -4,10 +4,6 @@
 [ext_resource type="Material" uid="uid://deyox3ys7mlic" path="res://materials/dirt.tres" id="2_s1yo8"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="3_5uatd"]
 [ext_resource type="Material" uid="uid://c20uslp7vniq7" path="res://materials/lilypad.tres" id="4_5uatd"]
-[ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="5_step"]
-[ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="6_footsteps"]
-[ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="7_water_step"]
-[ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="8_lotus_step"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="9_damp"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="10_pond"]
 [ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="11_breeze"]
@@ -47,28 +43,6 @@ insects_chirping = NodePath("../InsectsChirping")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("1_u5d63")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7062906, -3.2152607)
-
-[node name="FootstepAudio2" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=206836519]
-stream = ExtResource("5_step")
-volume_db = -4.0
-max_distance = 18.0
-
-[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=46478128]
-stream = ExtResource("7_water_step")
-volume_db = -4.0
-max_distance = 18.0
-
-[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="3Dplatformingcharacter" unique_id=1801788238]
-stream = ExtResource("8_lotus_step")
-volume_db = -4.0
-max_distance = 18.0
-
-[node name="FootstepController2" type="Node" parent="3Dplatformingcharacter" unique_id=1777630259 node_paths=PackedStringArray("audio_player", "water_audio_player", "lotus_audio_player", "sprite")]
-script = ExtResource("6_footsteps")
-audio_player = NodePath("../FootstepAudio")
-water_audio_player = NodePath("../WaterFootstepAudio")
-lotus_audio_player = NodePath("../LotusFootstepAudio")
-sprite = NodePath("../AnimatedSprite3D")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1982583864]
 use_collision = true

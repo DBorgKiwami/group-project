@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/menubgm.ogg-cdbe004706ec012cf955cae56ee3f8e3.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

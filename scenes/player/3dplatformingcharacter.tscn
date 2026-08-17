@@ -28,6 +28,11 @@
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="26_jump"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="27_land"]
 [ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="28_dq5nv"]
+[ext_resource type="AudioStream" path="res://audio/music/footstepinwater.ogg" id="29_water_step"]
+[ext_resource type="AudioStream" path="res://audio/music/steponlotusleaf.ogg" id="30_lotus_step"]
+[ext_resource type="AudioStream" path="res://audio/music/tonguegrappling.ogg" id="31_grapple"]
+[ext_resource type="AudioStream" path="res://audio/music/notificationbeep.ogg" id="32_grapple_notification"]
+[ext_resource type="AudioStream" path="res://audio/music/stepongrass.ogg" id="33_grass_step"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
 radius = 0.317
@@ -265,7 +270,7 @@ height = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40gki"]
 albedo_color = Color(0.76953125, 0.49298096, 0.49298096, 1)
 
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "grapple_point_calc", "tongue") groups=["Player"]]
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx", "grapple_sfx", "grapple_notification_sfx", "grapple_point_calc", "tongue") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
@@ -274,6 +279,10 @@ grappleArea = NodePath("Grapple Area")
 animationControler = NodePath("AnimationPlayer")
 player_camera = NodePath("SpringArm3D/Camera3D")
 camera_pivot = NodePath("SpringArm3D")
+jump_sfx = NodePath("JumpSfx2")
+landing_sfx = NodePath("LandingSfx2")
+grapple_sfx = NodePath("GrappleSfx")
+grapple_notification_sfx = NodePath("GrappleNotificationSfx")
 grapple_point_calc = NodePath("SpringArm3D/Camera3D/GrappleDistanceCalc")
 tongue = NodePath("Tongue")
 
@@ -292,24 +301,57 @@ animation = &"westwalk"
 
 [node name="JumpSfx2" type="AudioStreamPlayer3D" parent="." unique_id=1186266927]
 stream = ExtResource("26_jump")
-volume_db = -12.0
+volume_db = -4.0
 max_db = 0.0
 max_distance = 18.0
 
 [node name="LandingSfx2" type="AudioStreamPlayer3D" parent="." unique_id=1953854100]
 stream = ExtResource("27_land")
-volume_db = -12.0
+volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
+
+[node name="GrappleSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("31_grapple")
+volume_db = -2.0
+max_db = 0.0
+max_distance = 24.0
+
+[node name="GrappleNotificationSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_grapple_notification")
+volume_db = -12.0
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1747575922]
 stream = ExtResource("27_land")
-volume_db = -12.0
+volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="FootstepController" type="Node" parent="." unique_id=1364249115]
+[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("29_water_step")
+volume_db = -4.0
+max_db = 0.0
+max_distance = 18.0
+
+[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("30_lotus_step")
+volume_db = -4.0
+max_db = 0.0
+max_distance = 18.0
+
+[node name="GrassFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("33_grass_step")
+volume_db = -2.0
+max_db = 0.0
+max_distance = 18.0
+
+[node name="FootstepController" type="Node" parent="." unique_id=1364249115 node_paths=PackedStringArray("audio_player", "water_audio_player", "lotus_audio_player", "grass_audio_player", "sprite")]
 script = ExtResource("28_dq5nv")
+audio_player = NodePath("../FootstepAudio")
+water_audio_player = NodePath("../WaterFootstepAudio")
+lotus_audio_player = NodePath("../LotusFootstepAudio")
+grass_audio_player = NodePath("../GrassFootstepAudio")
+sprite = NodePath("../AnimatedSprite3D")
 
 [node name="Interaction Area" type="Area3D" parent="." unique_id=1412579038]
 collision_layer = 32

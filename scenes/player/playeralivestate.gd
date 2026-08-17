@@ -90,12 +90,14 @@ func input(event: InputEvent):
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
 		print("Down")
 		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
 		player_reference.animationController.play("attack_down")
 		_play_attack_sfx()
 		return
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_up"):
 		print("Up")
 		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
 		player_reference.animationController.play("attack_up")
 		_play_attack_sfx()
 		return
@@ -103,6 +105,7 @@ func input(event: InputEvent):
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
 		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
 		player_reference.animationController.play("attack")
 		_play_attack_sfx()
 	if event.is_action_pressed("grapple") and player_reference.block_cooldown < 0:
