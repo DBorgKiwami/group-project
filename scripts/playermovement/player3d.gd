@@ -70,10 +70,11 @@ func _ready():
 
 func _on_dialogue_display(_dialogue):
 	inDialogue = true
+	print("Dialogue started, inDialogue=", inDialogue)
 
 func _on_dialogue_done():
 	inDialogue = false
-
+	print("Dialogue done, inDialogue=", inDialogue)
 
 #Written as a function because of Godot's "Call Method" track in animation player. This means instead of having to time everything using code alone, we can do it in the animation player!
 #Except right now its just done in code anyways because im lazy
