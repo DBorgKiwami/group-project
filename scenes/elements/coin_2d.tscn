@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dr6xtdeda22" path="res://scenes/elements/coin_2d.gd" id="1_0r3p3"]
 [ext_resource type="Texture2D" uid="uid://dapcks5a16xh2" path="res://sprites/props/seedbead16pixel.png" id="2_0r3p3"]
-[ext_resource type="AudioStream" path="res://audio/music/collectcoin.ogg" id="2_collect"]
+[ext_resource type="AudioStream" path="res://audio/music/collectcoin.ogg" id="3_collect"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r3p3"]
 height = 0.5
@@ -12,12 +12,12 @@ radius = 0.20751953
 height = 0.5
 radius = 0.27392578
 
-[node name="Coin2D" type="RigidBody3D" unique_id=1596631298 node_paths=PackedStringArray("collection_area")]
+[node name="Coin2D" type="RigidBody3D" unique_id=1596631298 node_paths=PackedStringArray("collection_area", "collect_sfx")]
 collision_layer = 0
 axis_lock_linear_z = true
 script = ExtResource("1_0r3p3")
 collection_area = NodePath("Area3D")
-collection_sound = ExtResource("2_collect")
+collect_sfx = NodePath("CollectSfx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1036006980]
 pixel_size = 0.02
@@ -35,5 +35,9 @@ collision_mask = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1537750841]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_85i4e")
+
+[node name="CollectSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_collect")
+volume_db = -5.0
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

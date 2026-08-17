@@ -1,18 +1,28 @@
 [gd_scene format=3 uid="uid://vbsrhde6d3bk"]
 
 [ext_resource type="Script" uid="uid://bxf6fwjt4xq1o" path="res://spear.gd" id="1_x05wj"]
-[ext_resource type="Texture2D" uid="uid://cu37h3xemi28f" path="res://sprites/enemies/enemy sprites/spear.png" id="2_vkx0n"]
+[ext_resource type="Texture2D" path="res://sprites/enemies/dragonfly_effects/12_projectile_1ststage.png" id="2_projectile"]
+[ext_resource type="Texture2D" path="res://sprites/enemies/dragonfly_effects/13_projectile_2ndstage.png" id="3_impact"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vkx0n"]
 size = Vector3(1, 0.265, 1)
 
-[node name="Spear" type="CharacterBody3D" unique_id=735275481]
+[node name="Spear" type="CharacterBody3D" unique_id=735275481 node_paths=PackedStringArray("projectile_sprite", "hurtbox")]
 script = ExtResource("1_x05wj")
 lifetime = 10.0
 speed = 10.0
+projectile_sprite = NodePath("Sprite3D")
+hurtbox = NodePath("Hurtbox")
+impact_texture = ExtResource("3_impact")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=55097773]
-texture = ExtResource("2_vkx0n")
+position = Vector3(0, 0, 0.22)
+pixel_size = 0.03
+texture_filter = 1
+texture = ExtResource("2_projectile")
+billboard = 1
+no_depth_test = true
+render_priority = 99
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=1485334066]
 collision_layer = 0

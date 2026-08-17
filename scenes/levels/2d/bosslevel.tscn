@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://h2rla3ix8s54" path="res://scenes/elements/semi_solid_platform.tscn" id="14_owttj"]
 [ext_resource type="Texture2D" uid="uid://dfixrevfih34e" path="res://sprites/textures/Pixel Art Textures/Another texture/blktex_bark_03.png" id="15_q7fgl"]
 [ext_resource type="Texture2D" uid="uid://cyllym8yoli00" path="res://sprites/textures/Pixel Art Textures/50 Pixel Art Textures -by Acasas-/PNG/wood 1.png" id="16_77dte"]
-[ext_resource type="Script" uid="uid://ef2gpl68inq8" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
+[ext_resource type="Script" path="res://scripts/audio/boss_soundscape.gd" id="17_soundscape"]
 [ext_resource type="AudioStream" uid="uid://bc46kjyyhey3v" path="res://audio/music/bossscenebgm.ogg" id="18_bgm"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="19_damp"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="20_pond"]
@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="23_keb27"]
 [ext_resource type="AudioStream" uid="uid://bumfcdujvlsf0" path="res://audio/music/waterfall.ogg" id="24_waterfall"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="24_xtumi"]
+[ext_resource type="AudioStream" path="res://audio/music/enemycry.ogg" id="25_enemycry"]
+[ext_resource type="AudioStream" path="res://audio/music/victory.ogg" id="26_victory"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bhyk"]
 albedo_texture = ExtResource("2_4wily")
@@ -375,8 +377,10 @@ uv1_scale = Vector3(4.844, 144, -11)
 
 [node name="Bosslevel2" type="Node3D" unique_id=508633355]
 
-[node name="Dragonfly Boss" parent="." unique_id=1810331413 instance=ExtResource("21_kulgr")]
+[node name="Dragonfly Boss" parent="." unique_id=1810331413 node_paths=PackedStringArray("ground_reference") instance=ExtResource("21_kulgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.334983, 5.2656646, 0)
+ground_reference = NodePath("../Floor")
+perch_ground_clearance = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580185758]
 transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 18.534254, 0)
@@ -397,6 +401,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 JUMP_VELOCITY = 6.0
+
+[node name="AnimatedSprite3D" parent="Player" index="1" unique_id=866562291]
+no_depth_test = true
+render_priority = 101
 
 [node name="Trail" parent="." unique_id=1331654535 instance=ExtResource("1_ikx5s")]
 transform = Transform3D(-1.0348424, 0, 0.018063229, 0, 1.66, 0, -0.018063229, 0, -1.0348424, 0, 0.55040985, -22.463)
@@ -725,8 +733,19 @@ visible = false
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
 
-[node name="BossSoundscape" type="Node" parent="." unique_id=947676124]
+[node name="BossSoundscape" type="Node" parent="." unique_id=947676124 node_paths=PackedStringArray("background_music", "damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping", "left_waterfall", "right_waterfall", "boss", "enemy_defeat_sfx", "victory_sfx")]
 script = ExtResource("17_soundscape")
+background_music = NodePath("BackgroundMusic")
+damp_and_watery = NodePath("DampAndWatery")
+pond_sounds = NodePath("PondSounds")
+breeze = NodePath("Breeze")
+insect_chirping = NodePath("InsectChirping")
+insects_chirping = NodePath("InsectsChirping")
+left_waterfall = NodePath("LeftWaterfall")
+right_waterfall = NodePath("RightWaterfall")
+boss = NodePath("../Dragonfly Boss")
+enemy_defeat_sfx = NodePath("EnemyDefeatSfx")
+victory_sfx = NodePath("VictorySfx")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="BossSoundscape" unique_id=616901964]
 stream = ExtResource("18_bgm")
@@ -765,6 +784,15 @@ stream = ExtResource("24_waterfall")
 volume_db = -2.0
 unit_size = 4.0
 max_distance = 45.0
+
+[node name="EnemyDefeatSfx" type="AudioStreamPlayer" parent="BossSoundscape"]
+stream = ExtResource("25_enemycry")
+volume_db = -4.0
+max_polyphony = 2
+
+[node name="VictorySfx" type="AudioStreamPlayer" parent="BossSoundscape"]
+stream = ExtResource("26_victory")
+volume_db = -4.0
 
 [editable path="Player"]
 [editable path="Trail"]

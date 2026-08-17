@@ -7,10 +7,8 @@ extends Control
 @onready var click_sfx: AudioStreamPlayer = $ClickSfx
 @onready var menu_buttons: Array[Node] = $VBoxContainer.get_children()
 
-
 func _on_menu_button_hovered() -> void:
 	hover_sfx.play()
-
 
 func _play_click_sfx() -> void:
 	_set_buttons_disabled(true)
@@ -18,12 +16,10 @@ func _play_click_sfx() -> void:
 	await click_sfx.finished
 	_set_buttons_disabled(false)
 
-
 func _set_buttons_disabled(disabled: bool) -> void:
 	for button in menu_buttons:
 		if button is Button:
 			button.disabled = disabled
-
 
 func _on_play_pressed() -> void:
 	await _play_click_sfx()

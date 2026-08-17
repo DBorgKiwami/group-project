@@ -31,6 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 [ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="22_u8ol6"]
+[ext_resource type="Script" path="res://scripts/audio/combat_audio.gd" id="23_combat_audio"]
+[ext_resource type="AudioStream" path="res://audio/music/combatstart.ogg" id="24_combat_start"]
+[ext_resource type="AudioStream" path="res://audio/music/combatmiddle.ogg" id="25_combat_middle"]
+[ext_resource type="AudioStream" path="res://audio/music/combatfinal.ogg" id="26_combat_final"]
+[ext_resource type="AudioStream" path="res://audio/music/victory.ogg" id="27_victory"]
+[ext_resource type="AudioStream" path="res://audio/music/birdschirping.ogg" id="28_birds"]
+[ext_resource type="AudioStream" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -186,7 +193,32 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("attack_sfx", "hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
+[node name="CombatAudio" type="Node" parent="." node_paths=PackedStringArray("combat_music", "victory_sfx", "birds_sfx", "breeze_sfx")]
+script = ExtResource("23_combat_audio")
+combat_music = NodePath("CombatMusic")
+victory_sfx = NodePath("VictorySfx")
+birds_sfx = NodePath("BirdsSfx")
+breeze_sfx = NodePath("BreezeSfx")
+combat_start = ExtResource("24_combat_start")
+combat_middle = ExtResource("25_combat_middle")
+combat_final = ExtResource("26_combat_final")
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="CombatAudio"]
+volume_db = -12.0
+
+[node name="VictorySfx" type="AudioStreamPlayer" parent="CombatAudio"]
+stream = ExtResource("27_victory")
+volume_db = -4.0
+
+[node name="BirdsSfx" type="AudioStreamPlayer" parent="CombatAudio"]
+stream = ExtResource("28_birds")
+volume_db = -16.0
+
+[node name="BreezeSfx" type="AudioStreamPlayer" parent="CombatAudio"]
+stream = ExtResource("29_breeze")
+volume_db = -18.0
+
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 attack_sfx = NodePath("../TutorialAudio/SwordBlow")
 hud = NodePath("../CanvasLayer/SimpleHudDemo")

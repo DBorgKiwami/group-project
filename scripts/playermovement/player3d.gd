@@ -6,12 +6,15 @@ class_name Player3D
 @export var animationControler : AnimationPlayer
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
+
+@export var jump_sfx : AudioStreamPlayer3D
+@export var landing_sfx : AudioStreamPlayer3D
+@export var grapple_sfx : AudioStreamPlayer3D
+@export var grapple_notification_sfx : AudioStreamPlayer
 @export var footstep_sfx : AudioStreamPlayer
-@export var jump_sfx : AudioStreamPlayer
-@export var grapple_sfx : AudioStreamPlayer
-@export var landing_sfx : AudioStreamPlayer
 @export var grapple_point_calc : Node3D
 @export var tongue : MeshInstance3D
+
 @export var SPEED = 5.0
 @export var SPRINT_SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
@@ -45,6 +48,7 @@ var physics_started = false
 var grapplearealist = []
 var current_anim_speed := 1.0
 var grapple_target := Vector3.ZERO
+@onready var footstep_controller: Node = get_node_or_null("FootstepController")
 var just_landed = false
 
 func bounce(bounce_height):
@@ -78,6 +82,8 @@ func grapple():
 	var areaPosition = grapplearealist[0].global_position
 	grapple_target = areaPosition
 	grappling = true
+	if grapple_sfx:
+		grapple_sfx.play()
 	if tongue:
 		tongue.visible = true
 	if grapple_sfx:
@@ -129,9 +135,12 @@ func _input(event: InputEvent) -> void:
 		if grappleArea.has_overlapping_areas() and !grappling:
 			grapple()
 	if event.is_action_pressed("debug_swap_level"):
-		Scenecontroler.load_scene("res://scenes/levels/2d/testlevel2d.tscn")
+		Scenecontroler.load_scene_with_transition_sound(
+			"res://scenes/levels/2d/testlevel2d.tscn"
+		)
 
 func _physics_process(delta: float) -> void:
+	_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
 	# Add the gravity.
@@ -197,7 +206,9 @@ func _physics_process(delta: float) -> void:
 		if not on_floor_now:
 			has_been_airborne = true
 		elif has_been_airborne:
-			if landing_sfx:
+			if footstep_controller != null and footstep_controller.has_method("play_surface_step"):
+				footstep_controller.play_surface_step()
+			elif landing_sfx:
 				landing_sfx.play()
 			has_been_airborne = false
 			just_landed = true
@@ -217,6 +228,20 @@ func _physics_process(delta: float) -> void:
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
 
+
+func _update_grapple_notification() -> void:
+	if grapple_notification_sfx == null:
+		return
+	var grapple_available := (
+		grappleArea.has_overlapping_areas()
+		and not grappling
+		and not inDialogue
+	)
+	if grapple_available:
+		if not grapple_notification_sfx.playing:
+			grapple_notification_sfx.play()
+	elif grapple_notification_sfx.playing:
+		grapple_notification_sfx.stop()
 func _play_footstep() -> void:
 	if not footstep_sfx:
 		return

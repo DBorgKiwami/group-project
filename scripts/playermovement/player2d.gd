@@ -12,6 +12,7 @@ class_name Player2D
 @export var punch_sfx : AudioStreamPlayer
 @export var landing_sfx : AudioStreamPlayer
 @export var attack_sfx : AudioStreamPlayer
+@export var hurt_sfx : AudioStreamPlayer
 @export var footstep_sfx : AudioStreamPlayer
 @export var hud : Node2D
 @export var death_screen : Node2D
@@ -71,6 +72,8 @@ func _on_player_hit(damage) -> void:
 		print("Damage blocked!")
 		return
 	print("I've been hit for " + str(damage) + "!")
+	if hurt_sfx:
+		hurt_sfx.play()
 	health = health - 1
 	animationController.play("hit")
 	if hud:
@@ -94,7 +97,10 @@ func _on_return_pressed() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_level"):
-		Scenecontroler.load_scene_with_position("res://scenes/levels/3d/testlevel.tscn", Vector3(1,1,1))
+		Scenecontroler.load_scene_with_position_and_transition_sound(
+			"res://scenes/levels/3d/testlevel.tscn",
+			Vector3(1,1,1)
+		)
 	if event.is_action_pressed("tongue_attack") and not is_attacking and not tongue_attacking:
 		tongue_attack()
 	pass
@@ -169,6 +175,12 @@ func _play_footstep() -> void:
 	footstep_sfx.pitch_scale = 1.0 + pitch_offset
 	_footstep_high_pitch = not _footstep_high_pitch
 	footstep_sfx.play()
+
+func play_attack_sfx() -> void:
+	if attack_sfx:
+		attack_sfx.pitch_scale = randf_range(0.97, 1.03)
+		attack_sfx.play()
+
 func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 	print("Entered front")
 	if area is EnemyHitbox:
