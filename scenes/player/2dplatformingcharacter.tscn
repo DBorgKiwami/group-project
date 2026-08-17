@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
-[ext_resource type="AudioStream" path="res://audio/music/swordblow.ogg" id="10_sword"]
-[ext_resource type="AudioStream" path="res://audio/music/frogcry.ogg" id="11_hurt"]
+[ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]
+[ext_resource type="AudioStream" uid="uid://c5d3hyjj05qvp" path="res://audio/music/frogcry.ogg" id="11_hurt"]
 [ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
@@ -361,7 +361,7 @@ size = Vector3(1.56, 1.5641162, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_55rie"]
 radius = 0.3
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "footstep_sfx", "attack_sfx", "hurt_sfx", "attack_tongue", "tongue_hitbox")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -372,11 +372,12 @@ player_hitbox = NodePath("PlayerHitbox")
 player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
 state_machine = NodePath("State_Machine")
-footstep_sfx = NodePath("FootstepSfx")
 jump_sfx = NodePath("JumpSfx")
 landing_sfx = NodePath("LandingSfx")
 attack_sfx = NodePath("AttackSfx")
 hurt_sfx = NodePath("HurtSfx")
+footstep_sfx = NodePath("FootstepSfx")
+damage = 1
 attack_tongue = NodePath("AttackTongue")
 tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 
@@ -488,12 +489,12 @@ volume_db = -6.0
 stream = ExtResource("8_step")
 volume_db = -10.0
 
-[node name="AttackSfx" type="AudioStreamPlayer" parent="."]
+[node name="AttackSfx" type="AudioStreamPlayer" parent="." unique_id=1648727133]
 stream = ExtResource("10_sword")
 volume_db = -4.0
 max_polyphony = 2
 
-[node name="HurtSfx" type="AudioStreamPlayer" parent="."]
+[node name="HurtSfx" type="AudioStreamPlayer" parent="." unique_id=503762165]
 stream = ExtResource("11_hurt")
 volume_db = -3.0
 max_polyphony = 2

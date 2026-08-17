@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://chpuu5m1s5x3r"]
+
+[ext_resource type="Texture2D" uid="uid://3tbi0vysy75y" path="res://sprites/npcs/merchant.png" id="1_f0c7q"]
+[ext_resource type="Script" uid="uid://b3kvn1m6hrsot" path="res://scripts/npcs/merchant.gd" id="1_uhm2p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhm2p"]
+radius = 0.25439453
+height = 0.64624023
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seq8b"]
+radius = 1.3462899
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1841873639]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_uhm2p")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=334245436]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 2
+texture = ExtResource("1_f0c7q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1596749676]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1192264772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012363583, 0)
+shape = SubResource("CapsuleShape3D_uhm2p")
+
+[node name="Interaction" type="Area3D" parent="." unique_id=912309786]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction" unique_id=246151702]
+shape = SubResource("SphereShape3D_seq8b")

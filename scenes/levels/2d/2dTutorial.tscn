@@ -19,25 +19,20 @@
 [ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
 [ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
 [ext_resource type="Script" uid="uid://lnootj5wcwah" path="res://scripts/audio/tutorial_combat_audio.gd" id="10_audio"]
-[ext_resource type="AudioStream" uid="uid://cflbms0hnc8b1" path="res://audio/music/combatstart.ogg" id="11_start"]
-[ext_resource type="AudioStream" uid="uid://itl54bbb23vm" path="res://audio/music/combatmiddle.ogg" id="12_middle"]
-[ext_resource type="AudioStream" uid="uid://ba0olmu72gp5v" path="res://audio/music/combatfinal.ogg" id="13_final"]
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="14_sword"]
 [ext_resource type="AudioStream" uid="uid://dd06x74jaiuns" path="res://audio/music/enemycry.ogg" id="15_cry"]
-[ext_resource type="AudioStream" uid="uid://cu62rpik7k6ow" path="res://audio/music/victory.ogg" id="16_victory"]
-[ext_resource type="AudioStream" uid="uid://qixiw5fkxij" path="res://audio/music/birdschirping.ogg" id="17_birds"]
 [ext_resource type="AudioStream" uid="uid://bhej6bfl6iqsb" path="res://audio/music/tutorial_breeze.ogg" id="18_breeze"]
 [ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 [ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="22_u8ol6"]
 [ext_resource type="Script" path="res://scripts/audio/combat_audio.gd" id="23_combat_audio"]
-[ext_resource type="AudioStream" path="res://audio/music/combatstart.ogg" id="24_combat_start"]
-[ext_resource type="AudioStream" path="res://audio/music/combatmiddle.ogg" id="25_combat_middle"]
-[ext_resource type="AudioStream" path="res://audio/music/combatfinal.ogg" id="26_combat_final"]
-[ext_resource type="AudioStream" path="res://audio/music/victory.ogg" id="27_victory"]
-[ext_resource type="AudioStream" path="res://audio/music/birdschirping.ogg" id="28_birds"]
-[ext_resource type="AudioStream" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
+[ext_resource type="AudioStream" uid="uid://cflbms0hnc8b1" path="res://audio/music/combatstart.ogg" id="24_combat_start"]
+[ext_resource type="AudioStream" uid="uid://itl54bbb23vm" path="res://audio/music/combatmiddle.ogg" id="25_combat_middle"]
+[ext_resource type="AudioStream" uid="uid://ba0olmu72gp5v" path="res://audio/music/combatfinal.ogg" id="26_combat_final"]
+[ext_resource type="AudioStream" uid="uid://cu62rpik7k6ow" path="res://audio/music/victory.ogg" id="27_victory"]
+[ext_resource type="AudioStream" uid="uid://qixiw5fkxij" path="res://audio/music/birdschirping.ogg" id="28_birds"]
+[ext_resource type="AudioStream" uid="uid://dxwl5e8ub4sup" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -193,7 +188,7 @@ size = Vector3(1, 1, 0.125)
 
 [node name="Node3D" type="Node3D" unique_id=761353570]
 
-[node name="CombatAudio" type="Node" parent="." node_paths=PackedStringArray("combat_music", "victory_sfx", "birds_sfx", "breeze_sfx")]
+[node name="CombatAudio" type="Node" parent="." unique_id=814712146 node_paths=PackedStringArray("combat_music", "victory_sfx", "birds_sfx", "breeze_sfx")]
 script = ExtResource("23_combat_audio")
 combat_music = NodePath("CombatMusic")
 victory_sfx = NodePath("VictorySfx")
@@ -203,18 +198,18 @@ combat_start = ExtResource("24_combat_start")
 combat_middle = ExtResource("25_combat_middle")
 combat_final = ExtResource("26_combat_final")
 
-[node name="CombatMusic" type="AudioStreamPlayer" parent="CombatAudio"]
+[node name="CombatMusic" type="AudioStreamPlayer" parent="CombatAudio" unique_id=1678429810]
 volume_db = -12.0
 
-[node name="VictorySfx" type="AudioStreamPlayer" parent="CombatAudio"]
+[node name="VictorySfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=909140087]
 stream = ExtResource("27_victory")
 volume_db = -4.0
 
-[node name="BirdsSfx" type="AudioStreamPlayer" parent="CombatAudio"]
+[node name="BirdsSfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=867024062]
 stream = ExtResource("28_birds")
 volume_db = -16.0
 
-[node name="BreezeSfx" type="AudioStreamPlayer" parent="CombatAudio"]
+[node name="BreezeSfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=1459061905]
 stream = ExtResource("29_breeze")
 volume_db = -18.0
 
@@ -229,9 +224,9 @@ JUMP_VELOCITY = 6.0
 [node name="TutorialAudio" type="Node" parent="." unique_id=803025064 node_paths=PackedStringArray("combat_player", "enemy_cry_player", "victory_player", "birds_player", "breeze_player")]
 script = ExtResource("10_audio")
 combat_player = NodePath("CombatMusic")
-combat_start = ExtResource("11_start")
-combat_middle = ExtResource("12_middle")
-combat_final = ExtResource("13_final")
+combat_start = ExtResource("24_combat_start")
+combat_middle = ExtResource("25_combat_middle")
+combat_final = ExtResource("26_combat_final")
 enemy_cry_player = NodePath("EnemyCry")
 victory_player = NodePath("Victory")
 birds_player = NodePath("BirdsChirping")
@@ -251,11 +246,11 @@ volume_db = -6.0
 max_polyphony = 3
 
 [node name="Victory" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=45079938]
-stream = ExtResource("16_victory")
+stream = ExtResource("27_victory")
 volume_db = -6.0
 
 [node name="BirdsChirping" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=77796320]
-stream = ExtResource("17_birds")
+stream = ExtResource("28_birds")
 volume_db = -18.0
 
 [node name="Breeze" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=1921586945]
@@ -458,7 +453,7 @@ visible = false
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("22_h0xj1")]
 layer = 100
 
-[node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
+[node name="Control" parent="PauseMenu" index="1" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1503220375]
