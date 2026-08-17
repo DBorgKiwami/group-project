@@ -20,7 +20,6 @@
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
-[ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="19_canyon"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
 [ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
 
@@ -135,9 +134,6 @@ light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
 
-[node name="OuterCanyonBackdrop" parent="." unique_id=1254376500 instance=ExtResource("19_canyon")]
-transform = Transform3D(-39.78365, 0, 91.745636, 0, 100.000015, 0, -91.745636, 0, -39.78365, 817.8492, 17.986359, 1081.385)
-
 [node name="ReferenceRockScatter" type="Node3D" parent="." unique_id=1444216806]
 
 [node name="NorthRock01" parent="ReferenceRockScatter" unique_id=49247272 instance=ExtResource("21_stratified_rock")]
@@ -196,6 +192,9 @@ transform = Transform3D(28.9, 0, 0, 0, 12, 0, 0, 0, 14.6, -1.183, -0.1092, -0.01
 
 [node name="Step_Collision" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_1" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.183, -0.1492, -0.0117)
+
+[node name="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_1/Step_Collision" index="0"]
+transform = Transform3D(1, 0, -1.8626451e-09, 0, 1.0000068, 0, -1.8626451e-08, 0, 1.0000006, 0, 0.0038867295, 0)
 
 [node name="Lily_Pad_2" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="6"]
 transform = Transform3D(1.1626142, 0, -0.07943932, 0, 1, 0, 0.07706368, 0, 1.1984539, 3.3133914, -0.18, 1.4785724)
