@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
+[ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="PackedScene" uid="uid://b82101aa6hvvx" path="res://models/low_poly_canyon_free.glb" id="19_canyon"]
@@ -38,6 +40,22 @@ ambient_light_energy = 0.55
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
 size = Vector3(1.65, 0.08, 0.76)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y73yp"]
+render_priority = 0
+shader = ExtResource("17_enllo")
+shader_parameter/depth_fade_distance = 1.0
+shader_parameter/absorbance = 2.0
+shader_parameter/shallow_color = Color(0.22, 0.66, 1, 1)
+shader_parameter/deep_color = Color(0, 0.25, 0.45, 1)
+shader_parameter/foam_amount = 0.2
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.05
+shader_parameter/wave_scale = 4.0
+shader_parameter/height_scale = 0.15
+shader_parameter/wave_dir1 = Vector2(1, 0)
+shader_parameter/wave_dir2 = Vector2(0, 1)
+shader_parameter/wave_speed = 0.015
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26fj"]
 albedo_color = Color(0.26, 0.20149998, 0.195, 1)
@@ -238,7 +256,9 @@ transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 
 visible = false
 
 [node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, 0.035729982, -0.008130645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, -0.13677177, -0.008130645)
+material_override = ExtResource("16_gaeky")
+material_overlay = SubResource("ShaderMaterial_y73yp")
 
 [node name="Pond_Bottom_Cylinder" parent="LevelBase/Terrain_Base_Generated/Pond_Swim_Base" index="0"]
 transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
@@ -1306,7 +1326,6 @@ height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
 
-[editable path="LevelBase"]
 [node name="Bounce Pad14" parent="." unique_id=2088121065 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
 
@@ -1316,4 +1335,5 @@ layer = 100
 [node name="Control" parent="PauseMenu" index="0" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
 
+[editable path="LevelBase"]
 [editable path="PauseMenu"]

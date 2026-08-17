@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
 [ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
@@ -495,6 +495,7 @@ region_rect = Rect2(-1.25, -1.25, 38, 14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
 collision_layer = 0
 collision_mask = 4
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackTongue/TongueHitbox" unique_id=645249408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3136742, 0.024496019, 0)
