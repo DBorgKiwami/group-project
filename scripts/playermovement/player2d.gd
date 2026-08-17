@@ -8,11 +8,12 @@ class_name Player2D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
 @export var state_machine : State_Machine
-@export var footstep_sfx : AudioStreamPlayer
 @export var jump_sfx : AudioStreamPlayer
+@export var punch_sfx : AudioStreamPlayer
 @export var landing_sfx : AudioStreamPlayer
 @export var attack_sfx : AudioStreamPlayer
 @export var hurt_sfx : AudioStreamPlayer
+@export var footstep_sfx : AudioStreamPlayer
 @export var hud : Node2D
 @export var death_screen : Node2D
 @export var SPEED = 5.0
@@ -31,6 +32,13 @@ var current_anim_speed := 1.0
 @export var max_health = 5
 @export_range(0.1, 1.0, 0.01) var footstep_interval := 0.4
 @export_range(0.0, 0.2, 0.01) var footstep_pitch_variation := 0.04
+@export var attack_tongue : Sprite3D
+@export var tongue_hitbox : Area3D
+@export var tongue_hitbox_offset := 0.5
+@export var tongue_attack_range := 3.0
+@export var tongue_attack_speed := 0.15
+@export var tongue_attack_damage := 1
+var tongue_attacking := false
 
 var health
 var can_jump = false
@@ -93,7 +101,10 @@ func _input(event: InputEvent) -> void:
 			"res://scenes/levels/3d/testlevel.tscn",
 			Vector3(1,1,1)
 		)
+	if event.is_action_pressed("tongue_attack") and not is_attacking and not tongue_attacking:
+		tongue_attack()
 	pass
+	
 func _physics_process(delta: float) -> void:
 	position.z = 0
 	if block_cooldown > 0:
@@ -127,14 +138,18 @@ func _update_footsteps(delta: float) -> void:
 	if footstep_sfx == null:
 		return
 
-	var is_walking := absf(velocity.x) > 0.1 and is_on_floor() and not blocking
+	var is_walking := (
+		absf(velocity.x) > 0.1
+		and is_on_floor()
+		and not blocking
+		and not is_attacking
+	)
 	if not is_walking:
 		_was_walking = false
 		_time_until_next_step = 0.0
 		return
 
-	# The landing sound already uses the step sample, so do not double it with
-	# an immediate walking step on the same physics frame.
+	# Landing already uses the step sample, so do not double it on this frame.
 	if _just_landed:
 		_was_walking = true
 		_time_until_next_step = footstep_interval
@@ -172,12 +187,14 @@ func _on_front_attack_hitbox_area_entered(area: Area3D) -> void:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
+
 func _on_up_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered up")
 	if area is EnemyHitbox:
 		print("Enemy")
 		area.emit_signal("on_hit",damage)
 	pass # Replace with function body.
+
 func _on_down_attack_hurtbox_area_entered(area: Area3D) -> void:
 	print("Entered down")
 	if area is EnemyHitbox:
@@ -191,6 +208,45 @@ func _on_semi_solid_clip_area_body_entered(body: Node3D) -> void:
 	print("Hello")
 	clipping = true
 	pass # Replace with function body.
+
 func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
 	clipping = false
 	pass # Replace with function body.
+	
+func tongue_attack() -> void:
+	if tongue_attacking or not attack_tongue:
+		return
+	tongue_attacking = true
+	attack_tongue.visible = true
+
+	var facing_dir := -1.0 if sprite.flip_h else 1.0
+	attack_tongue.flip_h = facing_dir < 0
+	attack_tongue.rotation = Vector3.ZERO
+	attack_tongue.scale = Vector3(0.01, 1.0, 1.0)
+	attack_tongue.position = Vector3.ZERO
+
+	if tongue_hitbox:
+		tongue_hitbox.position = Vector3(facing_dir * tongue_hitbox_offset, 0, 0)
+		tongue_hitbox.monitoring = true
+
+	var extend_tween := get_tree().create_tween()
+	extend_tween.set_parallel(true)
+	extend_tween.tween_property(attack_tongue, "scale:x", tongue_attack_range, tongue_attack_speed)
+	extend_tween.tween_property(attack_tongue, "position:x", facing_dir * tongue_attack_range / 2.0, tongue_attack_speed)
+
+	var retract_tween := get_tree().create_tween()
+	retract_tween.set_parallel(true)
+	retract_tween.tween_property(attack_tongue, "scale:x", 0.01, tongue_attack_speed).set_delay(tongue_attack_speed)
+	retract_tween.tween_property(attack_tongue, "position:x", 0.0, tongue_attack_speed).set_delay(tongue_attack_speed)
+	retract_tween.tween_callback(_end_tongue_attack).set_delay(tongue_attack_speed * 2.0)
+	
+func _end_tongue_attack() -> void:
+	tongue_attacking = false
+	if attack_tongue:
+		attack_tongue.visible = false
+	if tongue_hitbox:
+		tongue_hitbox.monitoring = false
+
+func _on_tongue_hitbox_area_entered(area: Area3D) -> void:
+	if area is EnemyHitbox:
+		area.emit_signal("on_hit", tongue_attack_damage)

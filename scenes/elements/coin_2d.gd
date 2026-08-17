@@ -36,3 +36,15 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		collect_sfx.play()
 		await collect_sfx.finished
 	queue_free()
+
+func _play_collection_sound() -> void:
+	if collection_sound == null:
+		return
+
+	# The coin disappears immediately, so use a detached player that can finish.
+	var audio_player := AudioStreamPlayer.new()
+	audio_player.stream = collection_sound
+	audio_player.volume_db = -6.0
+	audio_player.finished.connect(audio_player.queue_free)
+	get_tree().root.add_child(audio_player)
+	audio_player.play()

@@ -22,6 +22,9 @@ func die():
 	if defeat_sfx:
 		defeat_sfx.pitch_scale = randf_range(0.96, 1.04)
 		defeat_sfx.play()
+	if hurtbox:
+		set_deferred("monitorable", false)
+		set_deferred("monitoring", false)
 	defeated.emit()
 	animationControler.play("die")
 	await animationControler.animation_finished
@@ -32,18 +35,15 @@ func die():
 			newInstance.flyout = true
 			get_tree().root.add_child(newInstance)
 	call_deferred("queue_free")
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	move_and_slide()
-
+	
 func hitbox_hit(damage: Variant) -> void:
 	state_machine.on_child_transition(state_machine.current_state, "Dead")
 	pass # Replace with function body.
-
 
 func _on_enemy_hurtbox_area_entered(area: Area3D) -> void:
 	print("Gottem")

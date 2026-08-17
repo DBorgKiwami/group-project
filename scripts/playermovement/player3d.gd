@@ -6,12 +6,15 @@ class_name Player3D
 @export var animationControler : AnimationPlayer
 @export var player_camera : Camera3D
 @export var camera_pivot : Node3D
+
 @export var jump_sfx : AudioStreamPlayer3D
 @export var landing_sfx : AudioStreamPlayer3D
 @export var grapple_sfx : AudioStreamPlayer3D
 @export var grapple_notification_sfx : AudioStreamPlayer
+@export var footstep_sfx : AudioStreamPlayer
 @export var grapple_point_calc : Node3D
 @export var tongue : MeshInstance3D
+
 @export var SPEED = 5.0
 @export var SPRINT_SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
@@ -26,6 +29,7 @@ class_name Player3D
 @export var normal_anim_speed := 1.0
 @export var sprint_anim_speed := 1.6
 @export var anim_speed_ramp := 3.0
+@export var footstep_pitch_variation: float = 0.04
 var can_jump = false
 var jump_timer = jump_timer_max
 var jump_buffer = 0
@@ -36,12 +40,16 @@ var lastDirection = Vector3(0,0,-1)
 var bob_time = 0.0
 var sprite_base_y = 0.0
 var animationdirection = "south"
+var was_walking = false
+var next_footstep_phase = PI
+var footstep_high_pitch = false
 var has_been_airborne = false
 var physics_started = false
 var grapplearealist = []
 var current_anim_speed := 1.0
 var grapple_target := Vector3.ZERO
 @onready var footstep_controller: Node = get_node_or_null("FootstepController")
+var just_landed = false
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -78,6 +86,8 @@ func grapple():
 		grapple_sfx.play()
 	if tongue:
 		tongue.visible = true
+	if grapple_sfx:
+		grapple_sfx.play()
 	grappleTween = get_tree().create_tween()
 	grappleTween.tween_property(self, "position", areaPosition, grapple_time).set_trans(Tween.TRANS_SINE)
 	grappleTween.tween_callback(endGrapple)
@@ -190,6 +200,7 @@ func _physics_process(delta: float) -> void:
 	#print(velocity)
 	move_and_slide()
 
+	just_landed = false
 	var on_floor_now := is_on_floor()
 	if physics_started:
 		if not on_floor_now:
@@ -200,12 +211,13 @@ func _physics_process(delta: float) -> void:
 			elif landing_sfx:
 				landing_sfx.play()
 			has_been_airborne = false
+			just_landed = true
 	else:
 		physics_started = true
 		has_been_airborne = not on_floor_now
-	
-	
-	
+
+
+
 #	Check what we last collided with
 	var last_collision = get_last_slide_collision()
 	if last_collision:
@@ -230,16 +242,37 @@ func _update_grapple_notification() -> void:
 			grapple_notification_sfx.play()
 	elif grapple_notification_sfx.playing:
 		grapple_notification_sfx.stop()
+func _play_footstep() -> void:
+	if not footstep_sfx:
+		return
+
+	var pitch_offset: float = footstep_pitch_variation if footstep_high_pitch else -footstep_pitch_variation
+	footstep_sfx.pitch_scale = 1.0 + pitch_offset
+	footstep_high_pitch = !footstep_high_pitch
+	footstep_sfx.play()
 
 func _process(delta: float) -> void:
 	# --- Sprite bob ---
 	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
-	if horizontal_speed > 0.1 and is_on_floor() and !grappling:
+	var is_walking = horizontal_speed > 0.1 and is_on_floor() and !grappling and !inDialogue
+	if is_walking:
+		if not was_walking:
+			if not just_landed:
+				_play_footstep()
+			next_footstep_phase = PI
+
 		bob_time += delta * bob_speed
 		sprite.position.y = sprite_base_y + sin(bob_time) * bob_amplitude
+		while bob_time >= next_footstep_phase:
+			_play_footstep()
+			next_footstep_phase += PI
 	else:
 		bob_time = 0.0
+		next_footstep_phase = PI
 		sprite.position.y = move_toward(sprite.position.y, sprite_base_y, delta * 2.0)
+
+	was_walking = is_walking
+	just_landed = false
 
 	#Sprite Rotation Code
 	#Ok so this is a lot of math. Im going to try and explain it best I can
@@ -283,7 +316,7 @@ func _process(delta: float) -> void:
 		animationdirection = "west"
 	else:
 		animationdirection = "east"
-	
+
 	print(animationdirection)
 	
 	# --- Sprint animation speed ramp ---
