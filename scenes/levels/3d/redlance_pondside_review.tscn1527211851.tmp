@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://d4bugk2e7rnwx"]
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://c4nky8roqd373" path="res://models/levels/redlance_pondside/redlance_pondside_blender_level_base.glb" id="2_level"]
+[ext_resource type="PackedScene" path="res://scenes/levels/3d/redlance_pondside_level_base_editable.tscn" id="2_level"]
+[ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="2_y73yp"]
+[ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_5wccx"]
 [ext_resource type="AudioStream" uid="uid://bembfyequ4yr2" path="res://audio/music/dampandwatery.ogg" id="7_damp"]
 [ext_resource type="PackedScene" uid="uid://c3kp3nccc8ol4" path="res://scenes/elements/fadingplatform.tscn" id="8_gqagh"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="8_pond"]
@@ -10,25 +12,53 @@
 [ext_resource type="Material" uid="uid://d1cprp1maou6d" path="res://sprites/textures/wood.tres" id="9_osbx4"]
 [ext_resource type="PackedScene" uid="uid://d3fxwao6ly8ho" path="res://scenes/player/3dplatformingcharacter.tscn" id="10_i0cgp"]
 [ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="10_insect"]
+[ext_resource type="PackedScene" uid="uid://chpuu5m1s5x3r" path="res://scenes/npcs/merchant.tscn" id="11_5wccx"]
 [ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
 [ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
-[ext_resource type="PackedScene" uid="uid://dpd2yucqavias" path="res://models/mushroombase.glb" id="15_b8xro"]
+[ext_resource type="AudioStream" uid="uid://bmbhvkrmh1pcl" path="res://audio/music/frogcroaking.ogg" id="13_frog"]
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
+[ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
+[ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
->>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
+[ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
+[ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+
+[sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
+panorama = ExtResource("20_sky")
+
+[sub_resource type="Sky" id="OuterSky"]
+sky_material = SubResource("OuterSkyMaterial")
 
 [sub_resource type="Environment" id="Environment_preview"]
-background_mode = 1
-background_color = Color(0.42, 0.64, 0.88, 1)
+background_mode = 2
+background_energy_multiplier = 0.85
+sky = SubResource("OuterSky")
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
+size = Vector3(1.65, 0.08, 0.76)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y73yp"]
+render_priority = 0
+shader = ExtResource("17_enllo")
+shader_parameter/depth_fade_distance = 1.0
+shader_parameter/absorbance = 2.0
+shader_parameter/shallow_color = Color(0.22, 0.66, 1, 1)
+shader_parameter/deep_color = Color(0, 0.25, 0.45, 1)
+shader_parameter/foam_amount = 0.2
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.05
+shader_parameter/wave_scale = 4.0
+shader_parameter/height_scale = 0.15
+shader_parameter/wave_dir1 = Vector2(1, 0)
+shader_parameter/wave_dir2 = Vector2(0, 1)
+shader_parameter/wave_speed = 0.015
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26fj"]
 albedo_color = Color(0.26, 0.20149998, 0.195, 1)
@@ -43,12 +73,12 @@ radius = 1.0
 height = 0.6
 radius = 1.3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_wmh0y"]
-height = 0.25
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_gqagh"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wyodo"]
 height = 0.4
 radius = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wmh0y"]
+height = 0.3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0kqbx"]
 height = 0.45
@@ -61,13 +91,17 @@ radius = 1.4
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
 
+[node name="InteractionPromptDemo" parent="." unique_id=1692059102 instance=ExtResource("2_y73yp")]
+
+[node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_5wccx")]
+
 [node name="DampAndWatery" type="AudioStreamPlayer" parent="." unique_id=261087804]
 stream = ExtResource("7_damp")
-volume_db = -12.0
+volume_db = -6.0
 
 [node name="PondSounds" type="AudioStreamPlayer" parent="." unique_id=192584397]
 stream = ExtResource("8_pond")
-volume_db = -6.0
+volume_db = -4.0
 
 [node name="Breeze" type="AudioStreamPlayer" parent="." unique_id=489540298]
 stream = ExtResource("9_breeze")
@@ -81,38 +115,44 @@ volume_db = -10.0
 stream = ExtResource("11_insects")
 volume_db = -12.0
 
-[node name="PondAmbience" type="Node" parent="." unique_id=576051525 node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping")]
+[node name="FrogCroaking" type="AudioStreamPlayer" parent="." unique_id=758646893]
+stream = ExtResource("13_frog")
+volume_db = -16.0
+
+[node name="PondAmbience" type="Node" parent="." unique_id=576051525 node_paths=PackedStringArray("damp_and_watery", "pond_sounds", "breeze", "insect_chirping", "insects_chirping", "frog_croaking")]
 script = ExtResource("12_ambience")
 damp_and_watery = NodePath("../DampAndWatery")
 pond_sounds = NodePath("../PondSounds")
 breeze = NodePath("../Breeze")
 insect_chirping = NodePath("../InsectChirping")
 insects_chirping = NodePath("../InsectsChirping")
+frog_croaking = NodePath("../FrogCroaking")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.1857853, -47.19583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.12, -47.19583)
+JUMP_VELOCITY = 6.0
+
+[node name="Merchant" parent="." unique_id=1841873639 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("11_5wccx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36.593037, -0.045627594, 11.240436)
+prompt = NodePath("../InteractionPromptDemo")
+dialogue_player = NodePath("../DialoguePlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1430494369]
 environment = SubResource("Environment_preview")
 
 [node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1695999006]
 transform = Transform3D(0.9527889, -0.16786389, 0.2530121, -0.11556259, 0.57008815, 0.8134155, -0.28078228, -0.804252, 0.52377486, 0, 0, 0)
-visible = false
 light_color = Color(1, 0.88, 0.68, 1)
 light_energy = 1.55
 shadow_enabled = true
 
 [node name="SoftBlueFillLight" type="OmniLight3D" parent="." unique_id=650026824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 5.5)
-visible = false
 light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
 
-<<<<<<< Updated upstream
-=======
 [node name="ReferenceRockScatter" type="Node3D" parent="." unique_id=1444216806]
-visible = false
 
 [node name="NorthRock01" parent="ReferenceRockScatter" unique_id=49247272 instance=ExtResource("21_stratified_rock")]
 transform = Transform3D(-29.815302, 0, -32.149555, 0, 20.103302, 0, 16.687462, 0, -37.581898, 193.03818, -5.905749, 349.12708)
@@ -138,7 +178,6 @@ transform = Transform3D(-0.58358973, 0, 12.00149, 0, 10.176685, 0, -8.492925, 0,
 [node name="SouthRock05" parent="ReferenceRockScatter" unique_id=524110217 instance=ExtResource("21_stratified_rock")]
 transform = Transform3D(-0.3288355, 0, 2.8096201, 0, 1.7999998, 0, -2.2851405, 0, 0.09237814, -58.517963, -1.5, 5.9404144)
 
->>>>>>> Stashed changes
 [node name="Fading Platform2" parent="." unique_id=354689758 instance=ExtResource("8_gqagh")]
 transform = Transform3D(0.71269983, 0, 0.7014692, 0, 1, 0, -0.7014692, 0, 0.71269983, -5.1953, 12.495394, -32.989044)
 
@@ -157,8 +196,6 @@ material = ExtResource("9_b8xro")
 [node name="LevelBase" parent="." unique_id=458334827 instance=ExtResource("2_level")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0.043750763, 0, 0.0017242432)
 
-<<<<<<< Updated upstream
-=======
 [node name="Land_West_Lower_Bank" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="3" unique_id=1772819528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28968096)
 
@@ -233,7 +270,6 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 
 [node name="Pond_Shallow_Water_Shelf" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="15" unique_id=1432386212]
 transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 0.9999954, 0.00019244435, 0.00018748573, -0.00019188075, 0.99999994, -0.00029220618, 0.018900966, -0.0011508942)
-visible = false
 
 [node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, -0.13677177, -0.008130645)
@@ -245,7 +281,6 @@ transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
 
 [node name="Decorative_Background_Forest" parent="LevelBase" index="1"]
 transform = Transform3D(0.41932988, 0, 0, 0, 0.5077277, 0, 0, 0, 0.4363992, 0, 3.488629, 0)
-visible = false
 
 [node name="ForestCluster_North_01" parent="LevelBase/Decorative_Background_Forest" index="0"]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, -334.12753, 0.20000029, -220.13113)
@@ -273,9 +308,6 @@ transform = Transform3D(0.14999995, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -451.6413, 0, 
 
 [node name="ForestCluster_Southeast_01" parent="LevelBase/Decorative_Background_Forest" index="8"]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 12.5, 0, -10.5)
-
-[node name="Decorative_Forest_Collision" parent="LevelBase" index="2"]
-visible = false
 
 [node name="North_01" parent="LevelBase/Decorative_Forest_Collision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 13.2)
@@ -376,7 +408,6 @@ transform = Transform3D(0.99999756, 0, 0.0022218698, 0, 1, 0, -0.0022218698, 0, 
 [node name="Small_Reed_9" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="74" unique_id=103086026]
 transform = Transform3D(0.9999372, 0, 0.011212206, 0, 1, 0, -0.011212206, 0, 0.9999372, -1.0584719, -0.08, 2.944489)
 
->>>>>>> Stashed changes
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1980574931]
 transform = Transform3D(-0.9982933, 0, -0.058400333, 0, 1, 0, 0.058400333, 0, -0.9982933, -24.060501, -1.181804, -31.275862)
 use_collision = true
@@ -421,7 +452,7 @@ transform = Transform3D(-0.46781155, 0, -15.408513, 0, 1.3163887, 0, 3.2094753, 
 size = Vector3(0.8862915, 1, 0.22760773)
 material = ExtResource("9_osbx4")
 
-[node name="Fading Platform" parent="." unique_id=1058409451 instance=ExtResource("8_gqagh")]
+[node name="Fading Platform" parent="." unique_id=1058409451 groups=["footstep_grass"] instance=ExtResource("8_gqagh")]
 transform = Transform3D(-0.95110506, 0, -0.30886754, 0, 1, 0, 0.30886754, 0, -0.95110506, -5.0184283, 11.412941, -38.128338)
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Fading Platform" unique_id=431683820]
@@ -450,6 +481,23 @@ shape = SubResource("CylinderShape3D_i8moa")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad" unique_id=365183334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Bounce Pad" unique_id=791524426]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
+radius = 1.0
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bounce Pad" unique_id=903516555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_i8moa")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Bounce Pad" unique_id=968062370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
 radius = 0.3
 height = 0.3
@@ -722,7 +770,7 @@ depth = 0.3
 material = ExtResource("9_b8xro")
 
 [node name="Bounce Pad2" parent="." unique_id=750421030 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.833797, 3.354957, -36.021015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.321615, 16.259724, -36.616764)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad2" unique_id=1048875751]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
@@ -747,12 +795,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.990236, 7.260397, -53.751
 [node name="Grapplepoint3d4" parent="." unique_id=1082836863 instance=ExtResource("18_j26fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.099582, 12.971504, -37.001724)
 
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="." unique_id=1245054614]
+use_collision = true
+
 [node name="Bounce Pad3" parent="." unique_id=1725999715 instance=ExtResource("17_b8xro")]
-<<<<<<< Updated upstream
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.48466, 5.1213527, -39.503094)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.683403, 6.006063, -41.34685)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad3" unique_id=87833113]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 0.14094687, -2.1776314)
@@ -764,13 +811,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 0.13053083, -2.18
 shape = SubResource("CylinderShape3D_i8moa")
 debug_color = Color(0.82, 0.41, 0, 1)
 
-<<<<<<< Updated upstream
-[node name="mushroombase" parent="Bounce Pad3" unique_id=2119978753 instance=ExtResource("15_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 2.354868, 0, 0, 0, 1, -3.376913, -2.2788405, -2.139656)
-
-[node name="Bounce Pad5" parent="." unique_id=678781703 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.200798, 9.103672, -36.750053)
-=======
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad3" unique_id=1995213496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.3879633, -2.172943)
 use_collision = true
@@ -802,47 +842,41 @@ material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad5" parent="." unique_id=678781703 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.56649, 8.978002, -39.451027)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad5" unique_id=102435602]
-transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 3.6059036, -2.1776314)
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 5.66007, -2.1776314)
 material = SubResource("StandardMaterial3D_j26fj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad5" unique_id=1001366218]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 3.6075354, -2.1806526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457565, 5.6551147, -2.1806526)
 shape = SubResource("CylinderShape3D_wmh0y")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad5" unique_id=1929632135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.9242787, -2.172943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -1.0925531, -2.172943)
 use_collision = true
-radius = 0.15
-height = 13.0
+radius = 0.1
+height = 13.29248
 sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad6" parent="." unique_id=1684335158 instance=ExtResource("17_b8xro")]
-<<<<<<< Updated upstream
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.212734, 11.611053, -40.180744)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.796629, 4.1828976, -37.97231)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad6" unique_id=647697454]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
-radius = 0.8
+radius = 1.0
 material = SubResource("StandardMaterial3D_j26fj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad6" unique_id=375218387]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.336174, -2.3801599, -2.1806526)
-shape = SubResource("CylinderShape3D_gqagh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_i8moa")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad6" unique_id=2146120936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -6.992279, -2.172947)
-use_collision = true
-radius = 0.25
-height = 9.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
 
@@ -867,7 +901,7 @@ texture = ExtResource("16_b8xro")
 transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 30.234459, 19.684805, -41.615395)
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible3" unique_id=687066567]
-transform = Transform3D(-0.97203904, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.97203904, 2.6503067, 1.6931, -8.709145)
+transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
 texture = ExtResource("16_b8xro")
 
 [node name="Grapplepoint3d6" parent="." unique_id=1726253376 instance=ExtResource("18_j26fj")]
@@ -1092,24 +1126,20 @@ transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.972
 texture = ExtResource("16_b8xro")
 
 [node name="Bounce Pad7" parent="." unique_id=1476136587 instance=ExtResource("17_b8xro")]
-<<<<<<< Updated upstream
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.513258, 3.0779161, 24.867807)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.484596, 6.36658, 25.61192)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad7" unique_id=286041483]
-transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 0.17366838, -2.1776314)
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -3.1753473, -2.1776314)
 radius = 0.9
 material = SubResource("StandardMaterial3D_j26fj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad7" unique_id=1993267369]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, 0.20922756, -2.1806507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -3.1546717, -2.1806507)
 shape = SubResource("CylinderShape3D_0kqbx")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad7" unique_id=1319691281]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -1.436235, -2.172945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.78525, -2.172945)
 use_collision = true
 radius = 0.25
 height = 2.8293946
@@ -1117,11 +1147,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad8" parent="." unique_id=1247885177 instance=ExtResource("17_b8xro")]
-<<<<<<< Updated upstream
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.499518, 6.4420214, 26.108475)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.140387, 7.564989, 25.970013)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad8" unique_id=348078383]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -1.5619898, -2.1776333)
@@ -1142,11 +1168,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad9" parent="." unique_id=2134866075 instance=ExtResource("17_b8xro")]
-<<<<<<< Updated upstream
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.439466, 3.0930061, 22.103483)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.849531, 3.0893178, 24.089514)
->>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad9" unique_id=1605477002]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
@@ -1228,32 +1250,18 @@ material = ExtResource("9_b8xro")
 [node name="Fading Platform20" parent="." unique_id=1242293530 instance=ExtResource("8_gqagh")]
 transform = Transform3D(0.83205104, 0, -0.5546995, 0, 1, 0, 0.5546995, 0, 0.83205104, 9.3054285, 23.315193, 45.5519)
 
-<<<<<<< Updated upstream
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Fading Platform20" unique_id=1740300025]
-transform = Transform3D(0.89100647, 0.45399058, -1.9844558e-08, 0, -4.371139e-08, -1, -0.45399058, 0.89100647, -3.8947128e-08, -1.1399994, 0.44060898, 0.24703312)
-depth = 0.3
-polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
-debug_color = Color(0, 1, 0, 1)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform20" unique_id=702605564]
-transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
-=======
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Fading Platform20" unique_id=1860344707]
 transform = Transform3D(0.9173311, 0.39812502, -1.7402607e-08, 1.7360798e-16, -4.3711392e-08, -1, -0.39812502, 0.9173311, -4.009781e-08, -0.73840714, 0.28763962, -0.07807541)
->>>>>>> Stashed changes
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
 material = ExtResource("9_b8xro")
 
-<<<<<<< Updated upstream
-=======
 [node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Fading Platform20" unique_id=1447390818]
 transform = Transform3D(0.91751134, 0.3977082, -3.4287105e-08, -4.2241627e-08, 1.1239621e-08, -1.0000001, -0.39770824, 0.91751134, 2.711235e-08, -0.7540245, 0.434803, -0.06681824)
 depth = 0.3
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 debug_color = Color(0, 1, 0, 1)
 
->>>>>>> Stashed changes
 [node name="Bounce Pad10" parent="." unique_id=178360579 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1276207, 11.528262, 34.700523)
 
@@ -1333,8 +1341,6 @@ radius = 0.3
 height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
-<<<<<<< Updated upstream
-=======
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
 layer = 100
@@ -1344,4 +1350,3 @@ metadata/_edit_use_anchors_ = true
 
 [editable path="LevelBase"]
 [editable path="PauseMenu"]
->>>>>>> Stashed changes
