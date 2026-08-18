@@ -141,6 +141,7 @@ func _input(event: InputEvent) -> void:
 		)
 
 func _physics_process(delta: float) -> void:
+	print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
@@ -185,7 +186,7 @@ func _physics_process(delta: float) -> void:
 	var current_speed : float = SPRINT_SPEED if Input.is_action_pressed("sprint") else SPEED
 	
 	camera_pivot.global_position = camera_pivot.global_position.lerp(position + Vector3(0, CAMERA_DISTANCE_FROM_GROUND, 0), delta * CAMERA_PAN_SPEED)
-	if direction and !inDialogue:
+	if direction:
 		lastDirection = direction
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
