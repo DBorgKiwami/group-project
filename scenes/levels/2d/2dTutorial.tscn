@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://cu62rpik7k6ow" path="res://audio/music/victory.ogg" id="27_victory"]
 [ext_resource type="AudioStream" uid="uid://qixiw5fkxij" path="res://audio/music/birdschirping.ogg" id="28_birds"]
 [ext_resource type="AudioStream" uid="uid://dxwl5e8ub4sup" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
+[ext_resource type="Script" uid="uid://v5plhssx2cy8" path="res://scripts/levels/2dtutorial.gd" id="34_pyyl1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -459,6 +460,11 @@ metadata/_edit_use_anchors_ = true
 [node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1503220375]
 
 [node name="InteractionPromptDemo" parent="CanvasLayer3" unique_id=1692059102 instance=ExtResource("22_u8ol6")]
+
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=94409377]
+
+[node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1803579374]
+script = ExtResource("34_pyyl1")
 
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]

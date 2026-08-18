@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
 [ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+[ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
 
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
 panorama = ExtResource("20_sky")
@@ -1355,6 +1356,11 @@ layer = 100
 
 [node name="Control" parent="PauseMenu" index="1" unique_id=1600347352]
 metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=644630791]
+
+[node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1735010285]
+script = ExtResource("28_op046")
 
 [editable path="LevelBase"]
 [editable path="PauseMenu"]
