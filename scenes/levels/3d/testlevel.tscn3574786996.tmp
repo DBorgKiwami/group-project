@@ -27195,7 +27195,7 @@ z_index = 1
 
 [node name="Tutorial" type="CanvasLayer" parent="." unique_id=635957794]
 
-[node name="TutorialUI" type="Node2D" parent="Tutorial" unique_id=1310271241]
+[node name="Node2D" type="Node2D" parent="Tutorial" unique_id=1310271241]
 script = ExtResource("31_1bhdh")
 
 [editable path="Dialogue Area"]
