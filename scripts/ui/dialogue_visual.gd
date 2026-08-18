@@ -1,14 +1,21 @@
 extends Node2D
 
-const PLAYER_PORTRAIT := preload("res://allen_work/allen_work/ui_demos/death_screen_demo/assets/ui/player_portrait.png")
-
 const SHADOW := Color(0.010, 0.012, 0.014)
 const PANEL := Color(0.085, 0.069, 0.055, 0.94)
 const FRAME := Color(0.350, 0.265, 0.160)
 const FRAME_LIGHT := Color(0.690, 0.560, 0.340)
-const PORTRAIT_BG := Color(0.080, 0.150, 0.155)
 const WHITE := Color(0.930, 0.945, 0.900)
 const CREAM := Color(0.910, 0.790, 0.550)
+
+const PANEL_WIDTH := 700.0
+const PANEL_HEIGHT := 150.0
+
+const TEXT_LEFT := 25.0
+const TEXT_TOP := 30.0
+const TEXT_WIDTH := 630.0
+const LINE_HEIGHT := 22.0
+const MAX_LINES := 5
+const TEXT_SPEED := 30.0
 
 const LETTERS := {
 	"A": ["01110", "10001", "10001", "11111", "10001", "10001", "10001"],
@@ -44,8 +51,10 @@ const LETTERS := {
 	"'": ["010", "010", "000", "000", "000", "000", "000"],
 }
 
-var speaker_name: String = "SPEAKER"
+var speaker_name: String = "MERCHANT"
 var current_line: String = ""
+var pages: Array[String] = []
+var current_page: int = 0
 var time: float = 0.0
 
 
@@ -56,8 +65,31 @@ func _ready() -> void:
 
 func start_line(line: String) -> void:
 	current_line = line
+	pages = _create_pages(line)
+	current_page = 0
 	time = 0.0
 	queue_redraw()
+
+
+func is_typing() -> bool:
+	if pages.is_empty():
+		return false
+
+	return time * TEXT_SPEED < pages[current_page].length()
+
+
+func has_next_page() -> bool:
+	return current_page < pages.size() - 1
+
+
+func advance_page() -> bool:
+	if not has_next_page():
+		return false
+
+	current_page += 1
+	time = 0.0
+	queue_redraw()
+	return true
 
 
 func _process(delta: float) -> void:
@@ -74,39 +106,33 @@ func _draw() -> void:
 
 func draw_dialogue_screen() -> void:
 	var viewport_size: Vector2 = get_viewport_rect().size
+
 	var panel_pos := Vector2(
-		viewport_size.x / 2.0 - 250.0,
+		(viewport_size.x - PANEL_WIDTH) / 2.0,
 		viewport_size.y - 180.0
 	)
 
 	draw_name_plate(
 		panel_pos + Vector2(10, -20),
-		Vector2(150, 30)
+		Vector2(170, 30)
 	)
 
 	draw_panel(
 		panel_pos,
-		Vector2(500, 150)
-	)
-
-	draw_portrait_box(
-		panel_pos + Vector2(12, 24)
+		Vector2(PANEL_WIDTH, PANEL_HEIGHT)
 	)
 
 	draw_dialogue_text(
-		panel_pos + Vector2(140, 42)
+		panel_pos + Vector2(TEXT_LEFT, TEXT_TOP)
 	)
 
 	draw_continue_hint(
-		panel_pos + Vector2(470, 120)
+		panel_pos + Vector2(PANEL_WIDTH - 30, PANEL_HEIGHT - 30)
 	)
 
 
 func draw_name_plate(pos: Vector2, size: Vector2) -> void:
-	draw_rect(
-		Rect2(pos, size),
-		SHADOW
-	)
+	draw_rect(Rect2(pos, size), SHADOW)
 
 	draw_rect(
 		Rect2(pos + Vector2(2, 2), size - Vector2(4, 4)),
@@ -119,18 +145,14 @@ func draw_name_plate(pos: Vector2, size: Vector2) -> void:
 	)
 
 	draw_pixel_text_center(
-		pos + Vector2(size.x / 2.0, 9),
+		pos + Vector2(size.x / 2.0, 7),
 		speaker_name,
 		2,
 		CREAM
 	)
 
-
 func draw_panel(pos: Vector2, size: Vector2) -> void:
-	draw_rect(
-		Rect2(pos, size),
-		SHADOW
-	)
+	draw_rect(Rect2(pos, size), SHADOW)
 
 	draw_rect(
 		Rect2(pos + Vector2(2, 2), size - Vector2(4, 4)),
@@ -148,107 +170,121 @@ func draw_panel(pos: Vector2, size: Vector2) -> void:
 	)
 
 
-func draw_portrait_box(pos: Vector2) -> void:
-	draw_rect(
-		Rect2(pos, Vector2(110, 100)),
-		SHADOW
-	)
-
-	draw_rect(
-		Rect2(pos + Vector2(4, 4), Vector2(102, 92)),
-		FRAME
-	)
-
-	draw_rect(
-		Rect2(pos + Vector2(8, 8), Vector2(94, 84)),
-		FRAME_LIGHT
-	)
-
-	draw_rect(
-		Rect2(pos + Vector2(14, 10), Vector2(80, 80)),
-		PORTRAIT_BG
-	)
-
-	draw_texture_rect(
-		PLAYER_PORTRAIT,
-		Rect2(
-			pos + Vector2(16, 10),
-			Vector2(74, 80)
-		),
-		false
-	)
-
-
 func draw_dialogue_text(pos: Vector2) -> void:
-	if current_line == "":
+	if pages.is_empty():
 		return
 
-	var visible_letters: int = int(time * 30.0)
+	var page_text: String = pages[current_page]
+
+	var visible_letters: int = int(time * TEXT_SPEED)
 
 	var shown_count: int = clampi(
 		visible_letters,
 		0,
-		current_line.length()
+		page_text.length()
 	)
 
-	var shown: String = current_line.substr(
-		0,
-		shown_count
-	)
+	var shown: String = page_text.substr(0, shown_count)
 
-	# Wrap the text before drawing it.
-	var wrapped_lines: Array[String] = _wrap_text(
-		shown,
-		32
-	)
+	var lines: Array[String] = _wrap_text_by_width(shown)
 
-	# The box has room for three lines.
-	var max_lines: int = mini(
-		wrapped_lines.size(),
-		3
-	)
+	for i in range(lines.size()):
+		if i >= MAX_LINES:
+			break
 
-	for i in range(max_lines):
 		draw_pixel_text(
-			pos + Vector2(0, i * 22),
-			wrapped_lines[i],
+			pos + Vector2(0, i * LINE_HEIGHT),
+			lines[i],
 			2,
 			WHITE
 		)
 
 
-func _wrap_text(text: String, max_chars: int) -> Array[String]:
-	var words: PackedStringArray = text.split(" ")
-	var lines: Array[String] = []
-	var current_line_buf: String = ""
+func _create_pages(text: String) -> Array[String]:
+	var all_lines: Array[String] = _wrap_text_by_width(text)
+	var result: Array[String] = []
 
-	for word in words:
-		var test_line: String
+	var current_page_text := ""
+	var line_count := 0
 
-		if current_line_buf == "":
-			test_line = word
+	for line in all_lines:
+		if line_count >= MAX_LINES:
+			result.append(current_page_text)
+			current_page_text = ""
+			line_count = 0
+
+		if current_page_text == "":
+			current_page_text = line
 		else:
-			test_line = current_line_buf + " " + word
+			current_page_text += "\n" + line
 
-		if test_line.length() > max_chars and current_line_buf != "":
-			lines.append(current_line_buf)
-			current_line_buf = word
-		else:
-			current_line_buf = test_line
+		line_count += 1
 
-	if current_line_buf != "":
-		lines.append(current_line_buf)
+	if current_page_text != "":
+		result.append(current_page_text)
 
-	return lines
+	return result
+
+
+func _wrap_text_by_width(text: String) -> Array[String]:
+	var result: Array[String] = []
+
+	var paragraphs: PackedStringArray = text.split("\n")
+
+	for paragraph in paragraphs:
+		var words: PackedStringArray = paragraph.split(" ")
+		var current: String = ""
+
+		for word in words:
+			if word == "":
+				continue
+
+			var test_line: String
+
+			if current == "":
+				test_line = word
+			else:
+				test_line = current + " " + word
+
+			if get_pixel_text_width(test_line, 2) <= TEXT_WIDTH:
+				current = test_line
+			else:
+				if current != "":
+					result.append(current)
+
+				# If one individual word is too wide, split it safely.
+				if get_pixel_text_width(word, 2) > TEXT_WIDTH:
+					var partial := ""
+
+					for character_index in range(word.length()):
+						var character := word.substr(character_index, 1)
+						var test_partial := partial + character
+
+						if get_pixel_text_width(test_partial, 2) <= TEXT_WIDTH:
+							partial = test_partial
+						else:
+							if partial != "":
+								result.append(partial)
+							partial = character
+
+					current = partial
+				else:
+					current = word
+
+		if current != "":
+			result.append(current)
+
+	return result
 
 
 func draw_continue_hint(pos: Vector2) -> void:
-	if current_line == "":
+	if pages.is_empty():
 		return
 
-	var visible_letters: int = int(time * 30.0)
+	var page_text: String = pages[current_page]
+	var visible_letters: int = int(time * TEXT_SPEED)
 
-	if visible_letters < current_line.length():
+	if visible_letters < page_text.length():
 		return
 
 	var pulse: float = 0.45 + sin(time * 5.0) * 0.20
@@ -266,12 +302,7 @@ func draw_continue_hint(pos: Vector2) -> void:
 
 	draw_colored_polygon(
 		points,
-		Color(
-			CREAM.r,
-			CREAM.g,
-			CREAM.b,
-			pulse
-		)
+		Color(CREAM.r, CREAM.g, CREAM.b, pulse)
 	)
 
 
@@ -281,10 +312,7 @@ func draw_pixel_text_center(
 	scale: int,
 	color: Color
 ) -> void:
-	var width: int = get_pixel_text_width(
-		text,
-		scale
-	)
+	var width: int = get_pixel_text_width(text, scale)
 
 	draw_pixel_text(
 		pos - Vector2(width / 2.0, 0),
@@ -303,10 +331,7 @@ func draw_pixel_text(
 	var x_offset: int = 0
 
 	for i in range(text.length()):
-		var ch: String = text.substr(
-			i,
-			1
-		).to_upper()
+		var ch: String = text.substr(i, 1).to_upper()
 
 		if ch == " ":
 			x_offset += 4 * scale
@@ -329,17 +354,12 @@ func draw_pixel_text(
 								x_offset + x * scale,
 								y * scale
 							),
-							Vector2(
-								scale,
-								scale
-							)
+							Vector2(scale, scale)
 						),
 						color
 					)
 
-		x_offset += (
-			rows[0].length() + 1
-		) * scale
+		x_offset += (rows[0].length() + 1) * scale
 
 
 func get_pixel_text_width(
@@ -349,19 +369,14 @@ func get_pixel_text_width(
 	var width: int = 0
 
 	for i in range(text.length()):
-		var ch: String = text.substr(
-			i,
-			1
-		)
+		var ch: String = text.substr(i, 1)
 
 		if ch == " ":
 			width += 4 * scale
 
 		elif LETTERS.has(ch.to_upper()):
 			var rows: Array = LETTERS[ch.to_upper()]
-			width += (
-				rows[0].length() + 1
-			) * scale
+			width += (rows[0].length() + 1) * scale
 
 		else:
 			width += 4 * scale
