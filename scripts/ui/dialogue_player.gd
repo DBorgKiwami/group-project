@@ -5,8 +5,11 @@ extends CanvasLayer
 
 @onready var visual: Node2D = $DialogueVisual
 
+const MAX_CHARS_PER_LINE: int = 32
+const MAX_LINES_PER_PAGE: int = 3
+
 var dialogueFile: Dictionary = {}
-var playingDialogue: Array = []
+var playingDialogue: Array[String] = []
 var dialogueIndex: int = 0
 var dialogueDisplaying: bool = false
 
@@ -16,11 +19,11 @@ func _ready() -> void:
 
 	if FileAccess.file_exists(scene_text_file):
 		var file := FileAccess.open(scene_text_file, FileAccess.READ)
-		var test_json_conv := JSON.new()
-		var parse_result: Error = test_json_conv.parse(file.get_as_text())
+		var json := JSON.new()
+		var parse_result: Error = json.parse(file.get_as_text())
 
 		if parse_result == OK:
-			dialogueFile = test_json_conv.get_data()
+			dialogueFile = json.get_data()
 
 	SignalBus.connect("display_dialogue", _on_display_dialogue)
 
@@ -34,9 +37,14 @@ func _on_display_dialogue(dialogue) -> void:
 			return
 
 		visible = true
-		playingDialogue = dialogueFile[dialogue]
 		dialogueDisplaying = true
 		dialogueIndex = 0
+
+		playingDialogue = _build_dialogue_pages(dialogueFile[dialogue])
+
+		if playingDialogue.is_empty():
+			_end_dialogue()
+			return
 
 		if visual:
 			visual.start_line(playingDialogue[dialogueIndex])
@@ -52,16 +60,89 @@ func _on_display_dialogue(dialogue) -> void:
 			visual.queue_redraw()
 			return
 
-	# Next press advances to the next dialogue line.
+	# Once the current line is fully visible, advance.
 	dialogueIndex += 1
 
 	if dialogueIndex >= playingDialogue.size():
-		dialogueDisplaying = false
-		visible = false
-		call_deferred("_emit_dialogue_done")
+		_end_dialogue()
 	else:
 		if visual:
 			visual.start_line(playingDialogue[dialogueIndex])
+
+
+func _build_dialogue_pages(raw_dialogue) -> Array[String]:
+	var pages: Array[String] = []
+
+	if not raw_dialogue is Array:
+		return pages
+
+	for raw_line in raw_dialogue:
+		var line: String = str(raw_line)
+
+		if line.strip_edges() == "":
+			continue
+
+		var wrapped_lines: Array[String] = _wrap_text(
+			line,
+			MAX_CHARS_PER_LINE
+		)
+
+		var page_text: String = ""
+		var line_count: int = 0
+
+		for wrapped_line in wrapped_lines:
+			if line_count >= MAX_LINES_PER_PAGE:
+				pages.append(page_text)
+				page_text = ""
+				line_count = 0
+
+			if page_text == "":
+				page_text = wrapped_line
+			else:
+				page_text += "\n" + wrapped_line
+
+			line_count += 1
+
+		if page_text != "":
+			pages.append(page_text)
+
+	return pages
+
+
+func _wrap_text(text: String, max_chars: int) -> Array[String]:
+	var words: PackedStringArray = text.split(" ")
+	var lines: Array[String] = []
+	var current_line: String = ""
+
+	for word in words:
+		if current_line == "":
+			current_line = word
+			continue
+
+		var test_line: String = current_line + " " + word
+
+		if test_line.length() > max_chars:
+			lines.append(current_line)
+			current_line = word
+		else:
+			current_line = test_line
+
+	if current_line != "":
+		lines.append(current_line)
+
+	return lines
+
+
+func _end_dialogue() -> void:
+	dialogueDisplaying = false
+	visible = false
+	playingDialogue.clear()
+	dialogueIndex = 0
+
+	if visual:
+		visual.start_line("")
+
+	call_deferred("_emit_dialogue_done")
 
 
 func _emit_dialogue_done() -> void:
@@ -70,6 +151,4 @@ func _emit_dialogue_done() -> void:
 
 func force_close_dialogue() -> void:
 	if dialogueDisplaying:
-		dialogueDisplaying = false
-		visible = false
-		call_deferred("_emit_dialogue_done")
+		_end_dialogue()

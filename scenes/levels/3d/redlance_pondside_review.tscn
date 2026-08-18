@@ -95,7 +95,6 @@ script = ExtResource("1_script")
 [node name="InteractionPromptDemo" parent="." unique_id=1692059102 instance=ExtResource("2_y73yp")]
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_5wccx")]
-speaker_name = null
 
 [node name="DialogueVisual" type="Node2D" parent="DialoguePlayer" unique_id=498959776]
 script = ExtResource("4_jsr2h")

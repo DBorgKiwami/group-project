@@ -399,7 +399,7 @@ hflip = -1.0
 
 [node name="SceneTransition2D" parent="." unique_id=1962062075 node_paths=PackedStringArray("prompt") instance=ExtResource("8_5pkib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
-scene = "D:/College/Masters/Summer Project/group-project/scenes/levels/3d/redlance_pondside_review.tscn"
+scene = "res://scenes/levels/3d/redlance_pondside_review.tscn"
 interact_distance = 5.0
 prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
 
