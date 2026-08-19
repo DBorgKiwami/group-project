@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bx13wn7icr3um" path="res://sprites/player/2D Sprites/player_sprite_right_walk1.png" id="5_cudoo"]
 [ext_resource type="Texture2D" uid="uid://vvpfoeo0koci" path="res://sprites/player/2D Sprites/player_sprite_right_walk2.png" id="6_fqeiy"]
 [ext_resource type="Script" uid="uid://cs3qtpfp3yw1m" path="res://scenes/player/playeralivestate.gd" id="6_k8hk2"]
-[ext_resource type="Script" uid="uid://dpkp0ho45q5x0" path="res://scenes/player/playerdead.gd" id="7_1haum"]
+[ext_resource type="Script" uid="uid://bww8favmhsjbh" path="res://scenes/player/playerdead.gd" id="7_1haum"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="8_step"]
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]

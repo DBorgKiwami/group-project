@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
 [ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="22_u8ol6"]
-[ext_resource type="Script" path="res://scripts/audio/combat_audio.gd" id="23_combat_audio"]
+[ext_resource type="Script" uid="uid://8f8cdpi0mh3d" path="res://scripts/audio/combat_audio.gd" id="23_combat_audio"]
 [ext_resource type="AudioStream" uid="uid://cflbms0hnc8b1" path="res://audio/music/combatstart.ogg" id="24_combat_start"]
 [ext_resource type="AudioStream" uid="uid://itl54bbb23vm" path="res://audio/music/combatmiddle.ogg" id="25_combat_middle"]
 [ext_resource type="AudioStream" uid="uid://ba0olmu72gp5v" path="res://audio/music/combatfinal.ogg" id="26_combat_final"]
