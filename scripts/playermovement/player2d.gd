@@ -71,6 +71,7 @@ func _on_player_hit(damage) -> void:
 	if blocking:
 		print("Damage blocked!")
 		return
+	Hitstopmanager.hit_stop(0.2)
 	print("I've been hit for " + str(damage) + "!")
 	if hurt_sfx:
 		hurt_sfx.play()
