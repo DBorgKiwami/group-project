@@ -1,17 +1,18 @@
 {
 	"fish_intro": [
-		"Ahhhhh!!!!! You're finally here! It's been too long! So long that I can't remeber how long it has been!",
-		"Why have you only just turned up? Haven’t you realised what’s happened? Why are you still here? Shouldn’t you be going to find out what’s happened straight away?",
-		"AHHHHHHHHHH!",
-		"Ahhh! You're finally here... Wait, am I repeating myself? I can't remember! I think one of my scales fell off, my owner won’t like this at all! No, wait… Owner? Where has my owner gone? Where am I? Why is the water so terrifyingly high here?",
-		"You're going to help me, right? Right? Yeah, you should definetly do something.  It's not like you can do anything else, the place is in serious trouble. The flood is going to kill EVERYONE! Now why are you still staring at me? Go follow that path! Ahhhhhh!"
+		"Ahhhhh!!!!! You're finally here! It's been too long! So long that I can't remember how long it has been!",
+        "Why have you only just turned up? Haven’t you realised what’s happened? Aren’t you in charge of taking care of me?",
+        "Well, apparently you are too late. I forgot what happened. If you take your responsibility more seriously and come by earlier, I’d be able to tell you more about this…disaster thing. I guess now it’s your job to find out. You know what is worse? I think one of my scales fell off, my owner won’t like this at all! Where has my owner gone? Don’t you think you should do something about that, as well?",
+        "Yeah, you should definitely do something.  It's not like you can do anything else, the place is in serious trouble. Annnnd ever since I met you, my memory is getting worse!",
+        "Well well well, silence like that! Someone should educate the residents here with some mannerism. Now begone! You have work to do, strange frog with strange eyes."
+
 	],
 	"fish_repeat": [
 		"Bubbles that rise past my little glass castle. Flakes drifting down like a golden-food hassle. Pebbles that sparkle when sunlight comes streaming. These are a few of my favorite things...What are you doing here? Make yourself useful and get out of here! No more scales for you!"
 	],
 	"merchant_intro": [
 		"Welcome, welcome! Thank you for coming by during this particular difficult time...Anyway, you have those adorable seed beads with you, right?",
-		"Our people are collectors. Although the water level and chaos blocked my way for gathering more stuffs, I'm sure you can still find something useful here. You can always trade beads with others as well, I'm sure there will be my fellow hanging around in all the areas."
+		"Our people are collectors. Although the water level and chaos blocked my way for gathering more stuffs, I'm sure you can still find something useful here. You can always trade beads with others as well, I'm sure there will be my fellow merchants hanging around in all the areas."
 	],
 	"merchant_farewell": [
 		"Come again!"
@@ -21,7 +22,7 @@
 	],
 	"elder_intro": [
 		"Ah, so here you are, outsider. From the very day your unusual blue skin first appeared in Antlia, I knew you would change the fate of this place. Now that disaster has struck, what role will you play in the events to come? Hmm… interesting.",
-		"As you can see, the rest of the frog clan are all busy dealing with the disaster and rebuilding. I’m the only one left here. I’m old and nearly blind. What more can I do? What use am I to you?",
+		"As you can see, the rest of the frog clan are all busy dealing with the disaster and rebuilding. I’m the only one left here. I’m old and nearly blind. What more can I do? What use am I to you? Not exactly thrilled to use your tricks? Well, well, well…Now, let’s see.",
 		"I used to collect buttons, just as I used to collect knowledge. You are no child, but if you find any button, bring it to me, I’ll tell you an ancient story—one as old as the buttons themselves. Outsider, are you interested in a deal like this?"
 	],
 	"elder_intro_with_button": [
@@ -32,7 +33,7 @@
 	],
 	"elder_story1": [
 		"The first tale is older even than the crack in this button. Custos Ordinis, the Guardian of the Order of Antlia, has existed since before the dawn of time. No living species knows why it exists, or how it maintains the water body at the centre of Antlia at the proper water level. The Custos Ordinis seeks neither speech nor offerings. We, all living creatures, must simply fulfil our respective duties within its silence, focusing on our own destinies, and pray that it may forever preserve the peace and tranquillity of our world.",
-		"No creature can, on its own, interfere with the workings of the Custos Ordinis. It is far too vast and too formidable. Over the ages, the sentient species of Antlia have come to understand that they must not meddle with its sacred will… yet the Order of Serpens is an exception. These reclusive serpents have long occupied the corner of the earth closest to the Custos Ordinis. They are the largest and most powerful species in the whole Antlia. Despite their small numbers, they lack any sense of reverence for the Custos Ordinis. In my youth, a serpent once dared to coil upon the Custos Ordinis for the duration of a single sunrise and sunset. And during the village’s last mating season, a great serpent even attempted to disrupt the flow of the water with its long tail.",
+		"No creature can, on its own, interfere with the workings of the Custos Ordinis. It is far too vast and too formidable. Over the ages, the sentient species of Antlia have come to understand that they must not meddle with its sacred will… yet the Order of Serpens is an exception. These reclusive serpents have long occupied the corner of the earth closest to the Custos Ordinis. They are the largest and most powerful species in the whole of Antlia. Despite their small numbers, they lack any sense of reverence for the Custos Ordinis. In my youth, a serpent once dared to coil upon the Custos Ordinis for the duration of a single sunrise and sunset. And during the village’s last mating season, a great serpent even attempted to disrupt the flow of the water with its long tail.",
 		"Has such behaviour angered the sacred Custos Ordinis? What exactly are their intentions? And to what extent can we, as sentient beings, truly understand and interfere with the existence of the Custos Ordinis?"
 	],
 	"elder_story2": [
@@ -44,14 +45,15 @@
 		"There is a third tale, outsider, and it is the one I like least to tell. Not because it frightens me, but because I cannot finish it. No frog can. Just as the edge of this button has neither a beginning nor an end, so too is this story.",
 		"When I was young, I once found a fragment near the ditch's northern rim—smooth, harder than any stone, with markings pressed into it too even to be the work of claw or beak. My mother told me not to touch it. She said such things wash in sometimes from beyond the mist, remnants of the ones who came before the Custos Ordinis and, some whisper, who placed it there themselves.",
 		"The ones who came before. We have no word for them that isn't borrowed or half-invented. The towering presence, taller than a thousand villages stacked upon one another. No creature, save for birds, has ever caught a glimpse of their full form. It is said that even birds keep their distance from them.",
-		"What troubles me, outsider, is not whether they exist. It is that everything which keeps us alive—the Custos Ordinis, the water level, the very order of Antlia—behaves as though it was built for a purpose, by something that understood purpose. A frog does not build a heart. A frog is simply given one. But the Custos Ordinis feels built. And if it was built, outsider... then someone built it. Someone who has not been seen since, and who may not know, or care, that we are living inside their leftover work."
+		"What troubles me, outsider, is not whether they exist. It is that everything which keeps us alive—the Custos Ordinis, the water level, the very order of Antlia—behaves as though it was built for a purpose, by something that understood the purpose. A frog does not build a heart. A frog is simply given one. But the Custos Ordinis feels built. And if it was built, outsider... then someone built it. Someone who has not been seen since, and who may not know, or care, that we are living inside their leftover work."
 	],
+
 	"elder_closure": [
 		"Outsider, you must think carefully about this story. If not through learning, how else can we come to understand the world—and, more importantly, ourselves?"
 	],
 	"nightheron_intro": [
 		"...You. Not frog. Not fish. Something else.",
-		"They send small things to me. Frightened things. You are not frightened. Should you be?",
+		"They send small things to me. Frightened small creatures. You are not frightened. Should you be?",
 		"I carry things. Across the water. Around the mist. Far, if far is needed.",
 		"Red creature. Dragonfly. Full of anger. Too dangerous.",
 		"Contract. Need to fullfil. Not right now. Later."
