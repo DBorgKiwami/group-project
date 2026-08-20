@@ -14,6 +14,7 @@ class_name Player3D
 @export var footstep_sfx : AudioStreamPlayer
 @export var grapple_point_calc : Node3D
 @export var tongue : MeshInstance3D
+@export var tongue_snap_flash : Node3D
 
 @export var SPEED = 5.0
 @export var SPRINT_SPEED = 8.0
@@ -87,6 +88,7 @@ func grapple():
 		grapple_sfx.play()
 	if tongue:
 		tongue.visible = true
+	_play_tongue_snap_flash()
 	if grapple_sfx:
 		grapple_sfx.play()
 	grappleTween = get_tree().create_tween()
@@ -98,6 +100,19 @@ func endGrapple():
 	if tongue:
 		tongue.visible = false
 		
+func _play_tongue_snap_flash() -> void:
+	if tongue_snap_flash == null:
+		return
+	tongue_snap_flash.visible = true
+	tongue_snap_flash.scale = Vector3(0.05, 0.05, 0.05)
+	var snap_tween := get_tree().create_tween()
+	snap_tween.tween_property(tongue_snap_flash, "scale", Vector3(0.35, 0.35, 0.35), 0.05)
+	snap_tween.tween_property(tongue_snap_flash, "scale", Vector3.ZERO, 0.12)
+	snap_tween.tween_callback(_hide_tongue_snap_flash)
+
+func _hide_tongue_snap_flash() -> void:
+	if tongue_snap_flash:
+		tongue_snap_flash.visible = false
 func _update_tongue() -> void:
 	if not tongue:
 		return
