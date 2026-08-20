@@ -44,11 +44,14 @@ const LETTERS := {
 	"X": ["10001", "10001", "01010", "00100", "01010", "10001", "10001"],
 	"Y": ["10001", "10001", "01010", "00100", "00100", "00100", "00100"],
 	"Z": ["11111", "00001", "00010", "00100", "01000", "10000", "11111"],
+
 	"!": ["1", "1", "1", "1", "1", "0", "1"],
 	"?": ["01110", "10001", "00010", "00100", "00100", "00000", "00100"],
 	",": ["000", "000", "000", "000", "010", "010", "100"],
 	".": ["000", "000", "000", "000", "000", "010", "010"],
-	"'": ["010", "010", "000", "000", "000", "000", "000"],
+
+	# Visible pixel apostrophe
+	"'": ["011", "011", "000", "000", "000", "000", "000"],
 }
 
 var speaker_name: String = "MERCHANT"
@@ -89,6 +92,7 @@ func advance_page() -> bool:
 	current_page += 1
 	time = 0.0
 	queue_redraw()
+
 	return true
 
 
@@ -150,6 +154,7 @@ func draw_name_plate(pos: Vector2, size: Vector2) -> void:
 		2,
 		CREAM
 	)
+
 
 func draw_panel(pos: Vector2, size: Vector2) -> void:
 	draw_rect(Rect2(pos, size), SHADOW)
@@ -252,7 +257,6 @@ func _wrap_text_by_width(text: String) -> Array[String]:
 				if current != "":
 					result.append(current)
 
-				# If one individual word is too wide, split it safely.
 				if get_pixel_text_width(word, 2) > TEXT_WIDTH:
 					var partial := ""
 
@@ -265,6 +269,7 @@ func _wrap_text_by_width(text: String) -> Array[String]:
 						else:
 							if partial != "":
 								result.append(partial)
+
 							partial = character
 
 					current = partial
@@ -331,7 +336,11 @@ func draw_pixel_text(
 	var x_offset: int = 0
 
 	for i in range(text.length()):
-		var ch: String = text.substr(i, 1).to_upper()
+		var ch: String = text.substr(i, 1)
+
+		# Keep punctuation intact.
+		if ch != "'" and ch != "," and ch != "." and ch != "!" and ch != "?":
+			ch = ch.to_upper()
 
 		if ch == " ":
 			x_offset += 4 * scale
