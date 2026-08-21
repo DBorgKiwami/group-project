@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cgkmf27ukt84e"]
+
+[ext_resource type="Script" uid="uid://c02bhqbvgwj1o" path="res://scenes/menu/shop_item.gd" id="1_aj0m5"]
+
+[node name="Shop Item" type="Control" unique_id=1583653301]
+custom_minimum_size = Vector2(517.83, 66.32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 517.83
+offset_bottom = 66.32
+script = ExtResource("1_aj0m5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=981534399]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1746899402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 42
+text = "Dummy Text"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

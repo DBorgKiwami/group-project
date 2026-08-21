@@ -28,11 +28,11 @@
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="26_jump"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="27_land"]
 [ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="28_dq5nv"]
-[ext_resource type="AudioStream" path="res://audio/music/footstepinwater.ogg" id="29_water_step"]
-[ext_resource type="AudioStream" path="res://audio/music/steponlotusleaf.ogg" id="30_lotus_step"]
-[ext_resource type="AudioStream" path="res://audio/music/tonguegrappling.ogg" id="31_grapple"]
-[ext_resource type="AudioStream" path="res://audio/music/notificationbeep.ogg" id="32_grapple_notification"]
-[ext_resource type="AudioStream" path="res://audio/music/stepongrass.ogg" id="33_grass_step"]
+[ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="29_water_step"]
+[ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="30_lotus_step"]
+[ext_resource type="AudioStream" uid="uid://vn2vk603g8js" path="res://audio/music/tonguegrappling.ogg" id="31_grapple"]
+[ext_resource type="AudioStream" uid="uid://ccfpaq6nyh0wv" path="res://audio/music/notificationbeep.ogg" id="32_grapple_notification"]
+[ext_resource type="AudioStream" uid="uid://ci7guhucjpibg" path="res://audio/music/stepongrass.ogg" id="33_grass_step"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
 radius = 0.317
@@ -311,13 +311,13 @@ volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="GrappleSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="GrappleSfx" type="AudioStreamPlayer3D" parent="." unique_id=449311245]
 stream = ExtResource("31_grapple")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 24.0
 
-[node name="GrappleNotificationSfx" type="AudioStreamPlayer" parent="."]
+[node name="GrappleNotificationSfx" type="AudioStreamPlayer" parent="." unique_id=1896028018]
 stream = ExtResource("32_grapple_notification")
 volume_db = -12.0
 
@@ -327,19 +327,19 @@ volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1475790368]
 stream = ExtResource("29_water_step")
 volume_db = -4.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1596882947]
 stream = ExtResource("30_lotus_step")
 volume_db = -4.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="GrassFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="GrassFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=637187241]
 stream = ExtResource("33_grass_step")
 volume_db = -2.0
 max_db = 0.0

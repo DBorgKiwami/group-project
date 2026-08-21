@@ -50,6 +50,7 @@ var current_anim_speed := 1.0
 var grapple_target := Vector3.ZERO
 @onready var footstep_controller: Node = get_node_or_null("FootstepController")
 var just_landed = false
+var temp = true
 
 func bounce(bounce_height):
 	velocity.y = bounce_height
@@ -63,6 +64,7 @@ func _ready():
 	#F9 will release the mouse for editing purposes
 	SignalBus.display_dialogue.connect(_on_dialogue_display)
 	SignalBus.dialogue_done.connect(_on_dialogue_done)
+	#SignalBus.open_shop.emit(["merchant"])
 	if Scenecontroler._check_start_position():
 		print("WAHWHAWHWAHAWHWAHAWH")
 		global_position = Scenecontroler.start_position_value
@@ -141,7 +143,10 @@ func _input(event: InputEvent) -> void:
 		)
 
 func _physics_process(delta: float) -> void:
-	print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
+	if temp:
+		SignalBus.open_shop.emit("merchant")
+		temp = false
+	#print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
@@ -319,7 +324,7 @@ func _process(delta: float) -> void:
 	else:
 		animationdirection = "east"
 
-	print(animationdirection)
+	#print(animationdirection)
 	
 	# --- Sprint animation speed ramp ---
 	var target_anim_speed := sprint_anim_speed if Input.is_action_pressed("sprint") else normal_anim_speed

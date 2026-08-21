@@ -21,6 +21,7 @@ Scenecontroler="*uid://btp28npae7yw1"
 SignalBus="*uid://b5pkcy3f4jdnt"
 PersistentData="*uid://cftlwamfmwl02"
 Hitstopmanager="*uid://cgkxriraiat40"
+Shop="*uid://bjjh8815fc1ko"
 
 [display]
 
