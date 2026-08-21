@@ -9,10 +9,12 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and active:
 			Shop.buy_item_from_shop(shop_tag, item)
-			SignalBus.open_shop.emit(shop_tag)
+			
 			print($ColorRect/RichTextLabel.text)
+			
+			SignalBus.open_shop.emit(shop_tag)
 
-func load_information(shop, price, name, desc):
+func load_information(shop, name, desc, price):
 	shop_tag = shop
 	item = name
 	$ColorRect/RichTextLabel.text = str(price) + " " + str(name) + " " + str(desc)

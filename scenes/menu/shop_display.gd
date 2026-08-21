@@ -15,6 +15,8 @@ func close_shop_screen():
 
 func show_shop_screen(shop_id):
 	visible = true
+	for child in containter.get_children():
+		child.free()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var shop_details = Shop.get_shop(shop_id)
 	shop = shop_id
@@ -25,6 +27,6 @@ func show_shop_screen(shop_id):
 		if object["purchased"]:
 			continue
 		var inst = shop_item.instantiate()
-		inst.load_information(shop,object["name"],object["desc"],object["price"])
+		inst.load_information(shop_id, object["name"], object["desc"],object["price"])
 		containter.add_child(inst)
 	print("HIAHGIUEHGEIUEHGIUHERGOIHGEOIGHEROIGHEOIGRHOIERGHOIERGHOIGRH")

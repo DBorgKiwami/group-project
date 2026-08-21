@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://be5cco228jp3i" path="res://scripts/levels/tutorial.gd" id="31_1bhdh"]
 [ext_resource type="AudioStream" uid="uid://c442jhbmxddbx" path="res://audio/music/pondsounds.ogg" id="31_pond"]
 [ext_resource type="AudioStream" uid="uid://dvd7ki57cvgh6" path="res://audio/music/breeze.ogg" id="32_breeze"]
-[ext_resource type="PackedScene" uid="uid://bdn444djwpinr" path="res://scenes/menu/shop_display.tscn" id="32_jsh50"]
+[ext_resource type="PackedScene" uid="uid://b70q6qqb7vh4d" path="res://scenes/menu/shop_display.tscn" id="32_jsh50"]
 [ext_resource type="AudioStream" uid="uid://vwbqup2x6gmi" path="res://audio/music/insectchirping.ogg" id="33_insect"]
 [ext_resource type="AudioStream" uid="uid://bmbhvkrmh1pcl" path="res://audio/music/frogcroaking.ogg" id="34_frog"]
 [ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="35_ambience"]
