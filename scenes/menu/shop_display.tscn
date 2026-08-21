@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bdn444djwpinr"]
+[gd_scene format=3 uid="uid://b70q6qqb7vh4d"]
 
 [ext_resource type="Script" uid="uid://chgb2mlicxut5" path="res://scenes/menu/shop_display.gd" id="1_tvp48"]
-[ext_resource type="PackedScene" uid="uid://cgkmf27ukt84e" path="res://scenes/menu/shop_item.tscn" id="2_mg8r2"]
+[ext_resource type="PackedScene" uid="uid://d3qd6cfs3jyec" path="res://scenes/menu/shop_item.tscn" id="2_mg8r2"]
 
 [node name="Shop Display" type="CanvasLayer" unique_id=696475803 node_paths=PackedStringArray("containter")]
 script = ExtResource("1_tvp48")

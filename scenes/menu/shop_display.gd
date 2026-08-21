@@ -22,6 +22,8 @@ func show_shop_screen(shop_id):
 	print(Shop.get_shop(shop_id))
 	
 	for object in shop_details:
+		if object["purchased"]:
+			continue
 		var inst = shop_item.instantiate()
 		inst.load_information(shop,object["name"],object["desc"],object["price"])
 		containter.add_child(inst)
