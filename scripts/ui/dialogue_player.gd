@@ -3,10 +3,11 @@ extends CanvasLayer
 @export_file("*json") var scene_text_file: String
 @export var speaker_name: String = "MERCHANT"
 
-@onready var visual: Node2D = $DialogueVisual
+@onready var visual: Node2D = get_node_or_null("DialogueVisual")
 
 const MAX_LINES_PER_PAGE := 5
 const MAX_TEXT_WIDTH := 500
+
 
 var dialogueFile: Dictionary = {}
 var playingDialogue: Array[String] = []
@@ -17,6 +18,10 @@ var dialogueDisplaying: bool = false
 func _ready() -> void:
 	visible = false
 
+	if visual == null:
+		push_error("DialogueVisual node could not be found.")
+		return
+
 	if FileAccess.file_exists(scene_text_file):
 		var file := FileAccess.open(scene_text_file, FileAccess.READ)
 		var json := JSON.new()
@@ -26,18 +31,24 @@ func _ready() -> void:
 
 	SignalBus.connect("display_dialogue", _on_display_dialogue)
 
-	if visual:
-		visual.speaker_name = speaker_name
+	visual.speaker_name = speaker_name
 
 
-func _on_display_dialogue(dialogue, npc_name: String = "MERCHANT") -> void:
+func _on_display_dialogue(
+	dialogue: String,
+	npc_name: String = "MERCHANT"
+) -> void:
+
+	if visual == null:
+		return
+
 	if not dialogueDisplaying:
 		if not dialogueFile.has(dialogue):
+			print("Dialogue ID not found: ", dialogue)
 			return
 
-		if visual:
-			visual.speaker_name = npc_name
-			visual.queue_redraw()
+		visual.speaker_name = npc_name
+		visual.queue_redraw()
 
 		playingDialogue = _create_pages(dialogueFile[dialogue])
 
@@ -47,17 +58,18 @@ func _on_display_dialogue(dialogue, npc_name: String = "MERCHANT") -> void:
 		dialogueIndex = 0
 		dialogueDisplaying = true
 		visible = true
+
 		_show_current_page()
 		return
 
-	if visual:
-		var full_length: int = visual.current_line.length()
-		var visible_length: int = int(visual.time * 30.0)
 
-		if visible_length < full_length:
-			visual.time = float(full_length) / 30.0
-			visual.queue_redraw()
-			return
+	var full_length: int = visual.current_line.length()
+	var visible_length: int = int(visual.time * 30.0)
+
+	if visible_length < full_length:
+		visual.time = float(full_length) / 30.0
+		visual.queue_redraw()
+		return
 
 	dialogueIndex += 1
 
@@ -68,8 +80,16 @@ func _on_display_dialogue(dialogue, npc_name: String = "MERCHANT") -> void:
 
 
 func _show_current_page() -> void:
-	if visual:
-		visual.start_line(playingDialogue[dialogueIndex])
+	if visual == null:
+		return
+
+	if dialogueIndex < 0:
+		return
+
+	if dialogueIndex >= playingDialogue.size():
+		return
+
+	visual.start_line(playingDialogue[dialogueIndex])
 
 
 func _create_pages(raw_dialogue) -> Array[String]:
@@ -84,13 +104,13 @@ func _create_pages(raw_dialogue) -> Array[String]:
 		if text == "":
 			continue
 
-		var sentences := _split_sentences(text)
+		var sentences: Array[String] = _split_sentences(text)
 
-		var current_page := ""
-		var current_lines := 0
+		var current_page: String = ""
+		var current_lines: int = 0
 
 		for sentence in sentences:
-			var sentence_lines := _wrap_sentence(sentence)
+			var sentence_lines: Array[String] = _wrap_sentence(sentence)
 
 			var sentence_line_count: int = sentence_lines.size()
 
@@ -100,11 +120,11 @@ func _create_pages(raw_dialogue) -> Array[String]:
 					current_page = ""
 					current_lines = 0
 
-				var line_index := 0
+				var line_index: int = 0
 
 				while line_index < sentence_lines.size():
-					var chunk := ""
-					var lines_added := 0
+					var chunk: String = ""
+					var lines_added: int = 0
 
 					while (
 						line_index < sentence_lines.size()
@@ -129,6 +149,7 @@ func _create_pages(raw_dialogue) -> Array[String]:
 					current_page += " " + sentence
 
 				current_lines += sentence_line_count
+
 			else:
 				if current_page != "":
 					pages.append(current_page)
@@ -144,13 +165,18 @@ func _create_pages(raw_dialogue) -> Array[String]:
 
 func _split_sentences(text: String) -> Array[String]:
 	var sentences: Array[String] = []
-	var current := ""
+	var current: String = ""
 
 	for i in range(text.length()):
-		var character := text.substr(i, 1)
+		var character: String = text.substr(i, 1)
+
 		current += character
 
-		if character == "." or character == "!" or character == "?":
+		if (
+			character == "."
+			or character == "!"
+			or character == "?"
+		):
 			sentences.append(current.strip_edges())
 			current = ""
 
@@ -162,15 +188,16 @@ func _split_sentences(text: String) -> Array[String]:
 
 func _wrap_sentence(sentence: String) -> Array[String]:
 	var lines: Array[String] = []
-	var words := sentence.split(" ")
-	var current := ""
+
+	var words: PackedStringArray = sentence.split(" ")
+	var current: String = ""
 
 	for word in words:
 		if current == "":
 			current = word
 			continue
 
-		var test := current + " " + word
+		var test: String = current + " " + word
 
 		if _text_fits(test):
 			current = test
@@ -188,18 +215,16 @@ func _text_fits(text: String) -> bool:
 	var width: int = 0
 	var scale: int = 2
 
+	# Approximate width calculation.
+	# This deliberately does NOT access visual.LETTERS,
+	# so DialogueVisual being missing can never crash this.
 	for i in range(text.length()):
-		var character: String = text.substr(i, 1).to_upper()
+		var character: String = text.substr(i, 1)
 
 		if character == " ":
-			width += 4 * scale
-
-		elif visual.LETTERS.has(character):
-			var rows: Array = visual.LETTERS[character]
-			width += (rows[0].length() + 1) * scale
-
+			width += 8
 		else:
-			width += 4 * scale
+			width += 12
 
 	return width <= MAX_TEXT_WIDTH
 
@@ -207,10 +232,11 @@ func _text_fits(text: String) -> bool:
 func _end_dialogue() -> void:
 	dialogueDisplaying = false
 	visible = false
+
 	playingDialogue.clear()
 	dialogueIndex = 0
 
-	if visual:
+	if visual != null:
 		visual.start_line("")
 
 	call_deferred("_emit_dialogue_done")
