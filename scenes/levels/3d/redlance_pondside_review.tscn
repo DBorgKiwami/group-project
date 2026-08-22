@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b4qp0c47j801r" path="res://audio/music/insectschirping.ogg" id="11_insects"]
 [ext_resource type="Script" uid="uid://bo8jbgv83vdx6" path="res://scripts/audio/pond_ambience.gd" id="12_ambience"]
 [ext_resource type="AudioStream" uid="uid://bmbhvkrmh1pcl" path="res://audio/music/frogcroaking.ogg" id="13_frog"]
+[ext_resource type="PackedScene" uid="uid://h8o2yk4mr167" path="res://scenes/npcs/goldfish.tscn" id="14_hjbub"]
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
@@ -139,6 +140,11 @@ JUMP_VELOCITY = 6.0
 
 [node name="Merchant" parent="." unique_id=1841873639 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("11_5wccx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36.593037, -0.045627594, 11.240436)
+prompt = NodePath("../InteractionPromptDemo")
+dialogue_player = NodePath("../DialoguePlayer")
+
+[node name="CharacterBody3D" parent="." unique_id=1666647444 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("14_hjbub")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.891012, -0.9598086, -7.3782625)
 prompt = NodePath("../InteractionPromptDemo")
 dialogue_player = NodePath("../DialoguePlayer")
 

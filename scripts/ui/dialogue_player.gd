@@ -30,10 +30,14 @@ func _ready() -> void:
 		visual.speaker_name = speaker_name
 
 
-func _on_display_dialogue(dialogue) -> void:
+func _on_display_dialogue(dialogue, npc_name: String = "MERCHANT") -> void:
 	if not dialogueDisplaying:
 		if not dialogueFile.has(dialogue):
 			return
+
+		if visual:
+			visual.speaker_name = npc_name
+			visual.queue_redraw()
 
 		playingDialogue = _create_pages(dialogueFile[dialogue])
 
