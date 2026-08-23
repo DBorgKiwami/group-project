@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
@@ -293,6 +293,7 @@ transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
 
 [node name="Decorative_Background_Forest" parent="LevelBase" index="1"]
 transform = Transform3D(0.41932988, 0, 0, 0, 0.5077277, 0, 0, 0, 0.4363992, 0, 3.488629, 0)
+visible = false
 
 [node name="ForestCluster_North_01" parent="LevelBase/Decorative_Background_Forest" index="0"]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, -334.12753, 0.20000029, -220.13113)
@@ -321,6 +322,9 @@ transform = Transform3D(0.14999995, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -451.6413, 0, 
 [node name="ForestCluster_Southeast_01" parent="LevelBase/Decorative_Background_Forest" index="8"]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 12.5, 0, -10.5)
 
+[node name="Decorative_Forest_Collision" parent="LevelBase" index="2"]
+visible = false
+
 [node name="North_01" parent="LevelBase/Decorative_Forest_Collision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 13.2)
 
@@ -348,6 +352,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, -7)
 [node name="Southeast_01" parent="LevelBase/Decorative_Forest_Collision" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -10.5)
 
+[node name="Outer_Terrain_Boundary" parent="LevelBase" index="4"]
+visible = false
+
 [node name="West_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.8, 1)
 
@@ -359,6 +366,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -12)
 
 [node name="North_Wall" parent="LevelBase/Outer_Terrain_Boundary" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 14)
+
+[node name="Optional_Backdrop_Rock_Walls" parent="LevelBase" index="5" unique_id=1866176404]
+visible = false
 
 [node name="Small_Reed_1" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="55" unique_id=2027547868]
 transform = Transform3D(0.96991205, 0, -0.24345568, 0, 1, 0, 0.24345568, 0, 0.96991205, -1.138519, -0.08, 1.4241883)
@@ -474,18 +484,6 @@ polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 debug_color = Color(0, 1, 0, 1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform" unique_id=367683689]
-transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
-polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
-depth = 0.3
-material = ExtResource("9_b8xro")
-
-[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Fading Platform" unique_id=1447390818]
-transform = Transform3D(0.89100647, 0.45399058, -1.9844558e-08, 0, -4.371139e-08, -1, -0.45399058, 0.89100647, -3.8947128e-08, -1.1399994, 0.44060898, 0.24703312)
-depth = 0.3
-polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
-debug_color = Color(0, 1, 0, 1)
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Fading Platform" unique_id=1860344707]
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
@@ -823,7 +821,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.099582, 12.971504, -37.00
 use_collision = true
 
 [node name="Bounce Pad3" parent="." unique_id=1725999715 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.18596, 3.314074, -31.80296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.026375, 5.137072, -39.80462)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad3" unique_id=87833113]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 0.14094687, -2.1776314)
@@ -844,7 +842,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad4" parent="." unique_id=132545869 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.94468, 4.9652114, -36.14656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.759808, 6.5418715, -40.252678)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad4" unique_id=541372823]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 2.7267637, -2.1776314)
@@ -865,7 +863,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad5" parent="." unique_id=678781703 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8017, 6.4002695, -37.49198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.063255, 8.103639, -37.12348)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad5" unique_id=102435602]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 5.66007, -2.1776314)
@@ -885,7 +883,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad6" parent="." unique_id=1684335158 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.915516, 7.998452, -34.24688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.36028, 3.3413477, -36.58947)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad6" unique_id=647697454]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
@@ -922,7 +920,7 @@ transform = Transform3D(-0.972039, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720
 texture = ExtResource("16_b8xro")
 
 [node name="collectible3" parent="." unique_id=1189982479 instance=ExtResource("15_gqagh")]
-transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 41.58298, 17.375753, -36.395523)
+transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 33.73925, 18.26528, -39.29086)
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible3" unique_id=687066567]
 transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
@@ -1150,7 +1148,7 @@ transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.972
 texture = ExtResource("16_b8xro")
 
 [node name="Bounce Pad7" parent="." unique_id=1476136587 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.077028, 3.0779161, 22.61041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.444518, 6.3902025, 25.048672)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad7" unique_id=286041483]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -3.1753473, -2.1776314)
@@ -1171,7 +1169,7 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad8" parent="." unique_id=1247885177 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.177294, 6.4420214, 24.891346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.284185, 7.039283, 25.422125)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad8" unique_id=348078383]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -1.5619898, -2.1776333)
@@ -1184,15 +1182,15 @@ shape = SubResource("CylinderShape3D_gaeky")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad8" unique_id=542025639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.0345182, -2.172945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.4176235, -2.172945)
 use_collision = true
 radius = 0.4
-height = 4.330859
+height = 5.09707
 sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad9" parent="." unique_id=2134866075 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.816254, 6.4420214, 26.096773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.94637, 3.0789204, 24.239052)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad9" unique_id=1605477002]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
@@ -1272,7 +1270,19 @@ depth = 0.3
 material = ExtResource("9_b8xro")
 
 [node name="Fading Platform20" parent="." unique_id=1242293530 instance=ExtResource("8_gqagh")]
-transform = Transform3D(0.83205104, 0, -0.5546995, 0, 1, 0, 0.5546995, 0, 0.83205104, 9.3054285, 23.315193, 45.5519)
+transform = Transform3D(0.008185685, 0, 0.99996674, 0, 1, 0, -0.99996674, 0, 0.008185685, 9.421511, 23.315193, 45.261696)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Fading Platform20" unique_id=1447390818]
+transform = Transform3D(-0.19627103, -0.98054945, 4.286117e-08, 0, -4.371139e-08, -1, 0.98054945, -0.19627103, 8.579274e-09, 0, 0.15539551, 0)
+depth = 0.3
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Fading Platform20" unique_id=1860344707]
+transform = Transform3D(-0.19627112, -0.98054963, 4.2861178e-08, 0, -4.371139e-08, -1, 0.98054963, -0.19627112, 8.579283e-09, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+depth = 0.3
+material = ExtResource("9_b8xro")
 
 [node name="Bounce Pad10" parent="." unique_id=178360579 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1276207, 11.528262, 34.700523)
@@ -1353,9 +1363,6 @@ radius = 0.3
 height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
-
-[node name="Bounce Pad14" parent="." unique_id=2088121065 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
 layer = 100
