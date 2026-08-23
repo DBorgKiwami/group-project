@@ -135,7 +135,7 @@ insects_chirping = NodePath("../InsectsChirping")
 frog_croaking = NodePath("../FrogCroaking")
 
 [node name="3Dplatformingcharacter" parent="." unique_id=679442019 instance=ExtResource("10_i0cgp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.504936, 1.12, -47.19583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.09504, 0.8679838, 28.423645)
 JUMP_VELOCITY = 6.0
 
 [node name="Merchant" parent="." unique_id=1841873639 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("11_5wccx")]
@@ -1374,6 +1374,26 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1735010285]
 script = ExtResource("28_op046")
+
+[node name="Bounce Pad14" parent="." unique_id=553651178 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.347751, 23.825954, 46.63285)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad14" unique_id=1792095088]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
+radius = 1.0
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad14" unique_id=1773882194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_i8moa")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad14" unique_id=1315027637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
+sides = 12
+material = ExtResource("9_osbx4")
 
 [editable path="LevelBase"]
 [editable path="PauseMenu"]
