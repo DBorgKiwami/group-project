@@ -17,7 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 [ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 >>>>>>> Stashed changes
@@ -233,7 +236,6 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 
 [node name="Pond_Shallow_Water_Shelf" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="15" unique_id=1432386212]
 transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 0.9999954, 0.00019244435, 0.00018748573, -0.00019188075, 0.99999994, -0.00029220618, 0.018900966, -0.0011508942)
-visible = false
 
 [node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, -0.13677177, -0.008130645)
@@ -749,9 +751,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.099582, 12.971504, -37.00
 
 [node name="Bounce Pad3" parent="." unique_id=1725999715 instance=ExtResource("17_b8xro")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.48466, 5.1213527, -39.503094)
 =======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.683403, 6.006063, -41.34685)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.839745, 5.00693, -40.46063)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad3" unique_id=87833113]
@@ -780,7 +786,11 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad4" parent="." unique_id=132545869 instance=ExtResource("17_b8xro")]
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.969826, 7.460226, -42.30961)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1729, 6.5939345, -40.96661)
+>>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad4" unique_id=541372823]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, 2.7267637, -2.1776314)
@@ -801,7 +811,11 @@ sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad5" parent="." unique_id=678781703 instance=ExtResource("17_b8xro")]
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.56649, 8.978002, -39.451027)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.36338, 8.026017, -38.198105)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad5" unique_id=102435602]
@@ -823,9 +837,13 @@ material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad6" parent="." unique_id=1684335158 instance=ExtResource("17_b8xro")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.212734, 11.611053, -40.180744)
 =======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.796629, 4.1828976, -37.97231)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.14836, 3.3195276, -37.654686)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad6" unique_id=647697454]
@@ -864,7 +882,11 @@ transform = Transform3D(-0.972039, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720
 texture = ExtResource("16_b8xro")
 
 [node name="collectible3" parent="." unique_id=1189982479 instance=ExtResource("15_gqagh")]
+<<<<<<< Updated upstream
 transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 30.234459, 19.684805, -41.615395)
+=======
+transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 31.019146, 19.737936, -40.33458)
+>>>>>>> Stashed changes
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible3" unique_id=687066567]
 transform = Transform3D(-0.97203904, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.97203904, 2.6503067, 1.6931, -8.709145)
@@ -1093,9 +1115,13 @@ texture = ExtResource("16_b8xro")
 
 [node name="Bounce Pad7" parent="." unique_id=1476136587 instance=ExtResource("17_b8xro")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.513258, 3.0779161, 24.867807)
 =======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.484596, 6.36658, 25.61192)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.262078, 6.4072466, 25.496504)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad7" unique_id=286041483]
@@ -1118,9 +1144,13 @@ material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad8" parent="." unique_id=1247885177 instance=ExtResource("17_b8xro")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.499518, 6.4420214, 26.108475)
 =======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.140387, 7.564989, 25.970013)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.350556, 6.8402567, 25.621164)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad8" unique_id=348078383]
@@ -1134,18 +1164,29 @@ shape = SubResource("CylinderShape3D_gaeky")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad8" unique_id=542025639]
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.5704803, -2.172945)
 use_collision = true
 radius = 0.4
 height = 5.5
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.251852, -2.172945)
+use_collision = true
+radius = 0.4
+height = 4.7655272
+>>>>>>> Stashed changes
 sides = 12
 material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad9" parent="." unique_id=2134866075 instance=ExtResource("17_b8xro")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.439466, 3.0930061, 22.103483)
 =======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.849531, 3.0893178, 24.089514)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.581444, 3.0593462, 24.17271)
 >>>>>>> Stashed changes
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad9" unique_id=1605477002]
@@ -1226,7 +1267,19 @@ depth = 0.3
 material = ExtResource("9_b8xro")
 
 [node name="Fading Platform20" parent="." unique_id=1242293530 instance=ExtResource("8_gqagh")]
-transform = Transform3D(0.83205104, 0, -0.5546995, 0, 1, 0, 0.5546995, 0, 0.83205104, 9.3054285, 23.315193, 45.5519)
+transform = Transform3D(0.98107386, 0, -0.19363523, 0, 1, 0, 0.19363523, 0, 0.98107386, 9.39572, 23.315193, 45.272194)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Fading Platform20" unique_id=1447390818]
+transform = Transform3D(0.99999976, 2.9802322e-08, -1.7763568e-15, 0, -4.3711378e-08, -1, -2.9802322e-08, 0.99999976, -4.371139e-08, 0, 0.1605835, 0)
+depth = 0.3
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Fading Platform20" unique_id=1860344707]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -1, 0, 0.99999994, -4.371139e-08, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
+depth = 0.3
+material = ExtResource("9_b8xro")
 
 <<<<<<< Updated upstream
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Fading Platform20" unique_id=1740300025]
@@ -1334,7 +1387,10 @@ height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
 layer = 100
