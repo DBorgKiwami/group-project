@@ -179,7 +179,7 @@ func _begin_visual_state(state_name: String) -> void:
 			_play_swoop_visual(request_id)
 
 		"dragonflyprojectile":
-			sprite.play(&"flap")
+			sprite.play(&"flight")
 
 		_:
 			sprite.play(&"flight")
