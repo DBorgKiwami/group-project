@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d2b8i1g4fl58m"]
+
+[ext_resource type="Script" uid="uid://m2d8pehy7k7x" path="res://scripts/npcs/nightheron.gd" id="1_hr7nd"]
+[ext_resource type="Texture2D" uid="uid://4vtguaksg53u" path="res://sprites/npcs/Night_Heron.png" id="1_nswfd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seq8b"]
+radius = 1.3462899
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1841873639]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_hr7nd")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=334245436]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 2
+texture = ExtResource("1_nswfd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1596749676]
+
+[node name="Interaction" type="Area3D" parent="." unique_id=912309786]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction" unique_id=246151702]
+shape = SubResource("SphereShape3D_seq8b")

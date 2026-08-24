@@ -392,9 +392,6 @@ radius = 0.3
 [node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704]
 collision_layer = 0
 script = ExtResource("1_cudoo")
-block_length = null
-block_cooldown = null
-attack_timeout = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)

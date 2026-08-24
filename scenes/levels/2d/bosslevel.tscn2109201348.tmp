@@ -396,34 +396,12 @@ mesh = SubResource("PlaneMesh_4wily")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=711532432]
 shape = SubResource("ConcavePolygonShape3D_7bhyk")
 
-[node name="Player" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "hud", "death_screen", "attack_tongue", "tongue_hitbox") instance=ExtResource("1_v06so")]
+[node name="Player" parent="." unique_id=387257704 instance=ExtResource("1_v06so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
-hitboxFront = NodePath("Front Attack Hurtbox")
-hitboxUp = NodePath("Up Attack Hurtbox")
-hitboxDown = NodePath("Down Attack Hurtbox")
-animationController = NodePath("AnimationPlayer")
-player_hitbox = NodePath("PlayerHitbox")
-player_camera = NodePath("Camera3D")
-sprite = NodePath("AnimatedSprite3D")
-state_machine = NodePath("State_Machine")
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
-attack_sfx = NodePath("AttackSfx")
-hurt_sfx = NodePath("HurtSfx")
-footstep_sfx = NodePath("FootstepSfx")
-hud = NodePath("../CanvasLayer/SimpleHudDemo")
-death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
-damage = 1
-attack_tongue = NodePath("AttackTongue")
-tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 
 [node name="AnimatedSprite3D" parent="Player" index="1" unique_id=866562291]
 no_depth_test = true
 render_priority = 101
-
-[node name="Alive" parent="Player/State_Machine" parent_id_path=PackedInt32Array(387257704, 313428382) index="0" unique_id=924225331]
-block_length = 0.0
-block_cooldown = 0.0
 
 [node name="Trail" parent="." unique_id=1331654535 instance=ExtResource("1_ikx5s")]
 transform = Transform3D(-1.0348424, 0, 0.018063229, 0, 1.66, 0, -0.018063229, 0, -1.0348424, 0, 0.55040985, -22.463)

@@ -34,6 +34,9 @@
 [ext_resource type="AudioStream" uid="uid://qixiw5fkxij" path="res://audio/music/birdschirping.ogg" id="28_birds"]
 [ext_resource type="AudioStream" uid="uid://dxwl5e8ub4sup" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
 [ext_resource type="Script" uid="uid://v5plhssx2cy8" path="res://scripts/levels/2dtutorial.gd" id="34_pyyl1"]
+[ext_resource type="PackedScene" uid="uid://d2b8i1g4fl58m" path="res://scenes/npcs/nightheron.tscn" id="35_vlhhp"]
+[ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="36_r2jt0"]
+[ext_resource type="Script" uid="uid://dtq2db7glooqg" path="res://scripts/ui/dialogue_visual.gd" id="37_r2jt0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
 albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
@@ -214,13 +217,26 @@ volume_db = -16.0
 stream = ExtResource("29_breeze")
 volume_db = -18.0
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "hud", "death_screen", "attack_tongue", "tongue_hitbox") groups=["Player"] instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
-attack_sfx = NodePath("../TutorialAudio/SwordBlow")
+hitboxFront = NodePath("Front Attack Hurtbox")
+hitboxUp = NodePath("Up Attack Hurtbox")
+hitboxDown = NodePath("Down Attack Hurtbox")
+animationController = NodePath("AnimationPlayer")
+player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
+sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
+jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
+attack_sfx = NodePath("AttackSfx")
+hurt_sfx = NodePath("HurtSfx")
+footstep_sfx = NodePath("FootstepSfx")
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
-SPRINT_SPEED = 6.5
-JUMP_VELOCITY = 6.0
+damage = 1
+attack_tongue = NodePath("AttackTongue")
+tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 
 [node name="TutorialAudio" type="Node" parent="." unique_id=803025064 node_paths=PackedStringArray("combat_player", "enemy_cry_player", "victory_player", "birds_player", "breeze_player")]
 script = ExtResource("10_audio")
@@ -362,8 +378,10 @@ mesh = SubResource("BoxMesh_cjfr5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=1269417995]
 shape = SubResource("BoxShape3D_5pkib")
 
-[node name="2Dtestenemy" parent="." unique_id=650050351 instance=ExtResource("6_t7y2g")]
+[node name="2Dtestenemy" parent="." unique_id=650050351 node_paths=PackedStringArray("enemy_sprite") instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.994286, 0.727752, 0)
+enemy_sprite = NodePath("AnimatedSprite3D")
+max_health = 5
 
 [node name="Rock2" type="MeshInstance3D" parent="." unique_id=1794105754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75784, 0.5, 0)
@@ -383,8 +401,9 @@ mesh = SubResource("BoxMesh_t7y2g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Right Bound/StaticBody3D" unique_id=2125132874]
 shape = SubResource("ConcavePolygonShape3D_kjg24")
 
-[node name="2Dtestenemy2" parent="." unique_id=981890454 instance=ExtResource("6_t7y2g")]
+[node name="2Dtestenemy2" parent="." unique_id=981890454 node_paths=PackedStringArray("enemy_sprite") instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
+enemy_sprite = NodePath("AnimatedSprite3D")
 
 [node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -392,8 +411,9 @@ hflip = -1.0
 [node name="AnimationPlayer" parent="2Dtestenemy2" index="4" unique_id=700514418]
 root_node = NodePath("../../2Dtestenemy2")
 
-[node name="2Dtestenemy3" parent="." unique_id=1152322179 instance=ExtResource("6_t7y2g")]
+[node name="2Dtestenemy3" parent="." unique_id=1152322179 node_paths=PackedStringArray("enemy_sprite") instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
+enemy_sprite = NodePath("AnimatedSprite3D")
 
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -466,6 +486,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1803579374]
 script = ExtResource("34_pyyl1")
 
+[node name="CharacterBody3D" parent="." unique_id=1841873639 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("35_vlhhp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.153999, 3.3531988, -0.26508832)
+prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
+dialogue_player = NodePath("../DialoguePlayer")
+
+[node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("36_r2jt0")]
+
+[node name="DialogueVisual" type="Node2D" parent="DialoguePlayer" unique_id=713540807]
+script = ExtResource("37_r2jt0")
+
+[editable path="2Dplatformingcharacter"]
+[editable path="2Dtestenemy"]
 [editable path="2Dtestenemy2"]
 [editable path="2Dtestenemy3"]
 [editable path="SceneTransition2D"]

@@ -44,7 +44,7 @@ var health
 var can_jump = false
 var blocking = false
 var block_timer = 0.0
-var block_cooldown = 0.0
+var block_cooldown : float = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 var clipping = false
