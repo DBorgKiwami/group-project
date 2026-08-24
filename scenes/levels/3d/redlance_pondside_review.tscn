@@ -31,6 +31,15 @@
 [ext_resource type="Texture2D" uid="uid://bv6q260pw2wto" path="res://sprites/props/button24pixel (1).png" id="27_hjbub"]
 [ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1lsv"]
+size = Vector3(6.7626953, 24.333496, 199.14136)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4kpg"]
+size = Vector3(123.76196, 3.66687, 85.38013)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qh0d"]
+size = Vector3(158.96321, 44.14453, 12.283569)
+
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
 panorama = ExtResource("20_sky")
 
@@ -44,6 +53,12 @@ sky = SubResource("OuterSky")
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w1lsv"]
+data = PackedVector3Array(-11.2, 0.08, -0.80009997, -7.2, 0.08, 2, -10.7001, 0.08, 1.4999, -10.599999, 0.08, -3.7001, -7.2, 0.08, 2, -11.2, 0.08, -0.80009997, -7.2, 0.08, 2, -2.3, 0.08, -1.4001, -4.2999997, 0.08, 1.1, -7.2, 0.08, 2, -2.7001, 0.08, -4, -2.3, 0.08, -1.4001, -10.599999, 0.08, -3.7001, -2.7001, 0.08, -4, -7.2, 0.08, 2, -2.7001, 0.08, -4, -10.599999, 0.08, -3.7001, -5.9000998, 0.08, -8.099999, -5.9000998, 0.08, -8.099999, -10.599999, 0.08, -3.7001, -9.300099, 0.08, -6.9000998, -2.7001, 0.08, -4, -5.9000998, 0.08, -8.099999, -2.4001, 0.08, -7.2001, -2.7001, 0.08, -4, -2.4001, 0.08, -7.2001, -1.1999999, 0.08, -5.2002, -10.7001, -0.45, 1.4999, -10.599999, -0.45, -3.7001, -11.2, -0.45, -0.80009997, -10.7001, -0.45, 1.4999, -5.9000998, -0.45, -8.099999, -10.599999, -0.45, -3.7001, -10.599999, -0.45, -3.7001, -5.9000998, -0.45, -8.099999, -9.300099, -0.45, -6.9000998, -5.9000998, -0.45, -8.099999, -10.7001, -0.45, 1.4999, -4.2999997, -0.45, 1.1, -4.2999997, -0.45, 1.1, -10.7001, -0.45, 1.4999, -7.2, -0.45, 2, -5.9000998, -0.45, -8.099999, -4.2999997, -0.45, 1.1, -2.7001, -0.45, -4, -2.7001, -0.45, -4, -4.2999997, -0.45, 1.1, -2.3, -0.45, -1.4001, -5.9000998, -0.45, -8.099999, -2.7001, -0.45, -4, -1.1999999, -0.45, -5.2002, -5.9000998, -0.45, -8.099999, -1.1999999, -0.45, -5.2002, -2.4001, -0.45, -7.2001, -10.7001, 0.08, 1.4999, -7.2, -0.45, 2, -7.2, 0.08, 2, -10.7001, 0.08, 1.4999, -10.7001, -0.45, 1.4999, -7.2, -0.45, 2, -7.2, 0.08, 2, -4.2999997, -0.45, 1.1, -4.2999997, 0.08, 1.1, -7.2, 0.08, 2, -7.2, -0.45, 2, -4.2999997, -0.45, 1.1, -4.2999997, 0.08, 1.1, -2.3, -0.45, -1.4001, -2.3, 0.08, -1.4001, -4.2999997, 0.08, 1.1, -4.2999997, -0.45, 1.1, -2.3, -0.45, -1.4001, -2.3, 0.08, -1.4001, -2.7001, -0.45, -4, -2.7001, 0.08, -4, -2.3, 0.08, -1.4001, -2.3, -0.45, -1.4001, -2.7001, -0.45, -4, -2.7001, 0.08, -4, -1.1999999, -0.45, -5.2002, -1.1999999, 0.08, -5.2002, -2.7001, 0.08, -4, -2.7001, -0.45, -4, -1.1999999, -0.45, -5.2002, -1.1999999, 0.08, -5.2002, -2.4001, -0.45, -7.2001, -2.4001, 0.08, -7.2001, -1.1999999, 0.08, -5.2002, -1.1999999, -0.45, -5.2002, -2.4001, -0.45, -7.2001, -2.4001, 0.08, -7.2001, -5.9000998, -0.45, -8.099999, -5.9000998, 0.08, -8.099999, -2.4001, 0.08, -7.2001, -2.4001, -0.45, -7.2001, -5.9000998, -0.45, -8.099999, -5.9000998, 0.08, -8.099999, -9.300099, -0.45, -6.9000998, -9.300099, 0.08, -6.9000998, -5.9000998, 0.08, -8.099999, -5.9000998, -0.45, -8.099999, -9.300099, -0.45, -6.9000998, -9.300099, 0.08, -6.9000998, -10.599999, -0.45, -3.7001, -10.599999, 0.08, -3.7001, -9.300099, 0.08, -6.9000998, -9.300099, -0.45, -6.9000998, -10.599999, -0.45, -3.7001, -10.599999, 0.08, -3.7001, -11.2, -0.45, -0.80009997, -11.2, 0.08, -0.80009997, -10.599999, 0.08, -3.7001, -10.599999, -0.45, -3.7001, -11.2, -0.45, -0.80009997, -11.2, 0.08, -0.80009997, -10.7001, -0.45, 1.4999, -10.7001, 0.08, 1.4999, -11.2, 0.08, -0.80009997, -11.2, -0.45, -0.80009997, -10.7001, -0.45, 1.4999)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4kpg"]
+data = PackedVector3Array(-3.8, 0.12, -0.5, -1.1999999, 0.12, 1.5, -4, 0.12, 0.9999, -2.3, 0.12, -1.5999999, -1.1999999, 0.12, 1.5, -3.8, 0.12, -0.5, -1.1999999, 0.12, 1.5, -2.3, 0.12, -1.5999999, 1.1, 0.12, -1.1, 1.1, 0.12, -1.1, -2.3, 0.12, -1.5999999, -0.19999999, 0.12, -2.1, -1.1999999, 0.12, 1.5, 1.1, 0.12, -1.1, 0.79999995, 0.12, 0.5, -4, -0.45, 0.9999, -2.3, -0.45, -1.5999999, -3.8, -0.45, -0.5, -1.1999999, -0.45, 1.5, -2.3, -0.45, -1.5999999, -4, -0.45, 0.9999, -2.3, -0.45, -1.5999999, -1.1999999, -0.45, 1.5, 1.1, -0.45, -1.1, 1.1, -0.45, -1.1, -1.1999999, -0.45, 1.5, 0.79999995, -0.45, 0.5, -2.3, -0.45, -1.5999999, 1.1, -0.45, -1.1, -0.19999999, -0.45, -2.1, -4, 0.12, 0.9999, -1.1999999, -0.45, 1.5, -1.1999999, 0.12, 1.5, -4, 0.12, 0.9999, -4, -0.45, 0.9999, -1.1999999, -0.45, 1.5, -1.1999999, 0.12, 1.5, 0.79999995, -0.45, 0.5, 0.79999995, 0.12, 0.5, -1.1999999, 0.12, 1.5, -1.1999999, -0.45, 1.5, 0.79999995, -0.45, 0.5, 0.79999995, 0.12, 0.5, 1.1, -0.45, -1.1, 1.1, 0.12, -1.1, 0.79999995, 0.12, 0.5, 0.79999995, -0.45, 0.5, 1.1, -0.45, -1.1, 1.1, 0.12, -1.1, -0.19999999, -0.45, -2.1, -0.19999999, 0.12, -2.1, 1.1, 0.12, -1.1, 1.1, -0.45, -1.1, -0.19999999, -0.45, -2.1, -0.19999999, 0.12, -2.1, -2.3, -0.45, -1.5999999, -2.3, 0.12, -1.5999999, -0.19999999, 0.12, -2.1, -0.19999999, -0.45, -2.1, -2.3, -0.45, -1.5999999, -2.3, 0.12, -1.5999999, -3.8, -0.45, -0.5, -3.8, 0.12, -0.5, -2.3, 0.12, -1.5999999, -2.3, -0.45, -1.5999999, -3.8, -0.45, -0.5, -3.8, 0.12, -0.5, -4, -0.45, 0.9999, -4, 0.12, 0.9999, -3.8, 0.12, -0.5, -3.8, -0.45, -0.5, -4, -0.45, 0.9999)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
 size = Vector3(1.65, 0.08, 0.76)
@@ -94,6 +109,59 @@ radius = 1.4
 
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=824853028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.130833, 11.666748, 11.40332)
+
+[node name="East Wall" type="CollisionShape3D" parent="StaticBody3D" unique_id=2069319585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.609009)
+shape = SubResource("BoxShape3D_w1lsv")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor" type="CollisionShape3D" parent="StaticBody3D" unique_id=574100737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.89331, -12.856531, -76.06702)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor2" type="CollisionShape3D" parent="StaticBody3D" unique_id=472380677]
+transform = Transform3D(0.6121207, 0, -0.7907644, 0, 1, 0, 0.7907644, 0, 0.6121207, 108.33252, -12.856531, -48.516537)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1240313649]
+transform = Transform3D(-0.23181581, 0, -0.9727597, 0, 1, 0, 0.9727597, 0, -0.23181581, -24.71413, -12.856531, 14.429356)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor4" type="CollisionShape3D" parent="StaticBody3D" unique_id=364534180]
+transform = Transform3D(0.62443876, 0, -0.78107387, 0, 1, 0, 0.78107387, 0, 0.62443876, -3.294567, -12.856531, 71.85504)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall" type="CollisionShape3D" parent="StaticBody3D" unique_id=213354315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.850319, 0.58984375, -99.2041)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall2" type="CollisionShape3D" parent="StaticBody3D" unique_id=944396717]
+transform = Transform3D(0.7855546, 0, -0.61879236, 0, 1, 0, 0.61879236, 0, 0.7855546, 87.40778, 0.58984375, -93.60858)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall3" type="CollisionShape3D" parent="StaticBody3D" unique_id=428596968]
+transform = Transform3D(-0.03967841, 0, -0.99921244, 0, 1, 0, 0.99921244, 0, -0.03967841, 92.19396, 0.58984375, -20.092216)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1259592774]
+transform = Transform3D(-0.502854, 0, -0.86437124, 0, 1, 0, 0.86437124, 0, -0.502854, 49.907707, 0.58984375, 52.59494)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1723445304]
+transform = Transform3D(-0.7982466, 0, 0.6023306, 0, 1, 0, -0.6023306, 0, -0.7982466, 13.4835615, 0.58984375, 43.85225)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="InteractionPromptDemo" parent="." unique_id=1692059102 instance=ExtResource("2_y73yp")]
 
@@ -211,8 +279,18 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0.043750763, 0, 0.0017242432
 [node name="Land_West_Lower_Bank" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="3" unique_id=1772819528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28968096)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Land_West_Lower_Bank" index="0" unique_id=1810235402]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Land_West_Lower_Bank/StaticBody3D" unique_id=2082923637]
+shape = SubResource("ConcavePolygonShape3D_w1lsv")
+
 [node name="Land_Expansion_South_Connector" parent="LevelBase/Terrain_Base_Generated/Land_Expansion" index="5"]
 transform = Transform3D(1.1089839, 0, 0.22556634, 0, 1, 0, -0.15157664, 0, 1.6503159, 1.4783031, 0, -2.9197326)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Land_Expansion/Land_Expansion_South_Connector" index="0" unique_id=1734058876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Land_Expansion/Land_Expansion_South_Connector/StaticBody3D" unique_id=449544055]
+shape = SubResource("ConcavePolygonShape3D_t4kpg")
 
 [node name="Lily_Pad_1" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="5"]
 transform = Transform3D(1.56327, 0, 0.040225845, 0, 1.1598437, 0, -0.04694003, 0, 1.3396637, 0.9545315, -0.18, 1.8162996)
