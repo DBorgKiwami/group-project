@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]

@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name CrawfishEnemy
 
 signal defeated
 
@@ -20,10 +21,16 @@ signal defeated
 @export var flicker_count: int = 4
 @export var flicker_time: float = 0.05
 
+@export var knockback_force: float = 4.0
+@export var knockback_duration: float = 0.15
+
 var health: int
 var _is_defeated := false
 var flickering := false
 var chase_target: Node3D = null
+
+var knockback_timer: float = 0.0
+var knockback_velocity: Vector3 = Vector3.ZERO
 
 
 func _ready() -> void:
@@ -175,6 +182,12 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	if knockback_timer > 0:
+		knockback_timer -= delta
+
+		velocity.x = knockback_velocity.x
+		velocity.z = knockback_velocity.z
+
 	move_and_slide()
 
 
@@ -189,6 +202,7 @@ func hitbox_hit(damage_received: Variant) -> void:
 	print("Crawfish took ", actual_damage, " damage!")
 	print("Crawfish health: ", health, "/", max_health)
 
+	apply_knockback()
 	damage_flicker()
 
 	if health <= 0:
@@ -196,6 +210,22 @@ func hitbox_hit(damage_received: Variant) -> void:
 			state_machine.current_state,
 			"Dead"
 		)
+
+
+func apply_knockback() -> void:
+	if not chase_target:
+		return
+
+	var direction := global_position - chase_target.global_position
+	direction.y = 0
+
+	if direction.length_squared() == 0:
+		return
+
+	direction = direction.normalized()
+
+	knockback_velocity = direction * knockback_force
+	knockback_timer = knockback_duration
 
 
 func damage_flicker() -> void:
