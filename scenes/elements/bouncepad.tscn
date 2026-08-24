@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://bwtv1nr3o23q1" path="res://scripts/elements/bouncepad.gd" id="1_mfc0g"]
 [ext_resource type="PackedScene" uid="uid://k7ojpwp1vjhw" path="res://models/mushroomtopA/mushroomtopA00.glb" id="2_y6bya"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_tl13a"]
-height = 0.73114014
-radius = 1.0
-
 [sub_resource type="Animation" id="Animation_h6271"]
 length = 0.001
 tracks/0/type = "value"
@@ -68,17 +64,13 @@ _data = {
 &"mushroombounce": SubResource("Animation_a2hfp")
 }
 
-[node name="Bounce Pad" type="StaticBody3D" unique_id=1389826334]
+[node name="Bounce Pad" type="StaticBody3D" unique_id=1389826334 node_paths=PackedStringArray("bounce_anim")]
 script = ExtResource("1_mfc0g")
+bounce_anim = NodePath("AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=104489638]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09961188, 0)
-shape = SubResource("CylinderShape3D_tl13a")
-debug_color = Color(0.82, 0.41, 0, 1)
+[node name="mushroomtopA00" parent="." unique_id=2011640194 instance=ExtResource("2_y6bya")]
+transform = Transform3D(1, 0, 0, 0, 0.8728296, 0, 0, 0, 1, -0.39905882, 0.26184225, 0.53205687)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1355353330]
-root_node = NodePath("mushroomtopA00")
+root_node = NodePath("../mushroomtopA00")
 libraries/ = SubResource("AnimationLibrary_2w5vr")
-
-[node name="mushroomtopA00" parent="AnimationPlayer" unique_id=2011640194 instance=ExtResource("2_y6bya")]
-transform = Transform3D(1, 0, 0, 0, 0.8728296, 0, 0, 0, 1, -0.39905882, 0.26184225, 0.53205687)

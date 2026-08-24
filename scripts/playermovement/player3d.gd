@@ -227,6 +227,7 @@ func _physics_process(delta: float) -> void:
 #		For performance reasons it may be precient to change this to run on area instead. Instead of calling this function every second, it would only call on entry to a specific area, improving framerates
 		if last_collision.get_collider() is BouncePad:
 			bounce(last_collision.get_collider().bounce_strength)
+			last_collision.get_collider().play_bounce_anim()
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
 
