@@ -211,7 +211,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	#print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
-	_update_grapple_notification()
+	#_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
 

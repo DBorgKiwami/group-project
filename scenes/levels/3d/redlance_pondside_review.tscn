@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
@@ -118,7 +118,7 @@ script = ExtResource("1_script")
 [node name="lilipad7" parent="." unique_id=658019861 instance=ExtResource("15_wyodo")]
 transform = Transform3D(117.30558, 0, -161.98581, 0, 200, 0, 161.98581, 0, 117.30558, 36.51487, -2.4252846, 4.142349)
 
-[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=414408479]
@@ -129,7 +129,7 @@ shape = SubResource("ConcavePolygonShape3D_22cug")
 [node name="lilipad9" parent="." unique_id=479949106 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-131.23816, 0, -150.91902, 0, 200, 0, 150.91902, 0, -131.23816, 23.925957, -2.4252846, 9.56684)
 
-[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=919504668]
@@ -140,7 +140,7 @@ shape = SubResource("ConcavePolygonShape3D_22cug")
 [node name="lilipad10" parent="." unique_id=867063456 instance=ExtResource("15_wyodo")]
 transform = Transform3D(194.72772, 0, -45.61921, 0, 200, 0, 45.61921, 0, 194.72772, 21.06018, -2.4252846, 31.162458)
 
-[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=787081012]
@@ -151,7 +151,7 @@ shape = SubResource("ConcavePolygonShape3D_22cug")
 [node name="lilipad8" parent="." unique_id=1616748481 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-123.46586, 0, -40.696224, 0, 130, 0, 40.696224, 0, -123.46586, 19.914505, -1.6143448, 0.21192074)
 
-[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=11405407]
@@ -162,7 +162,7 @@ shape = SubResource("ConcavePolygonShape3D_22cug")
 [node name="lilipad11" parent="." unique_id=951802364 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 11.9312935, -1.6143448, 20.374653)
 
-[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=2005945632]
@@ -173,7 +173,7 @@ shape = SubResource("ConcavePolygonShape3D_22cug")
 [node name="lilipad12" parent="." unique_id=1082421694 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 35.471535, -1.6143448, -3.8820343)
 
-[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1775211322) index="0" unique_id=1020912089]
+[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1927362603) index="0" unique_id=983774090]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=1986131648]

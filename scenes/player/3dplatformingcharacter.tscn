@@ -28,11 +28,11 @@
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="26_jump"]
 [ext_resource type="AudioStream" uid="uid://cqtb4qs5ry3hd" path="res://audio/music/step.ogg" id="27_land"]
 [ext_resource type="Script" uid="uid://bc6uwqvjjhrnh" path="res://scripts/audio/player_footsteps.gd" id="28_dq5nv"]
-[ext_resource type="AudioStream" path="res://audio/music/footstepinwater.ogg" id="29_water_step"]
-[ext_resource type="AudioStream" path="res://audio/music/steponlotusleaf.ogg" id="30_lotus_step"]
-[ext_resource type="AudioStream" path="res://audio/music/tonguegrappling.ogg" id="31_grapple"]
-[ext_resource type="AudioStream" path="res://audio/music/notificationbeep.ogg" id="32_grapple_notification"]
-[ext_resource type="AudioStream" path="res://audio/music/stepongrass.ogg" id="33_grass_step"]
+[ext_resource type="AudioStream" uid="uid://2dhsf7nqrkb2" path="res://audio/music/footstepinwater.ogg" id="29_water_step"]
+[ext_resource type="AudioStream" uid="uid://crheamgbodhlb" path="res://audio/music/steponlotusleaf.ogg" id="30_lotus_step"]
+[ext_resource type="AudioStream" uid="uid://vn2vk603g8js" path="res://audio/music/tonguegrappling.ogg" id="31_grapple"]
+[ext_resource type="AudioStream" uid="uid://ccfpaq6nyh0wv" path="res://audio/music/notificationbeep.ogg" id="32_grapple_notification"]
+[ext_resource type="AudioStream" uid="uid://ci7guhucjpibg" path="res://audio/music/stepongrass.ogg" id="33_grass_step"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3ukl"]
 radius = 0.317
@@ -278,7 +278,8 @@ height = 0.32
 albedo_color = Color(0.96, 0.43, 0.52, 1)
 emission_enabled = true
 emission = Color(0.2, 0.03, 0.04, 1)
-[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx", "grapple_sfx", "grapple_notification_sfx", "grapple_point_calc", "tongue", "tongue_snap_flash") groups=["Player"]]
+
+[node name="3Dplatformingcharacter" type="CharacterBody3D" unique_id=679442019 node_paths=PackedStringArray("sprite", "grappleArea", "animationControler", "player_camera", "camera_pivot", "jump_sfx", "landing_sfx", "grapple_sfx", "footstep_sfx", "grapple_point_calc", "tongue", "tongue_snap_flash") groups=["Player"]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource("4_g608u")
@@ -290,7 +291,7 @@ camera_pivot = NodePath("SpringArm3D")
 jump_sfx = NodePath("JumpSfx2")
 landing_sfx = NodePath("LandingSfx2")
 grapple_sfx = NodePath("GrappleSfx")
-grapple_notification_sfx = NodePath("GrappleNotificationSfx")
+footstep_sfx = NodePath("FootstepAudio")
 grapple_point_calc = NodePath("SpringArm3D/Camera3D/GrappleDistanceCalc")
 tongue = NodePath("Tongue")
 tongue_snap_flash = NodePath("TongueSnapFlash")
@@ -320,13 +321,13 @@ volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="GrappleSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="GrappleSfx" type="AudioStreamPlayer3D" parent="." unique_id=1338739401]
 stream = ExtResource("31_grapple")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 24.0
 
-[node name="GrappleNotificationSfx" type="AudioStreamPlayer" parent="."]
+[node name="GrappleNotificationSfx" type="AudioStreamPlayer" parent="." unique_id=1395170287]
 stream = ExtResource("32_grapple_notification")
 volume_db = -12.0
 
@@ -336,19 +337,19 @@ volume_db = -10.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="WaterFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=11901714]
 stream = ExtResource("29_water_step")
 volume_db = -4.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="LotusFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=279090697]
 stream = ExtResource("30_lotus_step")
 volume_db = -4.0
 max_db = 0.0
 max_distance = 18.0
 
-[node name="GrassFootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="GrassFootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1544767395]
 stream = ExtResource("33_grass_step")
 volume_db = -2.0
 max_db = 0.0
@@ -396,10 +397,11 @@ visible = false
 mesh = SubResource("CylinderMesh_dq5nv")
 surface_material_override/0 = SubResource("StandardMaterial3D_40gki")
 
-[node name="TongueSnapFlash" type="MeshInstance3D" parent="."]
+[node name="TongueSnapFlash" type="MeshInstance3D" parent="." unique_id=1703506689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.25)
 visible = false
-position = Vector3(0, 0.8, -0.25)
 mesh = SubResource("SphereMesh_tongue_snap")
 surface_material_override/0 = SubResource("StandardMaterial3D_tongue_snap")
+
 [connection signal="area_entered" from="Grapple Area" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Grapple Area" to="." method="_on_area_3d_area_exited"]
