@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "Seed Beads",
+      "value": null,
+      "description": "Small beads that mysteriously distributed in Antlia. The material appears to be unlike any creation of this world, is highly resistant to decay, and comes in a variety of colors. Because it is favored by certain creatures, it circulates as a commodity in this region.\n\nPerhaps, one day the residents will realise that they are nothing but useless ornaments. Isn't the concept of 'commodity' a collective illusion, after all?"
+    },
+    {
+      "name": "Nectar",
+      "value": 2,
+      "description": "Nectar of flowers.\n\nDrink to restore HP.\n\nMany local plants yield this nectar. A fraction of it crystallises on petals or the tips of leaves, making it suitable for carrying and storage. The residents treasure the unparalleled sweetness of nectar."
+    },
+    {
+      "name": "Fish Scale",
+      "value": 3,
+      "description": "Glistening fish scales.\n\nEquip to grant temporary HP.\n\nWhile not exceptionally sturdy, they are light and easy to carry. In the heat of battle, surviving just one extra blow can be enough to change the outcome."
+    },
+    {
+      "name": "Nemo's Scale",
+      "value": null,
+      "description": "Extra glistening goldfish scale.\n\nEquip to grant temporary HP.\n\nThe goldfish knows nothing about the world, Antlia, and even itself.\n\nEven useless creatures like this have scales that turn out to be useful. Don't give up!"
+    },
+    {
+      "name": "Pill/Capsule",
+      "value": 5,
+      "description": "An extremely rare resource.\n\nConsume to gain a permanent health point bonus.\n\nIt is said that this resource was discovered within an orange corridor that descended from the sky. The miners who hauled these supplies out of the corridor generally lived longer than the rest of their kin. The sages of Antlia spent their entire lives unable to comprehend the mechanics behind it."
+    },
+    {
+      "name": "Button",
+      "value": null,
+      "description": "A rarity of mysterious origins, occasionally discovered scattered on the ground or resting in pond beds.\n\nElderfrog collects buttons and offers ancient tales for exchange.\n\nReferred to as a 'button,' this artifact is revered as a holy relic by certain factions and appears in a myriad of shapes and hues.\n\nWhere in the world did such an object originate? And just how impenetrable must the beings who forged and wielded them be?"
+    }
+  ]
+}
