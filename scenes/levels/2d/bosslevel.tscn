@@ -400,6 +400,7 @@ shape = SubResource("ConcavePolygonShape3D_7bhyk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
+JUMP_VELOCITY = 6.0
 
 [node name="AnimatedSprite3D" parent="Player" index="1" unique_id=866562291]
 no_depth_test = true
