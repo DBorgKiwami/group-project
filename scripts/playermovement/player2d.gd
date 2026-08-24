@@ -4,6 +4,7 @@ class_name Player2D
 @export var hitboxUp : Area3D
 @export var hitboxDown : Area3D
 @export var animationController : AnimationPlayer
+@export var iFrameHandler : AnimationPlayer
 @export var player_hitbox : Area3D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
@@ -79,7 +80,7 @@ func _on_player_hit(damage) -> void:
 	if hurt_sfx:
 		hurt_sfx.play()
 	health = health - 1
-	animationController.play("hit")
+	iFrameHandler.play("hit")
 	if hud:
 		hud.take_hit()
 	if health <= 0:

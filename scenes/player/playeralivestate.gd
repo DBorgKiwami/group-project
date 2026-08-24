@@ -87,6 +87,7 @@ func _play_attack_sfx() -> void:
 	if player_reference.attack_sfx:
 		player_reference.attack_sfx.play()
 func input(event: InputEvent):
+	print(player_reference.is_attacking)
 	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down") and !player_reference.is_attacking:
 		print("Down")
 		player_reference.is_attacking = true

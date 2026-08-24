@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]
 [ext_resource type="AudioStream" uid="uid://c5d3hyjj05qvp" path="res://audio/music/frogcry.ogg" id="11_hurt"]
 [ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
-[ext_resource type="Texture2D" path="res://allen_work/vfx_demos/frog_slash_arc_demo/assets/vfx/slash_arc_sheet.png" id="17_slash"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -390,13 +389,92 @@ size = Vector3(1.56, 1.5641162, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_55rie"]
 radius = 0.3
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox", "tongue_snap_flash", "slash_vfx")]
+[sub_resource type="Animation" id="Animation_mj1mf"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("PlayerHitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("PlayerHitbox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHitbox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"monitorable", false],
+"method": &"set_deferred"
+}, {
+"args": [&"monitorable", true],
+"method": &"set_deferred"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"monitoring", false],
+"method": &"set_deferred"
+}, {
+"args": [&"monitoring", true],
+"method": &"set_deferred"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qou1n"]
+_data = {
+&"hit": SubResource("Animation_mj1mf")
+}
+
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "iFrameHandler", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox", "tongue_snap_flash", "slash_vfx")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
 hitboxUp = NodePath("Up Attack Hurtbox")
 hitboxDown = NodePath("Down Attack Hurtbox")
 animationController = NodePath("AnimationPlayer")
+iFrameHandler = NodePath("IFrameHandler")
 player_hitbox = NodePath("PlayerHitbox")
 player_camera = NodePath("Camera3D")
 sprite = NodePath("AnimatedSprite3D")
@@ -537,26 +615,6 @@ texture = ExtResource("16_sdofs")
 region_enabled = true
 region_rect = Rect2(-1.25, -1.25, 38, 14)
 
-[node name="TongueSnapFlash" type="Sprite3D" parent="."]
-visible = false
-position = Vector3(0.2, 0.55, 0)
-pixel_size = 0.03
-billboard = 1
-texture_filter = 2
-texture = ExtResource("16_sdofs")
-region_enabled = true
-region_rect = Rect2(-1.25, -1.25, 38, 14)
-modulate = Color(1, 0.55, 0.65, 0.8)
-
-[node name="SlashVfx" type="Sprite3D" parent="."]
-visible = false
-position = Vector3(0.7, 0.35, 0)
-pixel_size = 0.03
-billboard = 1
-texture_filter = 2
-texture = ExtResource("17_slash")
-hframes = 6
-frame = 0
 [node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
 collision_layer = 0
@@ -566,6 +624,28 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackTongue/TongueHitbox" unique_id=645249408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3136742, 0.024496019, 0)
 shape = SubResource("SphereShape3D_55rie")
+
+[node name="TongueSnapFlash" type="Sprite3D" parent="." unique_id=1919851043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 0)
+visible = false
+modulate = Color(1, 0.55, 0.65, 0.8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+texture = ExtResource("16_sdofs")
+region_enabled = true
+region_rect = Rect2(-1.25, -1.25, 38, 14)
+
+[node name="SlashVfx" type="Sprite3D" parent="." unique_id=1697655580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.35, 0)
+visible = false
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+hframes = 6
+
+[node name="IFrameHandler" type="AnimationPlayer" parent="." unique_id=189793525]
+libraries/ = SubResource("AnimationLibrary_qou1n")
 
 [connection signal="area_entered" from="Down Attack Hurtbox" to="." method="_on_down_attack_hurtbox_area_entered"]
 [connection signal="area_entered" from="Up Attack Hurtbox" to="." method="_on_up_attack_hurtbox_area_entered"]
