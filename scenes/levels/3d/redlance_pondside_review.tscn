@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
@@ -30,6 +30,19 @@
 [ext_resource type="PackedScene" uid="uid://7c5sarcqj5eq" path="res://scenes/npcs/elderfrog.tscn" id="23_w1lsv"]
 [ext_resource type="Texture2D" uid="uid://bv6q260pw2wto" path="res://sprites/props/button24pixel (1).png" id="27_hjbub"]
 [ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
+[ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="31_t4kpg"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_22cug"]
+data = PackedVector3Array(-0.1927, -0.5, -0.8443, 0, -0.8323, 0, 0.5399, -0.5, -0.6771, -0.78029996, -0.5, -0.37579998, 0, -0.8323, 0, -0.1927, -0.5, -0.8443, -0.78029996, -0.5, 0.3757, 0, -0.8323, 0, -0.78029996, -0.5, -0.37579998, -0.1927, -0.5, 0.8443, 0, -0.8323, 0, -0.78029996, -0.5, 0.3757, 0.866, -0.5, 0, 0, -0.8323, 0, 0.5399, -0.5, 0.6771, 0.5399, -0.5, -0.6771, 0, -0.8323, 0, 0.866, -0.5, 0, 0.5399, 0.5, -0.6771, 0, 0.57089996, 0, -0.1927, 0.5, -0.8443, -0.1927, 0.5, -0.8443, 0, 0.57089996, 0, -0.78029996, 0.5, -0.37579998, -0.78029996, 0.5, -0.37579998, 0, 0.57089996, 0, -0.78029996, 0.5, 0.3757, -0.78029996, 0.5, 0.3757, 0, 0.57089996, 0, -0.1927, 0.5, 0.8443, 0.5399, 0.5, 0.6771, 0, 0.57089996, 0, 0.866, 0.5, 0, 0.866, 0.5, 0, 0, 0.57089996, 0, 0.5399, 0.5, -0.6771, 0.5399, -0.5, -0.6771, -0.1927, 0.5, -0.8443, -0.1927, -0.5, -0.8443, 0.5399, -0.5, -0.6771, 0.5399, 0.5, -0.6771, -0.1927, 0.5, -0.8443, -0.1927, -0.5, -0.8443, -0.78029996, 0.5, -0.37579998, -0.78029996, -0.5, -0.37579998, -0.1927, -0.5, -0.8443, -0.1927, 0.5, -0.8443, -0.78029996, 0.5, -0.37579998, -0.78029996, -0.5, -0.37579998, -0.78029996, 0.5, 0.3757, -0.78029996, -0.5, 0.3757, -0.78029996, -0.5, -0.37579998, -0.78029996, 0.5, -0.37579998, -0.78029996, 0.5, 0.3757, -0.78029996, -0.5, 0.3757, -0.1927, 0.5, 0.8443, -0.1927, -0.5, 0.8443, -0.78029996, -0.5, 0.3757, -0.78029996, 0.5, 0.3757, -0.1927, 0.5, 0.8443, 0.5399, -0.5, 0.6771, 0.866, 0.5, 0, 0.866, -0.5, 0, 0.5399, -0.5, 0.6771, 0.5399, 0.5, 0.6771, 0.866, 0.5, 0, 0.866, -0.5, 0, 0.5399, 0.5, -0.6771, 0.5399, -0.5, -0.6771, 0.866, -0.5, 0, 0.866, 0.5, 0, 0.5399, 0.5, -0.6771, -0.1927, -0.5, 0.8443, 0, 0.57089996, 0, 0, -0.8323, 0, -0.1927, -0.5, 0.8443, -0.1927, 0.5, 0.8443, 0, 0.57089996, 0, 0, -0.8323, 0, 0.5399, 0.5, 0.6771, 0.5399, -0.5, 0.6771, 0, -0.8323, 0, 0, 0.57089996, 0, 0.5399, 0.5, 0.6771)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1lsv"]
+size = Vector3(6.7626953, 24.333496, 199.14136)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4kpg"]
+size = Vector3(123.76196, 3.66687, 85.38013)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qh0d"]
+size = Vector3(158.96321, 44.14453, 12.283569)
 
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
 panorama = ExtResource("20_sky")
@@ -44,6 +57,12 @@ sky = SubResource("OuterSky")
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.72, 0.78, 1)
 ambient_light_energy = 0.55
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w1lsv"]
+data = PackedVector3Array(-11.2, 0.08, -0.80009997, -7.2, 0.08, 2, -10.7001, 0.08, 1.4999, -10.599999, 0.08, -3.7001, -7.2, 0.08, 2, -11.2, 0.08, -0.80009997, -7.2, 0.08, 2, -2.3, 0.08, -1.4001, -4.2999997, 0.08, 1.1, -7.2, 0.08, 2, -2.7001, 0.08, -4, -2.3, 0.08, -1.4001, -10.599999, 0.08, -3.7001, -2.7001, 0.08, -4, -7.2, 0.08, 2, -2.7001, 0.08, -4, -10.599999, 0.08, -3.7001, -5.9000998, 0.08, -8.099999, -5.9000998, 0.08, -8.099999, -10.599999, 0.08, -3.7001, -9.300099, 0.08, -6.9000998, -2.7001, 0.08, -4, -5.9000998, 0.08, -8.099999, -2.4001, 0.08, -7.2001, -2.7001, 0.08, -4, -2.4001, 0.08, -7.2001, -1.1999999, 0.08, -5.2002, -10.7001, -0.45, 1.4999, -10.599999, -0.45, -3.7001, -11.2, -0.45, -0.80009997, -10.7001, -0.45, 1.4999, -5.9000998, -0.45, -8.099999, -10.599999, -0.45, -3.7001, -10.599999, -0.45, -3.7001, -5.9000998, -0.45, -8.099999, -9.300099, -0.45, -6.9000998, -5.9000998, -0.45, -8.099999, -10.7001, -0.45, 1.4999, -4.2999997, -0.45, 1.1, -4.2999997, -0.45, 1.1, -10.7001, -0.45, 1.4999, -7.2, -0.45, 2, -5.9000998, -0.45, -8.099999, -4.2999997, -0.45, 1.1, -2.7001, -0.45, -4, -2.7001, -0.45, -4, -4.2999997, -0.45, 1.1, -2.3, -0.45, -1.4001, -5.9000998, -0.45, -8.099999, -2.7001, -0.45, -4, -1.1999999, -0.45, -5.2002, -5.9000998, -0.45, -8.099999, -1.1999999, -0.45, -5.2002, -2.4001, -0.45, -7.2001, -10.7001, 0.08, 1.4999, -7.2, -0.45, 2, -7.2, 0.08, 2, -10.7001, 0.08, 1.4999, -10.7001, -0.45, 1.4999, -7.2, -0.45, 2, -7.2, 0.08, 2, -4.2999997, -0.45, 1.1, -4.2999997, 0.08, 1.1, -7.2, 0.08, 2, -7.2, -0.45, 2, -4.2999997, -0.45, 1.1, -4.2999997, 0.08, 1.1, -2.3, -0.45, -1.4001, -2.3, 0.08, -1.4001, -4.2999997, 0.08, 1.1, -4.2999997, -0.45, 1.1, -2.3, -0.45, -1.4001, -2.3, 0.08, -1.4001, -2.7001, -0.45, -4, -2.7001, 0.08, -4, -2.3, 0.08, -1.4001, -2.3, -0.45, -1.4001, -2.7001, -0.45, -4, -2.7001, 0.08, -4, -1.1999999, -0.45, -5.2002, -1.1999999, 0.08, -5.2002, -2.7001, 0.08, -4, -2.7001, -0.45, -4, -1.1999999, -0.45, -5.2002, -1.1999999, 0.08, -5.2002, -2.4001, -0.45, -7.2001, -2.4001, 0.08, -7.2001, -1.1999999, 0.08, -5.2002, -1.1999999, -0.45, -5.2002, -2.4001, -0.45, -7.2001, -2.4001, 0.08, -7.2001, -5.9000998, -0.45, -8.099999, -5.9000998, 0.08, -8.099999, -2.4001, 0.08, -7.2001, -2.4001, -0.45, -7.2001, -5.9000998, -0.45, -8.099999, -5.9000998, 0.08, -8.099999, -9.300099, -0.45, -6.9000998, -9.300099, 0.08, -6.9000998, -5.9000998, 0.08, -8.099999, -5.9000998, -0.45, -8.099999, -9.300099, -0.45, -6.9000998, -9.300099, 0.08, -6.9000998, -10.599999, -0.45, -3.7001, -10.599999, 0.08, -3.7001, -9.300099, 0.08, -6.9000998, -9.300099, -0.45, -6.9000998, -10.599999, -0.45, -3.7001, -10.599999, 0.08, -3.7001, -11.2, -0.45, -0.80009997, -11.2, 0.08, -0.80009997, -10.599999, 0.08, -3.7001, -10.599999, -0.45, -3.7001, -11.2, -0.45, -0.80009997, -11.2, 0.08, -0.80009997, -10.7001, -0.45, 1.4999, -10.7001, 0.08, 1.4999, -11.2, 0.08, -0.80009997, -11.2, -0.45, -0.80009997, -10.7001, -0.45, 1.4999)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4kpg"]
+data = PackedVector3Array(-3.8, 0.12, -0.5, -1.1999999, 0.12, 1.5, -4, 0.12, 0.9999, -2.3, 0.12, -1.5999999, -1.1999999, 0.12, 1.5, -3.8, 0.12, -0.5, -1.1999999, 0.12, 1.5, -2.3, 0.12, -1.5999999, 1.1, 0.12, -1.1, 1.1, 0.12, -1.1, -2.3, 0.12, -1.5999999, -0.19999999, 0.12, -2.1, -1.1999999, 0.12, 1.5, 1.1, 0.12, -1.1, 0.79999995, 0.12, 0.5, -4, -0.45, 0.9999, -2.3, -0.45, -1.5999999, -3.8, -0.45, -0.5, -1.1999999, -0.45, 1.5, -2.3, -0.45, -1.5999999, -4, -0.45, 0.9999, -2.3, -0.45, -1.5999999, -1.1999999, -0.45, 1.5, 1.1, -0.45, -1.1, 1.1, -0.45, -1.1, -1.1999999, -0.45, 1.5, 0.79999995, -0.45, 0.5, -2.3, -0.45, -1.5999999, 1.1, -0.45, -1.1, -0.19999999, -0.45, -2.1, -4, 0.12, 0.9999, -1.1999999, -0.45, 1.5, -1.1999999, 0.12, 1.5, -4, 0.12, 0.9999, -4, -0.45, 0.9999, -1.1999999, -0.45, 1.5, -1.1999999, 0.12, 1.5, 0.79999995, -0.45, 0.5, 0.79999995, 0.12, 0.5, -1.1999999, 0.12, 1.5, -1.1999999, -0.45, 1.5, 0.79999995, -0.45, 0.5, 0.79999995, 0.12, 0.5, 1.1, -0.45, -1.1, 1.1, 0.12, -1.1, 0.79999995, 0.12, 0.5, 0.79999995, -0.45, 0.5, 1.1, -0.45, -1.1, 1.1, 0.12, -1.1, -0.19999999, -0.45, -2.1, -0.19999999, 0.12, -2.1, 1.1, 0.12, -1.1, 1.1, -0.45, -1.1, -0.19999999, -0.45, -2.1, -0.19999999, 0.12, -2.1, -2.3, -0.45, -1.5999999, -2.3, 0.12, -1.5999999, -0.19999999, 0.12, -2.1, -0.19999999, -0.45, -2.1, -2.3, -0.45, -1.5999999, -2.3, 0.12, -1.5999999, -3.8, -0.45, -0.5, -3.8, 0.12, -0.5, -2.3, 0.12, -1.5999999, -2.3, -0.45, -1.5999999, -3.8, -0.45, -0.5, -3.8, 0.12, -0.5, -4, -0.45, 0.9999, -4, 0.12, 0.9999, -3.8, 0.12, -0.5, -3.8, -0.45, -0.5, -4, -0.45, 0.9999)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
 size = Vector3(1.65, 0.08, 0.76)
@@ -95,6 +114,130 @@ radius = 1.4
 [node name="RedlancePondsideReview" type="Node3D" unique_id=1481214042]
 script = ExtResource("1_script")
 
+[node name="lilipad7" parent="." unique_id=658019861 instance=ExtResource("15_wyodo")]
+transform = Transform3D(117.30558, 0, -161.98581, 0, 200, 0, 161.98581, 0, 117.30558, 36.51487, -2.4252846, 4.142349)
+
+[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=414408479]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=639467986]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="lilipad9" parent="." unique_id=479949106 instance=ExtResource("15_wyodo")]
+transform = Transform3D(-131.23816, 0, -150.91902, 0, 200, 0, 150.91902, 0, -131.23816, 23.925957, -2.4252846, 9.56684)
+
+[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=919504668]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=1195562418]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="lilipad10" parent="." unique_id=867063456 instance=ExtResource("15_wyodo")]
+transform = Transform3D(194.72772, 0, -45.61921, 0, 200, 0, 45.61921, 0, 194.72772, 21.06018, -2.4252846, 31.162458)
+
+[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=787081012]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=1176784288]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="lilipad8" parent="." unique_id=1616748481 instance=ExtResource("15_wyodo")]
+transform = Transform3D(-123.46586, 0, -40.696224, 0, 130, 0, 40.696224, 0, -123.46586, 19.914505, -1.6143448, 0.21192074)
+
+[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=11405407]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=672149334]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="lilipad11" parent="." unique_id=951802364 instance=ExtResource("15_wyodo")]
+transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 11.9312935, -1.6143448, 20.374653)
+
+[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=2005945632]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=1785578220]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="lilipad12" parent="." unique_id=1082421694 instance=ExtResource("15_wyodo")]
+transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 35.471535, -1.6143448, -3.8820343)
+
+[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1775211322) index="0" unique_id=1020912089]
+transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=1986131648]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0/StaticBody3D" unique_id=1106431625]
+shape = SubResource("ConcavePolygonShape3D_22cug")
+
+[node name="Invisible Walls" type="StaticBody3D" parent="." unique_id=824853028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.130833, 11.666748, 11.40332)
+
+[node name="East Wall" type="CollisionShape3D" parent="Invisible Walls" unique_id=2069319585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.609009)
+shape = SubResource("BoxShape3D_w1lsv")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor" type="CollisionShape3D" parent="Invisible Walls" unique_id=574100737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.89331, -12.856531, -76.06702)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor5" type="CollisionShape3D" parent="Invisible Walls" unique_id=803374437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.89331, -15.4463825, 9.1930275)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor2" type="CollisionShape3D" parent="Invisible Walls" unique_id=472380677]
+transform = Transform3D(0.6121207, 0, -0.7907644, 0, 1, 0, 0.7907644, 0, 0.6121207, 108.33252, -12.856531, -48.516537)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor3" type="CollisionShape3D" parent="Invisible Walls" unique_id=1240313649]
+transform = Transform3D(-0.23181581, 0, -0.9727597, 0, 1, 0, 0.9727597, 0, -0.23181581, -24.71413, -12.856531, 14.429356)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Floor4" type="CollisionShape3D" parent="Invisible Walls" unique_id=364534180]
+transform = Transform3D(0.62443876, 0, -0.78107387, 0, 1, 0, 0.78107387, 0, 0.62443876, -3.294567, -12.856531, 71.85504)
+shape = SubResource("BoxShape3D_t4kpg")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall" type="CollisionShape3D" parent="Invisible Walls" unique_id=213354315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.850319, 0.58984375, -99.2041)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall2" type="CollisionShape3D" parent="Invisible Walls" unique_id=944396717]
+transform = Transform3D(0.7855546, 0, -0.61879236, 0, 1, 0, 0.61879236, 0, 0.7855546, 87.40778, 0.58984375, -93.60858)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall3" type="CollisionShape3D" parent="Invisible Walls" unique_id=428596968]
+transform = Transform3D(-0.03967841, 0, -0.99921244, 0, 1, 0, 0.99921244, 0, -0.03967841, 92.19396, 0.58984375, -20.092216)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall4" type="CollisionShape3D" parent="Invisible Walls" unique_id=1259592774]
+transform = Transform3D(-0.502854, 0, -0.86437124, 0, 1, 0, 0.86437124, 0, -0.502854, 49.907707, 0.58984375, 52.59494)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="South wall5" type="CollisionShape3D" parent="Invisible Walls" unique_id=1723445304]
+transform = Transform3D(-0.7982466, 0, 0.6023306, 0, 1, 0, -0.6023306, 0, -0.7982466, 13.4835615, 0.58984375, 43.85225)
+shape = SubResource("BoxShape3D_4qh0d")
+debug_color = Color(1, 0, 0, 0.41960785)
+
 [node name="InteractionPromptDemo" parent="." unique_id=1692059102 instance=ExtResource("2_y73yp")]
 
 [node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("3_5wccx")]
@@ -144,10 +287,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36.593037, -0.045627594, 11.2
 prompt = NodePath("../InteractionPromptDemo")
 dialogue_player = NodePath("../DialoguePlayer")
 
+[node name="Sprite3D" parent="Merchant" index="0" unique_id=334245436]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.027962327, 0)
+
+[node name="CollisionShape3D" parent="Merchant/StaticBody3D" parent_id_path=PackedInt32Array(1841873639, 1596749676) index="0" unique_id=1192264772]
+disabled = true
+
 [node name="CharacterBody3D" parent="." unique_id=1666647444 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("14_hjbub")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.891012, -0.9598086, -7.3782625)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.550432, -0.10452175, -3.6462164)
 prompt = NodePath("../InteractionPromptDemo")
 dialogue_player = NodePath("../DialoguePlayer")
+
+[node name="CollisionShape3D" parent="CharacterBody3D/StaticBody3D" parent_id_path=PackedInt32Array(1666647444, 1596749676) index="0" unique_id=1192264772]
+disabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1430494369]
 environment = SubResource("Environment_preview")
@@ -211,11 +363,22 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0.043750763, 0, 0.0017242432
 [node name="Land_West_Lower_Bank" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="3" unique_id=1772819528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28968096)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Land_West_Lower_Bank" index="0" unique_id=1810235402]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Land_West_Lower_Bank/StaticBody3D" unique_id=2082923637]
+shape = SubResource("ConcavePolygonShape3D_w1lsv")
+
 [node name="Land_Expansion_South_Connector" parent="LevelBase/Terrain_Base_Generated/Land_Expansion" index="5"]
 transform = Transform3D(1.1089839, 0, 0.22556634, 0, 1, 0, -0.15157664, 0, 1.6503159, 1.4783031, 0, -2.9197326)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelBase/Terrain_Base_Generated/Land_Expansion/Land_Expansion_South_Connector" index="0" unique_id=1734058876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBase/Terrain_Base_Generated/Land_Expansion/Land_Expansion_South_Connector/StaticBody3D" unique_id=449544055]
+shape = SubResource("ConcavePolygonShape3D_t4kpg")
+
 [node name="Lily_Pad_1" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="5"]
 transform = Transform3D(1.56327, 0, 0.040225845, 0, 1.1598437, 0, -0.04694003, 0, 1.3396637, 0.9545315, -0.18, 1.8162996)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_1" index="0"]
 transform = Transform3D(28.9, 0, 0, 0, 12, 0, 0, 0, 14.6, -1.183, -0.1092, -0.0117)
@@ -228,6 +391,7 @@ transform = Transform3D(1, 0, -1.8626451e-09, 0, 1.0000068, 0, -1.8626451e-08, 0
 
 [node name="Lily_Pad_2" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="6"]
 transform = Transform3D(1.1626142, 0, -0.07943932, 0, 1, 0, 0.07706368, 0, 1.1984539, 3.3133914, -0.18, 1.4785724)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_2" index="0"]
 transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
@@ -237,6 +401,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323, -0.1492, -0.0128)
 
 [node name="Lily_Pad_5" type="Node3D" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="7" unique_id=161802343]
 transform = Transform3D(0.99781036, 0, -0.06613969, 0, 1, 0, 0.06613969, 0, 0.99781036, 5.3014016, -0.18, -0.4134021)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_5" unique_id=651844759 instance=ExtResource("15_wyodo")]
 transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
@@ -249,6 +414,7 @@ shape = SubResource("BoxShape3D_lily_2")
 
 [node name="Lily_Pad_6" type="Node3D" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="8" unique_id=210571839]
 transform = Transform3D(0.99781036, 0, -0.06613969, 0, 1, 0, 0.06613969, 0, 0.99781036, 4.718905, -0.18, 0.67885894)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_6" unique_id=434684616 instance=ExtResource("15_wyodo")]
 transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
@@ -261,6 +427,7 @@ shape = SubResource("BoxShape3D_lily_2")
 
 [node name="Lily_Pad_3" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="9"]
 transform = Transform3D(0.97894156, 0, 0.20414086, 0, 1, 0, -0.20414086, 0, 0.97894156, 10.567036, -0.18, 1.6105084)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_3" index="0"]
 transform = Transform3D(25.5, 0, 0, 0, 12.000006, 0, 4.7683716e-07, 0, 12.500001, -3.2895846, -0.109200016, -0.9413017)
@@ -270,6 +437,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2895846, -0.1492, -0.94130
 
 [node name="Lily_Pad_4" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="10"]
 transform = Transform3D(0.996719, 0, -0.08093936, 0, 1, 0, 0.08093936, 0, 0.996719, 6.4997463, -0.18, 3.0724092)
+visible = false
 
 [node name="Model" parent="LevelBase/Terrain_Base_Generated/Lily_Pad_4" index="0"]
 transform = Transform3D(37.399998, 0, 1.1920929e-07, 0, 11.999998, 0, -2.3841858e-07, 0, 17.399996, -1.462739, -0.109200016, 0.826688)
@@ -285,7 +453,7 @@ transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 
 visible = false
 
 [node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02961731, -0.13436584, -0.010775494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02961731, -0.07082462, -0.010775494)
 material_override = ExtResource("16_gaeky")
 material_overlay = SubResource("ShaderMaterial_y73yp")
 
@@ -1224,23 +1392,45 @@ height = 4.330859
 sides = 12
 material = ExtResource("9_osbx4")
 
-[node name="Bounce Pad9" parent="." unique_id=2134866075 instance=ExtResource("17_b8xro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.816254, 6.4420214, 26.096773)
+[node name="Bounce Pad9" parent="." unique_id=64564399 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.177294, 3.5431209, 29.04947)
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad9" unique_id=1605477002]
-transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
-radius = 1.0
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad9" unique_id=1546059711]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -1.5619898, -2.1776333)
+radius = 1.4
 material = SubResource("StandardMaterial3D_j26fj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad9" unique_id=342087382]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
-shape = SubResource("CylinderShape3D_i8moa")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad9" unique_id=1894582474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -1.5582523, -2.1806507)
+shape = SubResource("CylinderShape3D_gaeky")
 debug_color = Color(0.82, 0.41, 0, 1)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad9" unique_id=1938593970]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
-radius = 0.3
-height = 0.3
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad9" unique_id=506824084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.0345182, -2.172945)
+use_collision = true
+radius = 0.4
+height = 4.330859
+sides = 12
+material = ExtResource("9_osbx4")
+
+[node name="Bounce Pad15" parent="." unique_id=308121625 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.589523, 6.0934234, 25.909433)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad15" unique_id=416950447]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -1.5619898, -2.1776333)
+radius = 1.4
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad15" unique_id=2075605246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -1.5582523, -2.1806507)
+shape = SubResource("CylinderShape3D_gaeky")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad15" unique_id=362581063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.0345182, -2.172945)
+use_collision = true
+radius = 0.4
+height = 4.330859
 sides = 12
 material = ExtResource("9_osbx4")
 
@@ -1387,6 +1577,26 @@ height = 0.3
 sides = 12
 material = ExtResource("9_osbx4")
 
+[node name="Bounce Pad16" parent="." unique_id=1825156187 instance=ExtResource("17_b8xro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.399917, 23.664995, 46.8783)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad16" unique_id=1493206752]
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
+radius = 1.0
+material = SubResource("StandardMaterial3D_j26fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad16" unique_id=617574259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -2.3769665, -2.1806512)
+shape = SubResource("CylinderShape3D_i8moa")
+debug_color = Color(0.82, 0.41, 0, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad16" unique_id=203634678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -2.7058067, -2.172945)
+radius = 0.3
+height = 0.3
+sides = 12
+material = ExtResource("9_osbx4")
+
 [node name="Bounce Pad14" parent="." unique_id=2088121065 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
 
@@ -1401,5 +1611,20 @@ metadata/_edit_use_anchors_ = true
 [node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1735010285]
 script = ExtResource("28_op046")
 
+[node name="SceneTransition2D" parent="." unique_id=1962062075 node_paths=PackedStringArray("prompt") instance=ExtResource("31_t4kpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.759738, 25.210098, 49.91657)
+scene = "res://scenes/levels/2d/bosslevel.tscn"
+interact_distance = 5.0
+prompt = NodePath("../InteractionPromptDemo")
+
+[editable path="lilipad7"]
+[editable path="lilipad9"]
+[editable path="lilipad10"]
+[editable path="lilipad8"]
+[editable path="lilipad11"]
+[editable path="lilipad12"]
+[editable path="Merchant"]
+[editable path="CharacterBody3D"]
 [editable path="LevelBase"]
 [editable path="PauseMenu"]
+[editable path="SceneTransition2D"]

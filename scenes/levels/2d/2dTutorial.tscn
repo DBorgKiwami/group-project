@@ -217,27 +217,11 @@ volume_db = -16.0
 stream = ExtResource("29_breeze")
 volume_db = -18.0
 
-[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "hud", "death_screen", "attack_tongue", "tongue_hitbox") groups=["Player"] instance=ExtResource("1_lhry7")]
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
 collision_layer = 1
-hitboxFront = NodePath("Front Attack Hurtbox")
-hitboxUp = NodePath("Up Attack Hurtbox")
-hitboxDown = NodePath("Down Attack Hurtbox")
-animationController = NodePath("AnimationPlayer")
-player_hitbox = NodePath("PlayerHitbox")
-player_camera = NodePath("Camera3D")
-sprite = NodePath("AnimatedSprite3D")
-state_machine = NodePath("State_Machine")
-jump_sfx = NodePath("JumpSfx")
-landing_sfx = NodePath("LandingSfx")
-attack_sfx = NodePath("AttackSfx")
-hurt_sfx = NodePath("HurtSfx")
-footstep_sfx = NodePath("FootstepSfx")
 hud = NodePath("../CanvasLayer/SimpleHudDemo")
 death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
-damage = 1
-attack_tongue = NodePath("AttackTongue")
-tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 tongue_hitbox_offset = 0.0
 
 [node name="CollisionShape3D" parent="2Dplatformingcharacter" index="0" unique_id=30863792 groups=["Player"]]
@@ -411,7 +395,7 @@ shape = SubResource("BoxShape3D_5pkib")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.994286, 0.727752, 0)
 enemy_sprite = NodePath("AnimatedSprite3D")
 vision_area = NodePath("VisionArea")
-max_health = 5
+max_health = 8
 
 [node name="Chase" parent="2Dtestenemy/State Machine" parent_id_path=PackedInt32Array(650050351, 22494397) index="2" unique_id=1042981653]
 speed = 1.0
@@ -439,7 +423,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
 collision_layer = 1
 enemy_sprite = NodePath("AnimatedSprite3D")
 vision_area = NodePath("VisionArea")
-max_health = 5
+max_health = 8
 
 [node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -455,7 +439,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
 collision_layer = 1
 enemy_sprite = NodePath("AnimatedSprite3D")
 vision_area = NodePath("VisionArea")
-max_health = 5
+max_health = 8
 
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -468,9 +452,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
 scene = "res://scenes/levels/3d/redlance_pondside_review.tscn"
 interact_distance = 5.0
 prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
-
-[node name="CollisionShape3D" parent="SceneTransition2D" index="0" unique_id=1664706398]
-debug_color = Color(0.9647059, 0.1882353, 0, 1)
 
 [node name="Rock3" type="MeshInstance3D" parent="." unique_id=1631685465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.097516, 0.49999988, 0)

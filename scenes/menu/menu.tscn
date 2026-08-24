@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://be4ud7hy5u5sc" path="res://scenes/menu/menu png.png" id="4_y1o0p"]
 [ext_resource type="Texture2D" uid="uid://c0ntevqw8ybcn" path="res://images/logo menu.png" id="5_t0a87"]
 [ext_resource type="Script" uid="uid://col8ygiudupd2" path="res://scenes/menu/play.gd" id="8_t0a87"]
-[ext_resource type="AudioStream" path="res://audio/music/menubgm.ogg" id="9_menu_bgm"]
-[ext_resource type="AudioStream" path="res://audio/music/mousefloat.ogg" id="10_hover"]
-[ext_resource type="AudioStream" path="res://audio/music/mouseclick.ogg" id="11_click"]
+[ext_resource type="AudioStream" uid="uid://b5m54p3248gfq" path="res://audio/music/menubgm.ogg" id="9_menu_bgm"]
+[ext_resource type="AudioStream" uid="uid://dgd43tttv5nio" path="res://audio/music/mousefloat.ogg" id="10_hover"]
+[ext_resource type="AudioStream" uid="uid://ceyo6qhci3blw" path="res://audio/music/mouseclick.ogg" id="11_click"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mcvr8"]
 render_priority = 0
@@ -51,21 +51,6 @@ font_stretch = 150
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kaijy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4i35"]
-
-[sub_resource type="SystemFont" id="SystemFont_t0a87"]
-font_names = PackedStringArray("Garamond")
-font_weight = 600
-font_stretch = 150
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcuxh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64m6r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjdsv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j8sj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55a8x"]
 
 [sub_resource type="SystemFont" id="SystemFont_qo0fc"]
 font_names = PackedStringArray("Garamond")
@@ -134,11 +119,11 @@ grow_vertical = 2
 script = ExtResource("4_037ec")
 level_scene_path = "res://scenes/levels/3d/testlevel.tscn"
 
-[node name="HoverSfx" type="AudioStreamPlayer" parent="CanvasLayer/UI"]
+[node name="HoverSfx" type="AudioStreamPlayer" parent="CanvasLayer/UI" unique_id=96356042]
 stream = ExtResource("10_hover")
 volume_db = -6.0
 
-[node name="ClickSfx" type="AudioStreamPlayer" parent="CanvasLayer/UI"]
+[node name="ClickSfx" type="AudioStreamPlayer" parent="CanvasLayer/UI" unique_id=694843030]
 stream = ExtResource("11_click")
 volume_db = -6.0
 
@@ -146,9 +131,9 @@ volume_db = -6.0
 layout_mode = 1
 anchors_preset = -1
 offset_left = 282.0
-offset_top = 320.0
+offset_top = 361.0
 offset_right = 532.0
-offset_bottom = 514.5
+offset_bottom = 522.0
 
 [node name="Play" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=1030186906]
 custom_minimum_size = Vector2(250, 60)
@@ -161,21 +146,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kaijy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y4i35")
 text = "Play"
-script = ExtResource("8_t0a87")
-base_outline_size = 0
-hover_outline_size = 0
-
-[node name="Settings" type="Button" parent="CanvasLayer/UI/VBoxContainer" unique_id=39929430]
-custom_minimum_size = Vector2(250, 60)
-layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_t0a87")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rcuxh")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_64m6r")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_pjdsv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2j8sj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_55a8x")
-text = "Settings"
 script = ExtResource("8_t0a87")
 base_outline_size = 0
 hover_outline_size = 0
@@ -195,14 +165,12 @@ script = ExtResource("8_t0a87")
 base_outline_size = 0
 hover_outline_size = 0
 
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=977994253]
 stream = ExtResource("9_menu_bgm")
 volume_db = -12.0
 autoplay = true
 
 [connection signal="mouse_entered" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_menu_button_hovered"]
-[connection signal="mouse_entered" from="CanvasLayer/UI/VBoxContainer/Settings" to="CanvasLayer/UI" method="_on_menu_button_hovered"]
-[connection signal="mouse_entered" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_menu_button_hovered"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Play" to="CanvasLayer/UI" method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Settings" to="CanvasLayer/UI" method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_menu_button_hovered"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/Quit" to="CanvasLayer/UI" method="_on_quit_pressed"]

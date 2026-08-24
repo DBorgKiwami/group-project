@@ -1,12 +1,15 @@
 extends State
 class_name CrawfishChase
 
-@export var enemy_body: CharacterBody3D
+@export var enemy_body: CrawfishEnemy
 @export var speed: float = 0.5
 @export var stop_distance: float = 2.0
 
 
 func physicsUpdate(delta):
+	if enemy_body.knockback_timer > 0:
+		return
+
 	if not enemy_body.chase_target:
 		return
 

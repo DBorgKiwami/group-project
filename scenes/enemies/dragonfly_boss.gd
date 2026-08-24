@@ -24,9 +24,13 @@ signal defeated
 @export var death_recoil_upward_speed : float = 2.0
 @export var death_gravity : float = 12.0
 
-# Damage flicker
+# Hit feedback
 @export var flicker_count : int = 4
 @export var flicker_time : float = 0.05
+
+# Hit knockback
+@export var knockback_force : float = 3.0
+@export var knockback_duration : float = 0.12
 
 var _last_state_name := ""
 var _visual_generation := 0
@@ -42,6 +46,9 @@ var _death_velocity := Vector3.ZERO
 var _rng := RandomNumberGenerator.new()
 
 var flickering := false
+
+var knockback_timer : float = 0.0
+var knockback_velocity : Vector3 = Vector3.ZERO
 
 
 func _ready():
@@ -91,7 +98,6 @@ func die():
 
 	sprite.play(&"death")
 
-	# Keep any original death animation if one is added to this scene later.
 	if animationControler.has_animation(&"die"):
 		animationControler.play(&"die")
 		await animationControler.animation_finished
@@ -105,6 +111,15 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO
 
 		return
+
+	if knockback_timer > 0.0:
+		knockback_timer -= delta
+
+		velocity.x = knockback_velocity.x
+		velocity.z = knockback_velocity.z
+	else:
+		velocity.x = 0.0
+		velocity.z = 0.0
 
 	move_and_slide()
 
@@ -127,7 +142,8 @@ func hitbox_hit(damage_received: Variant) -> void:
 	print("Dragonfly took ", actual_damage, " damage!")
 	print("Dragonfly health: ", health)
 
-	# Flash when damaged.
+	apply_knockback()
+
 	damage_flicker()
 
 	if health <= 0:
@@ -138,6 +154,24 @@ func hitbox_hit(damage_received: Variant) -> void:
 			state_machine.current_state,
 			"enemydead"
 		)
+
+
+func apply_knockback() -> void:
+	var player := _find_player()
+
+	if not is_instance_valid(player):
+		return
+
+	var direction := global_position - player.global_position
+	direction.y = 0.0
+
+	if direction.length_squared() == 0.0:
+		return
+
+	direction = direction.normalized()
+
+	knockback_velocity = direction * knockback_force
+	knockback_timer = knockback_duration
 
 
 func damage_flicker() -> void:
@@ -288,7 +322,6 @@ func _find_visual_perch_target():
 func _start_death_fall() -> void:
 	var start_position := global_position
 
-	# Always recoil toward the arena centre.
 	_death_landing_x = move_toward(
 		start_position.x,
 		0.0,
