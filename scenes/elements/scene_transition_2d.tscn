@@ -12,6 +12,11 @@ scene = "res://scenes/levels/3d/testlevel.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664706398]
 shape = SubResource("SphereShape3D_6l5u2")
+debug_color = Color(0.9647059, 0.1882353, 0, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=985091830]
+light_color = Color(0, 1, 1, 1)
+light_energy = 10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
