@@ -143,9 +143,9 @@ func _input(event: InputEvent) -> void:
 		)
 
 func _physics_process(delta: float) -> void:
-	if temp:
-		SignalBus.open_shop.emit("merchant")
-		temp = false
+	#if temp:
+		#SignalBus.open_shop.emit("merchant")
+		#temp = false
 	#print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	_update_grapple_notification()
 	if jump_buffer > 0:

@@ -3,6 +3,7 @@ extends Area3D
 @export var shop_id: String = ""
 
 var active := false
+var is_shop_open := false
 var interaction_prompt: Node = null
 
 func _ready() -> void:
@@ -28,8 +29,12 @@ func _find_interaction_prompt() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if active and event.is_action_pressed("interact"):
+	if active and event.is_action_pressed("interact") and !is_shop_open:
 		SignalBus.open_shop.emit(shop_id)
+		is_shop_open = true
+	elif active and event.is_action_pressed("interact") and is_shop_open:
+		SignalBus.shop_done.emit()
+		is_shop_open = false
 
 	if interaction_prompt:
 		if interaction_prompt.has_method("flash_confirm"):
