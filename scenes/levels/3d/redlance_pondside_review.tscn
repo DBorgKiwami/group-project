@@ -22,11 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
 [ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+[ext_resource type="PackedScene" uid="uid://7c5sarcqj5eq" path="res://scenes/npcs/elderfrog.tscn" id="23_w1lsv"]
 [ext_resource type="Texture2D" uid="uid://bv6q260pw2wto" path="res://sprites/props/button24pixel (1).png" id="27_hjbub"]
 [ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
 
@@ -284,12 +285,29 @@ transform = Transform3D(0.9999954, 0.0030250137, -0.00018690717, -0.0030249779, 
 visible = false
 
 [node name="Pond_Water_Main" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="16" unique_id=1161159172]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032240488, -0.13677177, -0.008130645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02961731, -0.13436584, -0.010775494)
 material_override = ExtResource("16_gaeky")
 material_overlay = SubResource("ShaderMaterial_y73yp")
 
 [node name="Pond_Bottom_Cylinder" parent="LevelBase/Terrain_Base_Generated/Pond_Swim_Base" index="0"]
 transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
+
+[node name="CharacterBody3D" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="18" unique_id=1643011025 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("23_w1lsv")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 3.4819627, 2.5707502, -1.6633831)
+prompt = NodePath("../../../InteractionPromptDemo")
+dialogue_id = "elder_story3"
+dialogue_player = NodePath("../../../DialoguePlayer")
+
+[node name="CharacterBody3D2" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="19" unique_id=1554647196 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("23_w1lsv")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, -0.8897623, 5.4096003, -2.781376)
+prompt = NodePath("../../../InteractionPromptDemo")
+dialogue_id = "elder_story2"
+dialogue_player = NodePath("../../../DialoguePlayer")
+
+[node name="CharacterBody3D3" parent="LevelBase/Terrain_Base_Generated" parent_id_path=PackedInt32Array(458334827, 1270120656) index="20" unique_id=1104735165 node_paths=PackedStringArray("prompt") instance=ExtResource("23_w1lsv")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 8.614279, 4.896543, -2.495251)
+prompt = NodePath("../../../InteractionPromptDemo")
+dialogue_id = "elder_story1"
 
 [node name="Decorative_Background_Forest" parent="LevelBase" index="1"]
 transform = Transform3D(0.41932988, 0, 0, 0, 0.5077277, 0, 0, 0, 0.4363992, 0, 3.488629, 0)
