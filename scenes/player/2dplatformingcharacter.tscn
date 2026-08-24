@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]
 [ext_resource type="AudioStream" uid="uid://c5d3hyjj05qvp" path="res://audio/music/frogcry.ogg" id="11_hurt"]
 [ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
+[ext_resource type="Texture2D" path="res://allen_work/vfx_demos/frog_slash_arc_demo/assets/vfx/slash_arc_sheet.png" id="17_slash"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -389,12 +390,27 @@ size = Vector3(1.56, 1.5641162, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_55rie"]
 radius = 0.3
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox", "tongue_snap_flash", "slash_vfx")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
-block_length = null
-block_cooldown = null
-attack_timeout = null
+hitboxFront = NodePath("Front Attack Hurtbox")
+hitboxUp = NodePath("Up Attack Hurtbox")
+hitboxDown = NodePath("Down Attack Hurtbox")
+animationController = NodePath("AnimationPlayer")
+player_hitbox = NodePath("PlayerHitbox")
+player_camera = NodePath("Camera3D")
+sprite = NodePath("AnimatedSprite3D")
+state_machine = NodePath("State_Machine")
+jump_sfx = NodePath("JumpSfx")
+landing_sfx = NodePath("LandingSfx")
+attack_sfx = NodePath("AttackSfx")
+hurt_sfx = NodePath("HurtSfx")
+footstep_sfx = NodePath("FootstepSfx")
+damage = 1
+attack_tongue = NodePath("AttackTongue")
+tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
+tongue_snap_flash = NodePath("TongueSnapFlash")
+slash_vfx = NodePath("SlashVfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
 transform = Transform3D(0.9999969, -0.0023402274, 0.0008512254, 0.0023406832, 0.99999714, -0.0005393485, -0.0008499716, 0.0005413221, 0.9999995, -0.00038945957, -0.145264, 6.185028e-05)
@@ -471,9 +487,6 @@ metadata/_custom_type_script = "uid://cgdwg4dqcddnb"
 [node name="Alive" type="Node" parent="State_Machine" unique_id=924225331 node_paths=PackedStringArray("player_reference")]
 script = ExtResource("6_k8hk2")
 player_reference = NodePath("../..")
-block_length = null
-block_cooldown = null
-attack_timeout = null
 
 [node name="Dead" type="Node" parent="State_Machine" unique_id=894699878 node_paths=PackedStringArray("player_reference")]
 script = ExtResource("7_1haum")
@@ -524,6 +537,26 @@ texture = ExtResource("16_sdofs")
 region_enabled = true
 region_rect = Rect2(-1.25, -1.25, 38, 14)
 
+[node name="TongueSnapFlash" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0.2, 0.55, 0)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+texture = ExtResource("16_sdofs")
+region_enabled = true
+region_rect = Rect2(-1.25, -1.25, 38, 14)
+modulate = Color(1, 0.55, 0.65, 0.8)
+
+[node name="SlashVfx" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0.7, 0.35, 0)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+texture = ExtResource("17_slash")
+hframes = 6
+frame = 0
 [node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
 collision_layer = 0
