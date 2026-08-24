@@ -156,7 +156,7 @@ func _input(event: InputEvent) -> void:
 		)
 
 func _physics_process(delta: float) -> void:
-	print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
+	#print("PHYSICS: inDialogue=", inDialogue, " input_dir=", Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	_update_grapple_notification()
 	if jump_buffer > 0:
 		jump_buffer -= delta
@@ -334,7 +334,7 @@ func _process(delta: float) -> void:
 	else:
 		animationdirection = "east"
 
-	print(animationdirection)
+	#print(animationdirection)
 	
 	# --- Sprint animation speed ramp ---
 	var target_anim_speed := sprint_anim_speed if Input.is_action_pressed("sprint") else normal_anim_speed

@@ -30,13 +30,13 @@ func _input(event: InputEvent) -> void:
 	if not event.is_action_pressed("talk"):
 		return
 	print("X pressed. player_in_range=", player_in_range, " is_talking_to_me=", is_talking_to_me())
-	if not player_in_range and not is_talking_to_me():
+	if not player_in_range:
 		print("Blocked - returning early")
 		return
 	if prompt:
 		prompt.flash_confirm()
 	print("Emitting display_dialogue with id: ", dialogue_id)
-	SignalBus.emit_signal("display_dialogue", dialogue_id, "MERCHANT")
+	SignalBus.emit_signal("display_dialogue", dialogue_id)
 
 func is_talking_to_me() -> bool:
 	return dialogue_player != null and dialogue_player.dialogueDisplaying

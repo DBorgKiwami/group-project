@@ -36,13 +36,13 @@ func _input(event: InputEvent) -> void:
 	if not event.is_action_pressed("talk"):
 		return
 
-	if not player_in_range and not is_talking_to_me():
+	if not player_in_range:
 		return
 
 	if prompt:
 		prompt.flash_confirm()
 
-	SignalBus.emit_signal("display_dialogue", dialogue_id, "GOLDFISH")
+	SignalBus.emit_signal("display_dialogue", dialogue_id)
 
 
 func is_talking_to_me() -> bool:
