@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c50fxi1ok06vi" path="res://sprites/enemies/enemy sprites/crawfish.png" id="3_q6280"]
 [ext_resource type="Script" uid="uid://dj8bls2ayt4u4" path="res://scripts/enemies/walkeractive.gd" id="5_1fdds"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="6_q6280"]
+[ext_resource type="Script" uid="uid://bm7sgyb7p1366" path="res://scripts/enemies/chase.gd" id="7_61bjk"]
 [ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="8_61bjk"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="8_ofbrs"]
-[ext_resource type="AudioStream" path="res://audio/music/enemycry.ogg" id="9_enemy_cry"]
+[ext_resource type="AudioStream" uid="uid://dd06x74jaiuns" path="res://audio/music/enemycry.ogg" id="9_enemy_cry"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofbrs"]
 radius = 0.620357
@@ -97,6 +98,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_eexk2"]
 radius = 0.766
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dh00q"]
+radius = 3.3537278
+
 [node name="2Dtestenemy" type="CharacterBody3D" unique_id=650050351 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler", "defeat_sfx") groups=["combat_enemy"]]
 collision_layer = 0
 script = ExtResource("1_v0lon")
@@ -104,8 +108,8 @@ state_machine = NodePath("State Machine")
 hitbox = NodePath("Hitbox")
 hurtbox = NodePath("EnemyHurtbox")
 animationControler = NodePath("AnimationPlayer")
-defeat_sfx = NodePath("DefeatSfx")
 drop = ExtResource("2_dh00q")
+defeat_sfx = NodePath("DefeatSfx")
 
 [node name="Node3D" type="CollisionShape3D" parent="." unique_id=259154116]
 shape = SubResource("SphereShape3D_ofbrs")
@@ -130,6 +134,12 @@ enemy_sprite = NodePath("../../AnimatedSprite3D")
 script = ExtResource("8_61bjk")
 enemy_body = NodePath("../..")
 
+[node name="Chase" type="Node" parent="State Machine" unique_id=1042981653 node_paths=PackedStringArray("enemy_body")]
+script = ExtResource("7_61bjk")
+enemy_body = NodePath("../..")
+speed = 0.1
+metadata/_custom_type_script = "uid://blqsfwcuw3c6f"
+
 [node name="Hitbox" type="Area3D" parent="." unique_id=754525739]
 collision_layer = 4
 collision_mask = 0
@@ -142,7 +152,7 @@ debug_color = Color(0.9780964, 0.14949349, 0, 0.41960785)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=700514418]
 libraries/ = SubResource("AnimationLibrary_dh00q")
 
-[node name="DefeatSfx" type="AudioStreamPlayer" parent="."]
+[node name="DefeatSfx" type="AudioStreamPlayer" parent="." unique_id=273581314]
 stream = ExtResource("9_enemy_cry")
 volume_db = -4.0
 max_polyphony = 2
@@ -153,6 +163,11 @@ collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHurtbox" unique_id=384773153]
 shape = SubResource("SphereShape3D_eexk2")
+
+[node name="VisionArea" type="Area3D" parent="." unique_id=1077109021]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea" unique_id=1228161363]
+shape = SubResource("SphereShape3D_dh00q")
 
 [connection signal="on_hit" from="Hitbox" to="Hitbox" method="_on_on_hit"]
 [connection signal="area_entered" from="EnemyHurtbox" to="." method="_on_enemy_hurtbox_area_entered"]
