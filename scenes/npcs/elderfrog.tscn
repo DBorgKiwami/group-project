@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://7c5sarcqj5eq"]
+
+[ext_resource type="Script" uid="uid://v47oi0nt1xm6" path="res://scripts/npcs/elderfrog.gd" id="1_o4p4w"]
+[ext_resource type="Texture2D" uid="uid://bdeam451ail88" path="res://sprites/npcs/Elder_Frog.png" id="2_o4p4w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhm2p"]
+radius = 0.25439453
+height = 0.64624023
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seq8b"]
+radius = 1.3462899
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1841873639]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_o4p4w")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=334245436]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 2
+texture = ExtResource("2_o4p4w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1596749676]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1192264772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012363583, 0)
+shape = SubResource("CapsuleShape3D_uhm2p")
+
+[node name="Interaction" type="Area3D" parent="." unique_id=912309786]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction" unique_id=246151702]
+shape = SubResource("SphereShape3D_seq8b")
