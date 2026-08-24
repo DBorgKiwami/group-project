@@ -237,6 +237,7 @@ death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
 damage = 1
 attack_tongue = NodePath("AttackTongue")
 tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
+tongue_hitbox_offset = 0.0
 
 [node name="TutorialAudio" type="Node" parent="." unique_id=803025064 node_paths=PackedStringArray("combat_player", "enemy_cry_player", "victory_player", "birds_player", "breeze_player")]
 script = ExtResource("10_audio")
@@ -352,6 +353,7 @@ shadow_opacity = 0.7
 [node name="Semi Solid" type="MeshInstance3D" parent="." unique_id=591614145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.015041, 2.1186683, 0)
 mesh = SubResource("BoxMesh_1tfyo")
+surface_material_override/0 = ExtResource("9_1tfyo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Semi Solid" unique_id=1405731845]
 collision_layer = 64
@@ -404,6 +406,7 @@ shape = SubResource("ConcavePolygonShape3D_kjg24")
 [node name="2Dtestenemy2" parent="." unique_id=981890454 node_paths=PackedStringArray("enemy_sprite") instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
 enemy_sprite = NodePath("AnimatedSprite3D")
+max_health = 5
 
 [node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0
@@ -414,6 +417,7 @@ root_node = NodePath("../../2Dtestenemy2")
 [node name="2Dtestenemy3" parent="." unique_id=1152322179 node_paths=PackedStringArray("enemy_sprite") instance=ExtResource("6_t7y2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
 enemy_sprite = NodePath("AnimatedSprite3D")
+max_health = 5
 
 [node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
 hflip = -1.0

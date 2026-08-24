@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://h8o2yk4mr167" path="res://scenes/npcs/goldfish.tscn" id="14_hjbub"]
 [ext_resource type="PackedScene" uid="uid://bprwaaoqs7yaq" path="res://scenes/elements/collectible.tscn" id="15_gqagh"]
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
-[ext_resource type="Texture2D" uid="uid://bh6kfr2fe4ira" path="res://sprites/props/euro.png" id="16_b8xro"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
@@ -28,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
 [ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+[ext_resource type="Texture2D" uid="uid://bv6q260pw2wto" path="res://sprites/props/button24pixel (1).png" id="27_hjbub"]
 [ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
 
 [sub_resource type="PanoramaSkyMaterial" id="OuterSkyMaterial"]
@@ -912,21 +912,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.617981, 25.470215, -27.174
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible" unique_id=1745914698]
 transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
-texture = ExtResource("16_b8xro")
+pixel_size = 0.05
+billboard = 2
+texture_filter = 2
+texture = ExtResource("27_hjbub")
 
 [node name="collectible2" parent="." unique_id=1083934708 instance=ExtResource("15_gqagh")]
 transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 17.33614, 22.94552, -69.197296)
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible2" unique_id=1885280743]
 transform = Transform3D(-0.972039, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.972039, 0, -0.13044739, 0)
-texture = ExtResource("16_b8xro")
+pixel_size = 0.05
+billboard = 2
+texture_filter = 2
+texture = ExtResource("27_hjbub")
 
 [node name="collectible3" parent="." unique_id=1189982479 instance=ExtResource("15_gqagh")]
 transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 41.58298, 17.375753, -36.395523)
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible3" unique_id=687066567]
 transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
-texture = ExtResource("16_b8xro")
+pixel_size = 0.05
+billboard = 2
+texture_filter = 2
+texture = ExtResource("27_hjbub")
 
 [node name="Grapplepoint3d6" parent="." unique_id=1726253376 instance=ExtResource("18_j26fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.775055, 7.279153, -55.45297)
@@ -1128,7 +1137,10 @@ transform = Transform3D(0.7785937, 0, -0.6275283, 0, 1, 0, 0.6275283, 0, 0.77859
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible4" unique_id=475927042]
 transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
-texture = ExtResource("16_b8xro")
+pixel_size = 0.05
+billboard = 2
+texture_filter = 2
+texture = ExtResource("27_hjbub")
 
 [node name="Grapplepoint3d11" parent="." unique_id=1538260565 instance=ExtResource("18_j26fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.264545, 15.105666, -46.643074)
@@ -1147,7 +1159,10 @@ transform = Transform3D(0.86007494, 0, -0.5101677, 0, 1, 0, 0.5101677, 0, 0.8600
 
 [node name="Sprite3D" type="Sprite3D" parent="collectible5" unique_id=907278763]
 transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.9720389, 0, 0.86724854, 0)
-texture = ExtResource("16_b8xro")
+pixel_size = 0.05
+billboard = 2
+texture_filter = 2
+texture = ExtResource("27_hjbub")
 
 [node name="Bounce Pad7" parent="." unique_id=1476136587 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.077028, 3.0779161, 22.61041)
