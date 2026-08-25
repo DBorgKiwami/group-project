@@ -1,6 +1,75 @@
 [gd_scene format=3 uid="uid://c3kp3nccc8ol4"]
 
 [ext_resource type="Script" uid="uid://cqseir4p7pbwk" path="res://scripts/elements/fadingplatform.gd" id="1_63cua"]
+[ext_resource type="PackedScene" uid="uid://bgpxprmym5udb" path="res://models/fragileleaf1.glb" id="2_ojxut"]
 
-[node name="Fading Platform" type="StaticBody3D" unique_id=354689758]
+[sub_resource type="Animation" id="Animation_ojxut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fragileleaf1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4423828, 0, 0.34085083)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fragileleaf1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fo84v"]
+resource_name = "leaffall"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fragileleaf1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4423828, 0, 0.34085083)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fragileleaf1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 2, 2.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.05235988, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.05235988, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.05235988, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.3089969, 0, 0), Vector3(-1.3089969, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43wma"]
+_data = {
+&"RESET": SubResource("Animation_ojxut"),
+&"leaffall": SubResource("Animation_fo84v")
+}
+
+[node name="Fading Platform" type="StaticBody3D" unique_id=354689758 node_paths=PackedStringArray("fall_anim")]
 script = ExtResource("1_63cua")
+fall_anim = NodePath("AnimationPlayer")
+
+[node name="fragileleaf1" parent="." unique_id=852289134 instance=ExtResource("2_ojxut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4423828, 0, 0.34085083)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=51860942]
+libraries/ = SubResource("AnimationLibrary_43wma")

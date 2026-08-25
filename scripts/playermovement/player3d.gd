@@ -230,6 +230,7 @@ func _physics_process(delta: float) -> void:
 			last_collision.get_collider().play_bounce_anim()
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
+			last_collision.get_collider().play_fall_anim()
 
 
 func _update_grapple_notification() -> void:
