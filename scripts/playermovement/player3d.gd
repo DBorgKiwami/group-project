@@ -333,12 +333,11 @@ func _physics_process(delta: float) -> void:
 
 		# If it's a bounce pad, bounce!
 		if last_collision.get_collider() is BouncePad:
-			bounce(
-				last_collision.get_collider().bounce_strength
-			)
-
+			bounce(last_collision.get_collider().bounce_strength)
+			last_collision.get_collider().play_bounce_anim()
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
+			last_collision.get_collider().play_fall_anim()
 
 
 func _update_grapple_notification() -> void:

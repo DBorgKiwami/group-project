@@ -1,8 +1,9 @@
 extends StaticBody3D
 class_name FadingPlatform
 
-@export var linger_time := 5.0
+@export var linger_time := 2.0
 @export var respawn_time := 5.0
+@export var fall_anim :AnimationPlayer
 var active = false
 var respawning = false
 var timer = 0.0
@@ -35,3 +36,6 @@ func _physics_process(delta: float) -> void:
 	if respawning:
 		respawn_timer += delta
 	
+func play_fall_anim():
+	fall_anim.play("leaffall")
+	pass
