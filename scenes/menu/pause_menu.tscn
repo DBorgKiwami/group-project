@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cy1w71u25t78c"]
+
+[ext_resource type="Script" uid="uid://c38xr1m0qknio" path="res://scenes/menu/pause_menu.gd" id="1_n54lc"]
+[ext_resource type="Script" uid="uid://ctwm7cv3imwr0" path="res://scenes/menu/pause_visual.gd" id="2_ux7g8"]
+[ext_resource type="AudioStream" path="res://audio/music/poppingup.ogg" id="3_popup"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=887874633]
+script = ExtResource("1_n54lc")
+
+[node name="PopupSfx" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_popup")
+volume_db = -4.0
+
+[node name="Control" type="Control" parent="." unique_id=1600347352]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ux7g8")

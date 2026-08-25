@@ -1,7 +1,7 @@
 extends State
-
 @export var player_reference : Player2D
-
+@export var block_length : float
+@export var block_cooldown : float
 func update(_delta: float):
 	if player_reference.player_camera:
 		var x_diff = player_reference.position.x - player_reference.player_camera.global_position.x 
@@ -11,8 +11,14 @@ func update(_delta: float):
 			else:
 				player_reference.player_camera.global_position.x += x_diff + player_reference.camera_x_bound
 		player_reference.player_camera.global_position.y = player_reference.position.y + player_reference.camera_y_offset
-
 func physicsUpdate(delta: float):
+	if player_reference.velocity.y > 0 or Input.is_action_pressed("ui_down") or player_reference.clipping:
+		#print("No Semi-Solid")
+		player_reference.set_collision_mask_value(7, false)
+	else:
+		player_reference.set_collision_mask_value(7, true)
+	#print(player_reference.velocity.y)
+	
 	#Reduce the jump buffer if its still running
 	if player_reference.jump_buffer > 0:
 		player_reference.jump_buffer -= delta
@@ -40,6 +46,8 @@ func physicsUpdate(delta: float):
 	if player_reference.jump_buffer > 0 and player_reference.can_jump:
 		player_reference.jump_buffer = 0
 		player_reference.velocity.y = player_reference.JUMP_VELOCITY
+		if player_reference.jump_sfx:
+			player_reference.jump_sfx.play()
 		#If you've just pressed the jump button, you cannot jump
 		player_reference.can_jump = false
 	if Input.is_action_just_released("ui_accept"):
@@ -49,6 +57,12 @@ func physicsUpdate(delta: float):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	var current_speed : float = player_reference.SPRINT_SPEED if Input.is_action_pressed("sprint") else player_reference.SPEED
+	
+	# --- Sprint animation speed ramp ---
+	var target_anim_speed := player_reference.sprint_anim_speed if Input.is_action_pressed("sprint") else player_reference.normal_anim_speed
+	player_reference.current_anim_speed = move_toward(player_reference.current_anim_speed, target_anim_speed, player_reference.anim_speed_ramp * delta)
+	player_reference.sprite.speed_scale = player_reference.current_anim_speed
 	
 	if direction:
 		#Flip character depending on their direction
@@ -58,26 +72,45 @@ func physicsUpdate(delta: float):
 		else:
 			player_reference.hitboxFront.rotation_degrees = Vector3(0, 0, 0)
 			player_reference.sprite.flip_h = false;
-		player_reference.velocity.x = direction * player_reference.SPEED
+		player_reference.velocity.x = direction * current_speed
+		if not player_reference.is_attacking:
+			player_reference.sprite.play("walk")
 	else:
-		player_reference.velocity.x = move_toward(player_reference.velocity.x, 0, player_reference.SPEED)
-
+		player_reference.velocity.x = move_toward(player_reference.velocity.x, 0, current_speed)
+		if not player_reference.is_attacking:
+			player_reference.sprite.play("idle")
 func enter():
 	pass
-
 func exit():
 	pass
-
+func _play_attack_sfx() -> void:
+	if player_reference.attack_sfx:
+		player_reference.attack_sfx.play()
 func input(event: InputEvent):
-	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down"):
+	print(player_reference.is_attacking)
+	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_down") and !player_reference.is_attacking:
 		print("Down")
+		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
 		player_reference.animationController.play("attack_down")
+		_play_attack_sfx()
 		return
-	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_up"):
-		print("Down")
+	if event.is_action_pressed("attack") and Input.is_action_pressed("ui_up") and !player_reference.is_attacking:
+		print("Up")
+		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
 		player_reference.animationController.play("attack_up")
+		_play_attack_sfx()
 		return
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") and !player_reference.is_attacking:
 		print("Attacking")
 		#Using Godot's animation player, we can program the frames of the attack from the editor instead of purely in code!
+		player_reference.is_attacking = true
+		player_reference.play_attack_sfx()
+		player_reference.play_slash_vfx()
 		player_reference.animationController.play("attack")
+		_play_attack_sfx()
+	if event.is_action_pressed("grapple") and player_reference.block_cooldown < 0:
+		player_reference.blocking = !player_reference.blocking
+		player_reference.block_cooldown = block_cooldown
+		player_reference.block_timer = block_length

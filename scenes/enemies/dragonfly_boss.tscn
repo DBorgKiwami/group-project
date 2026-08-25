@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://cbci031n01l70"]
+
+[ext_resource type="Script" uid="uid://bbnorel3wdorx" path="res://scenes/enemies/dragonfly_boss.gd" id="1_bar2a"]
+[ext_resource type="Texture2D" uid="uid://crav3h4n015jj" path="res://sprites/enemies/dragonfly_effects/1_dragonfly.png" id="2_flight"]
+[ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="3_4xcxh"]
+[ext_resource type="Script" path="res://scenes/enemies/dragonflyidle.gd" id="4_kskbt"]
+[ext_resource type="Script" uid="uid://c4j16yrr4084y" path="res://scenes/enemies/DragonflySwoop.gd" id="5_rp2of"]
+[ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="6_wr4wg"]
+[ext_resource type="Script" uid="uid://b1s4e3ngus141" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
+[ext_resource type="PackedScene" uid="uid://vbsrhde6d3bk" path="res://scenes/enemies/spear.tscn" id="8_xge5m"]
+[ext_resource type="Script" uid="uid://br1fnhshgfc5m" path="res://scripts/enemies/dead.gd" id="9_dd4s5"]
+[ext_resource type="Texture2D" uid="uid://duvqw00ea1uws" path="res://sprites/enemies/dragonfly_effects/2_flap.png" id="10_flap"]
+[ext_resource type="Texture2D" uid="uid://3scbblqflhjp" path="res://sprites/enemies/dragonfly_effects/3_idle1.png" id="11_idle1"]
+[ext_resource type="Texture2D" uid="uid://bs0qsm5uuhnb" path="res://sprites/enemies/dragonfly_effects/4_idle2.png" id="12_idle2"]
+[ext_resource type="Texture2D" uid="uid://cu61ah2ygtck0" path="res://sprites/enemies/dragonfly_effects/5_swoopact1.png" id="13_swoop1"]
+[ext_resource type="Texture2D" uid="uid://dwink7f33dwu7" path="res://sprites/enemies/dragonfly_effects/6_swoopact2.png" id="14_swoop2"]
+[ext_resource type="Texture2D" uid="uid://ckrkaubc5hbku" path="res://sprites/enemies/dragonfly_effects/7_swoopact3.png" id="15_swoop3"]
+[ext_resource type="Texture2D" uid="uid://drpaabsgx3yij" path="res://sprites/enemies/dragonfly_effects/8_defeated1.png" id="16_defeated1"]
+[ext_resource type="Texture2D" uid="uid://c65wj44q42lq5" path="res://sprites/enemies/dragonfly_effects/9_defeated2.png" id="17_defeated2"]
+[ext_resource type="Texture2D" uid="uid://djp1yoglpcxax" path="res://sprites/enemies/dragonfly_effects/10_defeated3.png" id="18_defeated3"]
+[ext_resource type="Texture2D" uid="uid://b5y477gy0dfma" path="res://sprites/enemies/dragonfly_effects/11_defeated4_death.png" id="19_death"]
+
+[sub_resource type="Animation" id="Animation_wr4wg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rqeyh"]
+resource_name = "swoopattack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.25, 1.75, 0.25),
+"update": 0,
+"values": [0.0, -5.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xge5m"]
+_data = {
+&"RESET": SubResource("Animation_wr4wg"),
+&"swoopattack": SubResource("Animation_rqeyh")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bar2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_death")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_defeated1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_defeated2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_defeated3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_death")
+}],
+"loop": false,
+"name": &"defeated",
+"speed": 3.2
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_flap")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_flight")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_flap")
+}],
+"loop": true,
+"name": &"flight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_idle2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_idle1")
+}],
+"loop": false,
+"name": &"idle_prepare",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_swoop3")
+}],
+"loop": true,
+"name": &"swoop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_swoop1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_swoop2")
+}],
+"loop": false,
+"name": &"swoop_prepare",
+"speed": 4.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kq7h5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dd4s5"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xge5m"]
+size = Vector3(4, 4, 1)
+
+[node name="Dragonfly Boss" type="CharacterBody3D" unique_id=1810331413 node_paths=PackedStringArray("state_machine", "hitbox", "hurtbox", "animationControler", "sprite")]
+script = ExtResource("1_bar2a")
+state_machine = NodePath("State_Machine")
+hitbox = NodePath("EnemyHitbox")
+hurtbox = NodePath("Hurtbox")
+animationControler = NodePath("AnimationPlayer")
+sprite = NodePath("AnimatedSprite3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1318004222]
+libraries/ = SubResource("AnimationLibrary_xge5m")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1187427604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+pixel_size = 0.03
+billboard = 1
+no_depth_test = true
+texture_filter = 2
+render_priority = 100
+sprite_frames = SubResource("SpriteFrames_bar2a")
+animation = &"flight"
+autoplay = "flight"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=881256]
+shape = SubResource("BoxShape3D_kq7h5")
+disabled = true
+
+[node name="EnemyHitbox" type="Area3D" parent="." unique_id=1252676087]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_wr4wg")
+metadata/_custom_type_script = "uid://bg3t6a3l4s328"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitbox" unique_id=61382715]
+shape = SubResource("BoxShape3D_dd4s5")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1049481736]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1413224347]
+shape = SubResource("BoxShape3D_xge5m")
+
+[node name="State_Machine" type="Node" parent="." unique_id=309539935 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_4xcxh")
+initial_state = NodePath("DragonflyIdle")
+metadata/_custom_type_script = "uid://cgdwg4dqcddnb"
+
+[node name="DragonflyIdle" type="Node" parent="State_Machine" unique_id=635600906]
+script = ExtResource("4_kskbt")
+idle_length = 1.0
+attacks = Array[String](["dragonflyswoop", "dragonflyprojectile"])
+
+[node name="DragonflySwoop" type="Node" parent="State_Machine" unique_id=604541016 node_paths=PackedStringArray("animation_player", "sprite", "enemey_reference")]
+script = ExtResource("5_rp2of")
+animation_player = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite3D")
+enemey_reference = NodePath("../..")
+
+[node name="DragonflyProjectile" type="Node" parent="State_Machine" unique_id=348895497 node_paths=PackedStringArray("sprite", "enemey_reference")]
+script = ExtResource("7_rqeyh")
+sprite = NodePath("../../AnimatedSprite3D")
+enemey_reference = NodePath("../..")
+number_of_projectiles = 6
+projectile_scene = ExtResource("8_xge5m")
+fire_interval = 2.0
+fire_distance = 5.0
+fire_distance_from_floor = -2.0
+fire_from_floor_variant = -2.0
+
+[node name="EnemyDead" type="Node" parent="State_Machine" unique_id=941575046 node_paths=PackedStringArray("enemy_body")]
+script = ExtResource("9_dd4s5")
+enemy_body = NodePath("../..")
+metadata/_custom_type_script = "uid://br1fnhshgfc5m"
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

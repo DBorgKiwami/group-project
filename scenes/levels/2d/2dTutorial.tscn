@@ -1,0 +1,530 @@
+[gd_scene format=3 uid="uid://b2meku3djc0t8"]
+
+[ext_resource type="PackedScene" uid="uid://dvivxdodklglf" path="res://scenes/player/2dplatformingcharacter.tscn" id="1_lhry7"]
+[ext_resource type="Texture2D" uid="uid://b7ji8ll3gq1r6" path="res://sprites/textures/grass 1.png" id="2_ucixo"]
+[ext_resource type="Texture2D" uid="uid://c2gcpwsb73o10" path="res://sprites/textures/nature_03-7.png" id="3_qkvt7"]
+[ext_resource type="Texture2D" uid="uid://bfoer8e6rqrd0" path="res://sprites/props/Rock1.png" id="4_d3ns5"]
+[ext_resource type="Texture2D" uid="uid://dc3jvf23h6707" path="res://sprites/parallax/forest_long.png" id="4_dhk1w"]
+[ext_resource type="Texture2D" uid="uid://cm8f6g6k0tk1l" path="res://sprites/parallax/forest_short.png" id="4_jl56t"]
+[ext_resource type="Texture2D" uid="uid://c7jld7hr74er3" path="res://sprites/textures/nature_05.png" id="4_kjg24"]
+[ext_resource type="Texture2D" uid="uid://d4dlc8q755gfr" path="res://sprites/textures/rocks 1.png" id="5_0h4al"]
+[ext_resource type="Texture2D" uid="uid://c3cd0vaaxb2fk" path="res://sprites/props/Rock2.png" id="5_567d7"]
+[ext_resource type="Script" uid="uid://db55ujvmtpsl4" path="res://sprites/parallax/parallax shortforest.gd" id="5_en8hi"]
+[ext_resource type="Script" uid="uid://cjymnlqewiocd" path="res://sprites/parallax/parallax forest.gd" id="5_mi8j5"]
+[ext_resource type="Texture2D" uid="uid://bmow2kh4hrmtv" path="res://sprites/parallax/forest_mountain.png" id="6_gd6s7"]
+[ext_resource type="Texture2D" uid="uid://c8tp4iu20xiul" path="res://sprites/parallax/forest_sky.png" id="6_mi8j5"]
+[ext_resource type="PackedScene" uid="uid://tmxhihw7wxd" path="res://scenes/enemies/2dtestenemy.tscn" id="6_t7y2g"]
+[ext_resource type="Script" uid="uid://cle5dgn6jhg3j" path="res://sprites/parallax/parallax sky.gd" id="7_4sh6k"]
+[ext_resource type="Script" uid="uid://bomy0xoptt4cp" path="res://sprites/parallax/parallax mountain.gd" id="7_jl56t"]
+[ext_resource type="PackedScene" uid="uid://bbb4audyc3wa2" path="res://scenes/elements/scene_transition_2d.tscn" id="8_5pkib"]
+[ext_resource type="Material" uid="uid://deq7yio2w35n" path="res://sprites/textures/signwood.tres" id="9_1tfyo"]
+[ext_resource type="Script" uid="uid://lnootj5wcwah" path="res://scripts/audio/tutorial_combat_audio.gd" id="10_audio"]
+[ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="14_sword"]
+[ext_resource type="AudioStream" uid="uid://dd06x74jaiuns" path="res://audio/music/enemycry.ogg" id="15_cry"]
+[ext_resource type="AudioStream" uid="uid://bhej6bfl6iqsb" path="res://audio/music/tutorial_breeze.ogg" id="18_breeze"]
+[ext_resource type="PackedScene" uid="uid://bfw8udpxgt0vs" path="res://allen_work/allen_work/ui_demos/simple_hud_demo/scenes/simple_hud_demo.tscn" id="19_567d7"]
+[ext_resource type="PackedScene" uid="uid://do2lsjf2h7eky" path="res://allen_work/allen_work/ui_demos/death_screen_demo/scenes/death_screen_demo.tscn" id="19_wjq58"]
+[ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="22_h0xj1"]
+[ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="22_u8ol6"]
+[ext_resource type="Script" uid="uid://8f8cdpi0mh3d" path="res://scripts/audio/combat_audio.gd" id="23_combat_audio"]
+[ext_resource type="AudioStream" uid="uid://cflbms0hnc8b1" path="res://audio/music/combatstart.ogg" id="24_combat_start"]
+[ext_resource type="AudioStream" uid="uid://itl54bbb23vm" path="res://audio/music/combatmiddle.ogg" id="25_combat_middle"]
+[ext_resource type="AudioStream" uid="uid://ba0olmu72gp5v" path="res://audio/music/combatfinal.ogg" id="26_combat_final"]
+[ext_resource type="AudioStream" uid="uid://cu62rpik7k6ow" path="res://audio/music/victory.ogg" id="27_victory"]
+[ext_resource type="AudioStream" uid="uid://qixiw5fkxij" path="res://audio/music/birdschirping.ogg" id="28_birds"]
+[ext_resource type="AudioStream" uid="uid://dxwl5e8ub4sup" path="res://audio/music/combat_breeze.ogg" id="29_breeze"]
+[ext_resource type="Script" uid="uid://v5plhssx2cy8" path="res://scripts/levels/2dtutorial.gd" id="34_pyyl1"]
+[ext_resource type="PackedScene" uid="uid://d2b8i1g4fl58m" path="res://scenes/npcs/nightheron.tscn" id="35_vlhhp"]
+[ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="36_r2jt0"]
+[ext_resource type="Script" uid="uid://dtq2db7glooqg" path="res://scripts/ui/dialogue_visual.gd" id="37_r2jt0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvt7"]
+albedo_color = Color(0.35451055, 0.4296875, 0.23330688, 1)
+albedo_texture = ExtResource("2_ucixo")
+uv1_scale = Vector3(20, 20, 20)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ajr2q"]
+material = SubResource("StandardMaterial3D_qkvt7")
+size = Vector2(125, 78.735)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ucixo"]
+data = PackedVector3Array(62.5, 0, 1, -62.5, 0, 1, 62.5, 0, -1, -62.5, 0, 1, -62.5, 0, -1, 62.5, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjg24"]
+transparency = 1
+albedo_texture = ExtResource("3_qkvt7")
+uv1_scale = Vector3(16.2, 1, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0h4al"]
+lightmap_size_hint = Vector2i(975, 252)
+material = SubResource("StandardMaterial3D_kjg24")
+size = Vector2(195.805, 16.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_567d7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjq58"]
+transparency = 1
+albedo_texture = ExtResource("4_d3ns5")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_567d7"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("4_d3ns5")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3ns5"]
+size = Vector2(1.5, 0.667)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v2n7"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("5_567d7")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8ol6"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("5_567d7")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gd6s7"]
+size = Vector2(3.167, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en8hi"]
+transparency = 1
+albedo_texture = ExtResource("4_jl56t")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4sh6k"]
+size = Vector2(6.33, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0utp"]
+transparency = 1
+albedo_texture = ExtResource("4_dhk1w")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_en8hi"]
+size = Vector2(3.167, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3ns5"]
+transparency = 1
+albedo_texture = ExtResource("6_gd6s7")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mi8j5"]
+size = Vector2(3.17, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sh6k"]
+transparency = 1
+albedo_texture = ExtResource("6_mi8j5")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pkib"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.7176471)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1tfyo"]
+material = SubResource("StandardMaterial3D_5pkib")
+size = Vector3(2, 0.155, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cjfr5"]
+points = PackedVector3Array(-1, -0.0775, -0.5, -1, 0.0775, -0.5, 1, -0.0775, -0.5, -1, -0.0775, 0.5, -1, 0.0775, 0.5, 1, 0.0775, -0.5, 1, -0.0775, 0.5, 1, 0.0775, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h4al"]
+albedo_texture = ExtResource("4_kjg24")
+uv1_scale = Vector3(5, 50, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_t7y2g"]
+material = SubResource("StandardMaterial3D_0h4al")
+size = Vector3(5, 50, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kjg24"]
+data = PackedVector3Array(-2.5, 25, 2.5, 2.5, 25, 2.5, -2.5, -25, 2.5, 2.5, 25, 2.5, 2.5, -25, 2.5, -2.5, -25, 2.5, 2.5, 25, -2.5, -2.5, 25, -2.5, 2.5, -25, -2.5, -2.5, 25, -2.5, -2.5, -25, -2.5, 2.5, -25, -2.5, 2.5, 25, 2.5, 2.5, 25, -2.5, 2.5, -25, 2.5, 2.5, 25, -2.5, 2.5, -25, -2.5, 2.5, -25, 2.5, -2.5, 25, -2.5, -2.5, 25, 2.5, -2.5, -25, -2.5, -2.5, 25, 2.5, -2.5, -25, 2.5, -2.5, -25, -2.5, 2.5, 25, 2.5, -2.5, 25, 2.5, 2.5, 25, -2.5, -2.5, 25, 2.5, -2.5, 25, -2.5, 2.5, 25, -2.5, -2.5, -25, 2.5, 2.5, -25, 2.5, -2.5, -25, -2.5, 2.5, -25, 2.5, 2.5, -25, -2.5, -2.5, -25, -2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7y2g"]
+albedo_texture = ExtResource("5_0h4al")
+uv1_scale = Vector3(3, 3, 3)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cjfr5"]
+material = SubResource("StandardMaterial3D_t7y2g")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pkib"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tfyo"]
+albedo_texture = ExtResource("5_0h4al")
+uv1_scale = Vector3(88.205, 3, 3)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_5pkib"]
+material = SubResource("StandardMaterial3D_1tfyo")
+size = Vector3(18.01, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1tfyo"]
+points = PackedVector3Array(9.005, 0.5, 0.5, 9.005, 0.5, -0.5, -9.005, 0.5, 0.5, 9.005, -0.5, 0.5, 9.005, -0.5, -0.5, -9.005, 0.5, -0.5, -9.005, -0.5, 0.5, -9.005, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjfr5"]
+albedo_texture = ExtResource("5_0h4al")
+uv1_scale = Vector3(35.93, 3, 3)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_pphfe"]
+material = SubResource("StandardMaterial3D_cjfr5")
+size = Vector3(8.355, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5pkib"]
+points = PackedVector3Array(4.1766825, 0.5, 0.5, 4.1766825, 0.5, -0.5, -4.1775, 0.5, 0.5, 4.1766825, -0.5, 0.5, 4.1766825, -0.5, -0.5, -4.1775, 0.5, -0.5, -4.1775, -0.5, 0.5, -4.1775, -0.5, -0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pphfe"]
+material = ExtResource("9_1tfyo")
+top_radius = 0.05
+bottom_radius = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_dhk1w"]
+size = Vector3(2.075, 1, 0.125)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mi8j5"]
+size = Vector3(1, 1, 0.125)
+
+[node name="Node3D" type="Node3D" unique_id=761353570]
+
+[node name="CombatAudio" type="Node" parent="." unique_id=814712146 node_paths=PackedStringArray("combat_music", "victory_sfx", "birds_sfx", "breeze_sfx")]
+script = ExtResource("23_combat_audio")
+combat_music = NodePath("CombatMusic")
+victory_sfx = NodePath("VictorySfx")
+birds_sfx = NodePath("BirdsSfx")
+breeze_sfx = NodePath("BreezeSfx")
+combat_start = ExtResource("24_combat_start")
+combat_middle = ExtResource("25_combat_middle")
+combat_final = ExtResource("26_combat_final")
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="CombatAudio" unique_id=1678429810]
+volume_db = -12.0
+
+[node name="VictorySfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=909140087]
+stream = ExtResource("27_victory")
+volume_db = -4.0
+
+[node name="BirdsSfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=867024062]
+stream = ExtResource("28_birds")
+volume_db = -16.0
+
+[node name="BreezeSfx" type="AudioStreamPlayer" parent="CombatAudio" unique_id=1459061905]
+stream = ExtResource("29_breeze")
+volume_db = -18.0
+
+[node name="2Dplatformingcharacter" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") groups=["Player"] instance=ExtResource("1_lhry7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.374783, 1.320973, 0)
+collision_layer = 1
+hud = NodePath("../CanvasLayer/SimpleHudDemo")
+death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
+tongue_hitbox_offset = 0.0
+
+[node name="CollisionShape3D" parent="2Dplatformingcharacter" index="0" unique_id=30863792 groups=["Player"]]
+
+[node name="TutorialAudio" type="Node" parent="." unique_id=803025064 node_paths=PackedStringArray("combat_player", "enemy_cry_player", "victory_player", "birds_player", "breeze_player")]
+script = ExtResource("10_audio")
+combat_player = NodePath("CombatMusic")
+combat_start = ExtResource("24_combat_start")
+combat_middle = ExtResource("25_combat_middle")
+combat_final = ExtResource("26_combat_final")
+enemy_cry_player = NodePath("EnemyCry")
+victory_player = NodePath("Victory")
+birds_player = NodePath("BirdsChirping")
+breeze_player = NodePath("Breeze")
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=159535236]
+volume_db = -12.0
+
+[node name="SwordBlow" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=752456115]
+stream = ExtResource("14_sword")
+volume_db = -6.0
+max_polyphony = 2
+
+[node name="EnemyCry" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=925407486]
+stream = ExtResource("15_cry")
+volume_db = -6.0
+max_polyphony = 3
+
+[node name="Victory" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=45079938]
+stream = ExtResource("27_victory")
+volume_db = -6.0
+
+[node name="BirdsChirping" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=77796320]
+stream = ExtResource("28_birds")
+volume_db = -18.0
+
+[node name="Breeze" type="AudioStreamPlayer" parent="TutorialAudio" unique_id=1921586945]
+stream = ExtResource("18_breeze")
+volume_db = -20.0
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=198195692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.51535)
+mesh = SubResource("PlaneMesh_ajr2q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=43083451]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1229706722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.872091)
+shape = SubResource("ConcavePolygonShape3D_ucixo")
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=153819397]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.08862686, -41.371292, -20.502266)
+visible = false
+mesh = SubResource("PlaneMesh_0h4al")
+
+[node name="rock1" type="MeshInstance3D" parent="." unique_id=2022454952]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, -35.367676, 2.127244, -5.4010735)
+mesh = SubResource("PlaneMesh_567d7")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjq58")
+
+[node name="rock2" type="MeshInstance3D" parent="." unique_id=1331045978]
+transform = Transform3D(-5, 4.371139e-07, -1.9106854e-14, 0, -2.1855695e-07, -5, -4.371139e-07, -5, 2.1855695e-07, 17.515823, 2.9570708, -5.4010735)
+mesh = SubResource("PlaneMesh_567d7")
+surface_material_override/0 = SubResource("StandardMaterial3D_567d7")
+
+[node name="rock 3" type="MeshInstance3D" parent="." unique_id=594250907]
+transform = Transform3D(-3, 4.5298742e-07, -1.9800708e-14, 0, -1.3113416e-07, -3, -4.5298742e-07, -3, 1.3113416e-07, -26.306149, 0.382133, -5.401)
+mesh = SubResource("PlaneMesh_d3ns5")
+surface_material_override/0 = SubResource("StandardMaterial3D_7v2n7")
+
+[node name="rock 4" type="MeshInstance3D" parent="." unique_id=1396116723]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0.81437993, 0.33992243, -5.401)
+mesh = SubResource("PlaneMesh_d3ns5")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8ol6")
+
+[node name="forest_short" type="MeshInstance3D" parent="." unique_id=1352051716]
+transform = Transform3D(40, 0, 0, 0, -1.7484556e-06, -40, 0, 40, -1.7484556e-06, -10.465529, 27.772861, -17.562546)
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_gd6s7")
+surface_material_override/0 = SubResource("StandardMaterial3D_en8hi")
+script = ExtResource("5_en8hi")
+
+[node name="forest_long" type="MeshInstance3D" parent="." unique_id=277048430 node_paths=PackedStringArray("camera")]
+transform = Transform3D(40, 0, 0, 0, -1.7484556e-06, -40, 0, 40, -1.7484556e-06, -10.89436, 34.258457, -36.67016)
+sorting_offset = 2.0
+mesh = SubResource("PlaneMesh_4sh6k")
+surface_material_override/0 = SubResource("StandardMaterial3D_b0utp")
+script = ExtResource("5_mi8j5")
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
+[node name="forest_mountain" type="MeshInstance3D" parent="." unique_id=365408104 node_paths=PackedStringArray("camera")]
+transform = Transform3D(50, 0, 0, 0, -2.1855694e-06, -50, 0, 50, -2.1855694e-06, -9.9085455, 8.9386835, -56.127705)
+sorting_offset = 3.0
+mesh = SubResource("PlaneMesh_en8hi")
+surface_material_override/0 = SubResource("StandardMaterial3D_d3ns5")
+script = ExtResource("7_jl56t")
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
+[node name="forest_sky" type="MeshInstance3D" parent="." unique_id=1515643376 node_paths=PackedStringArray("camera")]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, -100, 0, 100, -4.371139e-06, -9.1036415, 13.409305, -71.94174)
+sorting_offset = 4.0
+mesh = SubResource("PlaneMesh_mi8j5")
+surface_material_override/0 = SubResource("StandardMaterial3D_4sh6k")
+script = ExtResource("7_4sh6k")
+parallax_factor = 0.4
+camera = NodePath("../2Dplatformingcharacter/Camera3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1224919586]
+transform = Transform3D(0.6928216, -0.6751533, -0.25331053, 0.40813804, 0.077538155, 0.90962154, -0.59449273, -0.733591, 0.3292759, -17.578796, 15.558855, 5.963291)
+light_energy = 1.823
+light_indirect_energy = 0.894
+light_angular_distance = 1.0
+shadow_enabled = true
+shadow_opacity = 0.7
+
+[node name="Semi Solid" type="MeshInstance3D" parent="." unique_id=591614145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.261234, 1.7918694, 0)
+mesh = SubResource("BoxMesh_1tfyo")
+surface_material_override/0 = ExtResource("9_1tfyo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Semi Solid" unique_id=1405731845]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi Solid/StaticBody3D" unique_id=1023194109]
+shape = SubResource("ConvexPolygonShape3D_cjfr5")
+
+[node name="Semi Solid2" type="MeshInstance3D" parent="." unique_id=1532666135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.86314, 2.311869, 0)
+mesh = SubResource("BoxMesh_1tfyo")
+surface_material_override/0 = ExtResource("9_1tfyo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Semi Solid2" unique_id=700168657]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi Solid2/StaticBody3D" unique_id=1348049445]
+shape = SubResource("ConvexPolygonShape3D_cjfr5")
+
+[node name="Semi Solid3" type="MeshInstance3D" parent="." unique_id=1567380786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.924427, 2.311869, 0)
+mesh = SubResource("BoxMesh_1tfyo")
+surface_material_override/0 = ExtResource("9_1tfyo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Semi Solid3" unique_id=1771394549]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Semi Solid3/StaticBody3D" unique_id=1302519086]
+shape = SubResource("ConvexPolygonShape3D_cjfr5")
+
+[node name="Left Bound" type="MeshInstance3D" parent="." unique_id=1264888207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.361248, 22.952517, 0)
+mesh = SubResource("BoxMesh_t7y2g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left Bound" unique_id=1770244979]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left Bound/StaticBody3D" unique_id=1636903147]
+shape = SubResource("ConcavePolygonShape3D_kjg24")
+
+[node name="Rock" type="MeshInstance3D" parent="." unique_id=1881676168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.067646, 0.49999988, 0)
+mesh = SubResource("BoxMesh_cjfr5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock" unique_id=561801996]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock/StaticBody3D" unique_id=1269417995]
+shape = SubResource("BoxShape3D_5pkib")
+
+[node name="2Dtestenemy" parent="." unique_id=650050351 node_paths=PackedStringArray("enemy_sprite", "vision_area") instance=ExtResource("6_t7y2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.994286, 0.727752, 0)
+enemy_sprite = NodePath("AnimatedSprite3D")
+vision_area = NodePath("VisionArea")
+max_health = 8
+
+[node name="Chase" parent="2Dtestenemy/State Machine" parent_id_path=PackedInt32Array(650050351, 22494397) index="2" unique_id=1042981653]
+speed = 1.0
+
+[node name="Rock2" type="MeshInstance3D" parent="." unique_id=1794105754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75784, 0.5, 0)
+mesh = SubResource("BoxMesh_cjfr5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock2" unique_id=1220811381]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock2/StaticBody3D" unique_id=494655372]
+shape = SubResource("BoxShape3D_5pkib")
+
+[node name="Right Bound" type="MeshInstance3D" parent="." unique_id=1101286247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.590977, 22.952517, 0)
+mesh = SubResource("BoxMesh_t7y2g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right Bound" unique_id=2007120363]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right Bound/StaticBody3D" unique_id=2125132874]
+shape = SubResource("ConcavePolygonShape3D_kjg24")
+
+[node name="2Dtestenemy2" parent="." unique_id=981890454 node_paths=PackedStringArray("enemy_sprite", "vision_area") instance=ExtResource("6_t7y2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1584015, 0.88380617, 0)
+collision_layer = 1
+enemy_sprite = NodePath("AnimatedSprite3D")
+vision_area = NodePath("VisionArea")
+max_health = 8
+
+[node name="enemyWalk" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="0" unique_id=1277491572]
+hflip = -1.0
+
+[node name="Chase" parent="2Dtestenemy2/State Machine" parent_id_path=PackedInt32Array(981890454, 22494397) index="2" unique_id=1042981653]
+speed = 1.0
+
+[node name="AnimationPlayer" parent="2Dtestenemy2" index="4" unique_id=700514418]
+root_node = NodePath("../../2Dtestenemy2")
+
+[node name="2Dtestenemy3" parent="." unique_id=1152322179 node_paths=PackedStringArray("enemy_sprite", "vision_area") instance=ExtResource("6_t7y2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3776436, 0.88380605, 0)
+collision_layer = 1
+enemy_sprite = NodePath("AnimatedSprite3D")
+vision_area = NodePath("VisionArea")
+max_health = 8
+
+[node name="enemyWalk" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="0" unique_id=1277491572]
+hflip = -1.0
+
+[node name="Chase" parent="2Dtestenemy3/State Machine" parent_id_path=PackedInt32Array(1152322179, 22494397) index="2" unique_id=1042981653]
+speed = 1.0
+
+[node name="SceneTransition2D" parent="." unique_id=1962062075 node_paths=PackedStringArray("prompt") instance=ExtResource("8_5pkib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.591396, 2.3551326, 0)
+scene = "res://scenes/levels/3d/redlance_pondside_review.tscn"
+interact_distance = 5.0
+prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
+
+[node name="Rock3" type="MeshInstance3D" parent="." unique_id=1631685465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.097516, 0.49999988, 0)
+mesh = SubResource("BoxMesh_5pkib")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock3" unique_id=1907896874]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock3/StaticBody3D" unique_id=1717121112]
+shape = SubResource("ConvexPolygonShape3D_1tfyo")
+
+[node name="Rock4" type="MeshInstance3D" parent="." unique_id=1357474457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.905884, 1.4999999, 0)
+mesh = SubResource("BoxMesh_pphfe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock4" unique_id=963307392]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock4/StaticBody3D" unique_id=894202818]
+shape = SubResource("ConvexPolygonShape3D_5pkib")
+
+[node name="Sign" type="Node3D" parent="." unique_id=538005650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.38726, 0.42979097, -2.903438)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sign" unique_id=1825817445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4658233, 0)
+mesh = SubResource("CylinderMesh_pphfe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sign" unique_id=182211215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2951355, 1.6368704, 0)
+material_override = ExtResource("9_1tfyo")
+mesh = SubResource("BoxMesh_dhk1w")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sign" unique_id=695452173]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.2413063, 1.6382947, 0)
+material_override = ExtResource("9_1tfyo")
+mesh = SubResource("PrismMesh_mi8j5")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1309620679]
+
+[node name="DeathScreenDemo" parent="CanvasLayer2" unique_id=1242030890 instance=ExtResource("19_wjq58")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1728365147]
+
+[node name="SimpleHudDemo" parent="CanvasLayer" unique_id=1239103860 instance=ExtResource("19_567d7")]
+
+[node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("22_h0xj1")]
+layer = 100
+
+[node name="Control" parent="PauseMenu" index="1" unique_id=1600347352]
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1503220375]
+
+[node name="InteractionPromptDemo" parent="CanvasLayer3" unique_id=1692059102 instance=ExtResource("22_u8ol6")]
+
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=94409377]
+
+[node name="Tutorial UI" type="Node2D" parent="Tutorial" unique_id=1803579374]
+script = ExtResource("34_pyyl1")
+
+[node name="CharacterBody3D" parent="." unique_id=1841873639 node_paths=PackedStringArray("prompt", "dialogue_player") instance=ExtResource("35_vlhhp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.153999, 3.3531988, -0.26508832)
+prompt = NodePath("../CanvasLayer3/InteractionPromptDemo")
+dialogue_player = NodePath("../DialoguePlayer")
+
+[node name="DialoguePlayer" parent="." unique_id=1050777168 instance=ExtResource("36_r2jt0")]
+
+[node name="DialogueVisual" type="Node2D" parent="DialoguePlayer" unique_id=713540807]
+script = ExtResource("37_r2jt0")
+
+[editable path="2Dplatformingcharacter"]
+[editable path="2Dtestenemy"]
+[editable path="2Dtestenemy2"]
+[editable path="2Dtestenemy3"]
+[editable path="SceneTransition2D"]
+[editable path="PauseMenu"]

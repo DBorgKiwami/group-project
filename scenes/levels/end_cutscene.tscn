@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://x11gab2ecd11"]
+
+[ext_resource type="Script" uid="uid://bmcrxvgun8a15" path="res://scripts/levels/end_cutscene.gd" id="1_8a5sq"]
+[ext_resource type="VideoStream" uid="uid://dimn0vgxlajr3" path="res://cutscene.ogv" id="2_bvbv8"]
+
+[node name="End Cutscene" type="Control" unique_id=1983218441]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8a5sq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1422895088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_bvbv8")
+autoplay = true
+expand = true

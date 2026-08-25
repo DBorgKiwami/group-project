@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://do2lsjf2h7eky"]
+
+[ext_resource type="Script" path="res://allen_work/ui_demos/death_screen_demo/scripts/death_screen_demo.gd" id="1_demo"]
+
+[node name="DeathScreenDemo" type="Node2D" unique_id=1242030890]
+script = ExtResource("1_demo")
