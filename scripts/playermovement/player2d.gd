@@ -4,6 +4,7 @@ class_name Player2D
 @export var hitboxUp : Area3D
 @export var hitboxDown : Area3D
 @export var animationController : AnimationPlayer
+@export var iFrameHandler : AnimationPlayer
 @export var player_hitbox : Area3D
 @export var player_camera : Camera3D
 @export var sprite : AnimatedSprite3D
@@ -34,17 +35,20 @@ var current_anim_speed := 1.0
 @export_range(0.0, 0.2, 0.01) var footstep_pitch_variation := 0.04
 @export var attack_tongue : Sprite3D
 @export var tongue_hitbox : Area3D
+@export var tongue_snap_flash : Sprite3D
+@export var slash_vfx : Sprite3D
 @export var tongue_hitbox_offset := 0.5
 @export var tongue_attack_range := 3.0
 @export var tongue_attack_speed := 0.15
 @export var tongue_attack_damage := 1
 var tongue_attacking := false
+var slash_vfx_time := 0.0
 
 var health
 var can_jump = false
 var blocking = false
 var block_timer = 0.0
-var block_cooldown = 0.0
+var block_cooldown : float = 0.0
 var jump_timer = jump_timer_max
 var jump_buffer = 0
 var clipping = false
@@ -76,7 +80,7 @@ func _on_player_hit(damage) -> void:
 	if hurt_sfx:
 		hurt_sfx.play()
 	health = health - 1
-	animationController.play("hit")
+	iFrameHandler.play("hit")
 	if hud:
 		hud.take_hit()
 	if health <= 0:
@@ -115,6 +119,7 @@ func _physics_process(delta: float) -> void:
 		if block_timer <= 0:
 			blocking = false
 	move_and_slide()
+	_update_slash_vfx(delta)
 	_update_landing_sound()
 	_update_footsteps(delta)
 
@@ -214,11 +219,34 @@ func _on_semi_solid_clip_area_body_exited(body: Node3D) -> void:
 	clipping = false
 	pass # Replace with function body.
 	
+func play_slash_vfx() -> void:
+	if slash_vfx == null:
+		return
+	slash_vfx.visible = true
+	slash_vfx.flip_h = sprite.flip_h
+	slash_vfx.frame = 0
+	slash_vfx_time = 0.0
+
+func _update_slash_vfx(delta: float) -> void:
+	if slash_vfx == null or not slash_vfx.visible:
+		return
+	slash_vfx_time += delta
+	slash_vfx.frame = mini(int(slash_vfx_time / 0.045), slash_vfx.hframes - 1)
+	if slash_vfx_time >= 0.27:
+		slash_vfx.visible = false
 func tongue_attack() -> void:
 	if tongue_attacking or not attack_tongue:
 		return
 	tongue_attacking = true
 	attack_tongue.visible = true
+	if tongue_snap_flash:
+		tongue_snap_flash.visible = true
+		tongue_snap_flash.flip_h = sprite.flip_h
+		tongue_snap_flash.scale = Vector3(0.02, 0.02, 0.02)
+		var snap_tween := get_tree().create_tween()
+		snap_tween.tween_property(tongue_snap_flash, "scale", Vector3(0.18, 0.18, 0.18), 0.04)
+		snap_tween.tween_property(tongue_snap_flash, "scale", Vector3.ZERO, 0.08)
+		snap_tween.tween_callback(_hide_tongue_snap_flash)
 
 	var facing_dir := -1.0 if sprite.flip_h else 1.0
 	attack_tongue.flip_h = facing_dir < 0
@@ -248,6 +276,9 @@ func _end_tongue_attack() -> void:
 	if tongue_hitbox:
 		tongue_hitbox.monitoring = false
 
+func _hide_tongue_snap_flash() -> void:
+	if tongue_snap_flash:
+		tongue_snap_flash.visible = false
 func _on_tongue_hitbox_area_entered(area: Area3D) -> void:
 	if area is EnemyHitbox:
 		area.emit_signal("on_hit", tongue_attack_damage)

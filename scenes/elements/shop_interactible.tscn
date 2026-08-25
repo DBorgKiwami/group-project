@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://baknvgqlx8c30"]
+
+[ext_resource type="Script" path="res://scripts/shop_interactible.gd" id="1_px0ki"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nn2cl"]
+
+[node name="ShopInteractible" type="Area3D" unique_id=876147883]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_px0ki")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=802178953]
+shape = SubResource("SphereShape3D_nn2cl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

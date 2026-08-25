@@ -380,7 +380,7 @@ uv1_scale = Vector3(4.844, 144, -11)
 [node name="Dragonfly Boss" parent="." unique_id=1810331413 node_paths=PackedStringArray("ground_reference") instance=ExtResource("21_kulgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.334983, 5.2656646, 0)
 ground_reference = NodePath("../Floor")
-health = 20
+health = 15
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580185758]
 transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 18.534254, 0)
@@ -396,11 +396,8 @@ mesh = SubResource("PlaneMesh_4wily")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=711532432]
 shape = SubResource("ConcavePolygonShape3D_7bhyk")
 
-[node name="Player" parent="." unique_id=387257704 node_paths=PackedStringArray("hud", "death_screen") instance=ExtResource("1_v06so")]
+[node name="Player" parent="." unique_id=387257704 instance=ExtResource("1_v06so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679429, 0)
-hud = NodePath("../CanvasLayer/SimpleHudDemo")
-death_screen = NodePath("../CanvasLayer2/DeathScreenDemo")
-JUMP_VELOCITY = 6.0
 
 [node name="AnimatedSprite3D" parent="Player" index="1" unique_id=866562291]
 no_depth_test = true

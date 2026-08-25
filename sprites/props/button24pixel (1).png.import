@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4vtguaksg53u"
-path.s3tc="res://.godot/imported/Night_Heron.png-4655b048787fad9fa0c931b55ab6998d.s3tc.ctex"
+uid="uid://bv6q260pw2wto"
+path.s3tc="res://.godot/imported/button24pixel (1).png-f2bc604b4e8a9c481b6678e11d7a67b3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/npcs/Night_Heron.png"
-dest_files=["res://.godot/imported/Night_Heron.png-4655b048787fad9fa0c931b55ab6998d.s3tc.ctex"]
+source_file="res://sprites/props/button24pixel (1).png"
+dest_files=["res://.godot/imported/button24pixel (1).png-f2bc604b4e8a9c481b6678e11d7a67b3.s3tc.ctex"]
 
 [params]
 
