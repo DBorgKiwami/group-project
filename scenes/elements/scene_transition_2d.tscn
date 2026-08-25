@@ -4,6 +4,43 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6l5u2"]
 
+[sub_resource type="Animation" id="Animation_ly1fo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bohk5"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 1, 1), Color(0.7492459, 0, 0.33766916, 1), Color(0, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pene7"]
+_data = {
+&"RESET": SubResource("Animation_ly1fo"),
+&"idle": SubResource("Animation_bohk5")
+}
+
 [node name="SceneTransition2D" type="Area3D" unique_id=1962062075]
 collision_layer = 0
 collision_mask = 32
@@ -17,6 +54,10 @@ debug_color = Color(0.9647059, 0.1882353, 0, 1)
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=985091830]
 light_color = Color(0, 1, 1, 1)
 light_energy = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=296691677]
+libraries/ = SubResource("AnimationLibrary_pene7")
+autoplay = &"idle"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

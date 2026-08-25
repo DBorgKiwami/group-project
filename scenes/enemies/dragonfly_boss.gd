@@ -111,15 +111,15 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO
 
 		return
-
-	if knockback_timer > 0.0:
-		knockback_timer -= delta
-
-		velocity.x = knockback_velocity.x
-		velocity.z = knockback_velocity.z
-	else:
-		velocity.x = 0.0
-		velocity.z = 0.0
+	
+	#if knockback_timer > 0.0:
+		#knockback_timer -= delta
+#
+		#velocity.x = knockback_velocity.x
+		#velocity.z = knockback_velocity.z
+	#else:
+		#velocity.x = 0.0
+		#velocity.z = 0.0
 
 	move_and_slide()
 

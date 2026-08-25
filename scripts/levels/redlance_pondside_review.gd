@@ -14,7 +14,7 @@ const STONE_PROP_ROOT_NAME := &"WeedsAndStones"
 const GENERATED_COLLISION_BODY_NAME := &"GeneratedPondPropBody"
 
 @export var add_simple_collision := true
-@export var snap_player_to_spawn := true
+@export var snap_player_to_spawn := false
 @export var use_preview_camera := false
 
 @onready var level_base: Node3D = $LevelBase

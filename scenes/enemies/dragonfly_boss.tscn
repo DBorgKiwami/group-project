@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbnorel3wdorx" path="res://scenes/enemies/dragonfly_boss.gd" id="1_bar2a"]
 [ext_resource type="Texture2D" uid="uid://crav3h4n015jj" path="res://sprites/enemies/dragonfly_effects/1_dragonfly.png" id="2_flight"]
 [ext_resource type="Script" uid="uid://cgdwg4dqcddnb" path="res://scripts/utilities/statemachine.gd" id="3_4xcxh"]
-[ext_resource type="Script" path="res://scenes/enemies/dragonflyidle.gd" id="4_kskbt"]
+[ext_resource type="Script" uid="uid://cjufftxwnev0u" path="res://scenes/enemies/dragonflyidle.gd" id="4_kskbt"]
 [ext_resource type="Script" uid="uid://c4j16yrr4084y" path="res://scenes/enemies/DragonflySwoop.gd" id="5_rp2of"]
 [ext_resource type="Script" uid="uid://bg3t6a3l4s328" path="res://scripts/enemies/enemyhitbox.gd" id="6_wr4wg"]
 [ext_resource type="Script" uid="uid://b1s4e3ngus141" path="res://scenes/enemies/dragonfly_projectile.gd" id="7_rqeyh"]
