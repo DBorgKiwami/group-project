@@ -28,6 +28,12 @@
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
 [ext_resource type="PackedScene" uid="uid://dbffae3wlwbd2" path="res://models/levels/redlance_pondside/stratified_rock_cluster.glb" id="21_stratified_rock"]
+[ext_resource type="PackedScene" uid="uid://cps0sl8805c0e" path="res://models/levels/redlance_pondside/01_lotus_and_lilypads.glb" id="22_lotus"]
+[ext_resource type="PackedScene" uid="uid://dgcl57fv7qeh" path="res://models/levels/redlance_pondside/01_lotus_and_lilypads_001.glb" id="22_lotus_001"]
+[ext_resource type="PackedScene" uid="uid://4sbetgggtevd" path="res://models/levels/redlance_pondside/lotus_and_lilypads_003.glb" id="22_lotus_003"]
+[ext_resource type="PackedScene" uid="uid://blqagujfjuu0d" path="res://models/levels/redlance_pondside/01_lotus_and_lilypads_004.glb" id="22_lotus_004"]
+[ext_resource type="PackedScene" uid="uid://gk5b2u0oul54" path="res://models/levels/redlance_pondside/01_lotus_and_lilypads_005.glb" id="22_lotus_005"]
+[ext_resource type="PackedScene" uid="uid://bwxf7paewj45a" path="res://models/levels/redlance_pondside/weedsandstones.glb" id="22_weeds_stones"]
 [ext_resource type="PackedScene" uid="uid://7c5sarcqj5eq" path="res://scenes/npcs/elderfrog.tscn" id="23_w1lsv"]
 [ext_resource type="Texture2D" uid="uid://bv6q260pw2wto" path="res://sprites/props/button24pixel (1).png" id="27_hjbub"]
 [ext_resource type="Script" uid="uid://cipm0y72chsg5" path="res://scenes/levels/3d/grappletutorial.gd" id="28_op046"]
@@ -124,8 +130,8 @@ script = ExtResource("1_script")
 [node name="lilipad7" parent="." unique_id=658019861 instance=ExtResource("15_wyodo")]
 transform = Transform3D(117.30558, 0, -161.98581, 0, 200, 0, 161.98581, 0, 117.30558, 36.51487, -2.4252846, 4.142349)
 
-[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1473316668) index="0" unique_id=42105970]
-transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1712352685) index="0" unique_id=1615670319]
+transform = Transform3D(-0.87550676, 2.7775125e-15, -0.48320585, 4.5383013e-15, 1.0000005, -2.4747228e-15, 0.48320585, -4.3595693e-15, -0.87550676, 0.16219711, 0, 1.2948291)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=414408479]
 
@@ -140,8 +146,8 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad9" parent="." unique_id=479949106 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-131.23816, 0, -150.91902, 0, 200, 0, 150.91902, 0, -131.23816, 23.925957, -2.4252846, 9.56684)
 
-[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1473316668) index="0" unique_id=42105970]
-transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1712352685) index="0" unique_id=1615670319]
+transform = Transform3D(0.95266676, -4.615974e-16, -0.3040165, 6.4623087e-16, 1, 5.0670046e-16, 0.3040165, -6.791815e-16, 0.95266676, -1.232413, 0, -0.2200172)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=919504668]
 
@@ -156,8 +162,8 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad10" parent="." unique_id=867063456 instance=ExtResource("15_wyodo")]
 transform = Transform3D(194.72772, 0, -45.61921, 0, 200, 0, 45.61921, 0, 194.72772, 21.06018, -2.4252846, 31.162458)
 
-[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1473316668) index="0" unique_id=42105970]
-transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1712352685) index="0" unique_id=1615670319]
+transform = Transform3D(0.032666653, 6.5631924e-17, -0.9994663, 3.707658e-15, 1.0000004, 1.8684827e-16, 0.9994663, -3.7117827e-15, 0.032666653, -0.98965144, 0, 1.9139423)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=787081012]
 
@@ -172,8 +178,8 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad8" parent="." unique_id=1616748481 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-123.46586, 0, -40.696224, 0, 130, 0, 40.696224, 0, -123.46586, 19.914505, -1.6143448, 0.21192074)
 
-[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1473316668) index="0" unique_id=42105970]
-transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
+[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1712352685) index="0" unique_id=1615670319]
+transform = Transform3D(0.032666683, 6.563171e-17, -0.99946624, 3.707658e-15, 1, 1.8684827e-16, 0.99946624, -3.711782e-15, 0.032666683, -0.016090631, 0, 0.84214807)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=11405407]
 
@@ -188,7 +194,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad11" parent="." unique_id=951802364 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 11.9312935, -1.6143448, 20.374653)
 
-[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1473316668) index="0" unique_id=42105970]
+[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1712352685) index="0" unique_id=1615670319]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=2005945632]
@@ -204,7 +210,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad12" parent="." unique_id=1082421694 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 35.471535, -1.6143448, -3.8820343)
 
-[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1473316668) index="0" unique_id=42105970]
+[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1712352685) index="0" unique_id=1615670319]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=1986131648]
@@ -358,6 +364,24 @@ light_color = Color(0.42, 0.65, 0.9, 1)
 light_energy = 0.55
 omni_range = 18.0
 
+[node name="LotusAndLilypads" parent="." unique_id=164182393 instance=ExtResource("22_lotus")]
+transform = Transform3D(1.409539, 0, -0.51303, 0, 1.5, 0, 0.51303, 0, 1.409539, 40.840294, -0.65, 6.2566347)
+
+[node name="LotusAndLilypads005" parent="." unique_id=1115483683 instance=ExtResource("22_lotus_005")]
+transform = Transform3D(0.26420888, 0, 1.4765478, 0, 1.5, 0, -1.4765478, 0, 0.26420888, 9.222604, -0.68, 31.430273)
+
+[node name="LotusAndLilypads004" parent="." unique_id=1658703898 instance=ExtResource("22_lotus_004")]
+transform = Transform3D(-1.4167196, 0, -0.49285477, 0, 1.5, 0, 0.49285477, 0, -1.4167196, 29.148048, -0.66, 3.5708528)
+
+[node name="LotusAndLilypads001_RedCircle" parent="." unique_id=34009633 instance=ExtResource("22_lotus_001")]
+transform = Transform3D(1.0760236, 0, -1.0450709, 0, 1.5, 0, 1.0450709, 0, 1.0760236, 17.712858, -0.66, -7.7862625)
+
+[node name="LotusAndLilypads003" parent="." unique_id=585937082 instance=ExtResource("22_lotus_003")]
+transform = Transform3D(1.1478034, 0, 0.9656849, 0, 1.5, 0, -0.9656849, 0, 1.1478034, 30, -0.66, 23.413157)
+
+[node name="WeedsAndStones" parent="." unique_id=1358000568 instance=ExtResource("22_weeds_stones")]
+transform = Transform3D(-1.4048345, 0, 0.52577686, 0, 1.5000002, 0, -0.52577686, 0, -1.4048345, 20.413218, -2.1279392, 21.594957)
+
 [node name="ReferenceRockScatter" type="Node3D" parent="." unique_id=1444216806]
 
 [node name="NorthRock01" parent="ReferenceRockScatter" unique_id=49247272 instance=ExtResource("21_stratified_rock")]
@@ -385,31 +409,29 @@ transform = Transform3D(-0.58358973, 0, 12.00149, 0, 10.176685, 0, -8.492925, 0,
 transform = Transform3D(-0.3288355, 0, 2.8096201, 0, 1.7999998, 0, -2.2851405, 0, 0.09237814, -58.517963, -1.5, 5.9404144)
 
 [node name="ReferenceRockCollisionFix" type="StaticBody3D" parent="." unique_id=510828379]
-collision_layer = 1
-collision_mask = 1
 
 [node name="NorthRock02" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=196527911]
-transform = Transform3D(0.438319, 0, -2.794922, 0, 4.176417, 0, 3.824858, 0, -0.256274, 71.617008, 14.708611, -15.512858)
+transform = Transform3D(0.438319, 0, -2.794922, 0, 4.176417, 0, 3.824858, 0, -0.256274, 71.617004, 14.708611, -15.512858)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="NorthRock03" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=1815900730]
-transform = Transform3D(-1.347763, 0, 2.573005, 0, 4.971354, 0, -3.750279, 0, -1.526758, 89.877265, 16.468871, -29.770586)
+transform = Transform3D(-1.347763, 0, 2.573005, 0, 4.971354, 0, -3.750279, 0, -1.526758, 89.877266, 16.46887, -29.770586)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="NorthRock04" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=1903770066]
-transform = Transform3D(-4.684711, 0, -6.351316, 0, 7.135218, 0, 6.795344, 0, -3.300282, 60.522697, 24.514204, 38.549925)
+transform = Transform3D(-4.684711, 0, -6.351316, 0, 7.135218, 0, 6.795344, 0, -3.300282, 60.522697, 24.514204, 38.549927)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="NorthRock05" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=1918983145]
-transform = Transform3D(-0.61099, 0, 4.129142, 0, 3.550524, 0, -3.477523, 0, 0.065559, 67.955523, 12.10131, -45.001049)
+transform = Transform3D(-0.61099, 0, 4.129142, 0, 3.550524, 0, -3.477523, 0, 0.065559, 67.95552, 12.10131, -45.00105)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="SouthRock01" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=1429053323]
-transform = Transform3D(-1.287172, 0, 2.274688, 0, 3.650977, 0, -3.60983, 0, -1.307198, 58.638484, 12.70196, -0.277041)
+transform = Transform3D(-1.287172, 0, 2.274688, 0, 3.650977, 0, -3.60983, 0, -1.307198, 58.638485, 12.70196, -0.277041)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="SouthRock04" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=430010092]
-transform = Transform3D(-0.58359, 0, 12.00149, 0, 10.176685, 0, -8.492925, 0, -2.908264, -92.722253, 34.93901, 49.331913)
+transform = Transform3D(-0.58359, 0, 12.00149, 0, 10.176685, 0, -8.492925, 0, -2.908264, -92.72225, 34.93901, 49.331913)
 shape = SubResource("BoxShape3D_reference_rock")
 
 [node name="SouthRock05" type="CollisionShape3D" parent="ReferenceRockCollisionFix" unique_id=151473665]

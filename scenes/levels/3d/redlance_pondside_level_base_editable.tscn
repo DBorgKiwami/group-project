@@ -1,7 +1,15 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://c5x1nvvv3q6vt"]
 
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="3_lilypad"]
 [ext_resource type="PackedScene" uid="uid://bqogxr1jlibu1" path="res://models/lowpoly_trees.glb" id="4_background_forest"]
+[ext_resource type="PackedScene" uid="uid://vh8ttohaj2nh" path="res://models/levels/redlance_pondside/base_editable_props/lotus_and_lilypads001.glb" id="5_aquatic_001"]
+[ext_resource type="PackedScene" uid="uid://beuvn2r1lt4mq" path="res://models/levels/redlance_pondside/base_editable_props/lotus_and_lilypads002.glb" id="6_aquatic_002"]
+[ext_resource type="PackedScene" uid="uid://brui6ja0at607" path="res://models/levels/redlance_pondside/base_editable_props/lotus_and_lilypads003.glb" id="7_aquatic_003"]
+[ext_resource type="PackedScene" uid="uid://cdxqdiitbw46i" path="res://models/levels/redlance_pondside/base_editable_props/lotus_and_lilypads004.glb" id="8_aquatic_004"]
+[ext_resource type="PackedScene" uid="uid://cjvicw5ir2ks5" path="res://models/levels/redlance_pondside/base_editable_props/lotus_and_lilypads005.glb" id="9_aquatic_005"]
+[ext_resource type="PackedScene" uid="uid://c1edt1denbunq" path="res://models/levels/redlance_pondside/base_editable_props/waterlily.glb" id="10_waterlily"]
+[ext_resource type="PackedScene" uid="uid://cwwx1wgkf1pme" path="res://models/levels/redlance_pondside/base_editable_props/weeds.glb" id="11_weeds"]
+[ext_resource type="PackedScene" uid="uid://bj2y5j3vx5n75" path="res://models/levels/redlance_pondside/base_editable_props/weedsandstones.glb" id="12_weeds_stones"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2trdd"]
 resource_name = "dark_pond_grass"
@@ -139,135 +147,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6hpuw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_155vp"]
-resource_name = "lily_pad_green"
-cull_mode = 2
-albedo_color = Color(0.58383155, 0.91627353, 0.5271128, 1)
-roughness = 0.9
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_1"]
+size = Vector3(1.45, 0.08, 0.7)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yqhvc"]
-_surfaces = [{
-"aabb": AABB(-0.85, 0, -0.41361925, 1.6487387, 1e-05, 0.8272385),
-"format": 34896613377,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOsAAAU6QAAdCwAAP//AACLUwAAFOkAAIrTAADlmgAA//8AAPfFAACO8AAA/UEAAI7wAAAPbQAA//8AAPUHAABzrAAA4B4AAIrTAADlmgAAAAAAAPfFAABwDwAA/UEAAHAPAAAPbQAAAAAAAPUHAACLUwAAAAAAAP9/AADgHgAAdCwAAA==")
-}]
-blend_shape_mode = 0
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
+size = Vector3(1.65, 0.08, 0.76)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1erbd"]
-resource_name = "redlance_pondside_blender_level_base_Lily_Pad_Blockout_1Mesh"
-_surfaces = [{
-"aabb": AABB(-0.85, 0, -0.41361925, 1.6487387, 1e-05, 0.8272385),
-"format": 34896613383,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"material": SubResource("StandardMaterial3D_155vp"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOs//8U6QAAdCz/////AACLU///FOkAAIrT///lmgAA//////fFAACO8P///UEAAI7w//8PbQAA//////UHAABzrP//4B4AAIrT///lmgAAAAD///fFAABwD////UEAAHAP//8PbQAAAAD///UHAACLU///AAAAAP9////gHgAAdCz///9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yqhvc")
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_3"]
+size = Vector3(1.3, 0.08, 0.6)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jmaga"]
-_surfaces = [{
-"aabb": AABB(-0.95, 0, -0.45301157, 1.842708, 1e-05, 0.90602314),
-"format": 34896613377,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOsAAAU6QAAdCwAAP//AACLUwAAFOkAAIrTAADlmgAA//8AAPfFAACO8AAA/UEAAI7wAAAPbQAA//8AAPUHAABzrAAA4B4AAIrTAADlmgAAAAAAAPfFAABwDwAA/UEAAHAPAAAPbQAAAAAAAPUHAACLUwAAAAAAAP9/AADgHgAAdCwAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_iqcyh"]
-resource_name = "redlance_pondside_blender_level_base_Lily_Pad_Blockout_2Mesh"
-_surfaces = [{
-"aabb": AABB(-0.95, 0, -0.45301157, 1.842708, 1e-05, 0.90602314),
-"format": 34896613383,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"material": SubResource("StandardMaterial3D_155vp"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOs//8U6QAAdCz/////AACLU///FOkAAIrT///lmgAA//////fFAACO8P///UEAAI7w//8PbQAA//////UHAABzrP//4B4AAIrT///lmgAAAAD///fFAABwD////UEAAHAP//8PbQAAAAD///UHAACLU///AAAAAP9////gHgAAdCz///9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jmaga")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_5v3t7"]
-_surfaces = [{
-"aabb": AABB(-0.75, 0, -0.35453078, 1.4547695, 1e-05, 0.70906156),
-"format": 34896613377,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOsAAAU6QAAdCwAAP//AACLUwAAFOkAAIrTAADlmgAA//8AAPfFAACO8AAA/UEAAI7wAAAPbQAA//8AAPUHAABzrAAA4B4AAIrTAADlmgAAAAAAAPfFAABwDwAA/UEAAHAPAAAPbQAAAAAAAPUHAACLUwAAAAAAAP9/AADgHgAAdCwAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ra2ct"]
-resource_name = "redlance_pondside_blender_level_base_Lily_Pad_Blockout_3Mesh"
-_surfaces = [{
-"aabb": AABB(-0.75, 0, -0.35453078, 1.4547695, 1e-05, 0.70906156),
-"format": 34896613383,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"material": SubResource("StandardMaterial3D_155vp"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOs//8U6QAAdCz/////AACLU///FOkAAIrT///lmgAA//////fFAACO8P///UEAAI7w//8PbQAA//////UHAABzrP//4B4AAIrT///lmgAAAAD///fFAABwD////UEAAHAP//8PbQAAAAD///UHAACLU///AAAAAP9////gHgAAdCz///9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_5v3t7")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_frcsg"]
-_surfaces = [{
-"aabb": AABB(-1.1, 0, -0.49240386, 2.1336617, 1e-05, 0.9848077),
-"format": 34896613377,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOsAAAU6QAAdCwAAP//AACLUwAAFOkAAIrTAADlmgAA//8AAPfFAACO8AAA/UEAAI7wAAAPbQAA//8AAPUHAABzrAAA4B4AAIrTAADlmgAAAAAAAPfFAABwDwAA/UEAAHAPAAAPbQAAAAAAAPUHAACLUwAAAAAAAP9/AADgHgAAdCwAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_j3sub"]
-resource_name = "redlance_pondside_blender_level_base_Lily_Pad_Blockout_4Mesh"
-_surfaces = [{
-"aabb": AABB(-1.1, 0, -0.49240386, 2.1336617, 1e-05, 0.9848077),
-"format": 34896613383,
-"index_count": 45,
-"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAUABAABAAMABgAEAAcACAAEAAYAAQAEAAgACAAGAAkAAQAKAAsAAQAMAAoAAQAIAAwACgAMAA0ADAAIAA4ADgAIAA8ADAAOABAA"),
-"material": SubResource("StandardMaterial3D_155vp"),
-"name": "lily_pad_green",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 17,
-"vertex_data": PackedByteArray("//8AAHOs//8U6QAAdCz/////AACLU///FOkAAIrT///lmgAA//////fFAACO8P///UEAAI7w//8PbQAA//////UHAABzrP//4B4AAIrT///lmgAAAAD///fFAABwD////UEAAHAP//8PbQAAAAD///UHAACLU///AAAAAP9////gHgAAdCz///9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_frcsg")
+[sub_resource type="BoxShape3D" id="BoxShape3D_lily_4"]
+size = Vector3(1.9, 0.08, 0.85)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt4mb"]
 resource_name = "warm_mud_bank"
@@ -474,6 +364,20 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_krvmu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pond_bottom"]
+resource_name = "pond_bottom_soil"
+cull_mode = 2
+albedo_color = Color(0.245, 0.184, 0.13, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_forest_trunk"]
+size = Vector3(1.2, 1.8, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_outer_x"]
+size = Vector3(0.6, 3, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_outer_z"]
+size = Vector3(28, 3, 0.6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etb2c"]
 resource_name = "light_rock_face"
@@ -3334,33 +3238,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hjqvb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pond_bottom"]
-resource_name = "pond_bottom_soil"
-cull_mode = 2
-albedo_color = Color(0.245, 0.184, 0.13, 1)
-roughness = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_outer_x"]
-size = Vector3(0.6, 3, 26)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_outer_z"]
-size = Vector3(28, 3, 0.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lily_1"]
-size = Vector3(1.45, 0.08, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lily_2"]
-size = Vector3(1.65, 0.08, 0.76)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lily_3"]
-size = Vector3(1.3, 0.08, 0.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lily_4"]
-size = Vector3(1.9, 0.08, 0.85)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_forest_trunk"]
-size = Vector3(1.2, 1.8, 1.2)
-
 [node name="RedlancePondsideLevelBase" type="Node3D" unique_id=697949010]
 
 [node name="Terrain_Base_Generated" type="Node3D" parent="." unique_id=1270120656]
@@ -3377,231 +3254,146 @@ mesh = SubResource("ArrayMesh_ddeyj")
 [node name="Land_West_Lower_Bank" type="MeshInstance3D" parent="Terrain_Base_Generated" unique_id=1772819528]
 mesh = SubResource("ArrayMesh_w5a27")
 
-[node name="Land_Expansion" type="Node3D" parent="Terrain_Base_Generated"]
+[node name="Land_Expansion" type="Node3D" parent="Terrain_Base_Generated" unique_id=1156488215]
 
-[node name="Land_Expansion_North_Rock_Side" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Rock_Side" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=761744750]
 transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 6.5, 0, 8.2)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Expansion_North_Connector_A" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Connector_A" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=95273559]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 2.5, 0, 6.5)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_North_Connector_B" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Connector_B" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=414501886]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 3.5, 0, 8.3)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_West" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_West" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1190191147]
 transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, -8, 0, -1)
 mesh = SubResource("ArrayMesh_w5a27")
 
-[node name="Land_Expansion_South" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_South" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=614259163]
 transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 5.5, 0, -8.2)
 mesh = SubResource("ArrayMesh_ddeyj")
 
-[node name="Land_Expansion_South_Connector" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_South_Connector" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=476028624]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 6.5, 0, -8)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_East_South" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_South" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=2141311934]
 transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 0.65, 12, 0, -5.5)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_North_Wide_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Wide_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1100046977]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 6.7, 0, 8)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Expansion_North_East_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_East_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=28714792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6.7)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_East_Upper_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_Upper_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=985791247]
 transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.85, 12, 0, 3)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_East_Lower_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_Lower_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=579663945]
 transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 11.5, 0, -1.2)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_East_Lower_Bridge" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_Lower_Bridge" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=217602744]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 12.5, 0, -5)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_Southeast_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_Southeast_Field" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1143693388]
 transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 9, 0, -8.4)
 mesh = SubResource("ArrayMesh_ddeyj")
 
-[node name="Land_Expansion_North_Backfill_Wide" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Backfill_Wide" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=726866]
 transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.95, 5.8, 0, 10.5)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Expansion_North_Backfill_East" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_North_Backfill_East" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1183695696]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 11.8, 0, 9.5)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Expansion_East_Backfill_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_Backfill_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=328595251]
 transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.85, 13, 0, 4.8)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_East_Backfill_Middle" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_East_Backfill_Middle" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1246140683]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 13.2, 0, 0.2)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Expansion_Southeast_Backfill" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Expansion_Southeast_Backfill" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=262982884]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 11.5, 0, -9)
 mesh = SubResource("ArrayMesh_ddeyj")
 
-[node name="Land_Terrace_North_Lower" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Terrace_North_Lower" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1886438988]
 transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 7.2, 0.25, 10.5)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Terrace_North_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Terrace_North_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=372200338]
 transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, 8.5, 0.55, 13)
 mesh = SubResource("ArrayMesh_j5a6x")
 
-[node name="Land_Terrace_East_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Terrace_East_Upper" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1074456602]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 13, 0.3, 6.2)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Terrace_East_Lower" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Terrace_East_Lower" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1071492203]
 transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, 13, 0.15, -3.8)
 mesh = SubResource("ArrayMesh_lfduw")
 
-[node name="Land_Terrace_Southeast" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion"]
+[node name="Land_Terrace_Southeast" type="MeshInstance3D" parent="Terrain_Base_Generated/Land_Expansion" unique_id=1621252664]
 transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 11.5, 0.25, -10.5)
 mesh = SubResource("ArrayMesh_ddeyj")
 
-[node name="Decorative_Background_Forest" type="Node3D" parent="."]
+[node name="Lily_Pad_1" type="Node3D" parent="Terrain_Base_Generated" unique_id=1972000448]
+transform = Transform3D(0.9467117, 0, 0.32208213, 0, 1, 0, -0.32208213, 0, 0.9467117, 0.8, -0.18, 2.6)
 
-[node name="ForestCluster_North_01" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.084, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.5, 0.2, 13.2)
+[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_1" unique_id=1534239400 instance=ExtResource("3_lilypad")]
+transform = Transform3D(28.9, 0, 0, 0, 12, 0, 0, 0, 14.6, -1.183, -0.1092, -0.0117)
 
-[node name="ForestCluster_North_02" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.096, 0, 0, 0, 0.096, 0, 0, 0, 0.096, 4.5, 0.25, 14)
+[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_1" unique_id=328253136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.183, -0.1492, -0.0117)
 
-[node name="ForestCluster_North_03" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 8.5, 0.55, 13.6)
-
-[node name="ForestCluster_North_04" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 12.2, 0.85, 11.7)
-
-[node name="ForestCluster_East_01" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.084, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 14, 0.6, 8)
-
-[node name="ForestCluster_East_02" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 14.2, 0.35, 3)
-
-[node name="ForestCluster_East_03" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 14, 0.1, -2)
-
-[node name="ForestCluster_East_04" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 13.8, 0, -7)
-
-[node name="ForestCluster_Southeast_01" parent="Decorative_Background_Forest" instance=ExtResource("4_background_forest")]
-transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 12.5, 0, -10.5)
-
-[node name="Decorative_Forest_Collision" type="StaticBody3D" parent="."]
-collision_layer = 1
-collision_mask = 1
-
-[node name="North_01" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(0.5, 0.3, 13.2)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="North_02" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(4.5, 0.3, 14)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="North_03" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(8.5, 0.55, 13.6)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="North_04" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(12.2, 0.85, 11.7)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="East_01" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(14, 0.6, 8)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="East_02" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(14.2, 0.35, 3)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="East_03" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(14, 0.1, -2)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="East_04" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(13.8, 0, -7)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="Southeast_01" type="CollisionShape3D" parent="Decorative_Forest_Collision"]
-position = Vector3(12.5, 0, -10.5)
-shape = SubResource("BoxShape3D_forest_trunk")
-
-[node name="Lily_Pad_1" type="Node3D" parent="Terrain_Base_Generated"]
-position = Vector3(0.8, -0.18, 2.6)
-rotation = Vector3(0, 0.327928, 0)
-
-[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_1" instance=ExtResource("3_lilypad")]
-position = Vector3(-1.183, -0.1092, -0.0117)
-scale = Vector3(28.9, 12, 14.6)
-
-[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_1"]
-position = Vector3(-1.183, -0.1492, -0.0117)
-collision_layer = 1
-collision_mask = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_1/Step_Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_1/Step_Collision" unique_id=648181414]
 shape = SubResource("BoxShape3D_lily_1")
 
-[node name="Lily_Pad_2" type="Node3D" parent="Terrain_Base_Generated"]
-position = Vector3(3.3, -0.18, 1.9)
-rotation = Vector3(0, -0.066188, 0)
+[node name="Lily_Pad_2" type="Node3D" parent="Terrain_Base_Generated" unique_id=68952947]
+transform = Transform3D(0.99781036, 0, -0.06613968, 0, 1, 0, 0.06613968, 0, 0.99781036, 3.3, -0.18, 1.9)
 
-[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_2" instance=ExtResource("3_lilypad")]
-position = Vector3(-1.323, -0.1092, -0.0128)
-scale = Vector3(32.3, 12, 16)
+[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_2" unique_id=783335171 instance=ExtResource("3_lilypad")]
+transform = Transform3D(32.3, 0, 0, 0, 12, 0, 0, 0, 16, -1.323, -0.1092, -0.0128)
 
-[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_2"]
-position = Vector3(-1.323, -0.1492, -0.0128)
-collision_layer = 1
-collision_mask = 1
+[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_2" unique_id=2134840806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323, -0.1492, -0.0128)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_2/Step_Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_2/Step_Collision" unique_id=539039775]
 shape = SubResource("BoxShape3D_lily_2")
 
-[node name="Lily_Pad_3" type="Node3D" parent="Terrain_Base_Generated"]
-position = Vector3(7.3, -0.18, 1.2)
-rotation = Vector3(0, 0.205586, 0)
+[node name="Lily_Pad_3" type="Node3D" parent="Terrain_Base_Generated" unique_id=14516314]
+transform = Transform3D(0.9789415, 0, 0.20414086, 0, 1, 0, -0.20414086, 0, 0.9789415, 7.3, -0.18, 1.2)
 
-[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_3" instance=ExtResource("3_lilypad")]
-position = Vector3(-1.044, -0.1092, -0.01)
-scale = Vector3(25.5, 12, 12.5)
+[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_3" unique_id=1428413215 instance=ExtResource("3_lilypad")]
+transform = Transform3D(25.5, 0, 0, 0, 12, 0, 0, 0, 12.5, -1.044, -0.1092, -0.01)
 
-[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_3"]
-position = Vector3(-1.044, -0.1492, -0.01)
-collision_layer = 1
-collision_mask = 1
+[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_3" unique_id=1290923661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.044, -0.1492, -0.01)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_3/Step_Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_3/Step_Collision" unique_id=1324567708]
 shape = SubResource("BoxShape3D_lily_3")
 
-[node name="Lily_Pad_4" type="Node3D" parent="Terrain_Base_Generated"]
-position = Vector3(4.5, -0.18, -1.4)
-rotation = Vector3(0, -0.081028, 0)
+[node name="Lily_Pad_4" type="Node3D" parent="Terrain_Base_Generated" unique_id=294794952]
+transform = Transform3D(0.996719, 0, -0.08093936, 0, 1, 0, 0.08093936, 0, 0.996719, 4.5, -0.18, -1.4)
 
-[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_4" instance=ExtResource("3_lilypad")]
-position = Vector3(-1.531, -0.1092, -0.0139)
-scale = Vector3(37.4, 12, 17.4)
+[node name="Model" parent="Terrain_Base_Generated/Lily_Pad_4" unique_id=241368665 instance=ExtResource("3_lilypad")]
+transform = Transform3D(37.4, 0, 0, 0, 12, 0, 0, 0, 17.4, -1.531, -0.1092, -0.0139)
 
-[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_4"]
-position = Vector3(-1.531, -0.1492, -0.0139)
-collision_layer = 1
-collision_mask = 1
+[node name="Step_Collision" type="StaticBody3D" parent="Terrain_Base_Generated/Lily_Pad_4" unique_id=1427554306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.531, -0.1492, -0.0139)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_4/Step_Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain_Base_Generated/Lily_Pad_4/Step_Collision" unique_id=1458194415]
 shape = SubResource("BoxShape3D_lily_4")
 
 [node name="Mud_Center_Shore" type="MeshInstance3D" parent="Terrain_Base_Generated" unique_id=1066415899]
@@ -3622,58 +3414,122 @@ mesh = SubResource("ArrayMesh_3453e")
 [node name="Pond_Water_Main" type="MeshInstance3D" parent="Terrain_Base_Generated" unique_id=1161159172]
 mesh = SubResource("ArrayMesh_hidrc")
 
-[node name="Pond_Shoreline_Meshes" type="Node3D" parent="."]
-
-[node name="Pond_Mud_Shore_West" type="MeshInstance3D" parent="Pond_Shoreline_Meshes"]
-transform = Transform3D(0.9689124, 0, 0.24740396, 0, 1, 0, -0.24740396, 0, 0.9689124, -2.7, 0.02, 1.8)
-mesh = SubResource("ArrayMesh_t5j6l")
-
-[node name="Pond_Mud_Shore_North_West" type="MeshInstance3D" parent="Pond_Shoreline_Meshes"]
-transform = Transform3D(0.9950042, 0, -0.09983342, 0, 1, 0, 0.09983342, 0, 0.9950042, 0.2, 0.02, 5.7)
-mesh = SubResource("ArrayMesh_t5j6l")
-
-[node name="Pond_Mud_Shore_North_East" type="MeshInstance3D" parent="Pond_Shoreline_Meshes"]
-transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 4.5, 0.02, 5.4)
-mesh = SubResource("ArrayMesh_t5j6l")
-
-[node name="Pond_Mud_Shore_East" type="MeshInstance3D" parent="Pond_Shoreline_Meshes"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 10, 0.02, 0.5)
-mesh = SubResource("ArrayMesh_rvmdq")
-
-[node name="Pond_Mud_Shore_South" type="MeshInstance3D" parent="Pond_Shoreline_Meshes"]
-transform = Transform3D(0.9887711, 0, -0.14943813, 0, 1, 0, 0.14943813, 0, 0.9887711, 1.8, 0.02, 0)
-mesh = SubResource("ArrayMesh_24u2y")
-
-[node name="Pond_Swim_Base" type="CSGCombiner3D" parent="Terrain_Base_Generated"]
+[node name="Pond_Swim_Base" type="CSGCombiner3D" parent="Terrain_Base_Generated" unique_id=1014823143]
 use_collision = true
 
-[node name="Pond_Bottom_Cylinder" type="CSGCylinder3D" parent="Terrain_Base_Generated/Pond_Swim_Base"]
-position = Vector3(4.35, -0.65, 0.6)
-scale = Vector3(7.2, 0.35, 5.65)
+[node name="Pond_Bottom_Cylinder" type="CSGCylinder3D" parent="Terrain_Base_Generated/Pond_Swim_Base" unique_id=2005697440]
+transform = Transform3D(7.2, 0, 0, 0, 0.35, 0, 0, 0, 5.65, 4.35, -0.65, 0.6)
 radius = 1.0
 height = 1.0
 sides = 32
 smooth_faces = false
 material = SubResource("StandardMaterial3D_pond_bottom")
 
-[node name="Outer_Terrain_Boundary" type="StaticBody3D" parent="."]
-collision_layer = 1
-collision_mask = 1
+[node name="Decorative_Background_Forest" type="Node3D" parent="." unique_id=703974954]
 
-[node name="West_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary"]
-position = Vector3(-14, 0.8, 1)
+[node name="ForestCluster_North_01" parent="Decorative_Background_Forest" unique_id=2101529981 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.084, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.5, 0.2, 13.2)
+
+[node name="ForestCluster_North_02" parent="Decorative_Background_Forest" unique_id=1419993270 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.096, 0, 0, 0, 0.096, 0, 0, 0, 0.096, 4.5, 0.25, 14)
+
+[node name="ForestCluster_North_03" parent="Decorative_Background_Forest" unique_id=25738419 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 8.5, 0.55, 13.6)
+
+[node name="ForestCluster_North_04" parent="Decorative_Background_Forest" unique_id=1310853722 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 12.2, 0.85, 11.7)
+
+[node name="ForestCluster_East_01" parent="Decorative_Background_Forest" unique_id=856422184 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.084, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 14, 0.6, 8)
+
+[node name="ForestCluster_East_02" parent="Decorative_Background_Forest" unique_id=130286459 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 14.2, 0.35, 3)
+
+[node name="ForestCluster_East_03" parent="Decorative_Background_Forest" unique_id=285767810 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 14, 0.1, -2)
+
+[node name="ForestCluster_East_04" parent="Decorative_Background_Forest" unique_id=565094408 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 13.8, 0, -7)
+
+[node name="ForestCluster_Southeast_01" parent="Decorative_Background_Forest" unique_id=322521467 instance=ExtResource("4_background_forest")]
+transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 12.5, 0, -10.5)
+
+[node name="Decorative_Forest_Collision" type="StaticBody3D" parent="." unique_id=454875526]
+
+[node name="North_01" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=637743394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 13.2)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="North_02" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=626841811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.3, 14)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="North_03" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=434993513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.55, 13.6)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="North_04" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=1662523893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, 0.85, 11.7)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="East_01" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=960459694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.6, 8)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="East_02" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=1561549154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 0.35, 3)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="East_03" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=308766868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.1, -2)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="East_04" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=1638459053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, -7)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="Southeast_01" type="CollisionShape3D" parent="Decorative_Forest_Collision" unique_id=1013130492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -10.5)
+shape = SubResource("BoxShape3D_forest_trunk")
+
+[node name="Pond_Shoreline_Meshes" type="Node3D" parent="." unique_id=435077263]
+
+[node name="Pond_Mud_Shore_West" type="MeshInstance3D" parent="Pond_Shoreline_Meshes" unique_id=1656731664]
+transform = Transform3D(0.9689124, 0, 0.24740396, 0, 1, 0, -0.24740396, 0, 0.9689124, -2.7, 0.02, 1.8)
+mesh = SubResource("ArrayMesh_t5j6l")
+
+[node name="Pond_Mud_Shore_North_West" type="MeshInstance3D" parent="Pond_Shoreline_Meshes" unique_id=736210027]
+transform = Transform3D(0.9950042, 0, -0.09983342, 0, 1, 0, 0.09983342, 0, 0.9950042, 0.2, 0.02, 5.7)
+mesh = SubResource("ArrayMesh_t5j6l")
+
+[node name="Pond_Mud_Shore_North_East" type="MeshInstance3D" parent="Pond_Shoreline_Meshes" unique_id=947950102]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 4.5, 0.02, 5.4)
+mesh = SubResource("ArrayMesh_t5j6l")
+
+[node name="Pond_Mud_Shore_East" type="MeshInstance3D" parent="Pond_Shoreline_Meshes" unique_id=1987612701]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 10, 0.02, 0.5)
+mesh = SubResource("ArrayMesh_rvmdq")
+
+[node name="Pond_Mud_Shore_South" type="MeshInstance3D" parent="Pond_Shoreline_Meshes" unique_id=864542326]
+transform = Transform3D(0.9887711, 0, -0.14943813, 0, 1, 0, 0.14943813, 0, 0.9887711, 1.8, 0.02, 0)
+mesh = SubResource("ArrayMesh_24u2y")
+
+[node name="Outer_Terrain_Boundary" type="StaticBody3D" parent="." unique_id=792412322]
+
+[node name="West_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary" unique_id=1265689700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.8, 1)
 shape = SubResource("BoxShape3D_outer_x")
 
-[node name="East_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary"]
-position = Vector3(14, 0.8, 1)
+[node name="East_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary" unique_id=103222967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.8, 1)
 shape = SubResource("BoxShape3D_outer_x")
 
-[node name="South_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary"]
-position = Vector3(0, 0.8, -12)
+[node name="South_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary" unique_id=157935699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -12)
 shape = SubResource("BoxShape3D_outer_z")
 
-[node name="North_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary"]
-position = Vector3(0, 0.8, 14)
+[node name="North_Wall" type="CollisionShape3D" parent="Outer_Terrain_Boundary" unique_id=510237049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 14)
 shape = SubResource("BoxShape3D_outer_z")
 
 [node name="Optional_Backdrop_Rock_Walls" type="Node3D" parent="." unique_id=1866176404]
@@ -4043,3 +3899,29 @@ mesh = SubResource("ArrayMesh_25unf")
 [node name="Small_Reed_9" type="MeshInstance3D" parent="Optional_Reed_Patches" unique_id=103086026]
 transform = Transform3D(0.9999371, 0, 0.0112122055, 0, 1, 0, -0.0112122055, 0, 0.9999371, 0.53150105, -0.08, 2.944489)
 mesh = SubResource("ArrayMesh_48dm7")
+
+[node name="ImportedAquaticModels" type="Node3D" parent="." unique_id=406280160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, -0.18, 0.9)
+
+[node name="LotusAndLilypads001" parent="ImportedAquaticModels" unique_id=2097906893 instance=ExtResource("5_aquatic_001")]
+
+[node name="LotusAndLilypads002" parent="ImportedAquaticModels" unique_id=873618335 instance=ExtResource("6_aquatic_002")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.7942743, 0.051170528, 5.7427344)
+
+[node name="LotusAndLilypads003" parent="ImportedAquaticModels" unique_id=298406862 instance=ExtResource("7_aquatic_003")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.308473, 0, -0.6809912)
+
+[node name="LotusAndLilypads004" parent="ImportedAquaticModels" unique_id=763757479 instance=ExtResource("8_aquatic_004")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.0215197, 0.046196997, 1.106125)
+
+[node name="LotusAndLilypads005" parent="ImportedAquaticModels" unique_id=1402155199 instance=ExtResource("9_aquatic_005")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5428228, 0.5365908, -1.1679869)
+
+[node name="Waterlily" parent="ImportedAquaticModels" unique_id=1118287828 instance=ExtResource("10_waterlily")]
+transform = Transform3D(0.4106941, 0, 0.28518477, 0, 0.5, 0, -0.28518477, 0, 0.4106941, -3.8140216, 0, -3.155085)
+
+[node name="Weeds" parent="ImportedAquaticModels" unique_id=1087655385 instance=ExtResource("11_weeds")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.8390522, -0.286672, 0)
+
+[node name="WeedsAndStones" parent="ImportedAquaticModels" unique_id=1518286568 instance=ExtResource("12_weeds_stones")]
+transform = Transform3D(-0.14499205, 0, 0.47851568, 0, 0.5, 0, -0.47851568, 0, -0.14499205, 0, -0.06226325, -1.0817542)
