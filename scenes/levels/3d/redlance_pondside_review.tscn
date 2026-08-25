@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d4bugk2e7rnwx"]
 
 [ext_resource type="Script" uid="uid://c7of0m3jktjin" path="res://scripts/levels/redlance_pondside_review.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://scenes/levels/3d/redlance_pondside_level_base_editable.tscn" id="2_level"]
+[ext_resource type="PackedScene" uid="uid://c5x1nvvv3q6vt" path="res://scenes/levels/3d/redlance_pondside_level_base_editable.tscn" id="2_level"]
 [ext_resource type="PackedScene" uid="uid://yrdgsyyn0shv" path="res://allen_work/allen_work/ui_demos/interaction_prompt_demo/scenes/interaction_prompt_demo.tscn" id="2_y73yp"]
 [ext_resource type="PackedScene" uid="uid://w3pslpy51esi" path="res://scenes/ui/dialogue_player.tscn" id="3_5wccx"]
 [ext_resource type="Script" uid="uid://dtq2db7glooqg" path="res://scripts/ui/dialogue_visual.gd" id="4_jsr2h"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bqq674p04o6el" path="res://models/lilypad.glb" id="15_wyodo"]
 [ext_resource type="Material" uid="uid://diw46dqdpkwx4" path="res://materials/water.tres" id="16_gaeky"]
 [ext_resource type="PackedScene" uid="uid://bwkwbnnhenm57" path="res://scenes/elements/bouncepad.tscn" id="17_b8xro"]
-[ext_resource type="Shader" uid="uid://66xrnbgdi4t1" path="res://shaders/water.gdshader" id="17_enllo"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="17_enllo"]
 [ext_resource type="PackedScene" uid="uid://cy1w71u25t78c" path="res://scenes/menu/pause_menu.tscn" id="17_j26fj"]
 [ext_resource type="PackedScene" uid="uid://ym375o801vpr" path="res://scenes/elements/grapplepoint3d.tscn" id="18_j26fj"]
 [ext_resource type="Texture2D" uid="uid://cceu8u5wb6gci" path="res://textures/Epic_BlueSunset_EquiRect_flat.png" id="20_sky"]
@@ -153,7 +153,7 @@ script = ExtResource("1_script")
 [node name="lilipad7" parent="." unique_id=658019861 instance=ExtResource("15_wyodo")]
 transform = Transform3D(117.30558, 0, -161.98581, 0, 200, 0, 161.98581, 0, 117.30558, 36.51487, -2.4252846, 4.142349)
 
-[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(658019861, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad7/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=414408479]
@@ -169,7 +169,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad9" parent="." unique_id=479949106 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-131.23816, 0, -150.91902, 0, 200, 0, 150.91902, 0, -131.23816, 23.925957, -2.4252846, 9.56684)
 
-[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(479949106, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad9/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=919504668]
@@ -185,7 +185,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad10" parent="." unique_id=867063456 instance=ExtResource("15_wyodo")]
 transform = Transform3D(194.72772, 0, -45.61921, 0, 200, 0, 45.61921, 0, 194.72772, 21.06018, -2.4252846, 31.162458)
 
-[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(867063456, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad10/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=787081012]
@@ -201,7 +201,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad8" parent="." unique_id=1616748481 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-123.46586, 0, -40.696224, 0, 130, 0, 40.696224, 0, -123.46586, 19.914505, -1.6143448, 0.21192074)
 
-[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1616748481, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad8/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=11405407]
@@ -217,7 +217,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad11" parent="." unique_id=951802364 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 11.9312935, -1.6143448, 20.374653)
 
-[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(951802364, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad11/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=2005945632]
@@ -233,7 +233,7 @@ shape = SubResource("BoxShape3D_visible_lily")
 [node name="lilipad12" parent="." unique_id=1082421694 instance=ExtResource("15_wyodo")]
 transform = Transform3D(-80.731445, 0, 101.89425, 0, 130, 0, -101.89425, 0, -80.731445, 35.471535, -1.6143448, -3.8820343)
 
-[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1927362603) index="0" unique_id=983774090]
+[node name="lily_pad_lambert3_0" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad" parent_id_path=PackedInt32Array(1082421694, 1775211322) index="0" unique_id=1020912089]
 transform = Transform3D(0.032666653, 6.563171e-17, -0.9994663, 3.707658e-15, 1, 1.8684837e-16, 0.9994663, -3.7117827e-15, 0.032666653, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lilipad12/Sketchfab_model/01ea767ab30b47d1bec88d7f613e05b7_fbx/RootNode/lily_pad/lily_pad_lambert3_0" index="0" unique_id=1986131648]
@@ -397,13 +397,15 @@ transform = Transform3D(0.26420888, 0, 1.4765478, 0, 1.5, 0, -1.4765478, 0, 0.26
 transform = Transform3D(-1.4167196, 0, -0.49285477, 0, 1.5, 0, 0.49285477, 0, -1.4167196, 29.148048, -0.66, 3.5708528)
 
 [node name="LotusAndLilypads001_RedCircle" parent="." unique_id=34009633 instance=ExtResource("22_lotus_001")]
-transform = Transform3D(1.0760236, 0, -1.0450709, 0, 1.5, 0, 1.0450709, 0, 1.0760236, 17.712858, -0.66, -7.7862625)
+transform = Transform3D(1.0760236, 0, -1.0450709, 0, 1.5, 0, 1.0450709, 0, 1.0760236, 17.712858, -14.724432, -7.7862625)
+visible = false
 
 [node name="LotusAndLilypads003" parent="." unique_id=585937082 instance=ExtResource("22_lotus_003")]
 transform = Transform3D(1.1478034, 0, 0.9656849, 0, 1.5, 0, -0.9656849, 0, 1.1478034, 30, -0.66, 23.413157)
 
 [node name="WeedsAndStones" parent="." unique_id=1358000568 instance=ExtResource("22_weeds_stones")]
-transform = Transform3D(-1.4048345, 0, 0.52577686, 0, 1.5000002, 0, -0.52577686, 0, -1.4048345, 20.413218, -2.1279392, 21.594957)
+transform = Transform3D(-1.4048345, 0, 0.52577686, 0, 1.5000002, 0, -0.52577686, 0, -1.4048345, 20.413218, -16.640224, 21.594957)
+visible = false
 
 [node name="ReferenceRockScatter" type="Node3D" parent="." unique_id=1444216806]
 
@@ -667,6 +669,9 @@ transform = Transform3D(0.99999756, 0, 0.0022218698, 0, 1, 0, -0.0022218698, 0, 
 
 [node name="Small_Reed_9" parent="LevelBase/Optional_Reed_Patches" parent_id_path=PackedInt32Array(458334827, 1158386776) index="74" unique_id=103086026]
 transform = Transform3D(0.9999372, 0, 0.011212206, 0, 1, 0, -0.011212206, 0, 0.9999372, -1.0584719, -0.08, 2.944489)
+
+[node name="ImportedAquaticModels" parent="LevelBase" index="7" unique_id=406280160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2000003, -12.059039, 0.9)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1980574931]
 transform = Transform3D(-0.9982933, 0, -0.058400333, 0, 1, 0, 0.058400333, 0, -0.9982933, -24.060501, -1.181804, -31.275862)
@@ -1169,6 +1174,13 @@ material = ExtResource("9_osbx4")
 [node name="mushroombase" parent="Bounce Pad8" unique_id=1146835338 instance=ExtResource("30_w1lsv")]
 transform = Transform3D(1, 0, 0, 0, 2.0031998, 0, 0, 0, 1, -0.040683746, -1.9561291, 0.028905869)
 
+[node name="mushroombase3" parent="Bounce Pad8" unique_id=1176342166 instance=ExtResource("30_w1lsv")]
+transform = Transform3D(1, 0, 0, 0, 2.0031998, 0, 0, 0, 1, 2.2446527, -1.4158895, 2.1017208)
+visible = false
+
+[node name="mushroombase2" parent="Bounce Pad8" unique_id=1231091742 instance=ExtResource("30_w1lsv")]
+transform = Transform3D(1, 0, 0, 0, 2.0031998, 0, 0, 0, 1, -1.3269567, -3.1748586, 4.4980755)
+
 [node name="Bounce Pad9" parent="." unique_id=2134866075 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.887156, 0.9238366, 21.822792)
 
@@ -1210,18 +1222,19 @@ transform = Transform3D(1, 0, 0, 0, 0.37557036, 0, 0, 0, 1, -0.016256332, -0.321
 
 [node name="Bounce Pad15" parent="." unique_id=308121625 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.589523, 6.0934234, 25.909433)
+visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad15" unique_id=416950447]
-transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -1.5619898, -2.1776333)
+transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -38.53015, -2.1776333)
 radius = 1.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bounce Pad15" unique_id=2075605246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -1.5582523, -2.1806507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3457546, -15.353506, -2.1806507)
 shape = SubResource("CylinderShape3D_gaeky")
 debug_color = Color(0.82, 0.41, 0, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounce Pad15" unique_id=362581063]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -4.0345182, -2.172945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.344349, -41.002678, -2.172945)
 use_collision = true
 radius = 0.4
 height = 4.330859
@@ -1239,6 +1252,7 @@ debug_color = Color(0, 1, 0, 1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform16" unique_id=2050788956]
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+visible = false
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
 
@@ -1253,6 +1267,7 @@ debug_color = Color(0, 1, 0, 1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform17" unique_id=668835016]
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+visible = false
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
 
@@ -1267,6 +1282,7 @@ debug_color = Color(0, 1, 0, 1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform18" unique_id=1835878906]
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+visible = false
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
 
@@ -1281,6 +1297,7 @@ debug_color = Color(0, 1, 0, 1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Fading Platform19" unique_id=123800503]
 transform = Transform3D(0.89100665, 0.45399064, -1.9844556e-08, 0, -4.371139e-08, -1, -0.45399064, 0.89100665, -3.8947135e-08, -1.1382809, 0.2895012, 0.23874092)
+visible = false
 polygon = PackedVector2Array(0, 0, 0, 2, 1, 3.5, 2, 3.5, 3, 2, 3, 0, 1.5, -1)
 depth = 0.3
 
@@ -1340,6 +1357,7 @@ transform = Transform3D(1, 0, 0, 0, 0.42373568, 0, 0, 0, 1, -0.014742851, -0.361
 
 [node name="Bounce Pad16" parent="." unique_id=1825156187 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.399917, 23.664995, 46.8783)
+visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Bounce Pad16" unique_id=1493206752]
 transform = Transform3D(1, 0, 0, 0, 0.27404478, 0, 0, 0, 1, -3.3356361, -2.3902063, -2.1776323)
@@ -1359,6 +1377,7 @@ material = ExtResource("9_osbx4")
 
 [node name="Bounce Pad17" parent="." unique_id=2088121065 instance=ExtResource("17_b8xro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307359, 23.831154, 46.610725)
+visible = false
 
 [node name="PauseMenu" parent="." unique_id=887874633 instance=ExtResource("17_j26fj")]
 layer = 100
@@ -1544,6 +1563,7 @@ transform = Transform3D(-0.9720389, 0, 0.2348199, 0, 1, 0, -0.2348199, 0, -0.972
 
 [node name="Grapplepoint3d3" parent="." unique_id=194797435 instance=ExtResource("18_j26fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7544417, 25.797132, 51.50532)
+visible = false
 
 [node name="Grapplepoint3d4" parent="." unique_id=1869088348 instance=ExtResource("18_j26fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5252075, 7.7655554, -23.589767)
