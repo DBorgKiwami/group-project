@@ -10,6 +10,7 @@ class_name Player3D
 @export var jump_sfx : AudioStreamPlayer3D
 @export var landing_sfx : AudioStreamPlayer3D
 @export var grapple_sfx : AudioStreamPlayer3D
+@export var grapple_notification_sfx : AudioStreamPlayer
 @export var footstep_sfx : AudioStreamPlayer3D
 @export var grapple_point_calc : Node3D
 @export var tongue : MeshInstance3D
@@ -339,6 +340,22 @@ func _physics_process(delta: float) -> void:
 		if last_collision.get_collider() is FadingPlatform:
 			last_collision.get_collider().startFade()
 
+
+func _update_grapple_notification() -> void:
+	if grapple_notification_sfx == null:
+		return
+
+	var grapple_available := (
+		grappleArea.has_overlapping_areas()
+		and not grappling
+		and not inDialogue
+	)
+
+	if grapple_available:
+		if not grapple_notification_sfx.playing:
+			grapple_notification_sfx.play()
+	elif grapple_notification_sfx.playing:
+		grapple_notification_sfx.stop()
 
 func _play_footstep() -> void:
 	if not footstep_sfx:

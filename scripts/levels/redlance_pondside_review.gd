@@ -79,7 +79,8 @@ func add_collision(node: Node) -> void:
 	for child in node.get_children():
 		if child is MeshInstance3D:
 			var mesh_name := String(child.name).to_lower()
-			if should_make_solid(mesh_name) and has_geometry(child) and not has_collision(child):
+			var is_backdrop_rock: bool = String(child.get_path()).to_lower().contains("optional_backdrop_rock_walls")
+			if should_make_solid(mesh_name) and not is_backdrop_rock and has_geometry(child) and not has_collision(child):
 				child.create_trimesh_collision()
 			if mesh_name.contains("lily"):
 				child.add_to_group(&"footstep_grass")
