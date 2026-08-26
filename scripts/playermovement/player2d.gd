@@ -36,6 +36,7 @@ var current_anim_speed := 1.0
 @export var attack_tongue : Sprite3D
 @export var tongue_hitbox : Area3D
 @export var tongue_snap_flash : Sprite3D
+@export var tongue_mouth : Sprite3D
 @export var slash_vfx : Sprite3D
 @export var tongue_hitbox_offset := 0.5
 @export var tongue_attack_range := 3.0
@@ -224,6 +225,7 @@ func play_slash_vfx() -> void:
 		return
 	slash_vfx.visible = true
 	slash_vfx.flip_h = sprite.flip_h
+	slash_vfx.position.x = -0.7 if sprite.flip_h else 0.7
 	slash_vfx.frame = 0
 	slash_vfx_time = 0.0
 
@@ -239,16 +241,22 @@ func tongue_attack() -> void:
 		return
 	tongue_attacking = true
 	attack_tongue.visible = true
+	var facing_dir := -1.0 if sprite.flip_h else 1.0
+	if tongue_mouth:
+		tongue_mouth.visible = true
+		tongue_mouth.flip_h = sprite.flip_h
+		tongue_mouth.position.x = -0.38 if sprite.flip_h else 0.38
 	if tongue_snap_flash:
 		tongue_snap_flash.visible = true
 		tongue_snap_flash.flip_h = sprite.flip_h
+		tongue_snap_flash.position = Vector3(facing_dir * tongue_attack_range, 0.32, 0.02)
 		tongue_snap_flash.scale = Vector3(0.02, 0.02, 0.02)
 		var snap_tween := get_tree().create_tween()
+		snap_tween.tween_interval(tongue_attack_speed * 0.7)
 		snap_tween.tween_property(tongue_snap_flash, "scale", Vector3(0.18, 0.18, 0.18), 0.04)
 		snap_tween.tween_property(tongue_snap_flash, "scale", Vector3.ZERO, 0.08)
 		snap_tween.tween_callback(_hide_tongue_snap_flash)
 
-	var facing_dir := -1.0 if sprite.flip_h else 1.0
 	attack_tongue.flip_h = facing_dir < 0
 	attack_tongue.rotation = Vector3.ZERO
 	attack_tongue.scale = Vector3(0.01, 1.0, 1.0)
@@ -273,6 +281,8 @@ func _end_tongue_attack() -> void:
 	tongue_attacking = false
 	if attack_tongue:
 		attack_tongue.visible = false
+	if tongue_mouth:
+		tongue_mouth.visible = false
 	if tongue_hitbox:
 		tongue_hitbox.monitoring = false
 

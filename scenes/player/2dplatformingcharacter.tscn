@@ -17,7 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]
 [ext_resource type="AudioStream" uid="uid://c5d3hyjj05qvp" path="res://audio/music/frogcry.ogg" id="11_hurt"]
-[ext_resource type="Texture2D" uid="uid://m7nxtbpsvpce" path="res://sprites/player/2D Sprites/tongue_attack.png" id="16_sdofs"]
+[ext_resource type="Texture2D" path="res://sprites/vfx/slash_arc_sheet.png" id="17_slash_vfx"]
+[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_snap_strip.svg" id="18_tongue_vfx"]
+[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_snap_flash.svg" id="19_tongue_flash"]
+[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_mouth_open.svg" id="20_tongue_mouth"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -467,7 +470,7 @@ _data = {
 &"hit": SubResource("Animation_mj1mf")
 }
 
-[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "iFrameHandler", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox", "tongue_snap_flash", "slash_vfx")]
+[node name="2Dplatformingcharacter" type="CharacterBody3D" unique_id=387257704 node_paths=PackedStringArray("hitboxFront", "hitboxUp", "hitboxDown", "animationController", "iFrameHandler", "player_hitbox", "player_camera", "sprite", "state_machine", "jump_sfx", "landing_sfx", "attack_sfx", "hurt_sfx", "footstep_sfx", "attack_tongue", "tongue_hitbox", "tongue_snap_flash", "tongue_mouth", "slash_vfx")]
 collision_layer = 0
 script = ExtResource("1_cudoo")
 hitboxFront = NodePath("Front Attack Hurtbox")
@@ -488,6 +491,7 @@ damage = 1
 attack_tongue = NodePath("AttackTongue")
 tongue_hitbox = NodePath("AttackTongue/TongueHitbox")
 tongue_snap_flash = NodePath("TongueSnapFlash")
+tongue_mouth = NodePath("TongueMouthOpen")
 slash_vfx = NodePath("SlashVfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=30863792]
@@ -610,10 +614,11 @@ max_polyphony = 2
 
 [node name="AttackTongue" type="Sprite3D" parent="." unique_id=255749597]
 visible = false
-texture_filter = 2
-texture = ExtResource("16_sdofs")
-region_enabled = true
-region_rect = Rect2(-1.25, -1.25, 38, 14)
+offset = Vector2(0, -15)
+pixel_size = 0.018
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_tongue_vfx")
 
 [node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2752322, 0.019773722, 0)
@@ -628,20 +633,26 @@ shape = SubResource("SphereShape3D_55rie")
 [node name="TongueSnapFlash" type="Sprite3D" parent="." unique_id=1919851043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 0)
 visible = false
-modulate = Color(1, 0.55, 0.65, 0.8)
-pixel_size = 0.03
+pixel_size = 0.018
 billboard = 1
-texture_filter = 2
-texture = ExtResource("16_sdofs")
-region_enabled = true
-region_rect = Rect2(-1.25, -1.25, 38, 14)
+texture_filter = 0
+texture = ExtResource("19_tongue_flash")
+
+[node name="TongueMouthOpen" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.28, 0.02)
+visible = false
+pixel_size = 0.018
+billboard = 1
+texture_filter = 0
+texture = ExtResource("20_tongue_mouth")
 
 [node name="SlashVfx" type="Sprite3D" parent="." unique_id=1697655580]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.35, 0)
 visible = false
 pixel_size = 0.03
 billboard = 1
-texture_filter = 2
+texture_filter = 0
+texture = ExtResource("17_slash_vfx")
 hframes = 6
 
 [node name="IFrameHandler" type="AnimationPlayer" parent="." unique_id=189793525]
