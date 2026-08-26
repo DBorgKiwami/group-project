@@ -17,10 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://bi8dn5yvmp3p4" path="res://audio/music/jump.ogg" id="9_jump"]
 [ext_resource type="AudioStream" uid="uid://cqpc8wp8oklp0" path="res://audio/music/swordblow.ogg" id="10_sword"]
 [ext_resource type="AudioStream" uid="uid://c5d3hyjj05qvp" path="res://audio/music/frogcry.ogg" id="11_hurt"]
-[ext_resource type="Texture2D" path="res://sprites/vfx/slash_arc_sheet.png" id="17_slash_vfx"]
-[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_snap_strip.svg" id="18_tongue_vfx"]
-[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_snap_flash.svg" id="19_tongue_flash"]
-[ext_resource type="Texture2D" path="res://sprites/vfx/tongue_mouth_open.svg" id="20_tongue_mouth"]
+[ext_resource type="Texture2D" uid="uid://dq0ebxvjf6uia" path="res://sprites/vfx/slash_arc_sheet.png" id="17_slash_vfx"]
+[ext_resource type="Texture2D" uid="uid://b1ba6o4jq31yu" path="res://sprites/vfx/tongue_snap_strip.svg" id="18_tongue_vfx"]
+[ext_resource type="Texture2D" uid="uid://c8g35q4221krl" path="res://sprites/vfx/tongue_snap_flash.svg" id="19_tongue_flash"]
+[ext_resource type="Texture2D" uid="uid://778vthjnloye" path="res://sprites/vfx/tongue_mouth_open.svg" id="20_tongue_mouth"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj0l2"]
 size = Vector3(1.1184082, 1.4648438, 1)
@@ -614,7 +614,6 @@ max_polyphony = 2
 
 [node name="AttackTongue" type="Sprite3D" parent="." unique_id=255749597]
 visible = false
-offset = Vector2(0, -15)
 pixel_size = 0.018
 billboard = 1
 texture_filter = 0
@@ -639,11 +638,13 @@ texture_filter = 0
 texture = ExtResource("19_tongue_flash")
 
 [node name="TongueMouthOpen" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.28, 0.02)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, -0.03, 0.05)
 visible = false
-pixel_size = 0.018
+pixel_size = 0.024
 billboard = 1
 texture_filter = 0
+no_depth_test = true
+render_priority = 5
 texture = ExtResource("20_tongue_mouth")
 
 [node name="SlashVfx" type="Sprite3D" parent="." unique_id=1697655580]

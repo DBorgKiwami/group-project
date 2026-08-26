@@ -245,7 +245,7 @@ func tongue_attack() -> void:
 	if tongue_mouth:
 		tongue_mouth.visible = true
 		tongue_mouth.flip_h = sprite.flip_h
-		tongue_mouth.position.x = -0.38 if sprite.flip_h else 0.38
+		tongue_mouth.position.x = -0.44 if sprite.flip_h else 0.44
 	if tongue_snap_flash:
 		tongue_snap_flash.visible = true
 		tongue_snap_flash.flip_h = sprite.flip_h
