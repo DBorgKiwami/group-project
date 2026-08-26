@@ -246,10 +246,10 @@ func tongue_attack() -> void:
 		tongue_mouth.visible = true
 		tongue_mouth.flip_h = sprite.flip_h
 		tongue_mouth.position = Vector3(-0.09 if sprite.flip_h else 0.09, 0.0, 0.0)
-		tongue_mouth.scale = Vector3(0.36, 0.36, 0.36)
+		tongue_mouth.scale = Vector3(0.7, 0.2, 1.0)
 		var mouth_tween := get_tree().create_tween()
-		mouth_tween.tween_property(tongue_mouth, "scale", Vector3(0.62, 0.62, 0.62), 0.05)
-		mouth_tween.tween_property(tongue_mouth, "scale", Vector3(0.55, 0.55, 0.55), 0.06)
+		mouth_tween.tween_property(tongue_mouth, "scale", Vector3(1.15, 0.44, 1.0), 0.05)
+		mouth_tween.tween_property(tongue_mouth, "scale", Vector3(1.05, 0.36, 1.0), 0.06)
 	if tongue_snap_flash:
 		tongue_snap_flash.visible = true
 		tongue_snap_flash.flip_h = sprite.flip_h
