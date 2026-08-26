@@ -258,6 +258,7 @@ func tongue_attack() -> void:
 		snap_tween.tween_callback(_hide_tongue_snap_flash)
 
 	attack_tongue.flip_h = facing_dir < 0
+	attack_tongue.offset.x = -10.0 if sprite.flip_h else 10.0
 	attack_tongue.rotation = Vector3.ZERO
 	attack_tongue.scale = Vector3(0.01, 1.0, 1.0)
 	attack_tongue.position = Vector3.ZERO
