@@ -618,7 +618,7 @@ pixel_size = 0.018
 billboard = 1
 texture_filter = 0
 no_depth_test = true
-render_priority = 4
+render_priority = 90
 texture = ExtResource("18_tongue_vfx")
 
 [node name="TongueHitbox" type="Area3D" parent="AttackTongue" unique_id=127336479]
@@ -640,13 +640,13 @@ texture_filter = 0
 texture = ExtResource("19_tongue_flash")
 
 [node name="TongueMouthOpen" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0, 0.5)
 visible = false
-pixel_size = 0.024
+pixel_size = 0.035
 billboard = 1
 texture_filter = 0
 no_depth_test = true
-render_priority = 5
+render_priority = 100
 texture = ExtResource("20_tongue_mouth")
 
 [node name="SlashVfx" type="Sprite3D" parent="." unique_id=1697655580]
